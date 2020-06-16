@@ -1,5 +1,7 @@
 class TrainingModulesController < ApplicationController
 
+  http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+  
   def index
   	@training_module = TrainingModule.all
   end
