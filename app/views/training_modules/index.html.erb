@@ -1,1 +1,18 @@
 <h1> All my modules </h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th></th>
+  </tr>
+ 
+  <% @training_module.each do |training| %>
+    <tr>
+      <td><%= training.title %></td>
+      <td><%= training.text %></td>
+      <td><%= link_to 'Edit', edit_training_module_path(training) %></td>
+      <td><%= link_to 'Show', training_module_path(training) %></td>
+    </tr>
+  <% end %>
+</table>
