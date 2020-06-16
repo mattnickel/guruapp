@@ -7,5 +7,9 @@
   <strong>Text:</strong>
   <%= @training_module.text %>
 </p>
+<h2>Comments</h2>
+  <%= render @training_module.comments %>
+<h2>Add a comment:</h2>
+  <%= render 'comments/form' %>
 <%= link_to 'Edit', edit_training_module_path(@training_module) %>
 <%= link_to 'Back', training_modules_path %>

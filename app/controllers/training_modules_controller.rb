@@ -35,12 +35,12 @@ class TrainingModulesController < ApplicationController
 	  end
 	 
   end
-  
+
   def destroy
   @training_module = TrainingModule.find(params[:id])
-  @article.destroy
+  @training_module.destroy
  
-  redirect_to articles_path
+  redirect_to training_modules_path
 end
 
  
