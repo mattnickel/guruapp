@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-	http_basic_authenticate_with name: "dhh", password: "secret", only: :destroy
 	
 	def create
 	  @training_module = TrainingModule.find(params[:training_module_id])
