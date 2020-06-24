@@ -1,28 +1,31 @@
 <%= form_with model: @training_module, local: true do |form| %>
-  <% if @training_module.errors.any? %>
-      <div id="error_explanation">
-        <h2>
-          <%= pluralize(@training_module.errors.count, "error") %> prohibited
-          this article from being saved:
-        </h2>
-        <ul>
-          <% @training_module.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-  <p>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </p>
- 
-  <p>
-    <%= form.label :text %><br>
-    <%= form.text_area :text %>
-  </p>
- 
-  <p>
-    <%= form.submit %>
-  </p>
+<div class="row">
+  <div class="six columns">
+    <% if @training_module.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@training_module.errors.count, "error") %> prohibited
+            this article from being saved:
+          </h2>
+          <ul>
+            <% @training_module.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <p>
+      <%= form.label :title %><br>
+      <%= form.text_field :title %>
+    </p>
+   
+    <p>
+      <%= form.label :text %><br>
+      <%= form.text_area :text %>
+    </p>
+   
+    <p>
+      <%= form.submit %>
+    </p>
+  </div>
 <% end %>

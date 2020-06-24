@@ -1,3 +1,22 @@
 // Place all the styles related to the Welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.hero{
+	background: url(blue_mountains.jpg) grey;
+	background-size: cover;
+  color: #fff;
+  height: 850px;
+  padding-bottom: 5rem;
+  display:block;
+  position: relative;
+  margin-top: -50px;
+  z-index:0;
+  
+}
+.hero-message{
+	padding-top: 20%;
+	padding-left: 5%;
+}
+.hero-title{
+	margin-bottom: 0;
+}
