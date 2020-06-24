@@ -2,21 +2,33 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .hero{
-	background: url(blue_mountains.jpg) grey;
+	background: url(orange_guy.jpg) grey;
 	background-size: cover;
-  color: #fff;
+  color: #555;
   height: 850px;
   padding-bottom: 5rem;
   display:block;
   position: relative;
-  margin-top: -50px;
+  margin-top: -100px;
   z-index:0;
+  padding-top: 10px
   
 }
 .hero-message{
-	padding-top: 20%;
-	padding-left: 5%;
+	margin-top: 20%;
+	margin-left: 5%;
+  // background: white;
+  border-radius: 35px;
 }
 .hero-title{
 	margin-bottom: 0;
+}
+.header{
+  padding-top: 10px;
+  z-index: 10;
+  position: relative;
+}
+.logo {
+  width:100%;
+  padding:10px;
 }

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'sessions/new'
   get 'sessions/index'
 
-  get 'welcome/index'
+  get 'welcome/index', to: 'welcome#index', as: 'home'
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
