@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   resources :emails
   resources :users
   resources :sessions
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
   get 'sessions/index'
+  get 'dashboard', to: 'dashboard#index', as: 'dashboard'
 
 
   get 'welcome/index'

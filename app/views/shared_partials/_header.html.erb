@@ -10,7 +10,7 @@
 
 				  <% if current_user %>
 			      <!-- Logged in as <%= current_user.email %>. -->
-			      <% link_to "Guru Portal", logout_path, class: "button" %>
+			      <%= link_to "Guru Logout", logout_path, class: "button" %>
 			    <% else %>
 			      <% link_to "Guru Portal", signup_path, class: "button" %>
 			      <%= link_to "Guru Login", login_path, class: "button" %>
