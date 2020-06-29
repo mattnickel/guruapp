@@ -20,12 +20,7 @@ class TrainingModulesController < ApplicationController
 
   def update
   	@training_module = TrainingModule.find(params[:id])
-    if @training_module.cover_photo.attached?
-      @training_module.cover_photo.purge
-      @training_module.cover_photo.attach(params[:cover_photo])
-    else
-      @training_module.cover_photo.attach(params[:cover_photo])
-    end
+    @training_module.cover_photo.attach(params[:cover_photo])
     if @training_module.update(training_module_params)
       redirect_to @training_module
     else

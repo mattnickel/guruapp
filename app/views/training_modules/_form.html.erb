@@ -24,7 +24,11 @@
       <%= form.text_area :description %>
     </p>
     <p>
+      <% if @training_module.cover_photo.attached? %>
+        <%= @training_module.cover_photo %>
+      <%else %>
       <%= form.file_field :cover_photo %>
+      <%end %>
     </p>
    
     <p>
