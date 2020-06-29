@@ -13,6 +13,9 @@
         <tr>
           <td><%= training.title %></td>
           <td><%= training.description %></td>
+          <% if training.cover_photo.attached? %>
+          <image src="<%=(url_for(training.cover_photo))%>", class="cover_photo"> 
+          <% end %>
           <td><%= link_to 'Edit', edit_training_module_path(training) %></td>
           <td><%= link_to 'Show', training_module_path(training) %></td>
           <td><%= link_to 'Destroy', training_module_path(training),

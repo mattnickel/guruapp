@@ -6,6 +6,11 @@
 			<h2>Recently created modules</h2>
 			<% @training_module.each do |training| %>
 				<div class="columns three module_card">
+					<div class="photo_frame">
+						<% if training.cover_photo.attached? %>
+          			<image src="<%=(url_for(training.cover_photo))%>", class="cover_photo"> 
+          	<% else %> <span class="cover_photo orange"></span>
+          	<% end %> </div>
 		      <div>Title: <%= training.title %></div>
 		      <div>Description: <%= training.description %></div>
 		      <div>Author: <%=training.user.first_name %> <%=training.user.last_name %></div>

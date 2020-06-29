@@ -30,6 +30,8 @@ class UsersController < ApplicationController
   	if @user.avatar.attached?
   		@user.avatar.purge
   		@user.avatar.attach(params[:avatar])
+  	else
+  		@user.avatar.attach(params[:avatar])
   	end
     if @user.update(user_params)
       redirect_to dashboard_path, notice: "Your changes have been saved"

@@ -7,6 +7,15 @@
   <strong>Text:</strong>
   <%= @training_module.description %>
 </p>
+<% if @training_module.cover_photo.attached? %>
+<strong>Yes Cover Photo:</strong>
+<image src="<%=(url_for(@training_module.cover_photo))%>"> 
+
+<% else %>
+<p>
+  <strong>No Profile Image:</strong>
+  </p>
+<% end %>
 
 
   <% render 'comments/form' %>

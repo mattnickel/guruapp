@@ -20,6 +20,12 @@ class TrainingModulesController < ApplicationController
 
   def update
   	@training_module = TrainingModule.find(params[:id])
+    if @training_module.cover_photo.attached?
+      @training_module.cover_photo.purge
+      @training_module.cover_photo.attach(params[:cover_photo])
+    else
+      @training_module.cover_photo.attach(params[:cover_photo])
+    end
     if @training_module.update(training_module_params)
       redirect_to @training_module
     else
@@ -48,6 +54,6 @@ end
  
 private
   def training_module_params
-    params.require(:training_module).permit(:title, :description, :user_id)
+    params.require(:training_module).permit(:title, :description, :user_id, :cover_photo)
   end
 end
