@@ -29,7 +29,7 @@ class TrainingModulesController < ApplicationController
 
   def create
 	  @training_module = TrainingModule.new(training_module_params)
-
+    @training_module.user_id = current_user.id
 	  if @training_module.save
     	redirect_to @training_module
 	  else
@@ -48,6 +48,6 @@ end
  
 private
   def training_module_params
-    params.require(:training_module).permit(:title, :text)
+    params.require(:training_module).permit(:title, :description, :user_id)
   end
 end

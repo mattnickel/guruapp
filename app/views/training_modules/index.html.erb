@@ -1,21 +1,25 @@
-<h1> All my modules </h1>
-<p> <%= link_to 'new', new_training_module_path %>
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-    <th></th>
-  </tr>
- 
-  <% @training_module.each do |training| %>
-    <tr>
-      <td><%= training.title %></td>
-      <td><%= training.text %></td>
-      <td><%= link_to 'Edit', edit_training_module_path(training) %></td>
-      <td><%= link_to 'Show', training_module_path(training) %></td>
-      <td><%= link_to 'Destroy', training_module_path(training),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</table>
+<div class = "container">
+  <div class="row">
+    <h1> All my modules </h1>
+    <p> <%= link_to 'new', new_training_module_path %></p>
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Text</th>
+        <th></th>
+      </tr>
+     
+      <% @training_module.each do |training| %>
+        <tr>
+          <td><%= training.title %></td>
+          <td><%= training.description %></td>
+          <td><%= link_to 'Edit', edit_training_module_path(training) %></td>
+          <td><%= link_to 'Show', training_module_path(training) %></td>
+          <td><%= link_to 'Destroy', training_module_path(training),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

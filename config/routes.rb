@@ -4,10 +4,12 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   resources :welcome, path: "home"
+  resources :users, only: [:show]
 
   get 'sessions/new'
   get 'sessions/index'
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
+  # get 'users/view'
 
 
   get 'welcome/index'

@@ -1,0 +1,18 @@
+<p>
+  <strong>First Name:</strong>
+  <%= @user.first_name %>
+</p>
+ 
+<p>
+  <strong>Last Name:</strong>
+  <%= @user.last_name %>
+</p>
+
+<% if @user.avatar.attached? %>
+<strong>Yes Profile Image:</strong>
+	<image src="<%=(url_for(@user.avatar))%>"> 
+<% else %>
+<p>
+  <strong>No Profile Image:</strong>
+  </p>
+<% end %>

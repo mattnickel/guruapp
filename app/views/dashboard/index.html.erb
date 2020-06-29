@@ -1,3 +1,22 @@
-<h1>This is your dashboard, <%= @username %></h1>
-<p>Create your first module</p>
-<p> <%= link_to 'new', new_training_module_path %>
+<div class = "container">
+	<div class="row">
+		<div class= "two columns sidemenu"></div>
+		<div class="columns offset-by-two">
+			<h1>This is your dashboard, <%= @username %></h1>
+			<h2>Recently created modules</h2>
+			<% @training_module.each do |training| %>
+				<div class="columns three module_card">
+		      <div>Title: <%= training.title %></div>
+		      <div>Description: <%= training.description %></div>
+		      <div>Author: <%=training.user.first_name %> <%=training.user.last_name %></div>
+		      <div>Comments: <%=training.comments.count %> </div>
+		      <div><%=link_to 'Show', training_module_path(training) %></div>
+		    </div>
+  		<% end %>
+  		<div class="columns ten">
+				<p>Create your first module</p>
+				<%= link_to 'new', new_training_module_path %>
+			</div>
+		</div>
+	</div>
+</div>
