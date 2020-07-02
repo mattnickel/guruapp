@@ -5,7 +5,10 @@ ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
+# postgres database
 gem 'pg'
+#react
+gem 'react-rails'
 # gem 'mysql2', '~> 0.5.2'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3', '~> 1.4'
