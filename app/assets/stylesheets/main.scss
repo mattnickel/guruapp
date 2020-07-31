@@ -4,8 +4,8 @@
 @import "base/global";
 
 // Import active stylesheets //
-@import "styles/welcome.scss";
-@import "styles/dashboard.scss";
-@import "styles/training_modules.scss";
-@import "styles/comments.scss"
+@import "./styles/welcome";
+@import "./styles/dashboard";
+@import "./styles/training_modules";
+@import "./styles/comments"
 

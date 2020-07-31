@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 
+	helper Webpacker::Helper
+
 private
 
 	def current_user
