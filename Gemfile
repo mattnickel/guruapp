@@ -6,12 +6,18 @@ ruby '2.6.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 # postgres database
+gem 'rack-cors'
 gem 'pg'
 #react
 gem 'react-rails'
 # gem 'mysql2', '~> 0.5.2'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3', '~> 1.4'
+# grape is api service
+gem 'grape'
+
+gem 'grape-active_model_serializers'
+
 # Font Awesome
 gem "font-awesome-rails"
 # Use Puma as the app server
