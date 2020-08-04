@@ -62,9 +62,16 @@
   display: inline-block;
 }
 .module_text_container{
-	top: 150px;
+	top: 130px;
   position: absolute;
-}    
+
+}  
+.module_comments{
+  position: relative;
+  top: -13px;
+  padding-left: 10px;
+  color:#ffffff;
+}  
 .module_description {
 	font-size: 1.25rem;
   line-height: 1.25;
