@@ -2,7 +2,13 @@
 <div class = "container">
 	<div class="row dashboard">
 		<div class= "one column sidemenu">
-			Dashboard
+			<ul style="list-style-type: none">
+				<li>
+					<%= link_to videos_path do %>
+						<i class="material-icons md-light dash_icons">video_library</i>
+					<%end%>
+				</li>
+				<li><i class="material-icons md-light dash_icons">chat_bubble</i></li>
 		</div>
 		<div class="columns eight">
 			<%= react_component("Message", { greeting: "Hello from react-rails." }) %>

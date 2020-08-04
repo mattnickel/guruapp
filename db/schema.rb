@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_09_224709) do
+ActiveRecord::Schema.define(version: 2020_08_04_223338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,17 @@ ActiveRecord::Schema.define(version: 2020_07_09_224709) do
     t.string "first_name"
     t.string "last_name"
     t.integer "role"
+  end
+
+  create_table "videos", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "author"
+    t.time "duration"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "url"
+    t.integer "vimeo_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

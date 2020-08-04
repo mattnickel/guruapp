@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  resources :videos
   resources :emails
   resources :users
   resources :sessions
