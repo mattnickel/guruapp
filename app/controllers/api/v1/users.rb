@@ -2,9 +2,10 @@ module API
   module V1
     class Users < Grape::API
       include API::V1::Defaults
+
       resource :users do
         desc "Return all users"
-        get "" do
+        get "", :UserSerializer do
           User.all
         end
       desc "Return a user"
