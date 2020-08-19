@@ -18,13 +18,13 @@ local:
 google:
   service: GCS
   project: plucky-engine-286822
-  credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'].as_json %>
+  credentials: <%= ENV['GOOGLE_CREDENTIALS']%>
   bucket: video_images
 google_dev:
   service: GCS
   project: plucky-engine-286822
   credentials: <%= Rails.root.join("config/secrets/video_images.json") %>
-  bucket: video_images
+  bucket: guru_images_dev
 
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
 # microsoft:
