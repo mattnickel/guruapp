@@ -9,7 +9,7 @@ class VideoSerializer < ActiveModel::Serializer
    		return url.split("?")[0]
    end
    def file
-   		url = object.image.service_url if object.video.attached?
-   		return url.split("?")[0]
+   		url = object.video.service_url if object.video.attached?
+   		return url
    end
 end
