@@ -10,7 +10,7 @@ class VideoSerializer < ActiveModel::Serializer
    end
    def file
    		# url = [host] + rails_blob_path(object.video, only_path: true) if object.video.attached?
-   		url = url_for(object.video)
+   		url = url_for(object.video) if object.video.attached?
    		return url
    end
 end
