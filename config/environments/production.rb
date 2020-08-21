@@ -1,6 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  Rails.application.routes.default_url_options[:host] = "https://limitlessguru.herokuapp.com/"
+  Rails.application.routes.default_url_options[:host] = "limitlessguru.herokuapp.com"
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -41,7 +41,7 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :google
-  
+
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
