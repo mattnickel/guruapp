@@ -1,8 +1,9 @@
 class DashboardController < ApplicationController
-  def index
-  	@session = session[:user_id]
-  	@username = User.find(@session).first_name
+	before_action :authenticate_user!
 
-  	@training_module = TrainingModule.all
+  def index
+  	@username = User.find(current_user.id).first_name
+
+  	@training_module = TrainingModule.all.joins(:user)
   end
 end

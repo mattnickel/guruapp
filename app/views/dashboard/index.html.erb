@@ -13,6 +13,7 @@
 		<div class="columns eight">
 			<%= react_component("Message", { greeting: "Hello from react-rails." }) %>
 			<% @training_module.each do |training| %>
+
 				<%= link_to training_module_path(training) do %>
 					<div class="columns four module_card">
 						<div class="photo_frame">

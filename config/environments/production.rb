@@ -1,6 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   Rails.application.routes.default_url_options[:host] = "limitlessguru.herokuapp.com"
+  config.action_mailer.default_url_options = { host: 'limitlessguru.herokuapp.com'}
   # Code is not reloaded between requests.
   config.cache_classes = true
 

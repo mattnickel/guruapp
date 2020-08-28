@@ -1,6 +1,5 @@
 class TrainingModulesController < ApplicationController
 
-  before_action :authorize
   
   def index
   	@training_module = TrainingModule.all
