@@ -2,7 +2,7 @@ module API
   module V1
     class Videos < Grape::API
       include API::V1::Defaults
-
+      
       resource :videos do
         desc "Return all videos"
         get "", :VideoSerializer do

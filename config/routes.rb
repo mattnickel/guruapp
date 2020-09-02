@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     delete 'logout', to: 'users/sessions#destroy', as: :destroy_user_session
     # registrations
     put    '/account',  to: 'users/registrations#update'
-    delete '/account',  to: 'users/registrations#destroy'
+    delete '/account',  to: 'users/registrations#destroy', as: :logout
     post   '/account',  to: 'users/registrations#create'
     get    '/register', to: 'users/registrations#new',    as: :new_user_registration
     get    '/account',  to: 'users/registrations#edit',   as: :edit_user_registration
