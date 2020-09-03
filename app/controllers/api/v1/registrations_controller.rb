@@ -10,9 +10,11 @@ class API::V1::RegistrationsController < Devise::RegistrationsController
           is_success: true,
           data: {user: user, status: :ok}
         }, status: :ok
+      end
     end
   
     private
+
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation)
     end
