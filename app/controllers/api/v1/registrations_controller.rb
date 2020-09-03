@@ -9,14 +9,7 @@ class API::V1::RegistrationsController < Devise::RegistrationsController
           messages: "Sign Up Successfully",
           is_success: true,
           data: {user: user, status: :ok}
-        }, 
-      else
-        render json: {
-          messages: "Sign Up Failed",
-          is_success: false,
-          data: {}
-        }, status: :unprocessable_entity
-      end
+        }, status: :ok
     end
   
     private
