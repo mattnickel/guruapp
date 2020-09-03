@@ -1,4 +1,4 @@
-class Api::V1::RegistrationsController < Devise::RegistrationsController
+class API::V1::RegistrationsController < Devise::RegistrationsController
     before_action :ensure_params_exist, only: :create
     skip_before_filter :verify_authenticity_token, :only => :create
     # sign up
