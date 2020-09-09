@@ -5,10 +5,10 @@ Rails.application.routes.draw do
     # sessions
     get    'login',  to: 'users/sessions#new',     as: :new_user_session
     post   'login',  to: 'users/sessions#create',  as: :user_session
-    delete 'logout', to: 'users/sessions#destroy', as: :destroy_user_session
+    get 'logout', to: 'users/sessions#destroy', as: :logout
     # registrations
     put    '/account',  to: 'users/registrations#update'
-    delete '/account',  to: 'users/registrations#destroy', as: :logout
+    delete '/account',  to: 'users/registrations#destroy'
     post   '/account',  to: 'users/registrations#create'
     get    '/register', to: 'users/registrations#new',    as: :new_user_registration
     get    '/account',  to: 'users/registrations#edit',   as: :edit_user_registration
@@ -29,17 +29,10 @@ Rails.application.routes.draw do
   resources :welcome, path: "home"
   resources :users, only: [:show]
 
-  # get 'sessions/new'
-  # get 'sessions/index'
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
-  # get 'users/view'
-
-
   get 'welcome/index'
   get 'welcome/download', to: 'welcome#download', as: 'download'
-  # get 'signup', to: 'users#new', as: 'signup'
-  # get 'login', to: 'devise/sessions#new', as: 'login'
-  # get 'logout', to: 'devise/sessions#destroy', as: 'logout'
+
 
  
 

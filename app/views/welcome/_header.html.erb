@@ -6,8 +6,8 @@
 			</span>
         <span class="offset-by-seven two columns">
 
-				  <% if current_user %>
-			      <!-- Logged in as <%= current_user.email %>. -->
+				  <% if current_user.present? %>
+			      <div>Logged in as <%= current_user.email %></div>
 			      <% link_to "Guru Portal", logout_path, class: "button" %>
 			    <% else %>
 			      <% link_to "Guru Portal", signup_path, class: "button" %>

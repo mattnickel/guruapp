@@ -1,5 +1,5 @@
 class API::V1::SessionsController < Devise::SessionsController
-    skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
   before_action :sign_in_params, only: :create
   before_action :load_user, only: :create
   # sign in
@@ -7,9 +7,7 @@ class API::V1::SessionsController < Devise::SessionsController
     if @user.valid_password?(sign_in_params[:password])
       sign_in "user", @user
       render json: {
-        messages: "Signed In Successfully",
-        is_success: true,
-        data: {user: @user},
+        data: @user,
         status: :ok
       }
     else
@@ -23,7 +21,6 @@ class API::V1::SessionsController < Devise::SessionsController
 
   private
   def sign_in_params
-    puts params
     params.permit :email, :password
   end
 
