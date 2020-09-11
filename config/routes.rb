@@ -49,6 +49,7 @@ Rails.application.routes.draw do
       devise_scope :user do
         post "signup", to: "registrations#create"
         post "login", to: "sessions#create"
+        post "logout", to: "sessions#destroy"
       end
     end
   end

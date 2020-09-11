@@ -1,7 +1,9 @@
 class API::V1::SessionsController < Devise::SessionsController
-  skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token, only: :create
   before_action :sign_in_params, only: :create
-  before_action :load_user, only: :create
+  before_action :load_user
+  skip_before_action :verify_signed_out_user, only: :destroy
+  protect_from_forgery unless: -> { request.format.json? }
   # sign in
   def create
     if @user.valid_password?(sign_in_params[:password])
@@ -18,15 +20,30 @@ class API::V1::SessionsController < Devise::SessionsController
       }, status: :unauthorized
     end
   end
+  def destroy
+    if @user
+      @user.authentication_token = nil
+      @user.save!
+        render json: {
+            status: :ok
+          }
+    else
+      render json: {
+        messages: "Sign Out Failed - Bad email",
+        is_success: false,
+        data: {}
+      }, status: :unauthorized
+    end
+    super
+  end
 
   private
   def sign_in_params
     params.permit :email, :password
   end
 
-  def load_user
-    @user = User.find_for_database_authentication(email: sign_in_params[:email])
-    if @user
+  def load_user 
+    if @user = User.find_for_database_authentication(email: sign_in_params[:email])
       return @user
     else
       render json: {
@@ -36,40 +53,5 @@ class API::V1::SessionsController < Devise::SessionsController
       }, status: :failure
     end
   end
+  
 end
-
-# module API
-#   module V1
-#     class Sessions < Grape::API
-#       # include API::V1::Defaults
-
-#       resource :sessions do
-#         desc "Creates and returns access tokens if valid login"
-#         params do
-#           requires :login, type: String, desc: "Email address"
-#           requires :password, type: String, desc: "Password"
-#         end
-#         post :login do
-#           @user = User.find_by_email(params[:login].downcase)
-#         end
-
-#         if @user && @user.authenticate(params[:password])
-#           key = ApiKey.create(user_id: user.id)
-#           {token: key.access_token}
-
-          
-#         end
-
-#         desc "Returns pong if logged in correctly"
-#         params do
-#           requires :token, type: String, desc: "Access token."
-#         end
-#         get :ping do
-#           authenticate!
-#           { message: "pong" }
-#         end
-#       end
-#     end
-#   end
-# end
-# end

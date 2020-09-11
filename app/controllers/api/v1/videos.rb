@@ -2,6 +2,7 @@ module API
   module V1
     class Videos < Grape::API
       include API::V1::Defaults
+      include API::V1::Authenticate
       
       resource :videos do
         desc "Return all videos"
