@@ -5,24 +5,17 @@ module API
       
       included do
         before do
-           error!("401 Unauthorized", 401) unless authenticated?
-         end
+           error!("401 Unauthorized, bitches", 401) unless authenticate!
+        end
 
-         helpers do
-           def warden
-             env['warden']
-           end
+        helpers do
 
-           def authenticated?
-             return true if warden.authenticated?
-             params[:access_token] && @user = User.find_by(authentication_token: params[:access_token])
-           end
-
-           def current_user
-             warden.user || @user
-           end
-         end
-       end
+          def authenticate!
+            current_user = User.find_by(authentication_token: headers['Token'])
+            return true if current_user 
+          end
+        end
+      end
     end
   end
 end
