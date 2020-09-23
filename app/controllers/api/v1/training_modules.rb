@@ -17,6 +17,7 @@ module API
           get ":id" do
             TrainingModule.where(id: permitted_params[:id]).first!
           end
+        end
       end
     end
   end
