@@ -6,18 +6,18 @@ module API
       
       resource :training_modules do
         desc "Return all training module"
-          get "", :TrainingModulesSerializer do
-            TrainingModule.all
-          end
+        get "", :TrainingModulesSerializer do
+          TrainingModule.all
+        end
 
         desc "Return a training module"
-          params do
-            requires :id, type: String, desc: "id of training module"
-          end
-          get ":id" do
-            TrainingModule.where(id: permitted_params[:id]).first!
-          end
+        params do
+          requires :id, type: String, desc: "id of training module"
         end
+        get ":id" do
+          TrainingModule.where(id: permitted_params[:id]).first!
+        end
+        
       end
     end
   end
