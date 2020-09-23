@@ -16,11 +16,10 @@ class ViewingsController < ApplicationController
     end
   end
 
-private
+  private
 
   def viewing_attributes
     params.require(:viewing).permit(:length)
   end
 
-end
 end
