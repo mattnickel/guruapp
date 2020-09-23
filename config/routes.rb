@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   resources :videos
   resources :emails
   resources :users
-  # resources :sessions
+  resources :viewings
   resources :welcome, path: "home"
   resources :users, only: [:show]
 
