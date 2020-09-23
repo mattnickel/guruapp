@@ -7,7 +7,7 @@ module API
       resource :viewings do
         desc "create viewing record"
         post do
-          @viewing = Viewing.new viewing_params
+          @viewing = Viewing.new(viewing_params)
           if @viewing.save
               render json: {
                 messages: "Viewing Successfully Saved",
@@ -18,7 +18,7 @@ module API
         end
       end 
 
-      private
+      # private
 
       def viewing_params
         params.require(:viewing).permit(:video_id, :last_second_viewed, :date)

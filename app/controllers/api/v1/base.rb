@@ -5,6 +5,7 @@ module API
       mount API::V1::Users
       mount API::V1::Videos
       mount API::V1::TrainingModules
+      mount API::V1::Viewings
       # mount API::V1::SessionsHelper
       helpers do
         def authenticate!
