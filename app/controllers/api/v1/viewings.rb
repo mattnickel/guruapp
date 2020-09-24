@@ -6,9 +6,13 @@ module API
       
       resource :viewings do
         desc "create viewing record"
+        params do
+          requires :video_id, type: Integer
+          requires :last_second_viewed, type: Integer
+          requires :date, type: Date
+        end
         post do
-          @viewing = Viewing.new(viewing_params)
-          if @viewing.save
+          if Viewing.create!({video_id: params[:video_id], user_id: @current_user.id, last_second_viewed: params[:last_second_viewed], date_viewed: params[:date]})
               render json: {
                 messages: "Viewing Successfully Saved",
                 is_success: true,
@@ -18,11 +22,7 @@ module API
         end
       end 
 
-      # private
-
-      def viewing_params
-        params.require(:viewing).permit(:video_id, :last_second_viewed, :date)
-      end
+      
     end
   end
 end

@@ -12,6 +12,7 @@ module API
 
           def authenticate!
             current_user = User.find_by(authentication_token: headers['Token'])
+            @current_user = current_user
             return true if current_user 
           end
         end
