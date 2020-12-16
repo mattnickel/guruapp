@@ -1,4 +1,4 @@
-module API
+ module API
   module V1
     class Viewings < Grape::API
       include API::V1::Defaults

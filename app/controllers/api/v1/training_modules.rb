@@ -17,7 +17,12 @@ module API
         get ":id" do
           TrainingModule.where(id: permitted_params[:id]).first!
         end
-        
+        get "random" do
+         TrainingModule.order('RANDOM()').first
+        end
+      end
+      resource :random do 
+        TrainingModule.order('RANDOM()').first
       end
     end
   end

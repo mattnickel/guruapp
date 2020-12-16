@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get   'edit-pass', to: 'users/passwords#edit',   as: :edit_user_password
     patch 'edit-pass', to: 'users/passwords#update', as: :user_password
     # post  'new-pass',  to: 'users/passwords#create', as: :user_password
+    put 'users/:id', to: 'users/users#update', as: :update_user
   end
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -27,8 +28,7 @@ Rails.application.routes.draw do
   resources :users
   resources :viewings
   resources :welcome, path: "home"
-  resources :users, only: [:show]
-
+  
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
   get 'welcome/index'
   get 'welcome/download', to: 'welcome#download', as: 'download'
@@ -50,6 +50,7 @@ Rails.application.routes.draw do
         post "signup", to: "registrations#create"
         post "login", to: "sessions#create"
         post "logout", to: "sessions#destroy"
+        put "users", to: "users#update"
       end
     end
   end
