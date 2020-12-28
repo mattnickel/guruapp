@@ -8,10 +8,7 @@ class API::V1::SessionsController < Devise::SessionsController
   def create
     if @user.valid_password?(sign_in_params[:password])
       sign_in "user", @user
-      render json: {
-        data: @user,
-        status: :ok
-      }
+      render json: @user, serializer: UserSerializer
     else
       render json: {
         messages: "Signed In Failed - Unauthorized",
@@ -39,12 +36,13 @@ class API::V1::SessionsController < Devise::SessionsController
 
   private
   def sign_in_params
-    params.permit :email, :password
+    params.permit :email, :password, :format
   end
 
   def load_user 
     if @user = User.find_for_database_authentication(email: sign_in_params[:email])
-      return @user
+      
+      # return @better
     else
       render json: {
         messages: "Cannot get User",

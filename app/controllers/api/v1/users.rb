@@ -2,6 +2,7 @@ module API
   module V1
     class Users < Grape::API
       include API::V1::Defaults
+      include API::V1::Authenticate
 
       resource :users do
         desc "Return all users"
@@ -19,10 +20,16 @@ module API
 
         desc 'Update a specific user'
           route_param :id do
-          put do
-            User.find(params[:id]).update({ email:params[:email], first_name:params[:first_name], description:params[:description] })
+            # required :avatar, :type => Rack::Multipart::UploadedFile, :desc => "Avatar file."
+            put do
+              if params[:avatar]
+                new_file = ActionDispatch::Http::UploadedFile.new(params[:avatar])
+                User.update({avatar:new_file})
+              else
+                User.update({ email:params[:email], first_name:params[:first_name], description:params[:description]})
+              end
+            end
           end
-        end
 
         
       end

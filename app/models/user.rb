@@ -9,6 +9,9 @@ class User < ApplicationRecord
   	has_many :training_modules
     has_many :videos
   	has_one_attached :avatar
+    # validates_attachment :avatar, presence: true
+    # do_not_validate_attachment_file_type :avatar
+    
     acts_as_token_authenticatable
   	# has_many :comments
   # 	enum role: [:student, :teacher, :admin]
