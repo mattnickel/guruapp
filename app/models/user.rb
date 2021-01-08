@@ -8,6 +8,7 @@ class User < ApplicationRecord
   	validates_uniqueness_of :email
   	has_many :training_modules
     has_many :videos
+    has_many :social_posts
   	has_one_attached :avatar
     # validates_attachment :avatar, presence: true
     # do_not_validate_attachment_file_type :avatar

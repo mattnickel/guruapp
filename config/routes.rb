@@ -51,6 +51,9 @@ Rails.application.routes.draw do
         post "login", to: "sessions#create"
         post "logout", to: "sessions#destroy"
         put "users", to: "users#update"
+        get "social_posts", to: "social_posts#get"
+        post "social_posts", to: "social_posts#post"
+        get "social_posts", to: "social_posts/recent#get"
       end
     end
   end
