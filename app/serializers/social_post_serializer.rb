@@ -1,10 +1,9 @@
 class SocialPostSerializer < ActiveModel::Serializer
 	 
 	 include Rails.application.routes.url_helpers 
-   require 'date'
 
 
-   attributes :id, :time, :message, :image, :user_name, :user_tagline, :user_avatar
+   attributes :id, :time, :message, :image, :user_name, :user_tagline, :user_avatar, :bump_count, :my_bump
    has_one :image
 
   def image
@@ -30,6 +29,15 @@ class SocialPostSerializer < ActiveModel::Serializer
     def time
       time_stamp = object.created_at
       return time_stamp
+    end
+
+    def bump_count
+      return object.post_bumps.where(bump: true).length
+    end
+
+    def my_bump
+      # puts current_user.first_name
+      return "true" if object.post_bumps.where(bump: true, user: scope.current_user).length > 0
     end
 
 end

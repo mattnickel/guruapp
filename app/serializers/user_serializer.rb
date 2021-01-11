@@ -1,5 +1,6 @@
 class UserSerializer < ActiveModel::Serializer
 	include Rails.application.routes.url_helpers 
+	delegate :current_user, to: :scope
    
   attributes :id, :email, :authentication_token, :first_name, :avatar, :description
 

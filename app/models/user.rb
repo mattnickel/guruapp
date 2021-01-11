@@ -10,6 +10,7 @@ class User < ApplicationRecord
     has_many :videos
     has_many :social_posts
   	has_one_attached :avatar
+    has_many :post_bumps
     # validates_attachment :avatar, presence: true
     # do_not_validate_attachment_file_type :avatar
     

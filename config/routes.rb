@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :emails
   resources :users
   resources :viewings
+  resources :post_bumps
   resources :welcome, path: "home"
   
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
@@ -54,6 +55,9 @@ Rails.application.routes.draw do
         get "social_posts", to: "social_posts#get"
         post "social_posts", to: "social_posts#post"
         get "social_posts", to: "social_posts/recent#get"
+        get "post_bumps", to: "post_bumps#get"
+        post "post_bumps", to: "post_bumps#create"
+        put "post_bumps", to: "post_bumps#update"
       end
     end
   end

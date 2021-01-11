@@ -7,7 +7,9 @@ module API
       mount API::V1::TrainingModules
       mount API::V1::Viewings
       mount API::V1::SocialPosts
+      mount API::V1::PostBumps
       # mount API::V1::SessionsHelper
+
       helpers do
         def authenticate!
           error!('Unauthorized. Invalid or expired token.', 401) unless current_user
