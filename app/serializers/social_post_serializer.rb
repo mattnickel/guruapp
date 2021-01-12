@@ -4,6 +4,7 @@ class SocialPostSerializer < ActiveModel::Serializer
 
 
    attributes :id, :time, :message, :image, :user_name, :user_tagline, :user_avatar, :bump_count, :my_bump
+   
    has_one :image
 
   def image
