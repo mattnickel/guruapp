@@ -25,8 +25,10 @@ module API
             # user = User.where(id: permitted_params[:id]).first!
             new_file = ActionDispatch::Http::UploadedFile.new(params[:avatar])
             current_user.update({avatar:new_file})
+            status 200
           else
             current_user.update({ email:params[:email], first_name:params[:first_name], description:params[:description]})
+            status 200
           end
         end
           
