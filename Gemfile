@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+gem 'dotenv-rails', groups: [:development, :test]
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 # postgres database
@@ -10,9 +11,11 @@ gem 'rack-cors'
 gem 'pg'
 #react
 gem 'react-rails'
+gem 'sendgrid-ruby', '~> 6.3.7' 
 # gem 'mysql2', '~> 0.5.2'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3', '~> 1.4'
+
 gem 'material_icons'
 # grape is api service
 gem 'grape'

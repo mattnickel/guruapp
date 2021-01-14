@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'from@example.com'
+  default from: 'limitlessminds@thinkbig-gofar.com'
   layout 'mailer'
 
   # using SendGrid's Ruby Library

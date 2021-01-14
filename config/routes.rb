@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     patch 'edit-pass', to: 'users/passwords#update', as: :user_password
     # post  'new-pass',  to: 'users/passwords#create', as: :user_password
     put 'users/:id', to: 'users/users#update', as: :update_user
+    post 'password/forgot', to: 'password#forgot'
+    post 'password/reset', to: 'password#reset'
   end
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

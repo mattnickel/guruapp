@@ -7,6 +7,7 @@ class API::V1::RegistrationsController < Devise::RegistrationsController
       @user = User.new user_params
       @user.save
       if @user.valid_password?(user_params[:password])
+        UserMailer.welcome_email(@user).deliver
         sign_in "user", @user
           render json: {
             messages: "Sign Up Successfully",

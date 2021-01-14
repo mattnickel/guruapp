@@ -2,7 +2,21 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   Rails.application.routes.default_url_options[:host] = "limitlessguru.herokuapp.com"
   config.action_mailer.default_url_options = { host: 'limitlessguru.herokuapp.com'}
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
+
+
+
+    ActionMailer::Base.smtp_settings = {
+      :user_name => Rails.application.credentials.sendgrid[:user_name],
+      :password => Rails.application.credentials.sendgrid[:password],
+      :domain => 'heroku.com',
+      :address => 'smtp.sendgrid.net',
+      :port => 587,
+      :authentication => :plain,
+      :enable_starttls_auto => true
+    }
+    
 
   # Code is not reloaded between requests.
   config.cache_classes = true
