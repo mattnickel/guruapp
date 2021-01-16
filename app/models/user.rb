@@ -11,6 +11,7 @@ class User < ApplicationRecord
     has_many :social_posts
   	has_one_attached :avatar
     has_many :post_bumps
+    has_many :support_messages
     # validates_attachment :avatar, presence: true
     # do_not_validate_attachment_file_type :avatar
     
@@ -35,8 +36,10 @@ class User < ApplicationRecord
     private
 
     def generate_token
-     SecureRandom.hex(10)
+     SecureRandom.hex(6)
     end
+
+
   	# has_many :comments
   # 	enum role: [:student, :teacher, :admin]
   #   after_initialize :set_default_role, :if => :new_record?

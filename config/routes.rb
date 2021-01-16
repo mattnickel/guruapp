@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   resources :viewings
   resources :post_bumps
   resources :welcome, path: "home"
+  resources :support_messages_controller
   
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
   get 'welcome/index'
@@ -50,6 +51,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     namespace :v1 do 
       devise_scope :user do
+        get "passwords", to: "passwords#forgot"
         post "signup", to: "registrations#create"
         post "login", to: "sessions#create"
         post "logout", to: "sessions#destroy"
@@ -60,6 +62,7 @@ Rails.application.routes.draw do
         get "post_bumps", to: "post_bumps#get"
         post "post_bumps", to: "post_bumps#create"
         put "post_bumps", to: "post_bumps#update"
+        post "support", to: "support_messages#post"
       end
     end
   end

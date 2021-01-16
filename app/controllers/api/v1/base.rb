@@ -8,7 +8,8 @@ module API
       mount API::V1::Viewings
       mount API::V1::SocialPosts
       mount API::V1::PostBumps
-      # mount API::V1::SessionsHelper
+      mount API::V1::PasswordController
+      mount API::V1::SupportMessagesController
 
       helpers do
         def authenticate!

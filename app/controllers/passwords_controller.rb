@@ -7,7 +7,10 @@ class PasswordsController < ApplicationController
     user = User.find_by(email: params[:email]) # if present find user by email
 
     if user.present?
-      user.generate_password_token! #generate pass token
+      user.generate_password_token! 
+      
+      #generate pass token
+
       # SEND EMAIL HERE
       render json: {status: 'ok'}, status: :ok
     else

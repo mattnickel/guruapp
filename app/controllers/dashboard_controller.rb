@@ -2,8 +2,8 @@ class DashboardController < ApplicationController
 	before_action :authenticate_user!
 
   def index
-  	@username = User.find(@current_user.id).first_name
+  	@username = "Matt"
 
-  	@training_module = TrainingModule.all.joins(:user)
+  	@training_module = TrainingModule.where(user:current_user)
   end
 end
