@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_15_230711) do
+ActiveRecord::Schema.define(version: 2021_01_19_231059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,19 @@ ActiveRecord::Schema.define(version: 2021_01_15_230711) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["access_token"], name: "index_api_keys_on_access_token", unique: true
     t.index ["user_id"], name: "index_api_keys_on_user_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "categories_videos", id: false, force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.bigint "video_id", null: false
+    t.index ["category_id"], name: "index_categories_videos_on_category_id"
+    t.index ["video_id"], name: "index_categories_videos_on_video_id"
   end
 
   create_table "comments", force: :cascade do |t|
