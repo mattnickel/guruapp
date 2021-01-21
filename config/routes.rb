@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :post_bumps
   resources :welcome, path: "home"
   resources :support_messages_controller
+  resources :category
   
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
   get 'welcome/index'
@@ -63,6 +64,8 @@ Rails.application.routes.draw do
         post "post_bumps", to: "post_bumps#create"
         put "post_bumps", to: "post_bumps#update"
         post "support", to: "support_messages#post"
+        get "videos/category", to: "videos/category#get"
+        get "categories", to: "category#get"
       end
     end
   end

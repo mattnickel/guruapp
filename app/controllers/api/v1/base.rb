@@ -10,6 +10,7 @@ module API
       mount API::V1::PostBumps
       mount API::V1::PasswordController
       mount API::V1::SupportMessagesController
+      mount API::V1::CategoryController
 
       helpers do
         def authenticate!
