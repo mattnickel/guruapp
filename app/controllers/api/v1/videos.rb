@@ -20,11 +20,11 @@ module API
           Video.joins(:categories).where(categories: {name: params[:category]})
         end
 
-        desc "Return a video by ID"
+        desc "Return a video fileby ID"
         params do
           requires :id, type: String, desc: "id of video"
         end
-        get ":id" do
+        get ":id"  do
           Video.where(id: permitted_params[:id]).first!
         end
         

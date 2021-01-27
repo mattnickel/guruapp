@@ -22,6 +22,8 @@ module Guruapp
         resource '*', headers: :any, methods: [:get, :post, :put, :delete, :options]
       end
     end
+    # Use Vips for processing variants.
+    config.active_storage.variant_processor = :vips
     
 
     # Auto-load API and its subdirectories

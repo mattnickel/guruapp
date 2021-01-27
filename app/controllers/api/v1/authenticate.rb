@@ -19,7 +19,6 @@ module API
             return true if current_user 
           end
 
-
         end
       end
     end

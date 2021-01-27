@@ -7,9 +7,11 @@ module API
       
       resource :social_posts do
         desc "Return all posts"
+        paginate per_page: 8
         get "", :SocialPostSerializer do
           current_user = User.find_by(authentication_token: headers['Token'])
-          SocialPost.includes(:post_bumps).all.order(:created_at).reverse_order.limit(20)
+          paginate SocialPost.includes(:post_bumps).all.order(:created_at).reverse_order
+
         end
 
       desc "Create new post"

@@ -42,6 +42,7 @@ gem 'simple_command'
 gem 'rails_admin', '~> 2.0'
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
+gem "mini_magick"
 gem "google-cloud-storage", "~> 1.8", require: false
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -50,6 +51,10 @@ gem "devise"
 gem "simple_token_authentication"
 gem "cancancan"
 gem "active_model_serializers"
+#for pagination
+# gem 'pagy'
+gem 'kaminari'
+gem 'api-pagination'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

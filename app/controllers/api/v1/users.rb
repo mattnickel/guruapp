@@ -5,17 +5,21 @@ module API
       include API::V1::Authenticate
 
       resource :users do
+        
+        desc "Return a user"
+          params do
+            requires :id, type: Integer, desc: 'User ID'
+          end
+        route_param :id do
+          get do
+            user = User.with_pk!(params[:id])
+            render user
+          end
+        end
+
         desc "Return all users"
           get "", :UserSerializer do
             User.all
-          end
-        desc "Return a user"
-          params do
-            requires :id, type: String, desc: "ID of the user"
-          end
-          
-          get ":id", :UserSerializer do
-            User.where(id: permitted_params[:id]).first!
           end
 
         desc 'Update a specific user'
@@ -25,7 +29,6 @@ module API
             # user = User.where(id: permitted_params[:id]).first!
             new_file = ActionDispatch::Http::UploadedFile.new(params[:avatar])
             current_user.update({avatar:new_file})
-            status 200
           else
             current_user.update({ email:params[:email], first_name:params[:first_name], description:params[:description]})
             status 200

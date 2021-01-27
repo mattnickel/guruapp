@@ -67,6 +67,7 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    api-pagination (4.8.2)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
@@ -416,6 +417,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  api-pagination
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   byebug
@@ -432,8 +434,10 @@ DEPENDENCIES
   grape_on_rails_routes
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
+  kaminari
   listen (~> 3.2)
   material_icons
+  mini_magick
   pg
   puma (~> 4.1)
   rack-cors
