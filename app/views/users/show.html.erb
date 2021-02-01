@@ -1,14 +1,10 @@
 <p>
-  <strong>First Name:</strong>
+  <strong>User Name:</strong>
 
-  <%= @user.first_name %>
+  <%= @user.username %>
 
 </p>
- 
-<p>
-  <strong>Last Name:</strong>
-  <%= @user.last_name %>
-</p>
+
 
 <% if @user.avatar.attached? %>
 <strong>Yes Profile Image:</strong>
