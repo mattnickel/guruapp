@@ -208,7 +208,6 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
-    json (1.8.6)
     jsonapi-renderer (0.2.2)
     jwt (2.2.2)
     kaminari (1.2.1)
@@ -260,9 +259,6 @@ GEM
     public_suffix (4.0.6)
     puma (4.3.7)
       nio4r (~> 2.0)
-    quickemailverification (1.0.2)
-      faraday (~> 0.9)
-      json (~> 1.8)
     racc (1.5.2)
     rack (2.2.3)
     rack-accept (0.4.5)
@@ -456,7 +452,6 @@ DEPENDENCIES
   mini_magick
   pg
   puma (~> 4.1)
-  quickemailverification (~> 1.0, >= 1.0.2)
   rack-cors
   rails (~> 6.0.3, >= 6.0.3.1)
   rails_admin (~> 2.0)
