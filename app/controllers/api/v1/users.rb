@@ -31,7 +31,7 @@ module API
             update = current_user.update({avatar:new_file})
             render current_user
           else
-            current_user.update({ email:params[:email], username:params[:username], description:params[:description]})
+            current_user.update({ email:params[:email].strip, username:params[:username].strip, description:params[:description].strip})
             status 200
           end
         end

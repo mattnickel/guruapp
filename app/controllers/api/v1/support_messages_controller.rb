@@ -11,7 +11,7 @@
           @support_message = SupportMessage.create!({message: params[:message], user: current_user,})
           if @support_message
             UserMailer.support_message(current_user, @support_message.message).deliver
-
+            UserMailer.support_reply(current_user, @support_message.message).deliver
             render json: {
               messages: "Support Message Sent",
               is_success: true,
