@@ -18,7 +18,7 @@ module API
       post do
         current_user = User.find_by(authentication_token: headers['Token'])
         new_file = ActionDispatch::Http::UploadedFile.new(params[:image])
-        SocialPost.create!({image:new_file, message: params[:message].trim, user:current_user})
+        SocialPost.create!({image:new_file, message: params[:message], user:current_user})
         status 200
       end
 
