@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
   get 'welcome/index'
   get 'welcome/download', to: 'welcome#download', as: 'download'
+  get 'privacy', to: 'welcome#privacy', as: 'privacy'
 
 
  
