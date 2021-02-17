@@ -2,16 +2,16 @@
 	<div class = "container">
 		<div class="row">
 			<span class=" three columns">
-				<img src="/assets/my_guru_logo" class= "logo">
+				<img src="/assets/lm_logo" class= "logo">
 			</span>
         <span class="offset-by-seven two columns">
 
 				  <% if current_user.present? %>
 			      <div>Logged in as <%= current_user.email %></div>
-			      <% link_to "Guru Portal", logout_path, class: "button" %>
+			      <% link_to "Guru Portal", logout_path %>
 			    <% else %>
-			      <% link_to "Guru Portal", signup_path, class: "button" %>
-			      <%= link_to "Guru Login", login_path, class: "button" %>
+			      <% link_to "Guru Portal", signup_path %>
+			      <%= link_to "Guru Login", login_path %>
 			    <% end %>
 			  </span>
 			</div>
