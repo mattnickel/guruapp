@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   resources :welcome, path: "home"
   resources :support_messages_controller
   resources :category
+  resources :bad_posts
   
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
   get 'welcome/index'
@@ -67,6 +68,7 @@ Rails.application.routes.draw do
         post "support", to: "support_messages#post"
         get "videos/category", to: "videos/category#get"
         get "categories", to: "category#get"
+        post "bad_posts", to: "bad_posts#create"
       end
     end
   end

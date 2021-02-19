@@ -11,6 +11,7 @@ module API
       mount API::V1::PasswordController
       mount API::V1::SupportMessagesController
       mount API::V1::CategoryController
+      mount API::V1::BadPosts
 
       helpers do
         def authenticate!

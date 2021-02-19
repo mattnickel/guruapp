@@ -10,7 +10,10 @@ module API
         paginate per_page: 8
         get "", :SocialPostSerializer do
           current_user = User.find_by(authentication_token: headers['Token'])
-          paginate SocialPost.includes(:post_bumps).all.order(:created_at).reverse_order
+          bad_post_query = BadPost.where(hide_only: true, user_id: current_user.id).or(BadPost.where(hide_only: false)).pluck(:social_post_id)
+          # puts "hi"
+          paginate SocialPost.includes(:post_bumps).order(:created_at).reverse_order
+          paginate SocialPost.includes(:post_bumps).where.not(id:bad_post_query).order(:created_at).reverse_order
 
         end
 

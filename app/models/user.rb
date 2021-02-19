@@ -14,6 +14,7 @@ class User < ApplicationRecord
   	has_one_attached :avatar
     has_many :post_bumps
     has_many :support_messages
+    has_many :bad_posts
 
    
     # validates_attachment :avatar, presence: true
