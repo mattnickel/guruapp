@@ -3,7 +3,7 @@ class SocialPostSerializer < ActiveModel::Serializer
 	 include Rails.application.routes.url_helpers 
 
 
-   attributes :id, :time, :message, :image, :username, :user_tagline, :user_avatar, :bump_count, :my_bump
+   attributes :id, :time, :message, :image, :post_user_id, :username, :user_tagline, :user_avatar, :bump_count, :my_bump
    
    has_one :image
 
@@ -12,9 +12,14 @@ class SocialPostSerializer < ActiveModel::Serializer
  		return url.split("?")[0] if object.image.attached?
   end
 
+  def post_user_id
+    user_id = object.user.id
+    return user_id
+  end
+
   def username 
-    name = object.user.username
-    return name
+    user = object.user.username
+    return user
   end
 
     def user_tagline 

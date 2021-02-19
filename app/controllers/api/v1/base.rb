@@ -12,6 +12,7 @@ module API
       mount API::V1::SupportMessagesController
       mount API::V1::CategoryController
       mount API::V1::BadPosts
+      mount API::V1::BlockedUsers
 
       helpers do
         def authenticate!

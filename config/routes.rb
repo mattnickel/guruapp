@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   resources :support_messages_controller
   resources :category
   resources :bad_posts
+  resources :blocked_user
   
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
   get 'welcome/index'
@@ -69,6 +70,7 @@ Rails.application.routes.draw do
         get "videos/category", to: "videos/category#get"
         get "categories", to: "category#get"
         post "bad_posts", to: "bad_posts#create"
+        post "blocked_users", to: "blocked_users#create"
       end
     end
   end
