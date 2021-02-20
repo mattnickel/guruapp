@@ -20,5 +20,10 @@ class UserMailer < ApplicationMailer
 
 	end
 
+	def bad_content_email(id)
+		@post_id = id
+		mail(to: "matt@thinkbig-gofar.com", subject: "Objectionable social post reported in the Limitless Minds App")
+	end
+
 	
 end

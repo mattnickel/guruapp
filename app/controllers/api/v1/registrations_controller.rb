@@ -8,7 +8,7 @@ class API::V1::RegistrationsController < Devise::RegistrationsController
       @user = User.new user_params
       if @user.save
         if @user.valid_password?(user_params[:password])
-          # UserMailer.welcome_email(@user).deliver
+          UserMailer.welcome_email(@user).deliver
           sign_in "user", @user
           render json: @user
         
