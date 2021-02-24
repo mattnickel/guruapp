@@ -8,12 +8,12 @@ class ApplicationController < ActionController::Base
 
 protected
 
-	def current_user
-    @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
-  end
+	# def current_user
+ #    @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
+ #  end
 
 	def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
   end
 	
 	helper_method :current_user

@@ -1,0 +1,15 @@
+<% flash.each do |name, msg| %>
+  <% content_tag :div, msg, :id => "flash_#{name}" %>
+<% end %>
+
+<% if notice %>
+<div class= "background-color">
+    <p class="alert alert-success"><%= notice %></p>
+</div>
+<% end %>
+<% if alert %>
+<div class= "alert-back">
+  <p class="alert alert-danger"><%= alert %></p>
+</div>
+<% end %>
+</div>
