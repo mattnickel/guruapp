@@ -23,9 +23,8 @@ class Ability
     end
 
     if user.standard?
-          can :manage, :all
+          can :manage, SocialPosts
           can :access, :videos
-          can :access, :rails_admin  
     end
     #
     # The first argument to `can` is the action you are giving the user
