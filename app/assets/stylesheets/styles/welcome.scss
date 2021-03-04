@@ -16,7 +16,7 @@
   width: 300px;
 }
 .hero{
-	background: url("the_man.jpg") grey;
+	background: image-url('the_man.jpg');
 	background-size: cover;
   color: #555;
   height: 850px;
@@ -33,7 +33,7 @@ h1{
   }
 .hero-message{
 	margin-top: 15%;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(0,0, 0, 0.54);
   border-radius: 20px;
   color: white;
   padding:20px;
