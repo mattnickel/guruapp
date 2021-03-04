@@ -7,13 +7,13 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.admin?
           can :manage, :all
-          can :access, :rails_admin       # only allow admin users to access Rails Admin
-          can :manage, :dashboard         # allow access to dashboard
+          can :access, :rails_admin       # allow admin users to access Rails Admin
+          can :access, :all               # allow access to all
     end
     
     if user.employee?
           can :manage, User
-          can :access, :rails_admin
+          can :access, :rails_admin   # allow employees to access Rails Admin
           can :manage, :dashboard
     end
 
