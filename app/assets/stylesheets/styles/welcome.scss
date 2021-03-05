@@ -1,6 +1,10 @@
 // Place all the styles related to the Welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.background-color{
+  background-color: #09eebc;
+  padding: 10px;
+}
 .button{
   color: white;
   background-color: #09eebc;
@@ -11,6 +15,25 @@
   padding:20px;
   color: black;
 
+}
+.icon-button{
+  color: white;
+  text-align: center;
+  &:hover{
+    color:black;
+  };
+}
+
+.icon-padding{
+  padding-top: 7px;
+}
+.icon-circle{
+  display: inline-block;
+    background-color: #09eebc;
+    margin: 10px; 
+    height: 38px;
+    width: 38px;
+    border-radius: 50%;
 }
 .field{
   width: 300px;

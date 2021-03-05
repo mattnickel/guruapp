@@ -7,11 +7,15 @@
 				<%end%>
 			</span>
 
-        <span class="offset-by-five four columns">
+        <span class="offset-by-four five columns">
 
 				  <% if current_user %>
+				   <% if can? :access, :rails_admin  %>
+			      	<%= link_to'<span class="icon-circle"><i class="material-icons icon-padding">verified_user</i></span>'.html_safe, rails_admin_path, class: "icon-button right" %>
+			      <% end %>
 			      <%= link_to "Dashboard", dashboard_path, class: "button right" %>
 			      <%= link_to "Logout", logout_path, class: "button-simple right" %>
+			     
 			    <% else %>
 			      <%= link_to "Get Started", new_user_registration_path, class: "button right" %>
 			      <%= link_to "Sign in", new_user_session_path, class: "button-simple right" %>
