@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_19_172347) do
+ActiveRecord::Schema.define(version: 2021_03_05_235731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,12 +77,13 @@ ActiveRecord::Schema.define(version: 2021_02_19_172347) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "commenter"
     t.text "body"
-    t.bigint "training_module_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["training_module_id"], name: "index_comments_on_training_module_id"
+    t.bigint "user_id"
+    t.string "commentable_type"
+    t.integer "commentable_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "emails", force: :cascade do |t|
@@ -100,6 +101,21 @@ ActiveRecord::Schema.define(version: 2021_02_19_172347) do
     t.integer "video_id"
     t.index ["training_modules_id"], name: "index_module_videos_on_training_modules_id"
     t.index ["videos_id"], name: "index_module_videos_on_videos_id"
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.string "page_name"
+    t.string "hero_title"
+    t.text "hero_description"
+    t.string "cta_text"
+    t.string "cta_description"
+    t.string "section_heading"
+    t.string "section_p1"
+    t.string "section_p2"
+    t.string "section_p3"
+    t.string "background_color"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "post_bumps", force: :cascade do |t|
@@ -189,5 +205,4 @@ ActiveRecord::Schema.define(version: 2021_02_19_172347) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "comments", "training_modules"
 end

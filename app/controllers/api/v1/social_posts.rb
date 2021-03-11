@@ -12,7 +12,6 @@ module API
           current_user = User.find_by(authentication_token: headers['Token'])
           bad_post_query = BadPost.where(hide_only: true, user_id: current_user.id).or(BadPost.where(hide_only: false)).pluck(:social_post_id)
           blocked_users = BlockedUser.where(user_id:current_user.id).pluck(:blocked_user_id)
-          # paginate SocialPost.includes(:post_bumps).order(:created_at).reverse_order
           paginate SocialPost.includes(:post_bumps).where.not(id:bad_post_query).where.not(user_id:blocked_users).order(:created_at).reverse_order
 
         end

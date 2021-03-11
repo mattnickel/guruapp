@@ -3,4 +3,5 @@ class SocialPost < ApplicationRecord
 	belongs_to :user
 	has_many :post_bumps
 	has_many :bad_posts
+	has_many :comments, as: :commentable
 end

@@ -36,18 +36,13 @@ Rails.application.routes.draw do
   resources :category
   resources :bad_posts
   resources :blocked_user
+  resources :pages
+  resources :comments
   
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
   get 'welcome/index'
   get 'welcome/download', to: 'welcome#download', as: 'download'
   get 'privacy', to: 'welcome#privacy', as: 'privacy'
-
-
- 
-
-  resources :training_modules do
-    resources :comments
-  end
 
   root to: 'welcome#index', as: 'home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -72,6 +67,7 @@ Rails.application.routes.draw do
         get "categories", to: "category#get"
         post "bad_posts", to: "bad_posts#create"
         post "blocked_users", to: "blocked_users#create"
+        post "comments/new", to: "comments#post"
       end
     end
   end

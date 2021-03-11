@@ -2,10 +2,11 @@ class SocialPostSerializer < ActiveModel::Serializer
 	 
 	 include Rails.application.routes.url_helpers 
 
-
    attributes :id, :time, :message, :image, :post_user_id, :username, :user_tagline, :user_avatar, :bump_count, :my_bump
    
    has_one :image
+
+   has_one :comments, serializer: CommentsSerializer
 
   def image
  		url = object.image.service_url if object.image.attached?
@@ -44,6 +45,10 @@ class SocialPostSerializer < ActiveModel::Serializer
     def my_bump
       # puts current_user.first_name
       return "true" if object.post_bumps.where(bump: true, user: scope.current_user).length > 0
+    end
+
+    def comments 
+      return object.comments
     end
 
 end

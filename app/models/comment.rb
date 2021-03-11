@@ -1,3 +1,3 @@
 class Comment < ApplicationRecord
-  belongs_to :training_module
+  belongs_to :commentable, polymorphic: true
 end

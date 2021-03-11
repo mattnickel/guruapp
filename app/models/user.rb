@@ -22,6 +22,7 @@ class User < ApplicationRecord
     has_many :post_bumps
     has_many :support_messages
     has_many :bad_posts
+    has_many :comments
 
    
     # validates_attachment :avatar, presence: true
