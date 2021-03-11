@@ -13,6 +13,7 @@ module API
       mount API::V1::CategoryController
       mount API::V1::BadPosts
       mount API::V1::BlockedUsers
+      mount API::V1::CommentsController
 
       helpers do
         def authenticate!
