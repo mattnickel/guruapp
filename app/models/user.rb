@@ -23,6 +23,8 @@ class User < ApplicationRecord
     has_many :support_messages
     has_many :bad_posts
     has_many :comments
+    has_many :memberships
+    has_many :groups, through: :memberships
 
    
     # validates_attachment :avatar, presence: true

@@ -68,6 +68,8 @@ Rails.application.routes.draw do
         post "bad_posts", to: "bad_posts#create"
         post "blocked_users", to: "blocked_users#create"
         post "comments/new", to: "comments#post"
+        post "groups", to: "groups#post"
+        post "groups", to: "groups#put"
       end
     end
   end
