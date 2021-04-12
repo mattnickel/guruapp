@@ -2,7 +2,7 @@ class SocialPostSerializer < ActiveModel::Serializer
 	 
 	 include Rails.application.routes.url_helpers 
 
-   attributes :id, :time, :message, :image, :post_user_id, :username, :user_tagline, :user_avatar, :bump_count, :my_bump
+   attributes :id, :time, :message, :image, :post_user_id, :username, :user_tagline, :user_avatar, :bump_count, :my_bump, :group
    
    has_one :image
 
@@ -49,6 +49,11 @@ class SocialPostSerializer < ActiveModel::Serializer
 
     def comments 
       return object.comments
+    end
+
+    def group
+      group = object.group.name if object.group
+      return group
     end
 
 end
