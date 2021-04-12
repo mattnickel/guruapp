@@ -12,15 +12,23 @@ module API
           current_user = User.find_by(authentication_token: headers['Token'])
           bad_post_query = BadPost.where(hide_only: true, user_id: current_user.id).or(BadPost.where(hide_only: false)).pluck(:social_post_id)
           blocked_users = BlockedUser.where(user_id:current_user.id).pluck(:blocked_user_id)
-          paginate SocialPost.includes(:post_bumps).where.not(id:bad_post_query).where.not(user_id:blocked_users).order(:created_at).reverse_order
-
+          if params[:group]
+            group = Group.find_by(name:params[:group])
+            paginate SocialPost.includes(:post_bumps).where(group:group).where.not(id:bad_post_query).where.not(user_id:blocked_users).order(:created_at).reverse_order
+          else
+            paginate SocialPost.includes(:post_bumps).where(group:nil).where.not(id:bad_post_query).where.not(user_id:blocked_users).order(:created_at).reverse_order
+          end
         end
 
       desc "Create new post"
       post do
         current_user = User.find_by(authentication_token: headers['Token'])
         new_file = ActionDispatch::Http::UploadedFile.new(params[:image])
-        SocialPost.create!({image:new_file, message: params[:message], user:current_user})
+        group = Group.find_by(name:params[:group])
+        puts "group here"
+        puts params
+        puts group
+        new_post = SocialPost.create!({image:new_file, message: params[:message], user:current_user, group: group})
         status 200
       end
 

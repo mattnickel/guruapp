@@ -2,6 +2,7 @@ module API
   module V1
     module Defaults
       extend ActiveSupport::Concern
+      # protect_from_forgery unless: -> { request.format.json? }
  
       included do
         prefix "api"
