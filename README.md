@@ -5,7 +5,7 @@
 ## For Mac Users:
 ### Install Homebrew (brew.sh)
 1. Check if homebrew is installed
-  * Terminal: which brew
+   * Terminal: which brew
 2. Install Homebrew if not found
   - Terminal: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
