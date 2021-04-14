@@ -46,7 +46,7 @@
 1. Add secrets/video_images.json (ask for this file)
 2. Add master.key (ask for this file)
 3. Add sendgrid key as a local variable (ask for this key)
-    - use this as a guide: https://sendgrid.com/docs/ui/account-and-settings/api-keys/
+      https://sendgrid.com/docs/ui/account-and-settings/api-keys/
 
 ### Set up database
     - Terminal: rake db:migrate
