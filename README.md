@@ -12,10 +12,14 @@
 ### Install Ruby
 1. Check the version of Ruby you have installed by typing:
    - Terminal: ruby -v
-   - Installed version should be: ruby 2.6.3p62
+   - Installed version should be: ruby 2.7.2p137
 
 2. Install Ruby if needed.
-   - Terminal: brew install ruby@2.6.3p62
+    $ brew install gnupg
+    $ gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+    $ \curl -sSL https://get.rvm.io | bash
+    QUIT TERMIMAL
+    $ rvm install 2.7.2
 
 ### Install Rails
 1. Check the version of Rails
@@ -23,7 +27,7 @@
     - Installed version should be: 6.0.3.4
   
 2. Install Rails if needed
-    - Terminal: gem install rails
+    - Terminal: sudo gem install rails
 
 ### Install Postgresql
 1. Check the version of postgres
