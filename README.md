@@ -31,11 +31,11 @@
 2. Install Postgres
     - Terminal: brew install postgresql@13.2
 3. If you have mulitpe versions switch to the correct version
-    - Terminal: brew info postgresql
+    $ brew info postgresql
     - Terminal: brew switch postgresql 13.2 
 
 ### Make sure you have Git set up in your project folder:
-    - https://docs.github.com/en/github/getting-started-with-github/set-up-git
+    https://docs.github.com/en/github/getting-started-with-github/set-up-git
 
 ### Fork the project
 1. Clone from Github
