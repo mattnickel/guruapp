@@ -31,7 +31,7 @@
 2. Install Postgres
     - Terminal: brew install postgresql@13.2
 3. If you have mulitpe versions switch to the correct version
-    $ brew info postgresql
+    - brew info postgresql
     - Terminal: brew switch postgresql 13.2 
 
 ### Make sure you have Git set up in your project folder:
