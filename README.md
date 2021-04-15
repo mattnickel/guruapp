@@ -63,12 +63,20 @@
    ```
    https://docs.github.com/en/github/getting-started-with-github/set-up-git
 
-### Fork the project
+### Set up the project
 1. Clone from Github to your code projects directory
       ```
     $ git clone https://github.com/mattnickel/guruapp
     ```
 2. Change directories into new cloned directory
+3. Bundle dependencies
+   ```
+    $ bundle install
+    ```
+4. Add JavaScript runtime - Nodejs
+      ```
+      brew install nodejs
+      ```
 
 ### Add local config
 1. Add secrets/video_images.json (ask for this file)
