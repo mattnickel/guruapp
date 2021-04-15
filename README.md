@@ -31,14 +31,15 @@
 
 ### Install Postgresql
 1. Check the version of postgres
-    - Terminal: postgres -v
+    `Terminal: postgres -v`
 2. Install Postgres
     - Terminal: brew install postgresql@13.2
-3. If you have mulitpe versions switch to the correct version
+3. If you have mulitple versions switch to the correct version
     - brew info postgresql
     - Terminal: brew switch postgresql 13.2 
 
 ### Make sure you have Git set up in your project folder:
+    $ brew install git
     https://docs.github.com/en/github/getting-started-with-github/set-up-git
 
 ### Fork the project
