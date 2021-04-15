@@ -4,39 +4,58 @@
 
 ## For Mac Users:
 ### Install Homebrew (brew.sh)
-1. Check if homebrew is installed
-   * Terminal: which brew
+1. Check if homebrew is installed, type in Terminal: 
+   ```
+   $ which brew
+   ```
 2. Install Homebrew if not found
-    - Terminal: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  ```
+    $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  ```
 
 ### Install Ruby
-1. Check the version of Ruby you have installed by typing:
-   - Terminal: ruby -v
+1. Check the version of Ruby you have installed by typing in Terminal:
+   ```
+   $ ruby -v
+   ```
    - Installed version should be: ruby 2.7.2p137
 
 2. Install Ruby if needed.
-    - $ brew install gnupg
-    - $ gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-    - $ \curl -sSL https://get.rvm.io | bash
-    - QUIT TERMIMAL
-    - $ rvm install 2.7.2
+    ```
+    $ brew install gnupg
+    $ gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB`
+    $ \curl -sSL https://get.rvm.io | bash`
+    ```
+    QUIT TERMIMAL
+    ```
+    $ rvm install 2.7.2
+    ```
 
 ### Install Rails
 1. Check the version of Rails
-    - Terminal: rails -v
+  ```
+  $ rails -v
+  ```
     - Installed version should be: 6.0.3.4
   
 2. Install Rails if needed
-    - Terminal: sudo gem install rails
+  ```
+   $ sudo gem install rails
+  ```
 
 ### Install Postgresql
 1. Check the version of postgres
-    `Terminal: postgres -v`
+  ```
+   $ postgres -v
+   ```
 2. Install Postgres
-    - Terminal: brew install postgresql@13.2
+  ```
+   $ brew install postgresql@13.2
+   ```
 3. If you have mulitple versions switch to the correct version
-    - brew info postgresql
-    - Terminal: brew switch postgresql 13.2 
+    ``` $ brew info postgresql
+        $ brew switch postgresql 13.2 
+    ```
 
 ### Make sure you have Git set up in your project folder:
     $ brew install git
