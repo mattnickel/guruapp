@@ -58,12 +58,16 @@
     ```
 
 ### Make sure you have Git set up in your project folder:
+   ```
     $ brew install git
-    https://docs.github.com/en/github/getting-started-with-github/set-up-git
+   ```
+   https://docs.github.com/en/github/getting-started-with-github/set-up-git
 
 ### Fork the project
-1. Clone from Github
-    - Terminal: git clone https://github.com/mattnickel/guruapp
+1. Clone from Github to your code projects directory
+      ```
+    $ git clone https://github.com/mattnickel/guruapp
+    ```
 2. Change directories into new cloned directory
 
 ### Add local config
