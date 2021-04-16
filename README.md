@@ -85,10 +85,31 @@
       https://sendgrid.com/docs/ui/account-and-settings/api-keys/
 
 ### Set up database
-    - Terminal: rake db:migrate
-    - Terminal: rake db:seed
-
+   ```
+  $ brew services start postgresql
+    ```
+    Open up the psql termial
+    ```
+  $ psql postgres
+  CREATE ROLE developer WITH LOGIN PASSWORD '123456';
+  ALTER ROLE developer CREATEDB;
+   ```
+  Quit psql terminal
+   ```
+   \q
+   ```  
+   Log into psql with developer
+    ```
+   psql postgres -U developer```
+   
+   TIP: Before migrating, comment out Training Modules Api logic (not sure why)
+     ``` 
+     $ rake db:migrate
+     $ rake db:seed ```
 ### Run rails project
     - Terminal: Rails s
+    - brew install -g yarn
+    - brew install node
+    - rake webpacker:install
     - Go to browser: localhost:3000
     - Default Login: email: "test@test.com"   password: "123456"
