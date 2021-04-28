@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   resources :blocked_user
   resources :pages
   resources :comments
+  resources :training_modules
   
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
   get 'welcome/index'
