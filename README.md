@@ -58,13 +58,25 @@
     ```
 
 ### Make sure you have Git set up in your project folder:
+   ```
     $ brew install git
-    https://docs.github.com/en/github/getting-started-with-github/set-up-git
+   ```
+   https://docs.github.com/en/github/getting-started-with-github/set-up-git
 
-### Fork the project
-1. Clone from Github
-    - Terminal: git clone https://github.com/mattnickel/guruapp
+### Set up the project
+1. Clone from Github to your code projects directory
+      ```
+    $ git clone https://github.com/mattnickel/guruapp
+    ```
 2. Change directories into new cloned directory
+3. Bundle dependencies
+   ```
+    $ bundle install
+    ```
+4. Add JavaScript runtime - Nodejs
+      ```
+      brew install nodejs
+      ```
 
 ### Add local config
 1. Add secrets/video_images.json (ask for this file)
@@ -73,10 +85,31 @@
       https://sendgrid.com/docs/ui/account-and-settings/api-keys/
 
 ### Set up database
-    - Terminal: rake db:migrate
-    - Terminal: rake db:seed
-
+   ```
+  $ brew services start postgresql
+    ```
+    Open up the psql termial
+    ```
+  $ psql postgres
+  CREATE ROLE developer WITH LOGIN PASSWORD '123456';
+  ALTER ROLE developer CREATEDB;
+   ```
+  Quit psql terminal
+   ```
+   \q
+   ```  
+   Log into psql with developer
+    ```
+   psql postgres -U developer```
+   
+   TIP: Before migrating, comment out Training Modules Api logic (not sure why)
+     ``` 
+     $ rake db:migrate
+     $ rake db:seed ```
 ### Run rails project
     - Terminal: Rails s
+    - brew install -g yarn
+    - brew install node
+    - rake webpacker:install
     - Go to browser: localhost:3000
     - Default Login: email: "test@test.com"   password: "123456"
