@@ -5,5 +5,4 @@ class SocialPost < ApplicationRecord
 	has_many :post_bumps
 	has_many :bad_posts
 	has_many :comments, as: :commentable 
-
 end

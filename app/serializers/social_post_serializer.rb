@@ -50,10 +50,8 @@ class SocialPostSerializer < ActiveModel::Serializer
     def comments 
       return object.comments
     end
-
     def group
       group = object.group.name if object.group
       return group
     end
-
 end

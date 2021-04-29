@@ -22,6 +22,7 @@
               status: :error
             }, status: 500
           elsif group.memberships.create!({user_id: current_user.id})
+
             render json:{
               group: group.name,
               status: :is_success
@@ -37,6 +38,7 @@
         put do
           current_user = User.find_by(authentication_token: headers['Token'])
           group = Group.find_by(name:params[:group])
+
           if group
             if current_user.groups.delete(group)
              status 200
