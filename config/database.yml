@@ -5,8 +5,8 @@ development:
   reconnect: false
   database: guruapp_dev1
   pool: 5
-  username: mattnickel
-  password: "Wintheday99"
+  username: developer
+  password: "123456"
   host: localhost
   
 test:
@@ -15,6 +15,6 @@ test:
   reconnect: false
   database: guruapp_test
   pool: 5
-  username: mattnickel
-  password: "Wintheday99"
+  username: developer
+  password: "123456"
   host: localhost
