@@ -23,12 +23,17 @@ module API
       desc "Create new post"
       post do
         current_user = User.find_by(authentication_token: headers['Token'])
-        new_file = ActionDispatch::Http::UploadedFile.new(params[:image])
+        if params[:image]
+          new_media = ActionDispatch::Http::UploadedFile.new(params[:image])
+        end
+        if params[:media]
+          new_media = ActionDispatch::Http::UploadedFile.new(params[:image])
+        end
         group = Group.find_by(name:params[:group])
         puts "group here"
         puts params
         puts group
-        new_post = SocialPost.create!({image:new_file, message: params[:message], user:current_user, group: group})
+        new_post = SocialPost.create!({image:new_media, message: params[:message], user:current_user, group: group})
         status 200
       end
 
