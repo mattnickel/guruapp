@@ -5,7 +5,7 @@ module API
       
       included do
         before do
-           error!("401 Unauthorized, bitches", 401) unless authenticate!
+           error!("401 Unauthorized", 401) unless authenticate!
         end
 
         helpers do

@@ -8,7 +8,37 @@
         <th>Text</th>
         <th></th>
       </tr>
-     
+          <%= @training_module.each do |training| %>
+
+            <%= link_to training_module_path(training) do %>
+              <div class="columns four module_card">
+                <div class="photo_frame">
+                  <% if training.cover_photo.attached? %>
+                      <image src="<%=(url_for(training.cover_photo))%>", class="cover_photo"> 
+                  <% else %> <span class="cover_photo orange"></span>
+                  <% end %> 
+                  <div class="photo_overlay"></div>
+                </div>
+                <div class="module_author_container">
+                  <% if training.user.avatar.attached? %>
+                    <image src="<%=(url_for(training.user.avatar))%>", class="module_avatar">
+                  <% else %>
+                    <img src="/assets/avatar_default" class= "module_avatar">
+                  <% end %>
+                  <span class="module_author_name">
+                    <%=training.user.first_name %> <%=training.user.last_name %>
+                  </span>
+                </div>
+                <div class= "module_text_container">
+                  <h5 class="module_title"> <%= training.title %></h5>
+                  <p class="module_description truncate-overflow"> <%= training.description %></p>
+                  <% if training.comments.count > 0 %>
+                    <div class="module_comments">Comments: <%=training.comments.count %> </div>
+                  <%end%>
+                </div>
+              </div>
+            <%end %>
+          <% end %>
       <% @training_module.each do |training| %>
         <tr>
           <td><%= training.title %></td>
