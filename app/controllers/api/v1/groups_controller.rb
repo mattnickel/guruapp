@@ -25,12 +25,14 @@
 
             render json:{
               group: group.name,
+              is_success: true,
               status: :is_success
             }, status: 200
           else 
             render json:{
+              group: group.name,
               messages: "Already a member.",
-              is_success: false,
+              is_success: true,
               status: :error
             }, status: 500
           end
