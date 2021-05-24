@@ -26,17 +26,17 @@ module API
         
         if params[:video]
           video = ActionDispatch::Http::UploadedFile.new(params[:video])
-          new_post = SocialPost.create!({video: video, message: params[:message], user:current_user})
           if params[:group]
-            new_post.update({group:params[:group]})
+            group = Group.find_by(name:params[:group])
           end
+          new_post = SocialPost.create!({video: video, message: params[:message], user:current_user, group:group})
           status 200
         elsif params[:image]
           image = ActionDispatch::Http::UploadedFile.new(params[:image])
-          new_post = SocialPost.create!({image:image, message: params[:message], user:current_user})
           if params[:group]
-            new_post.update({group:params[:group]})
+            group = Group.find_by(name:params[:group])
           end
+          new_post = SocialPost.create!({image:image, message: params[:message], user:current_user, group:group})
           status 200
         else
           status 400
