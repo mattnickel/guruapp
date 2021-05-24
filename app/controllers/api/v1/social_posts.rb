@@ -23,7 +23,9 @@ module API
       desc "Create new post"
       post do
         current_user = User.find_by(authentication_token: headers['Token'])
-        group = Group.find_by(name:params[:group])
+        if params[:group]
+          group = Group.find_by(name:params[:group])
+        end
         if params[:video]
           video = ActionDispatch::Http::UploadedFile.new(params[:video])
           image = ActionDispatch::Http::UploadedFile.new(params[:image])
