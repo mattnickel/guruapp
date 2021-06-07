@@ -25,5 +25,10 @@ class UserMailer < ApplicationMailer
 		mail(to: "matt@thinkbig-gofar.com", subject: "Objectionable social post reported in the Limitless Minds App")
 	end
 
+	def report_message(subject, message)
+		@message = message
+		mail(to: "billy@topoflineinc.com", subject: subject)
+
+	end
 	
 end
