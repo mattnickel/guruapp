@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   after_initialize do
     if self.new_record?
-      self.role ||= :standard
+      self.role ||= :admin
     end
   end
   # Include default devise modules. Others available are:
