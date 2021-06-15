@@ -19,6 +19,7 @@
                 status: :ok
               }
           end
+          save_activity(current_user)
         end
         desc "Return all bumps"
         get "" do
