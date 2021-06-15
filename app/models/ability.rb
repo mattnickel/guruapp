@@ -31,7 +31,7 @@ class Ability
     end
 
     if user.standard?
-          can :manage, SocialPosts
+          #can :manage, SocialPosts
           can :manage, User
           can :access, :videos
     end
