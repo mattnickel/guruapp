@@ -12,7 +12,7 @@ class NumberOfVideosWatchedJob < ApplicationJob
 	  weekly_stats.description = 'Number of videos watched this week'
 	  weekly_stats.created_at = Date.today
 
-	  wekly_stats.save
+	  weekly_stats.save
 
   end
 end
