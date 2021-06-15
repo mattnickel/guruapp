@@ -23,7 +23,7 @@ module API
       desc "Create new post"
       post do
         current_user = User.find_by(authentication_token: headers['Token'])
-        save_activity(current_user)
+        #save_activity(current_user)
         if params[:video]
           video = ActionDispatch::Http::UploadedFile.new(params[:video])
           if params[:group]
