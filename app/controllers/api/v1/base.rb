@@ -15,6 +15,7 @@ module API
       mount API::V1::BlockedUsers
       mount API::V1::CommentsController
       mount API::V1::GroupsController
+      mount API::V1::SocialAttempts
 
       helpers do
         def authenticate!

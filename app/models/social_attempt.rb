@@ -1,0 +1,2 @@
+class SocialAttempt < ApplicationRecord
+end
