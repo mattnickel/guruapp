@@ -167,6 +167,14 @@ ActiveRecord::Schema.define(version: 2021_06_21_123251) do
     t.index ["user_id"], name: "index_social_posts_on_user_id"
   end
 
+  create_table "stats", force: :cascade do |t|
+    t.string "event_stat"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.string "day"
+    t.integer "active_count"
+  end
+
   create_table "support_messages", force: :cascade do |t|
     t.text "message"
     t.datetime "created_at", precision: 6, null: false
@@ -182,6 +190,11 @@ ActiveRecord::Schema.define(version: 2021_06_21_123251) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_training_modules_on_user_id"
+  end
+
+  create_table "user_activities", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "active_count"
   end
 
   create_table "users", force: :cascade do |t|
@@ -224,6 +237,12 @@ ActiveRecord::Schema.define(version: 2021_06_21_123251) do
     t.time "time_of_day"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "weekly_stats", force: :cascade do |t|
+    t.string "event_stat"
+    t.string "description"
+    t.datetime "created_at", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
