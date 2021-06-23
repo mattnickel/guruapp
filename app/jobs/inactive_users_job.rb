@@ -11,6 +11,7 @@ class InactiveUsersJob < ApplicationJob
 		weekday = Date.today.strftime('%A') 
 		stats.day = weekday
 	  stats.save
+		
 	#InactiveUsersJob.set(wait: 1.day).perform_later()
   end
 end
