@@ -65,4 +65,10 @@ namespace :guru do
     WeeklyReportJob.perform_now
   end
 
+
+  desc 'Runs: Number of Attempted Shares to Social Job'
+  task number_of_attempted_shares_to_social_media: [:environment] do
+    NumberOfAttemptedSharesToSocialMediaJob.perform_now
+  end
+
 end
