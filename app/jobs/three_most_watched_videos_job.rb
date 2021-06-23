@@ -12,10 +12,10 @@ class ThreeMostWatchedVideosJob < ApplicationJob
     videos_watched.each do |row|
     	videos << row.title
 	  end
-	weekly_stats = WeeklyStat.new
-	weekly_stats.event_stat = videos.join(",")
-	weekly_stats.description = 'Top 3 most watched videos of the week'
-	weekly_stats.created_at = Date.today
-	weekly_stats.save
+    weekly_stats = WeeklyStat.new
+    weekly_stats.event_stat = videos.join(",")
+    weekly_stats.description = 'Top 3 most watched videos of the week'
+    weekly_stats.created_at = Date.today
+    weekly_stats.save
   end
 end
