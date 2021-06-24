@@ -27,8 +27,15 @@ class UserMailer < ApplicationMailer
 
 	def report_message(subject, message)
 		@message = message
+<<<<<<< HEAD
 		mail(to: "billy@topoflineinc.com", subject: subject)
 
 	end
+=======
+		mail(to: "naomi@topoflineinc.com", subject: subject)
+
+	end
+
+>>>>>>> 209d3a524fbaa56a8995fe401f6fa2f66ff62557
 	
 end

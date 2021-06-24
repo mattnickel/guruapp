@@ -19,7 +19,11 @@ module API
             return true if current_user 
           end
 
+<<<<<<< HEAD
           def save_activity(current_user)
+=======
+           def save_activity(current_user)
+>>>>>>> 209d3a524fbaa56a8995fe401f6fa2f66ff62557
             if UserActivity.exists?(user_id:current_user.id) 
               user_activity = UserActivity.find_by(user_id:current_user.id)
               user_activity.active_count += 1;
