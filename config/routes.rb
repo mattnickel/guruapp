@@ -71,7 +71,15 @@ Rails.application.routes.draw do
         post "comments/new", to: "comments#post"
         post "groups", to: "groups#post"
         post "groups", to: "groups#put"
+        # get "social_attempts", to: "social_attempts#get"
+        # post "social_attempts", to: "social_attempts#post"
       end
+
+      scope :social_attempts do
+        get "social_attempts", to: "social_attempts#get"
+        post "social_attempts", to: "social_attempts#post"
+      end
+       
     end
   end
 
