@@ -79,12 +79,8 @@ Rails.application.routes.draw do
         get "social_attempts", to: "social_attempts#get"
         post "social_attempts", to: "social_attempts#post"
       end
-<<<<<<< HEAD
 
 
-=======
-       
->>>>>>> 209d3a524fbaa56a8995fe401f6fa2f66ff62557
     end
   end
 
