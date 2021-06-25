@@ -1,4 +1,4 @@
- module API
+module API
   module V1
     class Viewings < Grape::API
       include API::V1::Defaults
@@ -19,11 +19,7 @@
                 status: :ok
               }
           end
-<<<<<<< HEAD
           save_activity(current_user)
-=======
-        save_activity(current_user)
->>>>>>> 209d3a524fbaa56a8995fe401f6fa2f66ff62557
         end
       end 
 

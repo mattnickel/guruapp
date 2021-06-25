@@ -17,10 +17,6 @@ class NumberOfAttemptedSharesToSocialMediaJob < ApplicationJob
 	  # weekly_stats.description = 'Number of attempted shares to social media this week'
 	  # weekly_stats.created_at = Date.today
 	  # weekly_stats.save
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> 209d3a524fbaa56a8995fe401f6fa2f66ff62557
   end
 end
