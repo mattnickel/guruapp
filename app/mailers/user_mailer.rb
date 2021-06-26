@@ -27,7 +27,7 @@ class UserMailer < ApplicationMailer
 
 	def report_message(subject, message)
 		@message = message
-		mail(to: "billy@topoflineinc.com", subject: subject)
+		mail(to: "naomi@topoflineinc.com", subject: subject)
 
 	end
 	

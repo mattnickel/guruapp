@@ -3,13 +3,13 @@ module API
     class SocialPosts < Grape::API
       include API::V1::Defaults
       include API::V1::Authenticate
-      # include scope
-      
+
       resource :social_posts do
         desc "Return all posts"
         paginate per_page: 8
         get "", :SocialPostSerializer do
           current_user = User.find_by(authentication_token: headers['Token'])
+
           bad_post_query = BadPost.where(hide_only: true, user_id: current_user.id).or(BadPost.where(hide_only: false)).pluck(:social_post_id)
           blocked_users = BlockedUser.where(user_id:current_user.id).pluck(:blocked_user_id)
           if params[:group]
@@ -23,25 +23,14 @@ module API
       desc "Create new post"
       post do
         current_user = User.find_by(authentication_token: headers['Token'])
+        new_file = ActionDispatch::Http::UploadedFile.new(params[:image])
+        group = Group.find_by(name:params[:group])
+        puts "group here"
+        puts params
+        puts group
         save_activity(current_user)
-        if params[:video]
-          video = ActionDispatch::Http::UploadedFile.new(params[:video])
-          if params[:group]
-            group = Group.find_by(name:params[:group])
-          end
-          new_post = SocialPost.create!({video: video, message: params[:message], user:current_user, group:group})
-          status 200
-        elsif params[:image]
-          image = ActionDispatch::Http::UploadedFile.new(params[:image])
-          if params[:group]
-            group = Group.find_by(name:params[:group])
-          end
-          new_post = SocialPost.create!({image:image, message: params[:message], user:current_user, group:group})
-          status 200
-        else
-          status 400
-        end
-
+        new_post = SocialPost.create!({image:new_file, message: params[:message], user:current_user, group: group})
+        status 200
       end
 
       desc "Get recent timestmp"
