@@ -4,39 +4,24 @@ class API::V1::RegistrationsController < Devise::RegistrationsController
     before_action :valid_email?
     
     def create
-      if user_params[:email] != "" && user_params[:username] != ""
-        @user = User.new user_params
-        if @user.save
-          if @user.valid_password?(user_params[:password])
-            UserMailer.welcome_email(@user).deliver
-            sign_in "user", @user
-            render json: @user
-          
-          else
-            render json: {
-              error: "Password not valid",
-              status: :bad_request
-            }, status: 400
-          end
+      @user = User.new user_params
+      if @user.save
+        if @user.valid_password?(user_params[:password])
+          UserMailer.welcome_email(@user).deliver
+          sign_in "user", @user
+          render json: @user
+        
         else
           render json: {
-            error: "Email exists. Log in instead?",
+            error: "Password not valid",
             status: :bad_request
           }, status: 400
         end
       else
-        if user_params[:email] == ""
-          render json: {
-            error: "Email is required.",
-            status: :bad_request
-          }
-        end
-        if user_params[:username] == ""
-          render json: {
-            error: "Username is required.",
-            status: :bad_request
-          }
-        end
+        render json: {
+          error: "Email exists. Log in instead?",
+          status: :bad_request
+        }, status: 400
       end
     end
   
