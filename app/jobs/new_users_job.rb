@@ -9,7 +9,9 @@ class NewUsersJob < ApplicationJob
 	stats.event_stat = new_users_count
 	stats.description = 'New users'
 	stats.created_at = Date.today
-	stats.save
+  weekday = Date.today.strftime('%A') 
+  stats.day = weekday
+  stats.save
 
 	#NewUsersJob.set(wait: 1.day).perform_later()
   end

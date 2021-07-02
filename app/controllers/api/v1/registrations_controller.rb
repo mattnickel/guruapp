@@ -24,31 +24,32 @@ class API::V1::RegistrationsController < Devise::RegistrationsController
         }, status: 400
       end
     end
-  
-    private
-
-    def user_params
-      params.permit(:email, :password, :username)
-    end
-  
-    def ensure_params_exist
-      return if params[:email].present? && params[:password].present? && params[:username].present?
-      render json: {
-          messages: "Missing Params",
-          is_success: false,
-          data: {}
-        }, status: :bad_request
-    end
-
-    def valid_email?
-  
-      # response = Truemail.valid?(params[:email], with: :smtp)
-      # puts response
-      # return unless response == false
-      # render json: {error: params[:email]+" is an invalid email.",
-      #     is_success: false,
-      #     data: {}
-      #   }, status: :bad_request
-    end
-    
   end
+
+  private
+
+  def user_params
+    params.permit(:email, :password, :username)
+  end
+
+  def ensure_params_exist
+    return if params[:email].present? && params[:password].present? && params[:username].present?
+    render json: {
+        messages: "Missing Params",
+        is_success: false,
+        data: {}
+      }, status: :bad_request
+  end
+
+  def valid_email?
+
+    # response = Truemail.valid?(params[:email], with: :smtp)
+    # puts response
+    # return unless response == false
+    # render json: {error: params[:email]+" is an invalid email.",
+    #     is_success: false,
+    #     data: {}
+    #   }, status: :bad_request
+  end
+  
+end

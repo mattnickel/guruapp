@@ -12,7 +12,7 @@ module API
           end
         route_param :id do
           get do
-            user = User.with_pk!(params[:id])
+            user = User.find(params[:id])
             render user
           end
         end
@@ -32,7 +32,7 @@ module API
             render current_user
           else
             if params[:email] != '' && params[:username] != '' 
-              current_user.update({ email:params[:email].strip, username:params[:username].strip, description:params[:description].strip})
+              current_user.update({ email:params[:email].to_s.strip, username:params[:username].to_s.strip, description:params[:description].to_s.strip})
               status 200
             else
               status 400

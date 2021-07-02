@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
-	
-  def index
-    WeeklyReportJob.perform_now
+
+  	
+  def index   
   end
   def download
   end
