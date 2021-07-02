@@ -7,10 +7,13 @@ class ActiveUsersJob < ApplicationJob
     stats = Stat.new
     stats.event_stat = active_users
     stats.description = 'Number of active users'
+    stats.created_at = Date.today
     weekday = Date.today.strftime('%A') 
     stats.day = weekday
     stats.save
 		
-	#AtiveUsersJob.set(wait: 1.day).perform_later()
+
+    
+	#ActiveUsersJob.set(wait: 1.day).perform_later()
   end
 end

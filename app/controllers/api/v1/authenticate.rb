@@ -22,11 +22,13 @@ module API
             if UserActivity.exists?(user_id:current_user.id) 
               user_activity = UserActivity.find_by(user_id:current_user.id)
               user_activity.active_count += 1;
+              user_activity.created_at = Date.today
               user_activity.save
             else 
               user_activity = UserActivity.new
               user_activity.user_id = current_user.id
               user_activity.active_count = 1;
+              user_activity.created_at = Date.today
               user_activity.save
             end
           end
