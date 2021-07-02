@@ -61,7 +61,7 @@ class WeeklyReportJob < ApplicationJob
    
 
     #Social Attempts or External Shares
-    social_attempt_weekly = SocialAttempt.where('created_at >= ?', Date.today-1.week).count
+    social_attempt_weekly = SocialAttempt.where('created_at > ?', Date.today-1.week).count
 	  weekly_stats = WeeklyStat.new
 	  weekly_stats.event_stat = social_attempt_weekly
 	  weekly_stats.description = 'External Shares'
@@ -69,7 +69,7 @@ class WeeklyReportJob < ApplicationJob
 	  weekly_stats.save
 
     #Report Message Compostition
-    stats_weekly = WeeklyStat.where('created_at >= ?', Date.today-1.week)
+    stats_weekly = WeeklyStat.where('created_at > ?', Date.today-1.week)
     message = "<ol>"
     stats_weekly.each do |wstat|
       stat_desc = wstat.description
