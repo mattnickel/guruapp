@@ -20,6 +20,7 @@
                 status: :ok
               }
           end
+          save_activity(current_user)
         end
 
       end 

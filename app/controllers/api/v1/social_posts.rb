@@ -23,21 +23,29 @@ module API
       desc "Create new post"
       post do
         current_user = User.find_by(authentication_token: headers['Token'])
-        
+        save_activity(current_user)
         if params[:video]
           video = ActionDispatch::Http::UploadedFile.new(params[:video])
-          if params[:group]
-            group = Group.find_by(name:params[:group])
+          if video
+            if params[:group]
+              group = Group.find_by(name:params[:group])
+            end
+            new_post = SocialPost.create!({video: video, message: params[:message], user:current_user, group:group})
+            status 200
+          else
+            status 400
           end
-          new_post = SocialPost.create!({video: video, message: params[:message], user:current_user, group:group})
-          status 200
         elsif params[:image]
           image = ActionDispatch::Http::UploadedFile.new(params[:image])
-          if params[:group]
-            group = Group.find_by(name:params[:group])
+          if image
+            if params[:group]
+              group = Group.find_by(name:params[:group])
+            end
+            new_post = SocialPost.create!({image:image, message: params[:message], user:current_user, group:group})
+            status 200
+          else
+            status 400
           end
-          new_post = SocialPost.create!({image:image, message: params[:message], user:current_user, group:group})
-          status 200
         else
           status 400
         end

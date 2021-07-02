@@ -1,0 +1,2 @@
+class UserActivityCalculation < ApplicationRecord
+end
