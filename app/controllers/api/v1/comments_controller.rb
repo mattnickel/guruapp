@@ -1,4 +1,4 @@
- module API
+module API
   module V1
     class CommentsController < Grape::API
       include API::V1::Defaults

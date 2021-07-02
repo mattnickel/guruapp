@@ -1,7 +1,6 @@
 class WelcomeController < ApplicationController
 	
   def index
-<<<<<<< HEAD
     # TotalNumberOfUsersJob.set(wait: 5.minute).perform_later()
     # NewUsersJob.set(wait: 5.minute).perform_later()
     # ActiveUsersJob.set(wait: 5.minute).perform_later()
@@ -12,14 +11,8 @@ class WelcomeController < ApplicationController
     # MostActiveDayOfTheWeekJob.set(wait: 5.minute).perform_later()
     # TotalNumberOfSocialInteractionsJob.set(wait: 5.minute).perform_later()
     # NumberOfVideosWatchedJob.set(wait: 5.minute).perform_later()
+    # WeeklyReportJob.set(wait: 7.minute).perform_later()     
     
-    # WeeklyReportJob.set(wait: 7.minute).perform_later()
-    
-    
-    
-=======
-    WeeklyReportJob.perform_now
->>>>>>> 45cb39d076df8e74cac364d708c1d700c5c837bc
   end
   def download
   end

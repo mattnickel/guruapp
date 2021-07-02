@@ -29,7 +29,7 @@ class WeeklyReportJob < ApplicationJob
     weekly_stats.created_at = Date.today
     weekly_stats.save
 
-    # Inactive Users
+    #Inactive Users
     inactive_users_this_week = UserActivity.where('active_count = 0 and created_at = ?', Date.today-1.week).count
     weekly_stats = WeeklyStat.new
     weekly_stats.event_stat = inactive_users_this_week
@@ -64,7 +64,6 @@ class WeeklyReportJob < ApplicationJob
 
     #Report Message Compostition
     stats_weekly = WeeklyStat.where('created_at > ?', Date.today-1.week)
-<<<<<<< HEAD
     message = "<ol>"
     stats_weekly.each do |wstat|
       stat_desc = wstat.description
@@ -94,14 +93,6 @@ class WeeklyReportJob < ApplicationJob
     #where('description = "Total Number of Interactions" and created_at = ?', Date.today-1.week')
     
 
-=======
-    message = ""
-    stats_weekly.each do |wstat|
-      message += wstat.description + " #" + wstat.event_stat
-	  end
-    subject = "Weekly Report for #{Date.today-1.week} to #{Date.today}"
-    UserMailer.report_message(subject,message).deliver
->>>>>>> 45cb39d076df8e74cac364d708c1d700c5c837bc
 
     #(['active_count > 0','created_at = ?'], Date.today-1.week).count
   end
