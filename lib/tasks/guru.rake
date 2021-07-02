@@ -60,9 +60,13 @@ namespace :guru do
     TotalNumberOfUsersJob.perform_now
   end
 
+  
   desc 'Runs: Weekly Report'
   task weekly_report: [:environment] do
-    WeeklyReportJob.perform_now
+  # Will run every Saturday
+    if Date.today.wday == 6 
+      WeeklyReportJob.perform_now
+    end 
   end
 
 

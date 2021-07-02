@@ -12,6 +12,7 @@ class ActiveUsersJob < ApplicationJob
     stats.day = weekday
     stats.save
 		
+    
 
     
 	#ActiveUsersJob.set(wait: 1.day).perform_later()
