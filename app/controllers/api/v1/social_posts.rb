@@ -29,8 +29,37 @@ module API
         puts params
         puts group
         save_activity(current_user)
+<<<<<<< HEAD
         new_post = SocialPost.create!({image:new_file, message: params[:message], user:current_user, group: group})
         status 200
+=======
+        if params[:video]
+          video = ActionDispatch::Http::UploadedFile.new(params[:video])
+          if video
+            if params[:group]
+              group = Group.find_by(name:params[:group])
+            end
+            new_post = SocialPost.create!({video: video, message: params[:message], user:current_user, group:group})
+            status 200
+          else
+            status 400
+          end
+        elsif params[:image]
+          image = ActionDispatch::Http::UploadedFile.new(params[:image])
+          if image
+            if params[:group]
+              group = Group.find_by(name:params[:group])
+            end
+            new_post = SocialPost.create!({image:image, message: params[:message], user:current_user, group:group})
+            status 200
+          else
+            status 400
+          end
+        else
+          status 400
+        end
+
+>>>>>>> 45cb39d076df8e74cac364d708c1d700c5c837bc
       end
 
       desc "Get recent timestmp"
