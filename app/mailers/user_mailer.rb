@@ -29,9 +29,8 @@ class UserMailer < ApplicationMailer
 		@subject = subject
 		@message = message
 
-		mail(to: "naomi@topoflineinc.com", subject: subject)
-		#limitlessminds@thinkbig-gofar.com		
-
+		mail(to: "limitlessminds@thinkbig-gofar.com", subject: subject)
+		
 	end
 	
 end
