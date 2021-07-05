@@ -7,7 +7,17 @@ module API
       resource :game_scores do
         
         desc "Read"
-        get do
+        params do
+          requires :game_type
+        end
+        get "", :GameScoreSerializer do
+          high = GameScore.where(["game_type = :game_type AND updated_at < :today", {game_type: params[:game_type], today: Date.today}]);
+          today = GameScore.where(["game_type = :game_type AND updated_at = :today", {game_type: params[:game_type], today: Date.today}]);
+
+          render json: {
+            high: high,
+            today: today
+          }
         end
         
         desc "Create"
@@ -15,11 +25,12 @@ module API
         end
         
         desc "Update"
-        post do
+        
+        put do
           
+        end
       end
-  end
 
-end
-end
+    end
+  end
 end
