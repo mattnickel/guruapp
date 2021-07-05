@@ -27,7 +27,18 @@ module API
         desc "Update"
         
         put do
-          
+          current_user = User.find_by(authentication_token: headers['Token'])
+          game_score = GameScore.where(["game_type = :game_type AND user_id = :user_id", {game_type: params[:game_type], user_id:current_user.id}])
+          new_score = game_score[0].score + params[:score].to_i
+          if game_score.update({score: new_score, updated_at: Date.today})
+            render json: {
+              message: "Success",
+              is_success: true,
+              status: :ok
+            }
+          else
+            status 400
+          end
         end
       end
 
