@@ -21,7 +21,27 @@ module API
         end
         
         desc "Create"
+        params do
+          requires :game_type, score: Integer          
+        end
+
         post do
+          current_user = User.find_by(authentication_token: headers['Token'])   
+          game_score.user_id = current_user.id
+          game_score.game_type = params[:game_type]       
+          game_score.score = 0;
+          game_score.created_at = Date.today
+          game_score.save
+
+          game_score = GameScore.where(["game_type = :game_type AND user_id = :user_id AND score = :score ", {game_type: params[:game_type], user_id:current_user.id, score: 0}])
+          
+          if GameScore.create!(user_id: current_user.id, score: 0, game_type:game_type, created_at: Date.today)
+            render json: {
+                game_id: game_score.id,
+                is_success: true,
+                status: :ok
+            }
+          end
         end
         
         desc "Update"
