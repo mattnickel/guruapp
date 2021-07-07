@@ -6,6 +6,41 @@ module API
 
       resource :game_scores do
         
+        desc "Create"
+        params do
+          requires :game_type          
+        end
+
+        post do
+          current_user = User.find_by(authentication_token: headers['Token'])   
+          game_score = GameScore.new
+          game_score.user_id = current_user.id
+          game_score.game_type = params[:game_type]       
+          game_score.score = 0;
+          game_score.created_at = DateTime.current
+          game_score.save
+
+          high = GameScore.where(["game_type = :game_type AND updated_at < :today", {game_type: params[:game_type], today: Date.today}]);
+          render json: {
+            game_id: game_score.id,
+            high:high,
+            is_success: true,
+            status: :ok
+          }
+          
+          
+          # if GameScore.create!(user_id: current_user.id, score: 0, game_type: params[:game_type], created_at: Date.today)
+          #   render json: {
+          #       game_id: game_score.id,
+          #       high:high,
+          #       is_success: true,
+          #       status: :ok
+          #   }
+          # end
+        end
+
+
+
         desc "Read"
         params do
           requires :game_type
@@ -20,30 +55,7 @@ module API
           }
         end
         
-        desc "Create"
-        params do
-          requires :game_type          
-        end
-
-        post do
-          current_user = User.find_by(authentication_token: headers['Token'])   
-          game_score = GameScore.new
-          game_score.user_id = current_user.id
-          game_score.game_type = params[:game_type]       
-          game_score.score = 0;
-          game_score.created_at = Date.today
-          game_score.save
-
-          high = GameScore.where(["game_type = :game_type AND updated_at < :today", {game_type: params[:game_type], today: Date.today}]);
-          if GameScore.create!(user_id: current_user.id, score: 0, game_type: params[:game_type], created_at: Date.today)
-            render json: {
-                game_id: game_score.id,
-                high:high,
-                is_success: true,
-                status: :ok
-            }
-          end
-        end
+        
         
         desc "Update"
         
