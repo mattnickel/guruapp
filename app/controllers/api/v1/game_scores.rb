@@ -20,10 +20,12 @@ module API
           game_score.created_at = DateTime.current
           game_score.save
 
-          high = GameScore.where(["game_type = :game_type AND updated_at < :today", {game_type: params[:game_type], today: Date.today}]);
+          high = GameScores.get_max_score(params[:game_type], "no");
+          today = GameScores.get_max_score(params[:game_type], "yes");
           render json: {
             game_id: game_score.id,
-            high:high,
+            high: high,
+            today: today,
             is_success: true,
             status: :ok
           }
@@ -46,12 +48,14 @@ module API
           requires :game_type
         end
         get "", :GameScoreSerializer do
-          high = GameScore.where(["game_type = :game_type AND updated_at < :today", {game_type: params[:game_type], today: Date.today}]);
-          today = GameScore.where(["game_type = :game_type AND updated_at = :today", {game_type: params[:game_type], today: Date.today}]);
+          high = GameScores.get_max_score(params[:game_type], "no");
+          today = GameScores.get_max_score(params[:game_type], "yes");
 
           render json: {
             high: high,
-            today: today
+            today: today,
+            is_success: true,
+            status: :ok
           }
         end
         
@@ -64,14 +68,27 @@ module API
           game_score = GameScore.where(["game_type = :game_type AND user_id = :user_id", {game_type: params[:game_type], user_id:current_user.id}])
           new_score = game_score[0].score + params[:score].to_i
           if game_score.update({score: new_score, updated_at: Date.today})
+            high = GameScores.get_max_score(params[:game_type], "no");
+            today = GameScores.get_max_score(params[:game_type], "yes");
+
             render json: {
-              message: "Success",
+              high: high,
+              today: today,
               is_success: true,
               status: :ok
             }
           else
             status 400
           end
+        end
+
+        def get_max_score(game_type, today)
+          sql = "game_type = :game_type AND CAST(game_scores.updated_at as date) #{(today == "yes" ? "=" : "!=")} :today";
+          GameScore.joins(:user)
+            .where([sql, {game_type: game_type, today: Date.today}])
+            .select("users.username", "score")
+            .order(score: :desc)
+            .first()
         end
       end
 
