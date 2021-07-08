@@ -22,7 +22,7 @@ class WeeklyReportJob < ApplicationJob
 	  weekly_stats.save
 
     #Active Users
-    active_users_stat = UserActivityCalculation.select(:user_id)
+    active_users_stat = UserActivity.select(:user_id)
     .where(["active_count > :active_count and created_at > :created_at",
     { active_count: 0, created_at: Date.today-1.week }]).uniq.count
     weekly_stats = WeeklyStat.new
@@ -33,7 +33,7 @@ class WeeklyReportJob < ApplicationJob
 
     
     #Inactive Users
-    inactive_users_this_week = UserActivityCalculation.select(:user_id)
+    inactive_users_this_week = UserActivity.select(:user_id)
     .where(["active_count = :active_count and created_at > :created_at",
     { active_count: 0, created_at: Date.today-1.week }]).uniq.count
     weekly_stats = WeeklyStat.new
@@ -81,7 +81,7 @@ class WeeklyReportJob < ApplicationJob
     
     #Call UserMailer
     subject = "Weekly Report for #{Date.today-1.week} to #{Date.today}"       
-    # UserMailer.report_message(subject,message).deliver
+    UserMailer.report_message(subject,message).deliver
     
          
  	  #WeeklyReportJob.set(wait: 1.week).perform_later()

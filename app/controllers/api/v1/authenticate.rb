@@ -24,8 +24,7 @@ module API
               user_activity.active_count += 1;
               user_activity.created_at = Date.today
               user_activity.save
-
-              user_activity_calculations = UserActivity.find_by(user_id:current_user.id)
+              user_activity_calculations = UserActivityCalculation.find_by(user_id:current_user.id)
               user_activity_calculations.active_count += 1;
               user_activity_calculations.created_at = Date.today
               user_activity_calculations.save 
@@ -37,8 +36,7 @@ module API
               user_activity.active_count = 1;
               user_activity.created_at = Date.today
               user_activity.save
-
-              user_activity_calculations = UserActivity.new
+              user_activity_calculations = UserActivityCalculation.new
               user_activity_calculations.user_id = current_user.id
               user_activity_calculations.active_count = 1;
               user_activity_calculations.created_at = Date.today
