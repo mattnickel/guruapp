@@ -42,7 +42,7 @@ module API
         get "", :GameScoreSerializer do
           high = GameScores.get_max_score(params[:game_type]);
           today = GameScores.get_max_score(params[:game_type], true);
-
+          save_activity(current_user)
           render json: {
             high: high,
             today: today,

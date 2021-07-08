@@ -24,7 +24,7 @@ class API::V1::RegistrationsController < Devise::RegistrationsController
         }, status: 400
       end
     end
-  end
+  
 
   private
 
