@@ -19,6 +19,7 @@ module API
           game_score.score = 0;
           game_score.created_at = DateTime.current
           game_score.save
+          save_activity(current_user)
 
           high = GameScores.get_max_score(params[:game_type], "no");
           today = GameScores.get_max_score(params[:game_type], "yes");
@@ -29,21 +30,12 @@ module API
             is_success: true,
             status: :ok
           }
-          
-          
-          # if GameScore.create!(user_id: current_user.id, score: 0, game_type: params[:game_type], created_at: Date.today)
-          #   render json: {
-          #       game_id: game_score.id,
-          #       high:high,
-          #       is_success: true,
-          #       status: :ok
-          #   }
-          # end
         end
 
 
 
         desc "Read"
+
         params do
           requires :game_type
         end
@@ -80,8 +72,9 @@ module API
           else
             status 400
           end
+          save_activity(current_user)
         end
-
+        
         def get_max_score(game_type, today)
           sql = "game_type = :game_type AND CAST(game_scores.updated_at as date) #{(today == "yes" ? "=" : "!=")} :today";
           GameScore.joins(:user)
@@ -90,6 +83,10 @@ module API
             .order(score: :desc)
             .first()
         end
+
+
+        
+
       end
 
     end
