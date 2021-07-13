@@ -80,6 +80,12 @@ Rails.application.routes.draw do
         post "social_attempts", to: "social_attempts#post"
       end
 
+      scope :game_scores do
+        get "game_scores", to: "game_scores#get"
+        post "game_scores", to: "game_scores#post"
+        put "game_scores", to: "game_scores#update"
+      end
+
 
     end
   end

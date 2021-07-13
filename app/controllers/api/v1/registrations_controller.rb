@@ -1,10 +1,9 @@
 class API::V1::RegistrationsController < Devise::RegistrationsController
-  skip_before_action :verify_authenticity_token, :only => :create
-  before_action :ensure_params_exist, only: :create
-  before_action :valid_email?
-  
-  def create
-    if user_params[:email] != "" && user_params[:username] != ""
+    skip_before_action :verify_authenticity_token, :only => :create
+    before_action :ensure_params_exist, only: :create
+    before_action :valid_email?
+    
+    def create
       @user = User.new user_params
       if @user.save
         if @user.valid_password?(user_params[:password])
@@ -24,21 +23,8 @@ class API::V1::RegistrationsController < Devise::RegistrationsController
           status: :bad_request
         }, status: 400
       end
-    else
-      if user_params[:email] == ""
-        render json: {
-          error: "Email is required.",
-          status: :bad_request
-        }
-      end
-      if user_params[:username] == ""
-        render json: {
-          error: "Username is required.",
-          status: :bad_request
-        }
-      end
     end
-  end
+  
 
   private
 

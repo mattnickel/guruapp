@@ -28,7 +28,6 @@ class UserMailer < ApplicationMailer
 	def report_message(subject, message)
 		@subject = subject
 		@message = message
-
 		mail(to: "limitlessminds@thinkbig-gofar.com", subject: subject)
 		
 	end
