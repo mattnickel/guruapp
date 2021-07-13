@@ -34,8 +34,8 @@ class WeeklyReportJob < ApplicationJob
     
     #Inactive Users
     inactive_users_this_week = UserActivity.select(:user_id)
-    .where(["active_count = :active_count and created_at > :created_at",
-    { active_count: 0, created_at: Date.today-1.week }]).uniq.count
+    .where(["created_at < :created_at",
+    {created_at: Date.today-1.week }]).uniq.count
     weekly_stats = WeeklyStat.new
     weekly_stats.event_stat = inactive_users_this_week
     weekly_stats.description = 'Number of inactive users this week'
