@@ -16,10 +16,12 @@ namespace :guru do
     NewUsersJob.perform_now
   end
 
+
   desc 'Runs: Number of Attempted Shares to Social Media'
   task number_of_attempted_shares_to_social_media: [:environment] do
     NumberOfAttemptedSharesToSocialMediaJob.perform_now
   end
+
 
   #DO NUT RUN
   desc 'Runs: Reset User Activity'
@@ -38,6 +40,7 @@ namespace :guru do
     TotalNumberOfSocialInteractionsJob.perform_now
   end
 
+  
   desc 'Runs: Total Number Of Users'
   task total_number_of_users: [:environment] do
     TotalNumberOfUsersJob.perform_now
@@ -47,11 +50,10 @@ namespace :guru do
   desc 'Runs: Weekly Report'
   #Runs weekly stats
   task weekly_report: [:environment] do
-    WeeklyReportJob.perform_now
-  # Will run every Saturday
-    # if Date.today.wday == 6 
-    #   WeeklyReportJob.perform_now
-    # end 
+    #Will run every Saturday
+    if Date.today.wday == 6 
+      WeeklyReportJob.perform_now
+    end 
   end
 
 
