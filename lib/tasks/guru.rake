@@ -42,7 +42,10 @@ namespace :guru do
 
   desc 'Runs: Three most watched videos of the week'
   task three_most_watched_videos: [:environment] do
-    ThreeMostWatchedVideosJob.perform_now
+    ThreeMostWatchedVideosJob.perform_now  
+    # Will run every Saturday
+    #  if Date.today.wday == 6 
+    #    ThreeMostWatchedVideosJob.perform_now
   end
 
   desc 'Runs: Total Number Of New Social Posts'
@@ -63,10 +66,11 @@ namespace :guru do
   
   desc 'Runs: Weekly Report'
   task weekly_report: [:environment] do
+    WeeklyReportJob.perform_now
   # Will run every Saturday
-    if Date.today.wday == 6 
-      WeeklyReportJob.perform_now
-    end 
+    # if Date.today.wday == 6 
+    #   WeeklyReportJob.perform_now
+    # end 
   end
 
 
