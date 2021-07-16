@@ -1,26 +1,120 @@
 
-<div class = "container">
-	<div class="row dashboard">
-		<div class= "one column sidemenu">
-			<ul style="list-style-type: none">
-				<li>
+<div class = "container"> 
+	<div class="dashboard">
+
+
+
+	  <div class="sidemenu">
+			<ul class = "sidemenu-nav">
+				<li class = "nav-item">
 					<%= link_to videos_path do %>
 						<i class="material-icons md-light dash_icons">video_library</i>
 					<%end%>
 				</li>
 				<li><i class="material-icons md-light dash_icons">chat_bubble</i></li>
+		  </ul> 
 		</div>
-		<div class="columns eight">
-		
-			
-  		
-		</div>
-		<div class="columns three offset-by-eight right_column">
-			<%= react_component("Message", { greeting: "Hello from react-rails."}, class: "dash_note") %>
-			<div class="dash_note"> You have 3 messages.</div>
-		</div>
-		<div class="columns ten">
-				<% link_to 'new module', new_training_module_path, class: "button" %>
+
+		<div class="main">
+		  <div class = "child-title"> My Apps </div>
+			<div class = "main-child1">
+			<div class ="child-card">
+				<div class ="card-content">
+					<div class ="content"> Stats</div>
+				</div>
 			</div>
-	</div>
+			<div class ="child-card">
+				<div class ="card-content">
+					<div class ="content"> Active</div>
+				</div>
+			</div>
+			<div class ="child-card">
+				<div class ="card-content">
+					<div class ="content"> Most Active Day</div>
+				</div>
+			</div>
+			<div class ="child-card">
+				<div class ="card-content">
+					<div class ="content"> Watched Videos</div>
+				</div>
+			</div>
+
+			
+			</div>
+			<div class = "child-title"> Top 3 Videos </div>
+			<div class = "main-child1">
+			<div class ="thumbnail">
+				<div class ="card-content">
+					<div class ="content">1</div>
+				</div>
+			</div>
+			<div class ="thumbnail">
+				<div class ="card-content">
+					<div class ="content">2</div>
+				</div>
+			</div>
+			<div class ="thumbnail">
+				<div class ="card-content">
+					<div class ="content">3</div>
+				</div>
+			</div>
+			
+			
+			
+			
+			</div>
+
+
+
+
+		</div>
+
+		<div class ="border"></div>
+
+		<div class="notif-bar">
+			<%# <%= react_component("Message", { greeting: "Hello from react-rails."}, class: "dash_note") %>
+			<div class ="card">
+				<div class ="card-content">
+					<div class ="content"> You have 5 new messages that need a response</div>
+				</div>
+				<footer class="card-footer">
+					<a href="#" class="card-footer-item dash_link ">Sleep</a>
+      		<a href="#" class="card-footer-item dash_button ">Respond</a>
+				</footer>
+			</div>
+			<div class ="card">
+				<div class ="card-content">
+					<div class ="content"> You have 3 new potential students</div>
+				</div>
+				<footer class="card-footer mt-auto">
+					<a href="#" class="card-footer-item dash_link ">Review</a>
+      		<a href="#" class="card-footer-item dash_button ">Accept</a>
+				</footer>
+			</div>
+			<div class ="card">
+				<div class ="card-content">
+					<div class ="content"> You have 2 new comments</div>
+				</div>
+				<footer class="card-footer">
+					<a href="#" class="card-footer-item dash_link ">Close</a>
+      		<a href="#" class="card-footer-item dash_button ">View</a>
+				</footer>
+			</div>
+			<div class ="card">
+				<div class ="card-content">
+					<div class ="content"> You have 2 unpublished courses</div>
+				</div>
+				<footer class="card-footer">
+		  		<a href="#" class="card-footer-item dash_link ">Ignore</a>
+    			<a href="#" class="card-footer-item dash_button ">Continue</a>
+				</footer>
+			</div>
+		</div>
+
+
+
+
+	
+	
+	</div>	
 </div>
