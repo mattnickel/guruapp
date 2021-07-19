@@ -1,79 +1,82 @@
 
 <div class = "container"> 
 	<div class="dashboard">
-
-
-
-	  <div class="sidemenu">
-			<ul class = "sidemenu-nav">
-				<li class = "nav-item">
-					<%= link_to videos_path do %>
-						<i class="material-icons md-light dash_icons">video_library</i>
-					<%end%>
-				</li>
-				<li><i class="material-icons md-light dash_icons">chat_bubble</i></li>
-		  </ul> 
+		<div id="side-navigation">
+			<div class="sidemenu">
+				<ul class = "sidemenu-nav">
+					<li class = "nav-item">
+						<%= link_to videos_path do %>
+							<i class="material-icons md-light dash_icons">video_library</i>
+						<%end%>
+					</li>
+					<li><i class="material-icons md-light dash_icons">chat_bubble</i></li>
+		  	</ul> 
+			</div>		
 		</div>
 
-		<div class="main">
-		  <div class = "child-title"> My Apps </div>
-			<div class = "main-child1">
-			<div class ="child-card">
-				<div class ="card-content">
-					<div class ="content"> Stats</div>
+		<div id="main">	
+			<div class ="main">
+				<div class = "child-title">My Apps</div>
+				<div class = "app_stats">
+					<div class ="child-card">
+						<div class ="card-content">
+							<div class ="content content-title">Users</div>
+						</div>
+					</div>
+
+					<div class ="child-card">
+						<div class="circle">
+          		<div class="bar"></div>
+          	<div class="box"><span></span></div>
+        		</div>
+					</div>
+
+					<div class ="child-card">
+						<div class ="card-content">
+							<div class ="content content-title">Most Active Day</div>
+						</div>
+					</div>
+
+					<div class ="child-card">
+						<div class ="card-content">
+							<div class ="content content-title">Watched Videos</div>
+						</div>
+					</div>
+				</div>
+
+				<div class = "child-title">Top Videos</div>
+					<div class = "video_stats">
+						<div class ="thumbnail">
+						  <img class = "thumbnail-image" src = "" alt="Insert Video Thumbnail here">
+						  <div class = thumbnail-overlay>
+						   <div class = "video-views-text">112</div>
+							</div>
+						</div>
+						<div class ="thumbnail">
+						  <img class = "thumbnail-image" src = "" alt="Insert Video Thumbnail here">
+						  <div class = thumbnail-overlay>
+						   <div class = "video-views-text" >112</div>
+							</div>
+						</div>
+						</div>
 				</div>
 			</div>
-			<div class ="child-card">
+	
+
+
+
+
+		<div id="notifications">
+			<div class ="notif-card">
 				<div class ="card-content">
-					<div class ="content"> Active</div>
+					<div class ="content"> You have 5 new messages that need a response</div>
 				</div>
+				<footer class="card-footer">
+					<a href="#" class="card-footer-item dash_link ">Sleep</a>
+      		<a href="#" class="card-footer-item dash_link2 ">Respond</a>
+				</footer>				
 			</div>
-			<div class ="child-card">
-				<div class ="card-content">
-					<div class ="content"> Most Active Day</div>
-				</div>
-			</div>
-			<div class ="child-card">
-				<div class ="card-content">
-					<div class ="content"> Watched Videos</div>
-				</div>
-			</div>
-
-			
-			</div>
-			<div class = "child-title"> Top 3 Videos </div>
-			<div class = "main-child1">
-			<div class ="thumbnail">
-				<div class ="card-content">
-					<div class ="content">1</div>
-				</div>
-			</div>
-			<div class ="thumbnail">
-				<div class ="card-content">
-					<div class ="content">2</div>
-				</div>
-			</div>
-			<div class ="thumbnail">
-				<div class ="card-content">
-					<div class ="content">3</div>
-				</div>
-			</div>
-			
-			
-			
-			
-			</div>
-
-
-
-
-		</div>
-
-		<div class ="border"></div>
-
-		<div class="notif-bar">
-			<%# <%= react_component("Message", { greeting: "Hello from react-rails."}, class: "dash_note") %>
-			<div class ="card">
+			<div class ="notif-card">
 				<div class ="card-content">
 					<div class ="content"> You have 5 new messages that need a response</div>
 				</div>
@@ -82,39 +85,24 @@
       		<a href="#" class="card-footer-item dash_button ">Respond</a>
 				</footer>
 			</div>
-			<div class ="card">
-				<div class ="card-content">
-					<div class ="content"> You have 3 new potential students</div>
-				</div>
-				<footer class="card-footer mt-auto">
-					<a href="#" class="card-footer-item dash_link ">Review</a>
-      		<a href="#" class="card-footer-item dash_button ">Accept</a>
-				</footer>
-			</div>
-			<div class ="card">
-				<div class ="card-content">
-					<div class ="content"> You have 2 new comments</div>
-				</div>
-				<footer class="card-footer">
-					<a href="#" class="card-footer-item dash_link ">Close</a>
-      		<a href="#" class="card-footer-item dash_button ">View</a>
-				</footer>
-			</div>
-			<div class ="card">
-				<div class ="card-content">
-					<div class ="content"> You have 2 unpublished courses</div>
-				</div>
-				<footer class="card-footer">
-		  		<a href="#" class="card-footer-item dash_link ">Ignore</a>
-    			<a href="#" class="card-footer-item dash_button ">Continue</a>
-				</footer>
-			</div>
 		</div>
-
-
-
-
-	
-	
-	</div>	
+		
+	</div>
 </div>
+
+
+
+<script>
+
+
+  let options = {
+    startAngle: -1.55,
+    size: 80,
+    value: .85, 
+    fill: {gradient: ['#00e6c7', '#00f3b9']}				
+  }
+  $(".circle .bar").circleProgress(options).on('circle-animation-progress',
+  function(event, progress, stepValue){
+    $(this).parent().find("span").text(String((stepValue*100).toFixed(0)) + "%");
+  });     
+</script>
