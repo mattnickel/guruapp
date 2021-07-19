@@ -39,6 +39,7 @@
 
 					<div class ="child-card">
 						<div class ="card-content">
+						  <div class = "content watch-views">112</div>
 							<div class ="content content-title">Watched Videos</div>
 						</div>
 					</div>
@@ -47,29 +48,25 @@
 				<div class = "child-title">Top Videos</div>
 					<div class = "video_stats">
 						<div class ="thumbnail">
-						  <img class = "thumbnail-image" src = "" alt="Insert Video Thumbnail here">
-						  <div class = thumbnail-overlay>
-						   <div class = "video-views-text">112</div>
+						  <img class = "thumbnail-image" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
+							<div class = thumbnail-overlay>
+						  	<div class = "video-views-text">112</div>
 							</div>
 						</div>
 						<div class ="thumbnail">
-						  <img class = "thumbnail-image" src = "" alt="Insert Video Thumbnail here">
+						  <img class = "thumbnail-image" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
 						  <div class = thumbnail-overlay>
-						   <div class = "video-views-text" >112</div>
+						  	<div class = "video-views-text" >112</div>
 							</div>
 						</div>
-						</div>
-				</div>
+					</div>
 			</div>
+		</div>
 	
-
-
-
-
 		<div id="notifications">
 			<div class ="notif-card">
 				<div class ="card-content">
-					<div class ="content"> You have 5 new messages that need a response</div>
+					<div class ="content"> You have 5 new messages that need a response.</div>
 				</div>
 				<footer class="card-footer">
 					<a href="#" class="card-footer-item dash_link ">Sleep</a>
@@ -78,11 +75,29 @@
 			</div>
 			<div class ="notif-card">
 				<div class ="card-content">
-					<div class ="content"> You have 5 new messages that need a response</div>
+					<div class ="content"> You have 3 new potential students.</div>
 				</div>
 				<footer class="card-footer">
-					<a href="#" class="card-footer-item dash_link ">Sleep</a>
-      		<a href="#" class="card-footer-item dash_button ">Respond</a>
+					<a href="#" class="card-footer-item dash_link ">Review</a>
+      		<a href="#" class="card-footer-item dash_button ">Accept</a>
+				</footer>
+			</div>
+			<div class ="notif-card">
+				<div class ="card-content">
+					<div class ="content"> You have 2 new comments.</div>
+				</div>
+				<footer class="card-footer">
+					<a href="#" class="card-footer-item dash_link ">Close</a>
+      		<a href="#" class="card-footer-item dash_button ">View</a>
+				</footer>
+			</div>
+			<div class ="notif-card">
+				<div class ="card-content">
+					<div class ="content"> You have 2 unpublished courses.</div>
+				</div>
+				<footer class="card-footer">
+					<a href="#" class="card-footer-item dash_link ">Ignore</a>
+      		<a href="#" class="card-footer-item dash_button ">Continue</a>
 				</footer>
 			</div>
 		</div>
@@ -93,7 +108,6 @@
 
 
 <script>
-
 
   let options = {
     startAngle: -1.55,
