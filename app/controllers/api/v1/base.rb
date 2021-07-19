@@ -17,6 +17,7 @@ module API
       mount API::V1::GroupsController
       mount API::V1::SocialAttempts
       mount API::V1::GameScores
+      mount API::V1::Dashboard
 
       helpers do
         def authenticate!

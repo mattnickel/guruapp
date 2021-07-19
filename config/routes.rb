@@ -86,6 +86,9 @@ Rails.application.routes.draw do
         put "game_scores", to: "game_scores#update"
       end
 
+      scope :dashboard do
+        get "dashboard/statistic_summary", to: "dashboard/statistic_summary#get"
+      end
 
     end
   end
