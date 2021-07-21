@@ -7,35 +7,43 @@ module API
         resource :dashboard do
             desc "Get dashboard statistic summary"
             get "statistic_summary" do
-                active_users = UserActivity.where('active_count > 0').count
-
-                videos_viewed = Viewing.select('DISTINCT video_id')
-                                        .where('viewings.created_at > ?', Date.today-1.week).count
-
-                most_active_day = UserActivity.select('created_at')
-                                            .group('created_at')
-                                            .order('SUM(active_count) desc limit 1')
-                total_users = User.count
-
-                top_3_videos = Viewing.joins("INNER JOIN videos ON videos.id = viewings.video_id")
-                                        .select('videos.title, SUM(viewings.last_second_viewed) AS time_viewed')
-                                        .where('viewings.created_at > ?', Date.today-1.week)
-                                        .group('videos.title')
-                                        .order('SUM(viewings.last_second_viewed) desc limit 3')
-
+                data = Dashboard.get_stat
 
                 render json: {
-                    active_user_count: active_users,
-                    video_watched_count: videos_viewed,
-                    most_active_day_week: Dashboard.get_weekday_name(most_active_day[0].created_at.wday),
-                    total_system_user: total_users,
-                    top_3_watched_videos: top_3_videos,
+                    active_user_count: data.active_user_count,
+                    video_watched_count: data.video_watched_count,
+                    most_active_day_week: data.most_active_day,
+                    total_system_user: data.total_user_count,
+                    top_3_watched_videos: data.top_3_videos,
                     is_success: true,
                     status: :ok
                 }
             end
 
-            def get_weekday_name(wday)
+            def self.get_stat
+                data = Stats.new
+
+                data.active_user_count = UserActivity.where('active_count > 0').count
+                data.video_watched_count = Viewing.select('DISTINCT video_id')
+                                                    .where('viewings.created_at > ?', Date.today-1.week).count
+
+                most_active_day = UserActivity.select('created_at')
+                                                .group('created_at')
+                                                .order('SUM(active_count) desc limit 1')
+                data.most_active_day = Dashboard.get_weekday_name(most_active_day[0].created_at.wday)
+
+                data.total_user_count = total_users = User.count
+
+                data.top_3_videos = Viewing.joins("INNER JOIN videos ON videos.id = viewings.video_id")
+                                            .select('videos.title, SUM(viewings.last_second_viewed) AS time_viewed')
+                                            .where('viewings.created_at > ?', Date.today-1.week)
+                                            .group('videos.title')
+                                            .order('SUM(viewings.last_second_viewed) desc limit 3')
+
+                return data
+            end
+
+            def self.get_weekday_name(wday)
                 case wday
                 when 1
                     return "Monday"
@@ -56,5 +64,47 @@ module API
         end
 
       end
+    end
+end
+
+class Stats
+    def active_user_count
+        @active_user_count
+    end
+
+    def active_user_count= active_user_count
+        @active_user_count = active_user_count
+    end
+
+    def video_watched_count
+        @video_watched_count
+    end
+
+    def video_watched_count= video_watched_count
+        @video_watched_count = video_watched_count
+    end
+
+    def most_active_day
+        @most_active_day
+    end
+
+    def most_active_day= most_active_day
+        @most_active_day = most_active_day
+    end
+
+    def total_user_count
+        @total_user_count
+    end
+
+    def total_user_count= total_user_count
+        @total_user_count = total_user_count
+    end
+
+    def top_3_videos
+        @top_3_videos
+    end
+
+    def top_3_videos= top_3_videos
+        @top_3_videos = top_3_videos
     end
 end
