@@ -4,49 +4,93 @@
 		<div id="side-navigation">
 			<div class="sidemenu">
 				<ul class = "sidemenu-nav">
-					<li class = "nav-item">
+					<li>
+						<%= link_to videos_path do %>
+							<i class="material-icons md-light dash_icons">home</i>
+						<%end%>
+					</li>				
+					<li>
 						<%= link_to videos_path do %>
 							<i class="material-icons md-light dash_icons">video_library</i>
 						<%end%>
 					</li>
-					<li><i class="material-icons md-light dash_icons">chat_bubble</i></li>
+					<li>
+					<%= link_to videos_path do %>
+					<i class="material-icons md-light dash_icons">chat_bubble</i>
+					<%end%>
+					</li>
 		  	</ul> 
 			</div>		
 		</div>
 
 		<div id="main">	
-			<div class ="main">
-				<div class = "child-title">My Apps</div>
-				<div class = "app_stats">
-					<div class ="child-card">
-						<div class ="card-content">
-							<div class ="content content-title">Users</div>
+			<section class ="main-content">
+				<div id = "app_stats">
+					<div class = "child-title">My Apps</div>
+					<div class ="app_stats_body">
+						<div class ="child-card">
+							<div class ="card-content">
+							  
+								<div class ="content content-title">Users</div>
+							</div>
 						</div>
-					</div>
 
-					<div class ="child-card">
-						<div class="circle">
-          		<div class="bar"></div>
-          	<div class="box"><span></span></div>
-        		</div>
-					</div>
-
-					<div class ="child-card">
-						<div class ="card-content">
+						<div class ="child-card">
+							<div class="circle">
+          			<div class="bar"></div>
+          			<div class="box"><span></span></div>
+        			</div>
+						</div>
+						<div class ="child-card">
+							<img src = <%=asset_path("sun_icon.png")%>>
+							<div> Saturday </div>
 							<div class ="content content-title">Most Active Day</div>
 						</div>
-					</div>
-
-					<div class ="child-card">
+						<div class ="child-card">
 						<div class ="card-content">
-						  <div class = "content watch-views">112</div>
+						  <div class = "content content-title">112</div>
 							<div class ="content content-title">Watched Videos</div>
 						</div>
 					</div>
+
+					</div>
 				</div>
 
-				<div class = "child-title">Top Videos</div>
-					<div class = "video_stats">
+
+				<div id = "top_videos">
+					<div class = "child-title">Top Videos</div>
+					<div class = "top_videos_body">
+						<div class = "tn-scroll-outer-container">
+							
+								<div class ="thumbnail">
+						  		<img class = "thumbnail-image" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
+									<div class = thumbnail-overlay>
+						  			<div class = "video-views-text">112</div>
+									</div>
+								</div>
+								<div class ="thumbnail">
+						  		<img class = "thumbnail-image" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
+						  		<div class = thumbnail-overlay>
+						  			<div class = "video-views-text" >112</div>
+									</div>
+								</div>
+								<div class ="thumbnail">
+						  		<img class = "thumbnail-image" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
+						  		<div class = thumbnail-overlay>
+						  			<div class = "video-views-text" >112</div>
+									</div>
+								</div>
+							
+							
+						</div>							
+					</div>
+				</div> 
+					
+				
+						
+				<div id = "my_channel_view">
+					<div class = "child-title">My Channel</div>
+					<div class = "my_channel_view_body">
 						<div class ="thumbnail">
 						  <img class = "thumbnail-image" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
 							<div class = thumbnail-overlay>
@@ -60,7 +104,12 @@
 							</div>
 						</div>
 					</div>
-			</div>
+				
+				</div>
+				
+				
+													
+			</section>
 		</div>
 	
 		<div id="notifications">
