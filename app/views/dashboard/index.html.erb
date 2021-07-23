@@ -1,65 +1,70 @@
-
-<div class = "container"> 
-	<div class="dashboard">
-		<div id="side-navigation">
-			<div class="sidemenu">
+<div class = "container">
+	
+	<div class ="dashboard">
+		
+		<div id ="side-navigation">
+			<nav class = "sidemenu">
 				<ul class = "sidemenu-nav">
 					<li>
 						<%= link_to videos_path do %>
-							<i class="material-icons md-light dash_icons">home</i>
+							<span class="material-icons-outlined md-34 md-light dash_icons">home</span>
 						<%end%>
 					</li>				
 					<li>
 						<%= link_to videos_path do %>
-							<i class="material-icons md-light dash_icons">video_library</i>
+							<span class="material-icons md-34 md-light dash_icons">video_library</span>
 						<%end%>
 					</li>
 					<li>
 					<%= link_to videos_path do %>
-					<i class="material-icons md-light dash_icons">chat_bubble</i>
+					<span class="material-icons md-34 md-light dash_icons">chat_bubble</span>
 					<%end%>
 					</li>
-		  	</ul> 
-			</div>		
+				</ul>
+			</nav>
 		</div>
-
-		<div id="main">	
-			<section class ="main-content">
-				<div id = "app_stats">
-					<div class = "child-title">My Apps</div>
-					<div class ="app_stats_body">
-						<div class ="child-card">
+			
+		
+		<div id = "main">
+			<div class = "main-content">
+				<section id = "app_stats">
+					<h6 class = "stat-title"> App Stats </h6>
+					<div class = "body-content app-stats-body">
+						<div class = "card app-stats-card">
 							<div class ="card-content">
-							  
-								<div class ="content content-title">Users</div>
+								<p class = "content stats-text"><%=@total_system_user%></p>						  
+								<p class ="label users-label">Users</p>
 							</div>
 						</div>
 
-						<div class ="child-card">
-							<div class="circle">
-          			<div class="bar"></div>
-          			<div class="box"><span></span></div>
-        			</div>
+						<div class = "card app-stats-card">
+							<div class ="card-content">
+								<div class="content circle">
+          				<div class="bar"></div>
+          				<div class="box"><span></span></div>
+        				</div>	
+							</div>									
 						</div>
-						<div class ="child-card">
-							<img src = <%=asset_path("sun_icon.png")%>>
-							<div> Saturday </div>
-							<div class ="content content-title">Most Active Day</div>
+						<div class = "card app-stats-card">
+								<div class ="card-content">
+									<img src = <%=asset_path("sun_icon.png")%> >
+									<p class = "content day-text"><%=@most_active_day_week%></p>
+									<p class ="label most-active-label">Most Active Day</p>
+								</div>
 						</div>
-						<div class ="child-card">
-						<div class ="card-content">
-						  <div class = "content watch-views"><%=@video_watched_count%></div>
-							<div class ="content content-title">Watched Videos</div>
+						<div class = "card app-stats-card">
+							<div class ="card-content">
+						  	<p class = "content watch-views"><%=@video_watched_count%></p>
+								<p class ="label watch-label">Watched Videos</p>
+							</div>						
 						</div>
 					</div>
-
-					</div>
-				</div>
+				</section>
 
 
-				<div id = "top_videos">
-					<div class = "child-title">Top Videos</div>
-					<div class = "top_videos_body">
+				<section id = "top_videos">
+					<h6 class = "stat-title">Top Videos</h6>
+					<div class = "body-content top-videos-body">
 						<div class = "tn-scroll-outer-container">
 							
 								<div class ="thumbnail">
@@ -79,22 +84,19 @@
 						  		<div class = thumbnail-overlay>
 						  			<div class = "video-views-text" >112</div>
 									</div>
-								</div>
-							
-							
+								</div>	
 						</div>							
 					</div>
-				</div> 
-					
-				
-						
-				<div id = "my_channel_view">
-					<div class = "child-title">My Channel</div>
-					<div class = "my_channel_view_body">
+				</section>
+
+
+				<section id = "my_channel_view">
+					<h6 class = "stat-title">My Channel</h6>
+					<div class = "body-content my-channel-view-body">
 						<div class ="thumbnail">
-						  <img class = "thumbnail-image" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
-							<div class = thumbnail-overlay>
-						  	<div class = "video-views-text">112</div>
+						  <img class = "thumbnail-image" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
+						  <div class = thumbnail-overlay>
+						  	<div class = "video-views-text" >112</div>
 							</div>
 						</div>
 						<div class ="thumbnail">
@@ -104,64 +106,66 @@
 							</div>
 						</div>
 					</div>
-				
+				</section>
+			</div>
+		</div>
+
+		<div id = "notifications">
+			<div class = "notifications-body">			
+				<div class ="card notif-card">
+					<div class ="card-content notif-card-content">
+						<p class ="content notif-text"> You have 5 new messages that need a response.</p>
+						<footer class="card-footer">
+							<a href="#" class="card-footer-item dash_link ">Sleep</a>
+      				<a href="#" class="card-footer-item dash_link2 ">Respond</a>
+						</footer>
+					</div>				
 				</div>
-				
-				
-													
-			</section>
+				<div class ="card notif-card">
+					<div class ="card-content notif-card-content">
+						<p class ="content notif-text"> You have 3 new potential students.</p>
+					
+						<footer class="card-footer">
+							<a href="#" class="card-footer-item dash_link ">Review</a>
+      				<a href="#" class="card-footer-item dash_button ">Accept</a>
+						</footer>	
+					</div>				
+				</div>	
+				<div class ="card notif-card">
+					<div class ="card-content notif-card-content">
+						<p class ="content notif-text"> You have 2 new comments.</p>
+						<footer class="card-footer">
+							<a href="#" class="card-footer-item dash_link ">Close</a>
+      				<a href="#" class="card-footer-item dash_button ">View</a>
+					</div>
+				</footer>				
+				</div>
+				<div class ="card notif-card">
+					<div class ="card-content notif-card-content">
+						<p class ="content notif-text"> You have 3 new potential students.</p>
+						<footer class="card-footer">
+							<a href="#" class="card-footer-item dash_link ">Ignore</a>
+      				<a href="#" class="card-footer-item dash_button ">Continue</a>
+						</footer>
+					</div>				
+				</div>			
+			</div>
 		</div>
 	
-		<div id="notifications">
-			<div class ="notif-card">
-				<div class ="card-content">
-					<div class ="content"> You have 5 new messages that need a response.</div>
-				</div>
-				<footer class="card-footer">
-					<a href="#" class="card-footer-item dash_link ">Sleep</a>
-      		<a href="#" class="card-footer-item dash_link2 ">Respond</a>
-				</footer>				
-			</div>
-			<div class ="notif-card">
-				<div class ="card-content">
-					<div class ="content"> You have 3 new potential students.</div>
-				</div>
-				<footer class="card-footer">
-					<a href="#" class="card-footer-item dash_link ">Review</a>
-      		<a href="#" class="card-footer-item dash_button ">Accept</a>
-				</footer>
-			</div>
-			<div class ="notif-card">
-				<div class ="card-content">
-					<div class ="content"> You have 2 new comments.</div>
-				</div>
-				<footer class="card-footer">
-					<a href="#" class="card-footer-item dash_link ">Close</a>
-      		<a href="#" class="card-footer-item dash_button ">View</a>
-				</footer>
-			</div>
-			<div class ="notif-card">
-				<div class ="card-content">
-					<div class ="content"> You have 2 unpublished courses.</div>
-				</div>
-				<footer class="card-footer">
-					<a href="#" class="card-footer-item dash_link ">Ignore</a>
-      		<a href="#" class="card-footer-item dash_button ">Continue</a>
-				</footer>
-			</div>
-		</div>
-		
-	</div>
+	
+	</div>	
 </div>
 
 
 
-<script>
+<script type="text/javascript">
+
+	var active_user_percent = parseInt("<%=@active_user_count%>") / parseInt("<%=@total_system_user%>")
 
   let options = {
     startAngle: -1.55,
     size: 80,
-    value: .85, 
+    value: active_user_percent, 
     fill: {gradient: ['#00e6c7', '#00f3b9']}		
 				
   }

@@ -8,5 +8,10 @@ class DashboardController < ApplicationController
 	data = API::V1::Dashboard.get_stat
 
 	@video_watched_count = data.video_watched_count
+	@active_user_count = data.active_user_count
+	@most_active_day_week = data.most_active_day
+	@total_system_user = data.total_user_count
+	@top_3_watched_videos = data.top_3_videos
+
   end
 end
