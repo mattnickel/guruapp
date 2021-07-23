@@ -225,9 +225,13 @@ grid-area: main;
   min-width: 20rem;	
 }
 
+//scrolling 
 .tn-scroll-outer-container{
 	display: flex;
-  overflow-x: auto;
+  position: relative;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
 	padding: 0px;
 	gap: 1rem;
 	width: 100%;
@@ -236,6 +240,7 @@ grid-area: main;
 .tn-scroll-outer-container::-webkit-scrollbar{
 	display:none;
 }
+
 
 /* || MY CHANNEL*/
 
