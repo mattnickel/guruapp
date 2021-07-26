@@ -66,28 +66,30 @@
 					<h6 class = "stat-title">Top Videos</h6>
 					<div class = "body-content top-videos-body">
 						<div class = "tn-scroll-outer-container">
-								<%# <button id="slideBack" type="button">Prev</button>
-    						<button id="slide" type="button">Next</button> %>
-								<div class ="thumbnail">
-						  		<img class = "thumbnail-image" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
-									<div class = thumbnail-overlay>
-						  			<div class = "video-views-text">112</div>
-									</div>
+							<%# <button id="slideBack" type="button">Prev</button>
+    					<button id="slide" type="button">Next</button> %>
+							<div class ="thumbnail">
+								<img class = "thumbnail-image" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
+								<div class = "thumbnail-overlay">
+									<p class = "overlay-text video-views-count">112</p>
 								</div>
-								<div class ="thumbnail">
-						  		<img class = "thumbnail-image" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
-						  		<div class = thumbnail-overlay>
-						  			<div class = "video-views-text" >112</div>
-									</div>
+							</div>
+							<div class ="thumbnail">
+								<img class = "thumbnail-image" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
+								<div class = "thumbnail-overlay">
+									<p class = "overlay-text video-views-count">112</p>
 								</div>
-								<div class ="thumbnail">
-						  		<img class = "thumbnail-image" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
-						  		<div class = thumbnail-overlay>
-						  			<div class = "video-views-text" >112</div>
-									</div>
-								</div>	
-						</div>							
+							</div>
+							<div class ="thumbnail">
+								<img class = "thumbnail-image" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
+								<div class = "thumbnail-overlay">
+									<p class = "overlay-text video-views-count">112</p>
+								</div>
+							</div>	
+						</div>
+											
 					</div>
+							
 				</section>
 
 
@@ -96,14 +98,21 @@
 					<div class = "body-content my-channel-view-body">
 						<div class ="thumbnail">
 						  <img class = "thumbnail-image" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
-						  <div class = thumbnail-overlay>
-						  	<div class = "video-views-text" >112</div>
+						  <div class = "thumbnail-overlay">
+								<p class = "overlay-text video-stat">Most Watched</p>
+						  	<p class = "overlay-text video-views-count" >112</p>
+								
 							</div>
 						</div>
 						<div class ="thumbnail">
 						  <img class = "thumbnail-image" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
-						  <div class = thumbnail-overlay>
-						  	<div class = "video-views-text" >112</div>
+						  <div class = "thumbnail-overlay">
+								<p class = "overlay-text video-stat">Most Recent</p>
+						  	<p class = "overlay-text video-views-count">112</p>
+								<div class = "overlay-text video-details">
+									<p class = "video-text video-title">This is a very very very long video title</p>
+									<p class = "video-text video-author">Video author</p>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -189,6 +198,3 @@
 });
 
 </script>
-
-
-

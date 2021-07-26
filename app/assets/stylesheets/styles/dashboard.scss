@@ -280,6 +280,8 @@ grid-area: main;
 	height: 100%;
 	width: 100%;
 	opacity: 1;
+	display: flex;
+  justify-content: center;
 	// background-color:#1a17198c;
 	border-radius: 2rem;
   border-width: .2rem;
@@ -293,19 +295,57 @@ grid-area: main;
 // 	border-width: .1rem;
 // }
 
-.video-views-text{
-	font-size: 2rem;
+.overlay-text{
 	color: #ffffff;
+	position:absolute;
+	display: flex;
+  justify-content: center;
+}
+
+.video-views-count{
+	font-size: 1.8rem;
 	background-color: #00f3b9;
 	border-radius: 50%;
-	width: 5rem;
-	height: 5rem;
-	position:absolute;
+	width: 4rem;
+	height: 4rem;
 	top: .5rem;
   right: 0.5rem;
+	align-items: center;	
+}
+
+.video-stat{
+	background-color: #000000;
+	top: 2rem;
+  left: 0;
+	font-size: 1.5rem;
+	width: 12rem;
+	height: 2.5rem;	
+	
+}
+
+.video-details {
+	background-color: #00000000;
+  width: 90%;
+	height: 6rem;
+  bottom: 0;
 	display: flex;
-  align-items: center;
-  justify-content: center;
+	flex-direction: column;
+	position: absolute;		
+	text-transform: capitalize;	
+}
+
+.video-text{
+	line-height: 1.75rem;
+		
+}
+
+.video-title{
+	font-size: 1.25rem;	
+		
+}
+
+.video-author{
+	font-size: .75rem;
 }
 
 
