@@ -5,18 +5,14 @@
 		<div class ="sidemenu">
 			<nav class = "sidemenu-nav">
 				<ul class = "sidemenu-nav__list">
-					<li class = "sidemenu-nav__list-item is-active">
-						<%# <%= link_to videos_path do %>
-							<a data-switcher data-tab ="1" class="material-icons-outlined md-34 md-light dash_icons ">home</a>
-							
-						<%# <%end%> 
+					<li class = "sidemenu-nav__list-item nav-item is-active">
+							<a data-switcher data-tab ="1" class="material-icons-outlined md-34 md-light dash_icons">home</a>
 					</li>				
-					<li class = "sidemenu-nav__list-item">
-						<%# <%= link_to videos_path do %>
+					<li class = "sidemenu-nav__list-item nav-item">
 							<a data-switcher data-tab ="2" class="material-icons md-34 md-light dash_icons">video_library</a>
-						<%# <%end%> 
+					
 					</li>
-					<li class = "sidemenu-nav__list-item">
+					<li class = "sidemenu-nav__list-item nav-item">
 					<%= link_to videos_path do %>
 					<span class="material-icons md-34 md-light dash_icons">chat_bubble</span>
 					<%end%>
@@ -27,7 +23,7 @@
 			
 		
 		<div class = "main">
-			<div data-page = "1" class = "page app-overview-page app-overview-page--grid">
+			<div data-page = "1" class = "page is-active app-overview-page app-overview-page--grid">
 				<section id = "app_stats">
 					<h6 class = "section-title"> App Stats </h6>
 					<div class = "body-content app-stats__body">
@@ -129,7 +125,63 @@
 				</section>
 			</div>
 
-			<div data-page = "2">MY channel page</div>
+			<div data-page = "2" class = "page my-channel-page">
+			
+					<div class ="my-channel-body"> 
+					<h6 class = "my-channel-header-text">My Channel</h6>
+					<section id = "up_video">
+						<div class = "up-video-body mc-grid-style">
+							<div class = "upload-area"> Upload area Here</div>	
+								
+					
+						</div>
+							
+					</section>
+					<section id = "pub_videos">
+						<h6 class = "section-title">Published Videos</h6>
+						<div class = "body-content pub-videos-body mc-grid-style">
+							<div class ="mc-thumbnail">
+								<img class = "thumbnail__image" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
+								<div class = "thumbnail__image--overlay">
+									<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section id = "un_pub_videos">
+						<h6 class = "section-title">Unpublished Videos</h6>
+						<div class = "body-content un-pub-videos-body mc-grid-style">
+							<div class ="mc-thumbnail">
+								<img class = "thumbnail__image un-pub-img" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
+								<div class = "thumbnail__image--overlay">
+									<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
+								</div>
+							</div>
+							<div class ="mc-thumbnail">
+								<img class = "thumbnail__image un-pub-img" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
+								<div class = "thumbnail__image--overlay">
+									<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
+								</div>
+							</div>
+							<div class ="mc-thumbnail">
+								<img class = "thumbnail__image un-pub-img" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
+								<div class = "thumbnail__image--overlay">
+									<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
+								</div>
+							</div>
+							<div class ="mc-thumbnail">
+								<img class = "thumbnail__image un-pub-img" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
+								<div class = "thumbnail__image--overlay">
+									<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
+								</div>
+							</div>
+						
+							
+							
+					</section>
+					</div>
+					
+				</div> 
 		</div>
 
 		<div class = "notifications">
@@ -242,3 +294,31 @@ function sideScroll(element,direction,speed,distance,step){
 }
 </script> %>
 
+<%# Page-switching %>
+<script>
+window.onload = function () {
+    const tab_switchers = document.querySelectorAll('[data-switcher]');
+
+    for (let i = 0; i < tab_switchers.length; i++) {
+        const tab_switcher = tab_switchers[i];
+        const page_id = tab_switcher.dataset.tab;
+
+        tab_switcher.addEventListener('click', function () {
+            document.querySelector('.sidemenu-nav__list-item.is-active').classList.remove('is-active');
+            tab_switcher.parentNode.classList.add('is-active');
+
+            SwitchPage(page_id);
+        });
+    }
+}
+
+function SwitchPage (page_id) {
+    console.log(page_id);
+
+    const current_page = document.querySelector('.main .page.is-active');
+    current_page.classList.remove('is-active');
+
+    const next_page = document.querySelector(`.main .page[data-page="${page_id}"]`);
+    next_page.classList.add('is-active');
+}
+</script>

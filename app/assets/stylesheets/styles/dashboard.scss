@@ -271,7 +271,6 @@ grid-area: main;
 
 /* || MY CHANNEL VIEW*/
 
-
 .mc-grid-style{
 	display:grid;
 	grid-gap: 1rem;
@@ -469,6 +468,61 @@ display: grid;
 }
 
 .un-pub-img{
+//
+}
+
+.upload-area{
+	background-color: grey;
+	width: 400px;
+	height: 300px;
+}
+
+
+
+
+
+/* || MY CHANNEL PAGE */
+
+
+.my-channel-page{
+	display: flex;
+	justify-content: start;
+	flex-wrap: wrap;
+	flex-direction: column;	
+	border-right: medium solid rgba(216, 216, 216, 0.11);
+	border-width: .1rem;
+	height: 600px;
+	margin-right: 3%;
+  padding-right: 1%;
+	overflow-y: scroll;
+}
+
+#up_video {
+	grid-area: up_video ;
+}
+
+#pub_videos{
+	grid-area: pub_videos;
+}
+
+#un_pub_videos{
+	grid-area: un_pub_videos;
+}
+
+.up-video-body{
+height: 300px;
+}
+
+.pub-videos-body{
+	
+}
+
+.un-pub-videos-body{
+	
+display: grid;
+}
+
+.un-pub-img{
 
 }
 
@@ -594,3 +648,29 @@ display: grid;
   transition: all 0.1s;
 }
 
+/*|| PAGE-SWITCHING*/
+
+.nav-item a[data-switcher]{
+
+	cursor: pointer;
+}
+
+.nav-item:hover a[data-switcher]{
+		background-color: #65fadf;
+    border:2px solid #cbf0ea;
+		border-style: solid;	
+}
+
+
+.nav-item.is-active a[data-switcher]{
+	background-color: #50beaa;
+		
+}
+
+.main .page{
+	display: none;
+}
+
+.main .page.is-active{
+	display:grid;
+}
