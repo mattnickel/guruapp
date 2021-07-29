@@ -1,21 +1,22 @@
 <div class = "container">
 	
-	<div class ="dashboard">
+	<div class ="dashboard dashboard--grid dashboard__bg-img">
 		
-		<div id ="side-navigation">
-			<nav class = "sidemenu">
-				<ul class = "sidemenu-nav">
-					<li>
-						<%= link_to videos_path do %>
-							<span class="material-icons-outlined md-34 md-light dash_icons">home</span>
-						<%end%>
+		<div class ="sidemenu">
+			<nav class = "sidemenu-nav">
+				<ul class = "sidemenu-nav__list">
+					<li class = "sidemenu-nav__list-item is-active">
+						<%# <%= link_to videos_path do %>
+							<a data-switcher data-tab ="1" class="material-icons-outlined md-34 md-light dash_icons ">home</a>
+							
+						<%# <%end%> 
 					</li>				
-					<li>
-						<%= link_to videos_path do %>
-							<span class="material-icons md-34 md-light dash_icons">video_library</span>
-						<%end%>
+					<li class = "sidemenu-nav__list-item">
+						<%# <%= link_to videos_path do %>
+							<a data-switcher data-tab ="2" class="material-icons md-34 md-light dash_icons">video_library</a>
+						<%# <%end%> 
 					</li>
-					<li>
+					<li class = "sidemenu-nav__list-item">
 					<%= link_to videos_path do %>
 					<span class="material-icons md-34 md-light dash_icons">chat_bubble</span>
 					<%end%>
@@ -25,19 +26,19 @@
 		</div>
 			
 		
-		<div id = "main">
-			<div class = "main-content">
+		<div class = "main">
+			<div data-page = "1" class = "page app-overview-page app-overview-page--grid">
 				<section id = "app_stats">
-					<h6 class = "stat-title"> App Stats </h6>
-					<div class = "body-content app-stats-body">
-						<div class = "card app-stats-card">
+					<h6 class = "section-title"> App Stats </h6>
+					<div class = "body-content app-stats__body">
+						<div class = "card app-stats__card">
 							<div class ="card-content">
 								<p class = "content stats-text"><%=@total_system_user%></p>						  
 								<p class ="label users-label">Users</p>
 							</div>
 						</div>
 
-						<div class = "card app-stats-card">
+						<div class = "card app-stats__card">
 							<div class ="card-content">
 								<div class="content circle">
           				<div class="bar"></div>
@@ -45,14 +46,14 @@
         				</div>	
 							</div>									
 						</div>
-						<div class = "card app-stats-card">
+						<div class = "card app-stats__card">
 								<div class ="card-content">
 									<img src = <%=asset_path("sun_icon.png")%> >
 									<p class = "content day-text"><%=@most_active_day_week%></p>
 									<p class ="label most-active-label">Most Active Day</p>
 								</div>
 						</div>
-						<div class = "card app-stats-card">
+						<div class = "card app-stats__card">
 							<div class ="card-content">
 						  	<p class = "content watch-views"><%=@video_watched_count%></p>
 								<p class ="label watch-label">Watched Videos</p>
@@ -62,30 +63,39 @@
 				</section>
 
 
-				<section id = "top_videos">
-					<h6 class = "stat-title">Top Videos</h6>
-					<div class = "body-content top-videos-body">
-						<div class = "tn-scroll-outer-container">
-							<%# <button id="slideBack" type="button">Prev</button>
-    					<button id="slide" type="button">Next</button> %>
+				<section id = "top_videos" class = "top-videos-container">
+					
+					<h6 class = "section-title">Top Videos</h6>
+					<div class = "body-content top-videos__body">
+						
+						<%# <div class = "top-videos__body-overlay">
+							<button id="slideBack" type="button left-button">Prev</button>
+    					<button id="slide" type="button right-button">Next</button>
+						</div> %>
+						
+						<div id = "tn-scroll-outer-container" class = "tn-scroll-outer-container">
 							<div class ="thumbnail">
-								<img class = "thumbnail-image" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
-								<div class = "thumbnail-overlay">
-									<p class = "overlay-text video-views-count">112</p>
+								<img class = "thumbnail__image" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
+								<div class = "thumbnail__image--overlay">
+									<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
 								</div>
 							</div>
+						
+						
 							<div class ="thumbnail">
-								<img class = "thumbnail-image" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
-								<div class = "thumbnail-overlay">
-									<p class = "overlay-text video-views-count">112</p>
+								<img class = "thumbnail__image" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
+								<div class = "thumbnail__image--overlay">
+									<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
 								</div>
 							</div>
+						
 							<div class ="thumbnail">
-								<img class = "thumbnail-image" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
-								<div class = "thumbnail-overlay">
-									<p class = "overlay-text video-views-count">112</p>
+								<img class = "thumbnail__image" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
+								<div class = "thumbnail__image--overlay">
+									<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
 								</div>
 							</div>	
+						
 						</div>
 											
 					</div>
@@ -94,68 +104,70 @@
 
 
 				<section id = "my_channel_view">
-					<h6 class = "stat-title">My Channel</h6>
+					<h6 class = "section-title">My Channel</h6>
 					<div class = "body-content my-channel-view-body">
 						<div class ="thumbnail">
-						  <img class = "thumbnail-image" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
-						  <div class = "thumbnail-overlay">
-								<p class = "overlay-text video-stat">Most Watched</p>
-						  	<p class = "overlay-text video-views-count" >112</p>
+						  <img class = "thumbnail__image" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
+						  <div class = "thumbnail__image--overlay">
+								<p class = "thumbnail__image--overlay-text thumbnail-video-stat">Most Watched</p>
+						  	<p class = "thumbnail__image--overlay-text thumbnail__video-views-count" >112</p>
 								
 							</div>
 						</div>
 						<div class ="thumbnail">
-						  <img class = "thumbnail-image" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
-						  <div class = "thumbnail-overlay">
-								<p class = "overlay-text video-stat">Most Recent</p>
-						  	<p class = "overlay-text video-views-count">112</p>
-								<div class = "overlay-text video-details">
-									<p class = "video-text video-title">This is a very very very long video title</p>
-									<p class = "video-text video-author">Video author</p>
+						  <img class = "thumbnail__image" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
+						  <div class = "thumbnail__image--overlay">
+								<p class = "thumbnail__image--overlay-text thumbnail-video-stat">Most Recent</p>
+						  	<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
+								<div class = "thumbnail__image--overlay-text thumbnail-video__details">
+									<p class = "thumbnail-video__text thumbnail-video__title">This is a very very very long video title</p>
+									<p class = "thumbnail-video__text thumbnail-video__author">Video author</p>
 								</div>
 							</div>
 						</div>
 					</div>
 				</section>
 			</div>
+
+			<div data-page = "2">MY channel page</div>
 		</div>
 
-		<div id = "notifications">
-			<div class = "notifications-body">			
+		<div class = "notifications">
+			<div class = "notifications__body">			
 				<div class ="card notif-card">
-					<div class ="card-content notif-card-content">
-						<p class ="content notif-text"> You have 5 new messages that need a response.</p>
+					<div class ="card-content notif-card__content">
+						<p class ="content notif-card__text"> You have 5 new messages that need a response.</p>
 						<footer class="card-footer">
-							<a href="#" class="card-footer-item dash_link ">Sleep</a>
-      				<a href="#" class="card-footer-item dash_link2 ">Respond</a>
+							<a href="#" class="card-footer__item dash_link ">Sleep</a>
+      				<a href="#" class="card-footer__item dash_link2 ">Respond</a>
 						</footer>
 					</div>				
 				</div>
 				<div class ="card notif-card">
-					<div class ="card-content notif-card-content">
-						<p class ="content notif-text"> You have 3 new potential students.</p>
+					<div class ="card-content notif-card__content">
+						<p class ="content notif-card__text"> You have 3 new potential students.</p>
 					
 						<footer class="card-footer">
-							<a href="#" class="card-footer-item dash_link ">Review</a>
-      				<a href="#" class="card-footer-item dash_button ">Accept</a>
+							<a href="#" class="card-footer__item dash_link ">Review</a>
+      				<a href="#" class="card-footer__item dash_button ">Accept</a>
 						</footer>	
 					</div>				
 				</div>	
 				<div class ="card notif-card">
-					<div class ="card-content notif-card-content">
-						<p class ="content notif-text"> You have 2 new comments.</p>
+					<div class ="card-content notif-card__content">
+						<p class ="content notif-card__text"> You have 2 new comments.</p>
 						<footer class="card-footer">
-							<a href="#" class="card-footer-item dash_link ">Close</a>
-      				<a href="#" class="card-footer-item dash_button ">View</a>
+							<a href="#" class="card-footer__item dash_link ">Close</a>
+      				<a href="#" class="card-footer__item dash_button ">View</a>
 					</div>
 				</footer>				
 				</div>
 				<div class ="card notif-card">
-					<div class ="card-content notif-card-content">
-						<p class ="content notif-text"> You have 3 new potential students.</p>
+					<div class ="card-content notif-card__content">
+						<p class ="content notif-card__text"> You have 3 new potential students.</p>
 						<footer class="card-footer">
-							<a href="#" class="card-footer-item dash_link ">Ignore</a>
-      				<a href="#" class="card-footer-item dash_button ">Continue</a>
+							<a href="#" class="card-footer__item dash_link ">Ignore</a>
+      				<a href="#" class="card-footer__item dash_button ">Continue</a>
 						</footer>
 					</div>				
 				</div>			
@@ -198,3 +210,35 @@
 });
 
 </script>
+
+<script></script>
+<%# button scroll top-videos %>
+<%# <script>
+var button = document.getElementById('slide');
+button.onclick = function () {
+    var container = document.getElementById("tn-scroll-outer-container");
+    sideScroll(container,'right',25,100,10);
+};
+
+var back = document.getElementById('slideBack');
+back.onclick = function () {
+    var container = document.getElementById("tn-scroll-outer-container");
+    sideScroll(container,'left',25,100,10);
+};
+
+function sideScroll(element,direction,speed,distance,step){
+    scrollAmount = 0;
+    var slideTimer = setInterval(function(){
+        if(direction == 'left'){
+            element.scrollLeft -= step;
+        } else {
+            element.scrollLeft += step;
+        }
+        scrollAmount += step;
+        if(scrollAmount >= distance){
+            window.clearInterval(slideTimer);
+        }
+    }, speed);
+}
+</script> %>
+
