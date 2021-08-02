@@ -6,7 +6,7 @@ module API
 
         resource :dashboard do
             desc "Get dashboard statistic summary"
-            get "statistic_summary" do
+            get "statistic_summary", :VideoSerializer do
                 data = Dashboard.get_stat
 
                 render json: {
@@ -34,11 +34,18 @@ module API
 
                 data.total_user_count = total_users = User.count
 
-                data.top_3_videos = Viewing.joins("INNER JOIN videos ON videos.id = viewings.video_id")
-                                            .select('videos.title, SUM(viewings.last_second_viewed) AS time_viewed')
+                top_3_views = Viewing.joins("INNER JOIN videos ON videos.id = viewings.video_id")
+                                            .select('videos.id, videos.title, SUM(viewings.last_second_viewed) AS time_viewed')
                                             .where('viewings.created_at > ?', Date.today-1.week)
-                                            .group('videos.title')
+                                            .group('videos.id, videos.title')
                                             .order('SUM(viewings.last_second_viewed) desc limit 3')
+                
+                data.top_3_videos = [];
+                                            
+                top_3_views.each do | viewed_video |
+                    video = Video.find(viewed_video.id)
+                    data.top_3_videos.push(video.image_file)
+                end
 
                 return data
             end
