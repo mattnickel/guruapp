@@ -63,12 +63,13 @@
 					
 					<h6 class = "section-title">Top Videos</h6>
 					<div class = "body-content top-videos__body">
-						
-						<%# <div class = "top-videos__body-overlay">
-							<button id="slideBack" type="button left-button">Prev</button>
-    					<button id="slide" type="button right-button">Next</button>
-						</div> %>
-						
+						<div class="left-arrow">
+							<div id="slideBack" class = "left-arrow--style" alt = "Previous">
+								<div class="left-arrow__button"> < </div>
+							</div>
+						</div>
+							
+										
 						<div id = "tn-scroll-outer-container" class = "tn-scroll-outer-container">
 							<div class ="thumbnail">
 								<img class = "thumbnail__image" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
@@ -90,9 +91,18 @@
 								<div class = "thumbnail__image--overlay">
 									<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
 								</div>
-							</div>	
-						
+							</div>						
 						</div>
+
+						<div id = "right-arrow" class="right-arrow">
+							<div id="slide" class = "right-arrow--style" >
+								<div class="right-arrow__button" alt = "Next"> > </div>
+							</div>
+						</div>
+
+												
+    				
+					
 											
 					</div>
 							
@@ -264,8 +274,8 @@
 </script>
 
 <script></script>
-<%# button scroll top-videos %>
-<%# <script>
+<%# button scroll top-videos__body %>
+<script>
 var button = document.getElementById('slide');
 button.onclick = function () {
     var container = document.getElementById("tn-scroll-outer-container");
@@ -292,7 +302,7 @@ function sideScroll(element,direction,speed,distance,step){
         }
     }, speed);
 }
-</script> %>
+</script>
 
 <%# Page-switching %>
 <script>
