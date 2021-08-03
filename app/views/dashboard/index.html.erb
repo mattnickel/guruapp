@@ -22,7 +22,7 @@
 			
 		
 		<div class = "main">
-			<div data-page = "1" class = "page is-active app-overview-page app-overview-page--grid">
+			<div data-page = "1" class = "page  app-overview-page app-overview-page--grid">
 				<section id = "app_stats">
 					<h6 class = "section-title"> App Stats </h6>
 					<div class = "body-content app-stats__body">
@@ -70,27 +70,31 @@
 							
 										
 						<div id = "tn-scroll-outer-container" class = "tn-scroll-outer-container">
-							<div class ="thumbnail">
+											
+						<div class ="thumbnail">
+								<img class = "thumbnail__image" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
+								<div class = "thumbnail__image--overlay">
+									<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
+									<div class = "thumbnail__image--overlay-text thumbnail-video__details">
+									<p class = "thumbnail-video__text thumbnail-video__title">This is a very very very long video title</p>
+									<p class = "thumbnail-video__text thumbnail-video__author">Video author</p>
+								</div>
+								</div>
+							</div>
+
+
+						<div class ="thumbnail">
 								<img class = "thumbnail__image" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
 								<div class = "thumbnail__image--overlay">
 									<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
+									<div class = "thumbnail__image--overlay-text thumbnail-video__details">
+									<p class = "thumbnail-video__text thumbnail-video__title">This is a very very very long video title</p>
+									<p class = "thumbnail-video__text thumbnail-video__author">Video author</p>
 								</div>
-							</div>
-						
-						
-							<div class ="thumbnail">
-								<img class = "thumbnail__image" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
-								<div class = "thumbnail__image--overlay">
-									<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
 								</div>
-							</div>
+							</div>	
 						
-							<div class ="thumbnail">
-								<img class = "thumbnail__image" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
-								<div class = "thumbnail__image--overlay">
-									<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
-								</div>
-							</div>						
+													
 						</div>
 
 						<div id = "right-arrow" class="right-arrow">
@@ -116,7 +120,10 @@
 						  <div class = "thumbnail__image--overlay">
 								<p class = "thumbnail__image--overlay-text thumbnail-video-stat">Most Watched</p>
 						  	<p class = "thumbnail__image--overlay-text thumbnail__video-views-count" >112</p>
-								
+								<div class = "thumbnail__image--overlay-text thumbnail-video__details">
+									<p class = "thumbnail-video__text thumbnail-video__title">This is a very very very long video title</p>
+									<p class = "thumbnail-video__text thumbnail-video__author">Video author</p>
+								</div>
 							</div>
 						</div>
 						<div class ="thumbnail">
@@ -184,6 +191,7 @@
 									<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
 								</div>
 							</div>
+						</div>
 						
 							
 							
@@ -191,7 +199,26 @@
 					</div>
 					
 				</div>
-				<div data-page = "3" class = "page messageing-page"> Messaging Page here </div>
+				<div data-page = "3" class = "page is-active coach-message-view"> 
+					<div class="body-content coach-message-view__body cmv-grid-style">
+						<div class ="mv-thumbnail">
+								<img class = "thumbnail__image" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
+								<div class = "thumbnail__image--overlay mv-thumbnail--overlay">
+									<div class = "thumbnail__image--overlay-text thumbnail-user__details ">
+										<span class="material-icons md-light md-36 msg_icons">chat_bubble</span>
+										<div class="user-details__text">
+										<p class = "thumbnail-video__text thumbnail-video__title user-name">User</p>
+											<p class = "thumbnail-video__text thumbnail-video__author user-description">this is the user description</p>
+										</div>	
+									</div>
+								</div>
+						</div>
+						
+												
+											
+					</div>
+				</div>
+
 		</div>
 
 		<div class = "notifications">
