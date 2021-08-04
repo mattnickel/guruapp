@@ -28,8 +28,8 @@
 					<div class = "body-content app-stats__body">
 						<div class = "card app-stats__card">
 							<div class ="card-content">
-								<p class = "content stats-text"><%=@total_system_user%></p>						  
-								<p class ="label users-label">Users</p>
+								<p class = "dashboard-text content stats-text"><%=@total_system_user%></p>						  
+								<p class ="dashboard-text label users-label">Users</p>
 							</div>
 						</div>
 
@@ -71,16 +71,19 @@
 										
 						<div id = "tn-scroll-outer-container" class = "tn-scroll-outer-container">
 											
-						<div class ="thumbnail">
-								<img class = "thumbnail__image" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
-								<div class = "thumbnail__image--overlay">
-									<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
+						<% @data.top_3_videos.each do |video| %> 
+							<div class ="thumbnail">
+						  	<%= image_tag(@video.image_file, class: thumbnail__image) %> 
+						  	<div class = "thumbnail__image--overlay">
+									<p class = "thumbnail__image--overlay-text thumbnail-video-stat">Most Recent</p>
+						  		<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
 									<div class = "thumbnail__image--overlay-text thumbnail-video__details">
-									<p class = "thumbnail-video__text thumbnail-video__title">This is a very very very long video title</p>
-									<p class = "thumbnail-video__text thumbnail-video__author">Video author</p>
+										<p class = "thumbnail-video__text thumbnail-video__title">This is a very very very long video title</p>
+										<p class = "thumbnail-video__text thumbnail-video__author">Video author</p>
+									</div>
 								</div>
-								</div>
-							</div>
+							</div>						
+						<%end%>
 
 
 						<div class ="thumbnail">
@@ -88,11 +91,11 @@
 								<div class = "thumbnail__image--overlay">
 									<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
 									<div class = "thumbnail__image--overlay-text thumbnail-video__details">
-									<p class = "thumbnail-video__text thumbnail-video__title">This is a very very very long video title</p>
-									<p class = "thumbnail-video__text thumbnail-video__author">Video author</p>
+										<p class = "thumbnail-video__text thumbnail-video__title">This is a very very very long video title</p>
+										<p class = "thumbnail-video__text thumbnail-video__author">Video author</p>
+									</div>
 								</div>
-								</div>
-							</div>	
+						</div>	
 						
 													
 						</div>
@@ -129,14 +132,15 @@
 						<div class ="thumbnail">
 						  <img class = "thumbnail__image" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
 						  <div class = "thumbnail__image--overlay">
-								<p class = "thumbnail__image--overlay-text thumbnail-video-stat">Most Recent</p>
-						  	<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
+								<p class = "thumbnail__image--overlay-text thumbnail-video-stat">Most Watched</p>
+						  	<p class = "thumbnail__image--overlay-text thumbnail__video-views-count" >112</p>
 								<div class = "thumbnail__image--overlay-text thumbnail-video__details">
 									<p class = "thumbnail-video__text thumbnail-video__title">This is a very very very long video title</p>
 									<p class = "thumbnail-video__text thumbnail-video__author">Video author</p>
 								</div>
 							</div>
 						</div>
+						
 					</div>
 				</section>
 			</div>
@@ -202,7 +206,8 @@
 				<div data-page = "3" class = "page is-active coach-message-view"> 
 					<div class="body-content coach-message-view__body cmv-grid-style">
 						<div class ="mv-thumbnail">
-								<img class = "thumbnail__image" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
+								
+								
 								<div class = "thumbnail__image--overlay mv-thumbnail--overlay">
 									<div class = "thumbnail__image--overlay-text thumbnail-user__details ">
 										<span class="material-icons md-light md-36 msg_icons">chat_bubble</span>
