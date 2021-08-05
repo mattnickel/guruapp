@@ -71,9 +71,13 @@
 										
 						<div id = "tn-scroll-outer-container" class = "tn-scroll-outer-container">
 											
-						<% @data.top_3_videos.each do |video| %> 
+						<% @top_3_watched_videos.each do |thumbnail| %> 
 							<div class ="thumbnail">
-						  	<%= image_tag(@video.image_file, class: thumbnail__image) %> 
+							<% if @thumbnail.nil? %>
+							<span>no available image</span>
+							<% else %>
+						  	<%= image_tag(@thumbnail, class: "thumbnail__image") %> 
+							<% end %>
 						  	<div class = "thumbnail__image--overlay">
 									<p class = "thumbnail__image--overlay-text thumbnail-video-stat">Most Recent</p>
 						  		<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
