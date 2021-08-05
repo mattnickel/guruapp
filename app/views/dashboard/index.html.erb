@@ -22,7 +22,7 @@
 			
 		
 		<div class = "main">
-			<div data-page = "1" class = "page  app-overview-page app-overview-page--grid">
+			<div data-page = "1" class = "page is-active app-overview-page app-overview-page--grid">
 				<section id = "app_stats">
 					<h6 class = "section-title"> App Stats </h6>
 					<div class = "body-content app-stats__body">
@@ -64,7 +64,9 @@
 					<div class = "body-content top-videos__body">
 						<div class="left-arrow">
 							<div id="slideBack" class = "left-arrow--style" alt = "Previous">
-								<div class="left-arrow__button"> < </div>
+								<div class="left-arrow__button"> 
+									<span class="material-icons">arrow_back_ios</span>
+								</div>
 							</div>
 						</div>
 							
@@ -79,8 +81,7 @@
 						  	<%= image_tag(@thumbnail, class: "thumbnail__image") %> 
 							<% end %>
 						  	<div class = "thumbnail__image--overlay">
-									<p class = "thumbnail__image--overlay-text thumbnail-video-stat">Most Recent</p>
-						  		<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
+									<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
 									<div class = "thumbnail__image--overlay-text thumbnail-video__details">
 										<p class = "thumbnail-video__text thumbnail-video__title">This is a very very very long video title</p>
 										<p class = "thumbnail-video__text thumbnail-video__author">Video author</p>
@@ -89,24 +90,15 @@
 							</div>						
 						<%end%>
 
-
-						<div class ="thumbnail">
-								<img class = "thumbnail__image" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
-								<div class = "thumbnail__image--overlay">
-									<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
-									<div class = "thumbnail__image--overlay-text thumbnail-video__details">
-										<p class = "thumbnail-video__text thumbnail-video__title">This is a very very very long video title</p>
-										<p class = "thumbnail-video__text thumbnail-video__author">Video author</p>
-									</div>
-								</div>
-						</div>	
-						
+				
 													
 						</div>
 
 						<div id = "right-arrow" class="right-arrow">
 							<div id="slide" class = "right-arrow--style" >
-								<div class="right-arrow__button" alt = "Next"> > </div>
+								<div class="right-arrow__button" alt = "Next"> 
+								<span class="material-icons">arrow_forward_ios</span> 
+								</div>
 							</div>
 						</div>
 
@@ -155,7 +147,10 @@
 					<h6 class = "my-channel-header-text">My Channel</h6>
 					<section id = "up_video">
 						<div class = "up-video-body mc-grid-style">
-							<div class = "upload-area"> Upload area Here</div>	
+							<div class = "upload-area"> <%=link_to "Edit", controller: "dashboard", action: "edit" %>
+							Upload area Here
+							</div>
+
 								
 					
 						</div>
@@ -207,7 +202,7 @@
 					</div>
 					
 				</div>
-				<div data-page = "3" class = "page is-active coach-message-view"> 
+				<div data-page = "3" class = "page  coach-message-view"> 
 					<div class="body-content coach-message-view__body cmv-grid-style">
 						<div class ="mv-thumbnail">
 								
