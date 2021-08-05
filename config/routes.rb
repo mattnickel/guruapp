@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   resources :training_modules
   
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
+  get 'dashboard/edit', to:'dashboard#edit'
   get 'welcome/index'
   get 'welcome/download', to: 'welcome#download', as: 'download'
   get 'privacy', to: 'welcome#privacy', as: 'privacy'

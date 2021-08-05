@@ -14,4 +14,8 @@ class DashboardController < ApplicationController
 	@top_3_watched_videos = data.top_3_videos
 
   end
+
+	def edit
+		
+	end
 end

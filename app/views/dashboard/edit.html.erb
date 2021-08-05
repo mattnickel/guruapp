@@ -1,0 +1,76 @@
+<%= form_with model: @video, local: true do |form| %>
+  <div class = "container">
+    <div class ="dashboard edit--grid dashboard__bg-img">
+      <div class="row ">
+        <div class="twelve columns edit-view-header">
+        <%= link_to dashboard_path, class: "manage-channel-link" do %> 
+        <div class="edit-view-header">
+          <span class="material-icons">arrow_back_ios</span> 
+          <p>Manage Channel</p> 
+        </div>
+        <%end%>      
+        </div>
+      </div>
+      <div class="row upload-video-view">
+        <div class="six columns video-view">
+          <div class="video-view-container video-view--bg">
+            <video class = "video-view--size" autoplay muted>
+            <%# <source src="movie.mp4" type="video/mp4">
+            <source src="movie.ogg" type="video/ogg">%>
+            </video> 
+          </div>
+        </div>
+        <div class="six columns video-form">
+          <div class="video-form-container control">
+            <div class="video-details">
+              <%= form.label :title, class:"label upload-video-text-style"%>
+              <%= form.text_field :title, class: "manage-channel-box" %>
+              <%= form.label :description, class:"label upload-video-text-style"%>
+              <%= form.text_area :description, class: "manage-channel-box description-box" %>
+              edit-view-header
+              <div id="upload-container">
+                <div id="upload-border">
+                  <span id="upload-button" class="material-icons-outlined upload-button">file_upload</span>
+                  <input type="text" id="upload-name" disabled="true" />
+                  
+                </div>
+                <input type="file" id="hidden-upload" style="display:none">
+              </div>
+            </div>
+            <div class="row">
+              <%= form.label :video_image, class:'label upload-video-text-style'%>
+              
+              <%= form.label :social_image, class:'label upload-video-text-style'%>
+            </div>  
+          </div>
+        </div>
+          
+      </div>
+      <div class="row">
+        <div class="button-area">
+      
+        <%= form.button "Cancel", class:"cancel-video edit-button-text edit-button" %>
+        <%= form.button "Save", class:"dash_button edit-button-text edit-button" %>               
+        </div>
+      </div>
+      
+    </div>	
+  </div>
+<% end %>
+
+<script>
+//adds event listener to the file uploader button
+document.querySelector("#upload-button").addEventListener("click", () => {
+  //clicks on the file input
+  document.querySelector("#hidden-upload").click();
+});
+
+//adds event listener on the hidden file input to listen for any changes
+document.querySelector("#hidden-upload").addEventListener("change", (event) => {
+  //gets the file name
+  document.querySelector("#upload-name").value = event.target.files[0].name;
+});
+
+</script>
+
+
