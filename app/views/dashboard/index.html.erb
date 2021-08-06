@@ -1,7 +1,5 @@
 <div class = "container">
-	
 	<div class ="dashboard dashboard--grid dashboard__bg-img">
-		
 		<div class ="sidemenu">
 			<nav class = "sidemenu-nav">
 				<ul class = "sidemenu-nav__list">
@@ -12,15 +10,12 @@
 							<a data-switcher data-tab ="2" class="material-icons md-34 md-light dash_icons">video_library</a>
 					</li>
 					<li class = "sidemenu-nav__list-item nav-item">
-					
-					<a data-switcher data-tab ="3" class="material-icons md-34 md-light dash_icons">chat_bubble</a>
-					
+						<a data-switcher data-tab ="3" class="material-icons md-34 md-light dash_icons">chat_bubble</a>
 					</li>
 				</ul>
 			</nav>
 		</div>
 			
-		
 		<div class = "main">
 			<div data-page = "1" class = "page is-active app-overview-page app-overview-page--grid">
 				<section id = "app_stats">
@@ -32,7 +27,6 @@
 								<p class ="dashboard-text label users-label">Users</p>
 							</div>
 						</div>
-
 						<div class = "card app-stats__card">
 							<div class ="card-content">
 								<div class="content circle">
@@ -57,9 +51,7 @@
 					</div>
 				</section>
 
-
 				<section id = "top_videos" class = "top-videos-container">
-					
 					<h6 class = "section-title">Top Videos</h6>
 					<div class = "body-content top-videos__body">
 						<div class="left-arrow">
@@ -68,32 +60,25 @@
 									<span class="material-icons">arrow_back_ios</span>
 								</div>
 							</div>
-						</div>
-							
-										
+						</div>			
 						<div id = "tn-scroll-outer-container" class = "tn-scroll-outer-container">
-											
-						<% @top_3_watched_videos.each do |thumbnail| %> 
-							<div class ="thumbnail">
-							<% if @thumbnail.nil? %>
-							<span>no available image</span>
-							<% else %>
-						  	<%= image_tag(@thumbnail, class: "thumbnail__image") %> 
-							<% end %>
-						  	<div class = "thumbnail__image--overlay">
-									<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
-									<div class = "thumbnail__image--overlay-text thumbnail-video__details">
-										<p class = "thumbnail-video__text thumbnail-video__title">This is a very very very long video title</p>
-										<p class = "thumbnail-video__text thumbnail-video__author">Video author</p>
+							<% @top_3_watched_videos.each do |thumbnail| %> 
+								<div class ="thumbnail">
+									<% if @thumbnail.nil? %>
+										<span>no available image</span>
+									<% else %>
+						  			<%= image_tag(@thumbnail, class: "thumbnail__image") %> 
+									<% end %>
+						  		<div class = "thumbnail__image--overlay">
+										<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
+										<div class = "thumbnail__image--overlay-text thumbnail-video__details">
+											<p class = "thumbnail-video__text thumbnail-video__title">This is a very very very long video title</p>
+											<p class = "thumbnail-video__text thumbnail-video__author">Video author</p>
+										</div>
 									</div>
-								</div>
-							</div>						
-						<%end%>
-
-				
-													
+								</div>						
+							<%end%>			
 						</div>
-
 						<div id = "right-arrow" class="right-arrow">
 							<div id="slide" class = "right-arrow--style" >
 								<div class="right-arrow__button" alt = "Next"> 
@@ -101,15 +86,8 @@
 								</div>
 							</div>
 						</div>
-
-												
-    				
-					
-											
 					</div>
-							
 				</section>
-
 
 				<section id = "my_channel_view">
 					<h6 class = "section-title">My Channel</h6>
@@ -136,93 +114,79 @@
 								</div>
 							</div>
 						</div>
-						
 					</div>
 				</section>
 			</div>
 
 			<div data-page = "2" class = "page my-channel-page">
-			
 					<div class ="my-channel-body"> 
-					<h6 class = "my-channel-header-text">My Channel</h6>
-					<section id = "up_video">
-						<div class = "up-video-body mc-grid-style">
-							<div class = "upload-area"> <%=link_to "Edit", controller: "dashboard", action: "edit" %>
-							Upload area Here
-							</div>
-
-								
-					
-						</div>
-							
-					</section>
-					<section id = "pub_videos">
-						<h6 class = "section-title">Published Videos</h6>
-						<div class = "body-content pub-videos-body mc-grid-style">
-							<div class ="mc-thumbnail">
-								<img class = "thumbnail__image" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
-								<div class = "thumbnail__image--overlay">
-									<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
+						<h6 class = "my-channel-header-text">My Channel</h6>
+						<section id = "up_video">
+							<div class = "up-video-body mc-grid-style">
+								<div class = "upload-area"> <%=link_to "Edit", controller: "dashboard", action: "edit" %>
+								Upload area Here
 								</div>
 							</div>
-						</div>
-					</section>
-					<section id = "un_pub_videos">
-						<h6 class = "section-title">Unpublished Videos</h6>
-						<div class = "body-content un-pub-videos-body mc-grid-style">
-							<div class ="mc-thumbnail">
-								<img class = "thumbnail__image un-pub-img" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
-								<div class = "thumbnail__image--overlay">
-									<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
-								</div>
-							</div>
-							<div class ="mc-thumbnail">
-								<img class = "thumbnail__image un-pub-img" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
-								<div class = "thumbnail__image--overlay">
-									<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
-								</div>
-							</div>
-							<div class ="mc-thumbnail">
-								<img class = "thumbnail__image un-pub-img" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
-								<div class = "thumbnail__image--overlay">
-									<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
-								</div>
-							</div>
-							<div class ="mc-thumbnail">
-								<img class = "thumbnail__image un-pub-img" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
-								<div class = "thumbnail__image--overlay">
-									<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
-								</div>
-							</div>
-						</div>
-						
-							
-							
-					</section>
-					</div>
-					
-				</div>
-				<div data-page = "3" class = "page  coach-message-view"> 
-					<div class="body-content coach-message-view__body cmv-grid-style">
-						<div class ="mv-thumbnail">
-								
-								
-								<div class = "thumbnail__image--overlay mv-thumbnail--overlay">
-									<div class = "thumbnail__image--overlay-text thumbnail-user__details ">
-										<span class="material-icons md-light md-36 msg_icons">chat_bubble</span>
-										<div class="user-details__text">
-										<p class = "thumbnail-video__text thumbnail-video__title user-name">User</p>
-											<p class = "thumbnail-video__text thumbnail-video__author user-description">this is the user description</p>
-										</div>	
+						</section>
+						<section id = "pub_videos">
+							<h6 class = "section-title">Published Videos</h6>
+							<div class = "body-content pub-videos-body mc-grid-style">
+								<div class ="mc-thumbnail">
+									<img class = "thumbnail__image" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
+									<div class = "thumbnail__image--overlay">
+										<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
 									</div>
 								</div>
+							</div>
+						</section>
+						<section id = "un_pub_videos">
+							<h6 class = "section-title">Unpublished Videos</h6>
+							<div class = "body-content un-pub-videos-body mc-grid-style">
+								<div class ="mc-thumbnail">
+									<img class = "thumbnail__image un-pub-img" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
+									<div class = "thumbnail__image--overlay">
+										<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
+									</div>
+								</div>
+								<div class ="mc-thumbnail">
+									<img class = "thumbnail__image un-pub-img" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
+									<div class = "thumbnail__image--overlay">
+										<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
+									</div>
+								</div>
+								<div class ="mc-thumbnail">
+									<img class = "thumbnail__image un-pub-img" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
+									<div class = "thumbnail__image--overlay">
+										<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
+									</div>
+								</div>
+								<div class ="mc-thumbnail">
+									<img class = "thumbnail__image un-pub-img" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
+									<div class = "thumbnail__image--overlay">
+										<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
+									</div>
+								</div>
+							</div>
+							
+					</section>
+				</div>					
+			</div>
+
+			<div data-page = "3" class = "page  coach-message-view"> 
+				<div class="body-content coach-message-view__body cmv-grid-style">
+					<div class ="mv-thumbnail">
+						<div class = "thumbnail__image--overlay mv-thumbnail--overlay">
+							<div class = "thumbnail__image--overlay-text thumbnail-user__details ">
+								<span class="material-icons md-light md-36 msg_icons">chat_bubble</span>
+								<div class="user-details__text">
+									<p class = "thumbnail-video__text thumbnail-video__title user-name">User</p>
+									<p class = "thumbnail-video__text thumbnail-video__author user-description">this is the user description</p>
+								</div>	
+							</div>
 						</div>
-						
-												
-											
 					</div>
 				</div>
-
+			</div>
 		</div>
 
 		<div class = "notifications">
@@ -231,18 +195,17 @@
 					<div class ="card-content notif-card__content">
 						<p class ="content notif-card__text"> You have 5 new messages that need a response.</p>
 						<footer class="card-footer">
-							<a href="#" class="card-footer__item dash_link ">Sleep</a>
-      				<a href="#" class="card-footer__item dash_link2 ">Respond</a>
+							<%= link_to "Sleep", "#", class:"card-footer__item dash_link" %>
+							<%= link_to "Respond", "#", class:"card-footer__item dash_link2" %>							
 						</footer>
 					</div>				
 				</div>
 				<div class ="card notif-card">
 					<div class ="card-content notif-card__content">
-						<p class ="content notif-card__text"> You have 3 new potential students.</p>
-					
+						<p class ="content notif-card__text"> You have 3 new potential students.</p>			
 						<footer class="card-footer">
-							<a href="#" class="card-footer__item dash_link ">Review</a>
-      				<a href="#" class="card-footer__item dash_button ">Accept</a>
+							<%= link_to "Review", "#", class:"card-footer__item dash_link" %>
+							<%= link_to "Accept", "#", class:"card-footer__item dash_button" %>	
 						</footer>	
 					</div>				
 				</div>	
@@ -250,24 +213,22 @@
 					<div class ="card-content notif-card__content">
 						<p class ="content notif-card__text"> You have 2 new comments.</p>
 						<footer class="card-footer">
-							<a href="#" class="card-footer__item dash_link ">Close</a>
-      				<a href="#" class="card-footer__item dash_button ">View</a>
-					</div>
-				</footer>				
+							<%= link_to "Close", "#", class:"card-footer__item dash_link" %>
+							<%= link_to "View", "#", class:"card-footer__item dash_button" %>	
+						</footer>
+					</div>	
 				</div>
 				<div class ="card notif-card">
 					<div class ="card-content notif-card__content">
 						<p class ="content notif-card__text"> You have 3 new potential students.</p>
 						<footer class="card-footer">
-							<a href="#" class="card-footer__item dash_link ">Ignore</a>
-      				<a href="#" class="card-footer__item dash_button ">Continue</a>
+							<%= link_to "Ignor", "#", class:"card-footer__item dash_link" %>
+							<%= link_to "Continue", "#", class:"card-footer__item dash_button" %>
 						</footer>
 					</div>				
 				</div>			
 			</div>
-		</div>
-	
-	
+		</div>	
 	</div>	
 </div>
 
