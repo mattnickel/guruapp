@@ -1,20 +1,6 @@
 <div class = "container">
 	<div class ="dashboard dashboard--grid dashboard__bg-img">
-		<div class ="sidemenu">
-			<nav class = "sidemenu-nav">
-				<ul class = "sidemenu-nav__list">
-					<li class = "sidemenu-nav__list-item nav-item is-active">
-							<a data-switcher data-tab ="1" class="material-icons-outlined md-34 md-light dash_icons">home</a>
-					</li>				
-					<li class = "sidemenu-nav__list-item nav-item">
-							<a data-switcher data-tab ="2" class="material-icons md-34 md-light dash_icons">video_library</a>
-					</li>
-					<li class = "sidemenu-nav__list-item nav-item">
-						<a data-switcher data-tab ="3" class="material-icons md-34 md-light dash_icons">chat_bubble</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
+		<%= render "shared_partials/sidemenu" %>
 			
 		<div class = "main">
 			<div data-page = "1" class = "page is-active app-overview-page app-overview-page--grid">
@@ -88,7 +74,6 @@
 						</div>
 					</div>
 				</section>
-
 				<section id = "my_channel_view">
 					<h6 class = "section-title">My Channel</h6>
 					<div class = "body-content my-channel-view-body">
@@ -123,8 +108,9 @@
 						<h6 class = "my-channel-header-text">My Channel</h6>
 						<section id = "up_video">
 							<div class = "up-video-body mc-grid-style">
-								<div class = "upload-area"> <%=link_to "Edit", controller: "dashboard", action: "edit" %>
-								Upload area Here
+								<div class = "upload-area"> 
+								<%=link_to 'New Upload', videos_new_path %>
+														
 								</div>
 							</div>
 						</section>
@@ -172,63 +158,12 @@
 				</div>					
 			</div>
 
-			<div data-page = "3" class = "page  coach-message-view"> 
-				<div class="body-content coach-message-view__body cmv-grid-style">
-					<div class ="mv-thumbnail">
-						<div class = "thumbnail__image--overlay mv-thumbnail--overlay">
-							<div class = "thumbnail__image--overlay-text thumbnail-user__details ">
-								<span class="material-icons md-light md-36 msg_icons">chat_bubble</span>
-								<div class="user-details__text">
-									<p class = "thumbnail-video__text thumbnail-video__title user-name">User</p>
-									<p class = "thumbnail-video__text thumbnail-video__author user-description">this is the user description</p>
-								</div>	
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+
 		</div>
 
-		<div class = "notifications">
-			<div class = "notifications__body">			
-				<div class ="card notif-card">
-					<div class ="card-content notif-card__content">
-						<p class ="content notif-card__text"> You have 5 new messages that need a response.</p>
-						<footer class="card-footer">
-							<%= link_to "Sleep", "#", class:"card-footer__item dash_link" %>
-							<%= link_to "Respond", "#", class:"card-footer__item dash_link2" %>							
-						</footer>
-					</div>				
-				</div>
-				<div class ="card notif-card">
-					<div class ="card-content notif-card__content">
-						<p class ="content notif-card__text"> You have 3 new potential students.</p>			
-						<footer class="card-footer">
-							<%= link_to "Review", "#", class:"card-footer__item dash_link" %>
-							<%= link_to "Accept", "#", class:"card-footer__item dash_button" %>	
-						</footer>	
-					</div>				
-				</div>	
-				<div class ="card notif-card">
-					<div class ="card-content notif-card__content">
-						<p class ="content notif-card__text"> You have 2 new comments.</p>
-						<footer class="card-footer">
-							<%= link_to "Close", "#", class:"card-footer__item dash_link" %>
-							<%= link_to "View", "#", class:"card-footer__item dash_button" %>	
-						</footer>
-					</div>	
-				</div>
-				<div class ="card notif-card">
-					<div class ="card-content notif-card__content">
-						<p class ="content notif-card__text"> You have 3 new potential students.</p>
-						<footer class="card-footer">
-							<%= link_to "Ignor", "#", class:"card-footer__item dash_link" %>
-							<%= link_to "Continue", "#", class:"card-footer__item dash_button" %>
-						</footer>
-					</div>				
-				</div>			
-			</div>
-		</div>	
+		<%= render "shared_partials/notifications" %>
+
+			
 	</div>	
 </div>
 

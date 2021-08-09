@@ -13,7 +13,7 @@ h6{
   color: #ffffff;
 }
 
-p{
+.dashboard p{
   margin-block-start: 0;
   margin-block-end: 0;
 }
@@ -599,7 +599,7 @@ display: grid;
   width: 7.5rem;
   &:hover{
    color:#ffffff;
-   }
+  }
  }
  
  .dash_link{
@@ -863,38 +863,53 @@ gap: 1rem;
 
 #upload-container{
 	border-radius: 20px;
+	margin-bottom: 1.5rem;
 	
 }
-.upload-button{
-	border-top-left-radius: 20px;
-	border-bottom-left-radius: 20px;
+.upload-button-image-style{
+	// border-top-left-radius: 20px;
+	// border-bottom-left-radius: 20px;
+	float: right;
 }
 .file-name-box{
 	float: none;
   overflow: hidden;
-	
 }
-#upload-border{
+
+#hidden-upload,
+#vi-hidden-upload,
+#si-hidden-upload{
+	display:none;
+}
+#video-upload-border{
   display: flex;
 	background-color: white;
 	height: auto;
-	align-content: center;
+	align-items: center;
 	border-radius: 20px;
+	width: 100%;
+	margin-bottom: 1rem;
+}
+
+.video-images{
+	display: flex;
+	gap: 2rem;
 }
 
 
-#upload-name{
+#upload-name,
+#vi-upload-name,
+#si-upload-name{
 padding: 0%;
 margin: 0;
 width: 100%;
-text-align: center;
 border-radius: 20px;
 outline: none;
 border:none;
 
 }
 
-#upload-button{
+.upload-button{
 	display: flex;
   padding:0 20px;
   border:none;
@@ -903,7 +918,7 @@ border:none;
 	align-items: center;
 }
 
-#upload-name:focus, #upload-button:focus{
+#upload-name:focus, .upload-button:focus{
   outline:none;
 }
 
@@ -929,13 +944,15 @@ input.manage-channel-box,
 	height: 75%;
 }
 .upload-video-text-style, 
-.edit-button-text,
+.btn-text,
+input.btn-text,
 a.manage-channel-link{
 	color:rgba(255, 255, 255, 0.87);
 	font-size: 2rem;
 	font-weight: 400;
 	text-transform: none;
 	text-decoration: none;
+	vertical-align: middle;
 }
 
 .description-box{
@@ -946,11 +963,14 @@ a.manage-channel-link{
 .video-form-container{
 	justify-content: space-between;
 }
-
-.edit-button{
+input.btn-style,
+.btn-style{
 	width: 40%;
 	height: 5rem;
 	border-radius: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .edit-view-header
 {
@@ -958,11 +978,39 @@ a.manage-channel-link{
 	align-items: center;
 }
 
-.cancel-video:hover{
-	background-color:#56fad43d;
-	color: #000000;
+input.btn-transp,
+.btn-transp{
+	color: white;
+	border: 1px solid #fcfcfc;
+	background-color: transparent;
+	margin-top: 10px;
+	&:hover{
+		background-color:#56fad43d;
+		color: #000000;
+	}
 }
 
-.save-video:hover{
-	color: #000000;
+input.button,
+.button{
+	
+	&:hover{
+		font-weight: 700;
+	 }
+}
+
+input.button{
+	color: white;
+	background-color: #09eebc;
+	border: 0px;
+	margin-top: 10px;
+}
+
+.image-display{
+	width: 200px;
+}
+
+.image-holder{
+	width: 200px;
+	height: 100px;
+	background-color: green;
 }

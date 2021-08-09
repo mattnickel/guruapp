@@ -1,0 +1,23 @@
+<div class ="sidemenu">
+	<nav class = "sidemenu-nav">
+		<ul class = "sidemenu-nav__list">
+			<li class = "sidemenu-nav__list-item nav-item is-active">
+				<%= link_to dashboard_path do %>
+					<span data-switcher data-tab ="1" class="material-icons-outlined md-34 md-light dash_icons">home</span>
+				<%end%>
+				
+			</li>
+							
+			<li class = "sidemenu-nav__list-item nav-item">
+				<%= link_to mychannelview_path do %>
+				<span data-switcher data-tab ="2" class="material-icons md-34 md-light dash_icons">video_library</span>
+				<%end%>
+			</li>
+			<li class = "sidemenu-nav__list-item nav-item">
+				<%= link_to coachmessagingview_path do %>
+					<span data-switcher data-tab ="3" class="material-icons md-34 md-light dash_icons">chat_bubble</span>
+				<%end%>
+			</li>
+		</ul>
+	</nav>
+</div>
