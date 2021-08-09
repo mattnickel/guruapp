@@ -40,8 +40,13 @@ Rails.application.routes.draw do
   resources :comments
   resources :training_modules
   
+
+                                                                                                                                 
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
-  get 'dashboard/edit', to:'dashboard#edit'
+  get 'videos/new', to:'videos#new'
+  get 'my_channel_view/index', to: 'my_channel_view#index', as: 'mychannelview'
+  get 'messaging/index', to: 'messaging#index', as: 'coachmessagingview' 
+  get 'videos/edit', to:'videos#edit'
   get 'welcome/index'
   get 'welcome/download', to: 'welcome#download', as: 'download'
   get 'privacy', to: 'welcome#privacy', as: 'privacy'
