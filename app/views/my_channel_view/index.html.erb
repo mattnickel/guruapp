@@ -1,0 +1,98 @@
+<div class = "container">
+	<div class ="dashboard dashboard--grid dashboard__bg-img">
+		<%= render "shared_partials/sidemenu" %>
+			
+		<div class = "main">
+			<div data-page = "2" class = "page is-active my-channel-page">
+					<div class ="my-channel-body"> 
+						<h6 class = "my-channel-header-text">My Channel</h6>
+						<section id = "up_video">
+							<div class = "up-video-body mc-grid-style">
+								<div class = "upload-area"> 
+								  <%=link_to 'New Upload', videos_new_path %>														
+								</div>
+							</div>
+						</section>
+						<section id = "pub_videos">
+							<h6 class = "section-title">Published Videos</h6>
+							<div class = "body-content pub-videos-body mc-grid-style">
+								<div class ="mc-thumbnail">
+									<img class = "thumbnail__image" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
+									<div class = "thumbnail__image--overlay">
+										<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
+									</div>
+								</div>
+							</div>
+						</section>
+						<section id = "un_pub_videos">
+							<h6 class = "section-title">Unpublished Videos</h6>
+							<div class = "body-content un-pub-videos-body mc-grid-style">
+								<div class ="mc-thumbnail">
+									<img class = "thumbnail__image un-pub-img" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
+									<div class = "thumbnail__image--overlay">
+										<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
+									</div>
+								</div>
+								<div class ="mc-thumbnail">
+									<img class = "thumbnail__image un-pub-img" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
+									<div class = "thumbnail__image--overlay">
+										<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
+									</div>
+								</div>
+								<div class ="mc-thumbnail">
+									<img class = "thumbnail__image un-pub-img" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
+									<div class = "thumbnail__image--overlay">
+										<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
+									</div>
+								</div>
+								<div class ="mc-thumbnail">
+									<img class = "thumbnail__image un-pub-img" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
+									<div class = "thumbnail__image--overlay">
+										<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
+									</div>
+								</div>
+							</div>
+							
+					</section>
+				</div>					
+			</div>
+
+			
+		</div>
+
+		<%= render "shared_partials/notifications" %>
+
+			
+	</div>	
+</div>
+
+
+
+<%# Page-switching %>
+<script>
+window.onload = function () {
+    const tab_switchers = document.querySelectorAll('[data-switcher]');
+
+    for (let i = 0; i < tab_switchers.length; i++) {
+        const tab_switcher = tab_switchers[i];
+        const page_id = tab_switcher.dataset.tab;
+
+        tab_switcher.addEventListener('click', function () {
+            document.querySelector('.sidemenu-nav__list-item.is-active').classList.remove('is-active');
+            tab_switcher.parentNode.classList.add('is-active');
+
+            SwitchPage(page_id);
+        });
+    }
+}
+
+function SwitchPage (page_id) {
+    console.log(page_id);
+
+    const current_page = document.querySelector('.main .page.is-active');
+    current_page.classList.remove('is-active');
+
+    const next_page = document.querySelector(`.main .page[data-page="${page_id}"]`);
+    next_page.classList.add('is-active');
+}
+</script>
