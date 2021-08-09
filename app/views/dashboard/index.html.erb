@@ -48,18 +48,18 @@
 							</div>
 						</div>			
 						<div id = "tn-scroll-outer-container" class = "tn-scroll-outer-container">
-							<% @top_3_watched_videos.each do |thumbnail| %> 
+							<% @top_3_watched_videos.each do |video| %> 
 								<div class ="thumbnail">
-									<% if @thumbnail.nil? %>
+									<% if video.thumbnail %>
 										<span>no available image</span>
 									<% else %>
-						  			<%= image_tag(@thumbnail, class: "thumbnail__image") %> 
+						  			<%= image_tag(video.thumbnail, class: "thumbnail__image") %> 
 									<% end %>
 						  		<div class = "thumbnail__image--overlay">
-										<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
+										<p class = "thumbnail__image--overlay-text thumbnail__video-views-count"><%= video.time_viewed %></p>
 										<div class = "thumbnail__image--overlay-text thumbnail-video__details">
-											<p class = "thumbnail-video__text thumbnail-video__title">This is a very very very long video title</p>
-											<p class = "thumbnail-video__text thumbnail-video__author">Video author</p>
+											<p class = "thumbnail-video__text thumbnail-video__title"><%= video.title %></p>
+											<p class = "thumbnail-video__text thumbnail-video__author"><%= video.author %></p>
 										</div>
 									</div>
 								</div>						
