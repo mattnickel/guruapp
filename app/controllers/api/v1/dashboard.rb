@@ -35,16 +35,22 @@ module API
                 data.total_user_count = total_users = User.count
 
                 top_3_views = Viewing.joins("INNER JOIN videos ON videos.id = viewings.video_id")
-                                            .select('videos.id, videos.title, SUM(viewings.last_second_viewed) AS time_viewed')
+                                            .select('videos.id, videos.title, videos.author, SUM(viewings.last_second_viewed) AS time_viewed')
                                             .where('viewings.created_at > ?', Date.today-1.week)
-                                            .group('videos.id, videos.title')
+                                            .group('videos.id, videos.title, videos.author')
                                             .order('SUM(viewings.last_second_viewed) desc limit 3')
                 
                 data.top_3_videos = [];
-                                            
+                dashboard_video = ViewedVideo.new                          
                 top_3_views.each do | viewed_video |
                     video = Video.find(viewed_video.id)
-                    data.top_3_videos.push(video.image_file)
+
+                    dashboard_video.title = video.title
+                    dashboard_video.author = video.author
+                    dashboard_video.time_viewed = viewed_video.time_viewed
+                    dashboard_video.thumbnail = video.image_file
+
+                    data.top_3_videos.push(dashboard_video)
                 end
 
                 return data
@@ -113,5 +119,36 @@ class Stats
 
     def top_3_videos= top_3_videos
         @top_3_videos = top_3_videos
+    end
+end
+
+class ViewedVideo
+    def title
+        @title
+    end
+
+    def title= title
+        @title = title
+    end
+    def author
+        @author
+    end
+    
+    def author= author
+        @author = author
+    end
+    def time_viewed
+        @time_viewed
+    end
+    
+    def time_viewed= time_viewed
+        @time_viewed = time_viewed
+    end
+    def thumbnail
+        @thumbnail
+    end
+    
+    def thumbnail= thumbnail
+        @thumbnail = thumbnail
     end
 end
