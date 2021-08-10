@@ -748,8 +748,32 @@ position:relative;
 	width:100%;
 }
 
-.coach-message-view__body{
-overflow-y: scroll;
+.cmv__body--scroll{
+	overflow-y: scroll;
+
+	background:
+		/* Shadow covers */
+		linear-gradient(rgba(0, 243, 185, .1), rgba(255,255,255,0)),
+		linear-gradient(rgba(255,255,255,0), rgba(0, 243, 185, .3)) 0 100%,
+		
+		/* Shadows */
+		radial-gradient(50% 0, farthest-side, rgba(0,0,0,.2), rgba(0,0,0,0)),
+		radial-gradient(50% 100%,farthest-side, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%;
+	background:
+		/* Shadow covers */
+		linear-gradient(rgba(0, 243, 185, .1), rgba(255,255,255,0)),
+		linear-gradient(rgba(255,255,255,0), rgba(0, 243, 185, .3)) 0 100%,
+		
+		/* Shadows */
+		radial-gradient(farthest-side at 50% 0, rgba(0,0,0,.2), rgba(0,0,0,0)),
+		radial-gradient(farthest-side at 50% 100%, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%;
+	background-repeat: no-repeat;
+	// background-color: white;
+	background-size: 100% 10px, 100% 10px, 100% 7px, 100% 7px;
+	
+	/* Opera doesn't support this in the shorthand */
+	background-attachment: local, local, scroll, scroll;
+
 }
 .cmv-grid-style{
 	display:grid;
@@ -770,10 +794,8 @@ overflow-y: scroll;
   border-radius: 2rem;  
 }
 .coach-message-view__body{
-
-	display: grid;
 	padding-left: 2rem;
-	padding-right: 4rem;
+	padding-right: 2rem;
 	justify-content: center;
   align-content:space-between;
   gap: 2rem;
@@ -1010,3 +1032,5 @@ input.button{
 	height: 100px;
 	background-color: green;
 }
+
+
