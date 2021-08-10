@@ -8,7 +8,7 @@ module API
             desc "Get dashboard statistic summary"
             get "statistic_summary", :VideoSerializer do
                 data = Dashboard.get_stat
-
+                
                 render json: {
                     active_user_count: data.active_user_count,
                     video_watched_count: data.video_watched_count,
@@ -35,19 +35,21 @@ module API
                 data.total_user_count = total_users = User.count
 
                 top_3_views = Viewing.joins("INNER JOIN videos ON videos.id = viewings.video_id")
-                                            .select('videos.id, videos.title, videos.author, SUM(viewings.last_second_viewed) AS time_viewed')
+                                            .select('videos.id AS id, videos.title, videos.author, COUNT(viewings.user_id) AS viewer_count')
                                             .where('viewings.created_at > ?', Date.today-1.week)
                                             .group('videos.id, videos.title, videos.author')
-                                            .order('SUM(viewings.last_second_viewed) desc limit 3')
+                                            .order('COUNT(viewings.user_id) desc limit 3')
                 
                 data.top_3_videos = [];
-                dashboard_video = ViewedVideo.new                          
                 top_3_views.each do | viewed_video |
                     video = Video.find(viewed_video.id)
 
-                    dashboard_video.title = video.title
-                    dashboard_video.author = video.author
-                    dashboard_video.time_viewed = viewed_video.time_viewed
+                    dashboard_video = ViewedVideo.new                          
+
+                    dashboard_video.id = viewed_video.id
+                    dashboard_video.title = viewed_video.title
+                    dashboard_video.author = viewed_video.author
+                    dashboard_video.viewer_count = viewed_video.viewer_count
                     dashboard_video.thumbnail = video.image_file
 
                     data.top_3_videos.push(dashboard_video)
@@ -123,6 +125,13 @@ class Stats
 end
 
 class ViewedVideo
+    def id
+        @id
+    end
+    def id= id
+        @id = id
+    end
+
     def title
         @title
     end
@@ -137,12 +146,12 @@ class ViewedVideo
     def author= author
         @author = author
     end
-    def time_viewed
-        @time_viewed
+    def viewer_count
+        @viewer_count
     end
     
-    def time_viewed= time_viewed
-        @time_viewed = time_viewed
+    def viewer_count= viewer_count
+        @viewer_count = viewer_count
     end
     def thumbnail
         @thumbnail
