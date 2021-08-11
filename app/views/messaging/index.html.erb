@@ -7,9 +7,11 @@
 				<div class="body-content coach-message-view__body cmv__body--scroll cmv-grid-style">
           <% @users.each do |user| %>
 				  	<div class ="mv-thumbnail">
-             <% if user.nil? %>
-					  		<span>no user image</span>
-					  	<% end %>
+							<%if user.avatar.attached? %>
+            		<%= image_tag(user.avatar)%>
+							<% else %>
+								<span>no image available</span>
+							<% end %> 
 					  	<div class = "thumbnail__image--overlay mv-thumbnail--overlay">
 						  	<div class = "thumbnail__image--overlay-text thumbnail-user__details ">
 						  		<span class="material-icons md-light md-36 msg_icons">chat_bubble</span>
