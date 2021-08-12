@@ -1,11 +1,10 @@
-<%= form_with model: @video, local: true do |form| %>
+<%= form_with model: video, local: true do |form| %>
     <%# <% if video.errors.any?   Validation here   <%end%>
       <div class="row upload-video-view">
         <div class="six columns video-view">
           <div class="video-view-container video-view--bg">
             <video class = "video-view--size" autoplay muted>
-            <%# <source src="movie.mp4" type="video/mp4">
-            <source src="movie.ogg" type="video/ogg">%>
+              <%# <source id="video-source" type="video/mp4"> %>
             </video> 
           </div>
         </div>
@@ -20,7 +19,7 @@
               <%= form.label :file_name, class:"label upload-video-text-style"%>
                 <div id="video-upload-border">
                   <span id="video-upload-button" class="material-icons-outlined upload-button upload-button-style">file_upload</span>
-                  <%= form.file_field :video, id:"hidden-upload"%>
+                  <%= form.file_field :video, accept:"video/mp4", id:"hidden-upload"%>
                   <input type="text" id="upload-name" disabled="true" />                
                 </div>                
               </div>
@@ -36,7 +35,7 @@
                   <%#  <span>no available image</span> 
                   <%# <%end%>
                   <span id ="vi-upload-button" class="material-icons-outlined upload-button upload-button-image-style">file_upload</span>
-                  <%=form.file_field :video_image, id:'vi-hidden-upload'%>
+                  <%=form.file_field :video_image, accept:"image/jpg, image/png", id:'vi-hidden-upload'%>
                   <%# <input type="text" id="vi-upload-name" disabled="true" />   %>
                 </div>
               </div>
@@ -46,7 +45,7 @@
                 <div id="social-image-border" class = "image-holder">
                  
                   <span id ="si-upload-button" class="material-icons-outlined upload-button upload-button-image-style">file_upload</span>
-                  <%=form.file_field :social_image, id:'si-hidden-upload'%>
+                  <%=form.file_field :social_image, accept:"image/jpg, image/png", id:'si-hidden-upload'%>
                   <%# <input type="text" id="si-upload-name" disabled="true" /> %>
                 </div>
               </div>
@@ -114,3 +113,26 @@ document.querySelector("#si-hidden-upload").addEventListener("change", (event) =
 
 </script>
 
+
+<script>
+  const videoSrc = document.querySelector("#video-source");
+  const videoTag = document.querySelector("#video-tag");
+  const inputTag = document.querySelector("#input-tag");
+
+  inputTag.addEventListener('change',  readVideo)
+
+  function readVideo(event) {
+    console.log(event.target.files)
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      
+      reader.onload = function(e) {
+       console.log('loaded')
+       videoSrc.src = e.target.result
+        videoTag.load()
+      }.bind(this)
+  
+      reader.readAsDataURL(event.target.files[0]);
+   }
+  }
+</script>
