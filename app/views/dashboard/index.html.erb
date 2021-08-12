@@ -3,7 +3,7 @@
 		<%= render "shared_partials/sidemenu" %>
 			
 		<div class = "main">
-			<div data-page = "1" class = "page is-active app-overview-page app-overview-page--grid">
+			<div data-page="1" class = "page is-active app-overview-page app-overview-page--grid">
 				<section id = "app_stats">
 					<h6 class = "section-title"> App Stats </h6>
 					<div class = "body-content app-stats__body">
@@ -53,7 +53,8 @@
 									<% if video.thumbnail %>
 										<span>no available image</span>
 									<% else %>
-						  			<%= image_tag(video.thumbnail, class: "thumbnail__image") %> 
+										<%= image_tag video.preview(resize_to_limit: [100, 100]),class: "thumbnail__image" %>
+						  			<%# <%= image_tag(video.thumbnail, class: "thumbnail__image") %>  
 									<% end %>
 						  		<div class = "thumbnail__image--overlay">
 										<p class = "thumbnail__image--overlay-text thumbnail__video-views-count"><%= video.viewer_count %></p>
@@ -103,62 +104,7 @@
 				</section>
 			</div>
 
-			<div data-page = "2" class = "page my-channel-page">
-					<div class ="my-channel-body"> 
-						<h6 class = "my-channel-header-text">My Channel</h6>
-						<section id = "up_video">
-							<div class = "up-video-body mc-grid-style">
-								<div class = "upload-area"> 
-								<%=link_to 'New Upload', videos_new_path %>
-														
-								</div>
-							</div>
-						</section>
-						<section id = "pub_videos">
-							<h6 class = "section-title">Published Videos</h6>
-							<div class = "body-content pub-videos-body mc-grid-style">
-								<div class ="mc-thumbnail">
-									<img class = "thumbnail__image" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
-									<div class = "thumbnail__image--overlay">
-										<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
-									</div>
-								</div>
-							</div>
-						</section>
-						<section id = "un_pub_videos">
-							<h6 class = "section-title">Unpublished Videos</h6>
-							<div class = "body-content un-pub-videos-body mc-grid-style">
-								<div class ="mc-thumbnail">
-									<img class = "thumbnail__image un-pub-img" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
-									<div class = "thumbnail__image--overlay">
-										<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
-									</div>
-								</div>
-								<div class ="mc-thumbnail">
-									<img class = "thumbnail__image un-pub-img" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
-									<div class = "thumbnail__image--overlay">
-										<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
-									</div>
-								</div>
-								<div class ="mc-thumbnail">
-									<img class = "thumbnail__image un-pub-img" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
-									<div class = "thumbnail__image--overlay">
-										<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
-									</div>
-								</div>
-								<div class ="mc-thumbnail">
-									<img class = "thumbnail__image un-pub-img" src= <%=asset_path("lm_logo2.png")%> alt="Insert Video Thumbnail here">
-									<div class = "thumbnail__image--overlay">
-										<p class = "thumbnail__image--overlay-text thumbnail__video-views-count">112</p>
-									</div>
-								</div>
-							</div>
-							
-					</section>
-				</div>					
-			</div>
-
-
+			
 		</div>
 
 		<%= render "shared_partials/notifications" %>
@@ -200,7 +146,7 @@
 
 </script>
 
-<script></script>
+
 <%# button scroll top-videos__body %>
 <script>
 var button = document.getElementById('slide');
@@ -231,31 +177,9 @@ function sideScroll(element,direction,speed,distance,step){
 }
 </script>
 
-<%# Page-switching %>
 <script>
-window.onload = function () {
-    const tab_switchers = document.querySelectorAll('[data-switcher]');
-
-    for (let i = 0; i < tab_switchers.length; i++) {
-        const tab_switcher = tab_switchers[i];
-        const page_id = tab_switcher.dataset.tab;
-
-        tab_switcher.addEventListener('click', function () {
-            document.querySelector('.sidemenu-nav__list-item.is-active').classList.remove('is-active');
-            tab_switcher.parentNode.classList.add('is-active');
-
-            SwitchPage(page_id);
-        });
-    }
-}
-
-function SwitchPage (page_id) {
-    console.log(page_id);
-
-    const current_page = document.querySelector('.main .page.is-active');
-    current_page.classList.remove('is-active');
-
-    const next_page = document.querySelector(`.main .page[data-page="${page_id}"]`);
-    next_page.classList.add('is-active');
-}
+$(document).ready(function(){
+   $(".active").removeClass("active");
+   $("#dashboard-link").addClass("active");
+});
 </script>

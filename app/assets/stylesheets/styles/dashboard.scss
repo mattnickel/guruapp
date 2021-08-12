@@ -653,30 +653,31 @@ display: grid;
 
 /*|| PAGE-SWITCHING*/
 
-.nav-item a[data-switcher]{
+.nav-item a{
 
-	cursor: pointer;
+	text-decoration:none;
 }
 
-.nav-item:hover a[data-switcher]{
+.nav-item:hover a{
 		background-color: #65fadf;
     border:2px solid #cbf0ea;
 		border-style: solid;	
+		text-decoration:none;
 }
 
 
-.nav-item.is-active a[data-switcher]{
-	background-color: #50beaa;
+.nav-item.active a{
+	background-color: #4ca796;
 		
 }
 
-.main .page{
-	display: none;
-}
+// .main .page{
+// 	display: none;
+// }
 
-.main .page.is-active{
-	display:grid;
-}
+// .main .page.is-active{
+// 	display:grid;
+// }
 
 .left-arrow{
 	width:40px;

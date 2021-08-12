@@ -3,16 +3,22 @@
 		<%= render "shared_partials/sidemenu" %>
 			
 		<div class = "main">
-			<div data-page = "3" class = "page is-active coach-message-view"> 
+			<div data-page="3" class = "page coach-message-view"> 
 				<div class="body-content coach-message-view__body cmv__body--scroll cmv-grid-style">
           <% @users.each do |user| %>
 				  	<div class ="mv-thumbnail">
 							<%if user.avatar.attached? %>
-            		<%= image_tag(user.avatar)%>
-							<% else %>
+								<%# <% if user.avatar.representable? %>
+       						<%# <%= image_tag user.avatar.representation(resize_to_limit: [100, 100]) %> 
+      					<%# <% else %>
+        					<%# <%= url_for(user.avatar)%>
+									<%# <%= image_tag user.avatar %>
+									<%= image_tag user.avatar.service_url %>
+        				<%# <% end %> 
+		          <% else %>
 								<span>no image available</span>
-							<% end %> 
-					  	<div class = "thumbnail__image--overlay mv-thumbnail--overlay">
+							<% end %>	 
+							<div class = "thumbnail__image--overlay mv-thumbnail--overlay">
 						  	<div class = "thumbnail__image--overlay-text thumbnail-user__details ">
 						  		<span class="material-icons md-light md-36 msg_icons">chat_bubble</span>
 							  	<div class="user-details__text">
@@ -32,3 +38,10 @@
 			
 	</div>	
 </div>
+
+<script>
+$(document).ready(function(){
+   $(".active").removeClass("active");
+   $("#messaging-link").addClass("active");
+});
+</script>

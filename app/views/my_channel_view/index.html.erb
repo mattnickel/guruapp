@@ -3,7 +3,7 @@
 		<%= render "shared_partials/sidemenu" %>
 			
 		<div class = "main">
-			<div data-page = "2" class = "page is-active my-channel-page">
+			<div data-page = "2" class = "page my-channel-page">
 					<div class ="my-channel-body"> 
 						<h6 class = "my-channel-header-text">My Channel</h6>
 						<section id = "up_video">
@@ -66,33 +66,10 @@
 	</div>	
 </div>
 
-
-
-<%# Page-switching %>
 <script>
-window.onload = function () {
-    const tab_switchers = document.querySelectorAll('[data-switcher]');
-
-    for (let i = 0; i < tab_switchers.length; i++) {
-        const tab_switcher = tab_switchers[i];
-        const page_id = tab_switcher.dataset.tab;
-
-        tab_switcher.addEventListener('click', function () {
-            document.querySelector('.sidemenu-nav__list-item.is-active').classList.remove('is-active');
-            tab_switcher.parentNode.classList.add('is-active');
-
-            SwitchPage(page_id);
-        });
-    }
-}
-
-function SwitchPage (page_id) {
-    console.log(page_id);
-
-    const current_page = document.querySelector('.main .page.is-active');
-    current_page.classList.remove('is-active');
-
-    const next_page = document.querySelector(`.main .page[data-page="${page_id}"]`);
-    next_page.classList.add('is-active');
-}
+$(document).ready(function(){
+   $(".active").removeClass("active");
+   $("#mychannel-link").addClass("active");
+});
 </script>
+
