@@ -6,7 +6,7 @@ module API
 
         resource :dashboard do
             desc "Get dashboard statistic summary"
-            get "statistic_summary", :VideoSerializer do
+            get "statistic_summary" do
                 data = Dashboard.get_stat
                 
                 render json: {
@@ -50,8 +50,7 @@ module API
                     dashboard_video.title = viewed_video.title
                     dashboard_video.author = viewed_video.author
                     dashboard_video.viewer_count = viewed_video.viewer_count
-                    dashboard_video.thumbnail = video.image_file
-
+                    dashboard_video.thumbnail = video.image
                     data.top_3_videos.push(dashboard_video)
                 end
 

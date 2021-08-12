@@ -50,11 +50,10 @@
 						<div id = "tn-scroll-outer-container" class = "tn-scroll-outer-container">
 							<% @top_3_watched_videos.each do |video| %> 
 								<div class ="thumbnail">
-									<% if video.thumbnail %>
-										<span>no available image</span>
+									<% if video.thumbnail.attached? %>
+						  				<%= image_tag(video.thumbnail.service_url, class: "thumbnail__image") %>  
 									<% else %>
-										<%= image_tag video.preview(resize_to_limit: [100, 100]),class: "thumbnail__image" %>
-						  			<%# <%= image_tag(video.thumbnail, class: "thumbnail__image") %>  
+										<span>no available image</span>
 									<% end %>
 						  		<div class = "thumbnail__image--overlay">
 										<p class = "thumbnail__image--overlay-text thumbnail__video-views-count"><%= video.viewer_count %></p>
