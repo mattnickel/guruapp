@@ -13,7 +13,8 @@
       					<%# <% else %>
         					<%# <%= url_for(user.avatar)%>
 									<%# <%= image_tag user.avatar %>
-									<%= image_tag user.avatar.service_url %>
+									<%# <%= image_tag user.avatar.service_url %> %>
+									<%= image_tag user.avatar.variant(resize_to_limit: [75, 75]).processed %>
         				<%# <% end %> 
 		          <% else %>
 								<span>no image available</span>
