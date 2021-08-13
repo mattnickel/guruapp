@@ -51,7 +51,7 @@
 							<% @top_3_watched_videos.each do |video| %> 
 								<div class ="thumbnail">
 									<% if video.thumbnail.attached? %>
-						  				<%= image_tag(video.thumbnail.service_url, class: "thumbnail__image") %>  
+						  				<%= image_tag(video.thumbnail, class: "thumbnail__image") %>  
 									<% else %>
 										 <span>no available image</span> %>
 									<% end %>
