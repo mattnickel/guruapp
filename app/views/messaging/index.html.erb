@@ -12,7 +12,7 @@
        						<%# <%= image_tag user.avatar.representation(resize_to_limit: [100, 100]) %> 
       					<%# <% else %>
         					<%# <%= url_for(user.avatar)%>
-									<%= image_tag user.avatar%>
+									<%= image_tag user.avatar.variant(resize_to_fill: [150, 160, gravity: 'north'])%>
 									<%# <%= image_tag user.avatar.service_url %> 
         				<%# <% end %> 
 		          <% else %>
