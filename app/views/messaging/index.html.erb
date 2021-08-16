@@ -9,7 +9,7 @@
 				  	<div class ="mv-thumbnail">
 							<%# <%if user.avatar.attached? %> 
 								<%# <% if user.avatar.representable? %>
-       						<%= image_tag("the_man.jpg", class: "cmv-thumbnail__image") %>
+       						<%= image_tag(user.avatar, class: "cmv-thumbnail__image") %>
       					<%# <% else %>
         					<%# <%= url_for(user.avatar)%>
 									<%# <%= image_tag user.avatar.variant(resize_to_fill: [150, 160, gravity: 'north'])%> 
