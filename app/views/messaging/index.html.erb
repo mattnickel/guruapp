@@ -3,27 +3,21 @@
 		<%= render "shared_partials/sidemenu" %>
 			
 		<div class = "main">
-			<div data-page="3" class = "page coach-message-view"> 
-				<div class="body-content coach-message-view__body cmv__body--scroll cmv-grid-style">
+			<div class = "cmv"> 
+				<div class="cmv__body border cmv__body--scroll cmv__grid--style ">
           <% @users.each do |user| %>
-				  	<div class ="mv-thumbnail">
+				  	<div class ="cmv__thumbnail">
 							<%if user.avatar.attached? %> 
-								<%# <% if user.avatar.representable? %>
-       						<%= image_tag user.avatar, class: "cmv-thumbnail__image" %>
-      				<% else %>
-        					<%# <%= url_for(user.avatar)%>
-									<%# <%= image_tag user.avatar.variant(resize_to_fill: [150, 160, gravity: 'north'])%> 
-									<%# <%= image_tag user.avatar.service_url %> 
-        				<%# <% end %> 
-		          <%# <% else %> 
+									<%= image_tag user.avatar, class: "cmv__thumbnail__img" %>
+      				<% else %>        				 
 									<span>no image available</span>
 							<% end %>	 
-							<div class = "thumbnail__image--overlay mv-thumbnail--overlay">
-						  	<div class = "thumbnail__image--overlay-text thumbnail-user__details ">
+							<div class = "cmv__thumbnail--overlay">
+						  	<div class = "cmv__thumbnail__text cmv__user ">
 						  		<span class="material-icons md-light md-36 msg_icons">chat_bubble</span>
-							  	<div class="user-details__text">
-							  		<p class = "thumbnail-video__text thumbnail-video__title user-name"><%=user.username%></p>
-							  		<p class = "thumbnail-video__text thumbnail-video__author user-description"><%= user.description%></p>
+							  	<div class="cmv__user__text">
+							  		<p class = "cmv__user__name"><%=user.username%></p>
+							  		<p class = "cmv__user__description"><%= user.description%></p>
 							  	</div>	
 						  	</div>
 						  </div>
