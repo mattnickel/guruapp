@@ -666,6 +666,19 @@ position:relative;
 	overflow-y: auto;
 }
 
+.cmv-thumbnail__image {
+ display: block;
+  position: absolute;
+	top: 50%;
+ left: 50%;
+	width: 100%;
+height: 100%;
+	object-fit: fill;
+	
+ transform: translate(-50%, -50%);
+ border-radius: 2rem;
+}
+
 .cmv__body--scroll{
 	background:
 		/* Shadow covers */
@@ -705,7 +718,7 @@ position:relative;
   margin: 0;
 	background-color:  rgba(216, 216, 216, 0.11);
 	padding: 1rem;
-	max-width: auto;
+	width:auto;
 	height: 14rem;
   border-radius: 2rem;  
 }
