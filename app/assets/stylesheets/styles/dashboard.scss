@@ -671,7 +671,7 @@ position:relative;
 .cmv{
 	height:600px;
 	width:100%;
-	overflow-y: hidden;
+	overflow-y: scroll;
 
 	&__body{
 		padding-right: 1.75rem;
