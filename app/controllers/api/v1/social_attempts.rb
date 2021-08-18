@@ -17,13 +17,15 @@ module API
                 desc "Create new attempt"
                 post do
                     current_user = User.find_by(authentication_token: headers['Token'])
+                    save_activity(current_user)
                     if SocialAttempt.create!(user_id: current_user.id, description: "", created_at: Date.today)
                         render json: {
                             messages: "Attempt",
                             is_success: true,
                             status: :ok
-                        }
+                        } 
                     end
+                    
                 end
             end
 
