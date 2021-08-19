@@ -24,7 +24,7 @@
 						<div class = "app-stats__card">
 								<div class ="app-stats__content">
 									<img class = "app-stats__img"src = <%=asset_path("sun_icon.png")%> >
-									<div class="app-stats__day">
+									<div class="app-stats__day-text">
 										<p class = "app-stats__text day-text"><%=@most_active_day_week%></p>
 										<p class ="app-stats__label most-active-label">Most Active Day</p>
 									</div>
@@ -32,7 +32,7 @@
 						</div>
 						<div class = "app-stats__card">
 							<div class ="app-stats__content">
-						  	<p class = "app-stats__text watch-views"><%=@video_watched_count%></p>
+						  	<p class = "app-stats__text stats-text"><%=@video_watched_count%></p>
 								<p class ="app-stats__label watch-label">Watched Videos</p>
 							</div>						
 						</div>
@@ -82,7 +82,7 @@
 						<div class ="thumbnail">
 						  <img class = "thumbnail__img" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
 						  <div class = "thumbnail__img--overlay">
-								<p class = "thumbnail__img--overlay__text thumbnail-video-stat">Most Recent</p>
+								<p class = "thumbnail__img--overlay__text thumbnail-video-stat">Most Watched</p>
 						  	<p class = "thumbnail__img--overlay__text thumbnail__video-views-count" >112</p>
 								<div class = "thumbnail__img--overlay__text thumbnail-video__details">
 									<p class = "thumbnail-video__text thumbnail-video__title">This is a very very very long video title</p>
@@ -93,8 +93,8 @@
 						<div class ="thumbnail">
 						  <img class = "thumbnail__img" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
 						  <div class = "thumbnail__img--overlay">
-								<p class = "thumbnail__img--overlay__text thumbnail-video-stat">Most Watched</p>
-						  	<p class = "thumbnail__img--overlay__text thumbnail__video-views-count" >112</p>
+								<p class = "thumbnail__img--overlay__text thumbnail-video-stat">Most Recent</p>
+						  	<p class = "thumbnail__img--overlay__text thumbnail__video-views-count">112</p>
 								<div class = "thumbnail__img--overlay__text thumbnail-video__details">
 									<p class = "thumbnail-video__text thumbnail-video__title">This is a very very very long video title</p>
 									<p class = "thumbnail-video__text thumbnail-video__author">Video author</p>
@@ -120,10 +120,10 @@
 <script type="text/javascript">
 
 	var active_user_percent = parseInt("<%=@active_user_count%>") / parseInt("<%=@total_system_user%>")
-	
+	var circle_size = 90
   let options = {
     startAngle: -1.55,
-    size: 80,
+    size: circle_size,
     value: active_user_percent, 
     fill: {gradient: ['#00e6c7', '#00f3b9']}					
   }

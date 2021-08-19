@@ -89,7 +89,7 @@ h6{
 }
 
 .most-active-label{
-font-size: 1rem;
+font-size: 1.1rem;
 white-space: nowrap;
 }
 
@@ -99,24 +99,27 @@ white-space: nowrap;
 }
 
 .app-stats__text{
-	// height: 4rem;
-	// display: flex;
-  // align-items: stretch;
 }
 
-.app-stats__day{
+.app-stats__day-text{
+height: auto;
+
+}
 
 
+.app-stats__img{
+	margin: .7rem;
 }
 
 .app-stats__content{
-
+	height: 8rem;
 	text-align: center;
+	justify-content: center;
 	align-items: center;
 	display: flex;
 	flex-direction: column;
-	gap:1rem;
 }
+
 .users-label,
 .watch-label{
 	font-size: 1.5rem;
@@ -574,7 +577,11 @@ display: grid;
 
 
  /* || CIRCULAR ACTIVE USER BAR */
- 
+ //same as circle size
+ .bar{
+	height: 9rem;
+	}
+	
  
  .box span{
 	text-align: center;
