@@ -63,7 +63,7 @@ module API
                 #Top Videos
                 top_3_views = Viewing.joins("INNER JOIN videos ON videos.id = viewings.video_id")
                                             .select('videos.id AS id, videos.title, videos.author, COUNT(viewings.user_id) AS viewer_count')
-                                            # .where('viewings.created_at > ?', Date.today-1.week)
+                                            .where('viewings.created_at > ?', Date.today-1.week)
                                             .group('videos.id, videos.title, videos.author')
                                             .order('COUNT(viewings.user_id) desc limit 3')
                 
