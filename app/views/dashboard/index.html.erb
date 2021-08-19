@@ -16,8 +16,8 @@
 						<div class = "app-stats__card">
 							<div class ="app-stats__content">
 								<div class="circle">
-          				<div class="bar"></div>
-          				<div class="box circle__text"><span></span></div>
+          				<div class="circle__bar"></div>
+          				<div class="box circle__text"><span class = "circle__canvas"></span></div>
         				</div>	
 							</div>									
 						</div>
@@ -103,17 +103,13 @@
 						</div>
 					</div>
 				</section>
-			</div>
-
-			
+			</div>			
 		</div>
 
 		<%= render "shared_partials/notifications" %>
-
 			
 	</div>	
 </div>
-
 
 
 <%# circular active user %>
@@ -128,7 +124,7 @@
     fill: {gradient: ['#00e6c7', '#00f3b9']}					
   }
 
-	$(".circle .bar").circleProgress(options).on('circle-animation-progress',
+	$(".circle .circle__bar").circleProgress(options).on('circle-animation-progress',
   function(event, progress, stepValue){
     $(this).parent().find("span").text(String((stepValue*100).toFixed(0)) + "%" + "\nActive");
   });     
