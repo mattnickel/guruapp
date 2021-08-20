@@ -74,7 +74,7 @@ module API
 
         def get_max_score(game_type, today = false)
           if(today)
-            sql = "game_type = :game_type AND CAST(game_scores.updated_at as date) = :today";
+            sql = "game_type = :game_type AND CAST(game_scores.created_at as date) = :today";
           else
             #sql = "game_type = :game_type AND CAST(game_scores.updated_at as date) != :today";
             sql = "game_type = :game_type";
