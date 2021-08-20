@@ -43,10 +43,10 @@ Rails.application.routes.draw do
 
                                                                                                                                  
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
-  get 'videos/new', to:'videos#new'
-  get 'my_channel_view/index', to: 'my_channel_view#index', as: 'mychannelview'
-  get 'messaging/index', to: 'messaging#index', as: 'coachmessagingview' 
+  get 'my_channel_view', to: 'my_channel_view#index', as: 'mychannelview'
+  get 'messaging', to: 'messaging#index', as: 'coachmessagingview' 
   get 'videos/edit', to:'videos#edit'
+  get 'videos/new', to:'videos#new'
   get 'welcome/index'
   get 'welcome/download', to: 'welcome#download', as: 'download'
   get 'privacy', to: 'welcome#privacy', as: 'privacy'
