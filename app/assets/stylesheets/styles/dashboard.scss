@@ -1,47 +1,7 @@
-:root {
-
-	/*| COLORS |*/
-
-	--main-lm-color: #00f3b9;
-
-	/*Typography*/
-	--header-color: #ffffff;
-	--stats-color: #000000;
-	--overlay-text: #ffffff;
-	--notif-text-color:#ffffff;
-	--notif-btn-txt-clr: #000000;
-	--notif-link-color:#ffffff;
-	--notif-link2-color: #00f3b9;
-	--notif-btn-clr: #00f3b9;
-	--notif-btn-txt-hvr: #ffffff;
-	--notif-link-hover: #000000;
-	--notif-link2-hover: #ffffff;
-  --tn-overlay-text: #ffffff;
-
-	/*Thumbnails*/
-	--thumbnail-bg-color: rgba(216, 216, 216, 0.11);
-	--views-bg-count: #00f3b9;
-
-	/*Background*/
-	--app-stats-card: #ffffff;
-	--circular-box: #ffffff;
-  --notif-card-color: rgba(216, 216, 216, 0.11);
-	--sidemenu-bg-color: #00f3b9;
-
-
-	/* Links and Icons */
-	--arrow-color: rgba(255, 255, 255, 0.87);
-	--arrow-bg-clr: rgba(49, 44, 44, 0.644);
-	--icon-color: #ffffff;
-	--icon-bg-hvr: #65fadf;
-	--icon-brdr-hvr: #cbf0ea;
-	--icon-bg-actv: #4ca796;
-	--icon-brdr-clr: #000000;
-
-	/* Borders and Lines */
-	--line-border: rgba(216, 216, 216, 0.11);
-
-}
+// :root {
+// 	/*| COLORS |*/
+// 	--main-lm-color: #00f3b9;
+// }
 
 /* || REMOVE DEFAULT STYLING*/
 body {
@@ -107,6 +67,31 @@ h6 {
 /* || DASHBOARD PROPERTIES */
 
 .dashboard {
+	/*Colors*/
+	/*Typography*/
+	--header-color: #ffffff;
+	--stats-color: #000000;
+	--overlay-text: #ffffff;
+	--tn-overlay-text: #ffffff;
+
+	/*Thumbnails*/
+	--thumbnail-bg-color: rgba(216, 216, 216, 0.11);
+	--views-bg-count: #00f3b9;
+
+	/*Background*/
+	--app-stats-card: #ffffff;
+	--circular-box: #ffffff;
+
+	/* Arrows */
+	--arrow-color: rgba(255, 255, 255, 0.87);
+	--arrow-bg-clr: rgba(49, 44, 44, 0.644);
+	
+	/* Borders and Lines */
+	--line-border: rgba(216, 216, 216, 0.11);
+}
+
+
+.dashboard {
 	border: .2rem solid var(--line-border);
 	border-radius: 3rem;
 	font-size: 1.4rem;
@@ -165,6 +150,16 @@ h6 {
 
 /* || SIDEMENU ELEMENTS */
 
+.sidemenu{
+	/*Colors*/
+	--sidemenu-bg-color: #00f3b9;
+	--icon-color: #ffffff;
+	--icon-bg-hvr: #65fadf;
+	--icon-brdr-hvr: #cbf0ea;
+	--icon-bg-actv: #4ca796;
+	--icon-brdr-clr: #000000;
+}
+
 //Navbar
 .sidemenu-nav {
 	display: flex;
@@ -187,7 +182,6 @@ h6 {
 .sidemenu-nav__item a {
 	text-decoration: none;
 }
-
 
 .sidemenu-nav__item:hover a {
 	background-color: var(--icon-bg-hvr);
@@ -218,7 +212,7 @@ h6 {
 
 /* || DASHBOARD MAIN AREA PROPERTIES AND MAIN BODY ELEMENTS */
 
-.dashboard-home{
+.dashboard-home {
 	border-right: medium solid var(--line-border);
 	border-width: .1rem;
 	height: 100%;
@@ -226,7 +220,7 @@ h6 {
   padding-right: 1%;
 }
 
-.dashboard-home--grid{
+.dashboard-home--grid {
 	display: grid;
 	flex-wrap: wrap;
 	flex-direction: column;
@@ -241,15 +235,15 @@ h6 {
 
 /* || OVERVIEW PAGE GRID AREAS */
 
-#app-stats{
+#app-stats {
 	grid-area: app-stats;
 }
 
-#top-videos{
+#top-videos {
 	grid-area: top-videos;
 }
 
-#my_-channel_view{
+#my_-channel_view {
 	grid-area: my-channel-view;
 }
 
@@ -527,6 +521,23 @@ h6 {
 /* || NOTIFICATIONS ELEMENTS */
 
 
+.notifications {
+	/*Colors*/
+	/*Typography*/
+	--notif-text-color:#ffffff;
+	--notif-btn-txt-clr: #000000;
+	--notif-link-color:#ffffff;
+	--notif-link2-color: #00f3b9;
+	--notif-btn-clr: #00f3b9;
+	--notif-btn-txt-hvr: #ffffff;
+	--notif-link-hover: #000000;
+	--notif-link2-hover: #ffffff;
+
+	/*Background*/
+	--notif-card-color: rgba(216, 216, 216, 0.11);
+}
+
+
 .notifications__body {
 	display: flex;
 	flex-direction: column;
@@ -542,7 +553,6 @@ h6 {
 	flex-direction: column;
 	align-items: center;
 	gap: 2rem;
-	color: var(--notif-text-color);
 	background-color: var(--notif-card-color);
 	border-radius: 1.5rem;
 	border: 0;
@@ -562,6 +572,10 @@ h6 {
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
+}
+
+.notifications__card__text{
+	color: var(--notif-text-color);
 }
 
 .notifications__card__footer {
@@ -617,7 +631,6 @@ h6 {
 }
 
 
-
  /* || CIRCULAR ACTIVE USER BAR */
  // should be the same as circle size
 .circle__bar {
@@ -634,7 +647,6 @@ h6 {
 	font-weight: 600;
 	line-height: 1;
 }
-
 
 .app-stats__content .circle{
 	position: relative;
