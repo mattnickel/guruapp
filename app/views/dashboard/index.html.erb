@@ -1,74 +1,74 @@
-<div class = "container">
-	<div class ="dashboard dashboard--grid dashboard__bg-img">
+<div class="container">
+	<div class="dashboard dashboard--grid dashboard__bg-img">
 		<%= render "shared_partials/sidemenu" %>
 			
-		<div class = "main main--border">
-			<div class = "dashboard-home dashboard-home--grid">
-				<section id = "app-stats" class = "dashboard__section">
-					<h6 class = "dashboard__section__title"> App Stats </h6>
-					<div class = "body__content app-stats__body">
-						<div class = "app-stats__card">
-							<div class ="app-stats__content">
-								<p class = "app-stats__text stats-text"><%=@total_system_user%></p>						  
-								<p class ="app-stats__label users-label">Users</p>
+		<div class="main main--border">
+			<div class="dashboard-home dashboard-home--grid">
+				<section id="app-stats" class="dashboard__section">
+					<h6 class="dashboard__section__title"> App Stats </h6>
+					<div class="body__content app-stats__body">
+						<div class="app-stats__card">
+							<div class="app-stats__content">
+								<p class="app-stats__text stats-text"><%=@total_system_user%></p>						  
+								<p class="app-stats__label users-label">Users</p>
 							</div>
 						</div>
-						<div class = "app-stats__card">
-							<div class ="app-stats__content">
+						<div class="app-stats__card">
+							<div class="app-stats__content">
 								<div class="circle">
           				<div class="circle__bar"></div>
-          				<div class="box circle__text"><span class = "circle__canvas"></span></div>
+          				<div class="box circle__text"><span class="circle__canvas"></span></div>
         				</div>	
 							</div>									
 						</div>
-						<div class = "app-stats__card">
-								<div class ="app-stats__content">
-									<img class = "app-stats__img"src = <%=asset_path("sun_icon.png")%> >
+						<div class="app-stats__card">
+								<div class="app-stats__content">
+									<img class="app-stats__img"src = <%=asset_path("sun_icon.png")%> >
 									<div class="app-stats__day-text">
-										<p class = "app-stats__text day-text"><%=@most_active_day_week%></p>
-										<p class ="app-stats__label most-active-label">Most Active Day</p>
+										<p class="app-stats__text day-text"><%=@most_active_day_week%></p>
+										<p class="app-stats__label most-active-label">Most Active Day</p>
 									</div>
 								</div>
 						</div>
-						<div class = "app-stats__card">
-							<div class ="app-stats__content">
-						  	<p class = "app-stats__text stats-text"><%=@video_watched_count%></p>
-								<p class ="app-stats__label watch-label">Watched Videos</p>
+						<div class="app-stats__card">
+							<div class="app-stats__content">
+						  	<p class="app-stats__text stats-text"><%=@video_watched_count%></p>
+								<p class="app-stats__label watch-label">Watched Videos</p>
 							</div>						
 						</div>
 					</div>
 				</section>
 
-				<section id = "top-videos" class = "dashboard__section top-videos__container">
-					<h6 class = "dashboard__section__title">Top Videos</h6>
-					<div class = "body__content top-videos__body">
+				<section id="top-videos" class="dashboard__section top-videos__container">
+					<h6 class="dashboard__section__title">Top Videos</h6>
+					<div class="body__content top-videos__body">
 						<div class="left-arrow">
-							<div id="slideBack" class = "left-arrow--style" alt = "Previous">
+							<div id="slideBack" class="left-arrow--style" alt = "Previous">
 								<div class="left-arrow__button"> 
 									<span class="material-icons">arrow_back_ios</span>
 								</div>
 							</div>
 						</div>			
-						<div id = "tn-scroll__container" class = "tn-scroll__container">
+						<div id="tn-scroll__container" class="tn-scroll__container">
 							<% @top_3_watched_videos.each do |video| %> 
-								<div class ="thumbnail">
+								<div class="thumbnail">
 									<% if video.thumbnail.attached? %>
 						  				<%= image_tag(video.thumbnail, class: "thumbnail__img") %>  
 									<% else %>
 										 <span>no available image</span>
 									<% end %>
-						  		<div class = "thumbnail__img--overlay">
-										<p class = "thumbnail__img--overlay__text thumbnail__video-views-count"><%= video.viewer_count %></p>
-										<div class = "thumbnail__img--overlay__text thumbnail-video__details">
-											<p class = "thumbnail-video__text thumbnail-video__title"><%= video.title %></p>
-											<p class = "thumbnail-video__text thumbnail-video__author"><%= video.author %></p>
+						  		<div class="thumbnail__img--overlay">
+										<p class="thumbnail__img--overlay__text thumbnail__video-views-count"><%= video.viewer_count %></p>
+										<div class="thumbnail__img--overlay__text thumbnail-video__details">
+											<p class="thumbnail-video__text thumbnail-video__title"><%= video.title %></p>
+											<p class="thumbnail-video__text thumbnail-video__author"><%= video.author %></p>
 										</div>
 									</div>
 								</div>						
 							<%end%>			
 						</div>
-						<div id = "right-arrow" class="right-arrow">
-							<div id="slide" class = "right-arrow--style" >
+						<div id="right-arrow" class="right-arrow">
+							<div id="slide" class="right-arrow--style" >
 								<div class="right-arrow__button" alt = "Next"> 
 								<span class="material-icons">arrow_forward_ios</span> 
 								</div>
@@ -76,28 +76,28 @@
 						</div>
 					</div>
 				</section>
-				<section id = "my-channel-view" class = "dashboard__section">
-					<h6 class = "dashboard__section__title">My Channel</h6>
-					<div class = "body__content my-channel-view__body">
-						<div class ="thumbnail">
-						  <img class = "thumbnail__img" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
-						  <div class = "thumbnail__img--overlay">
-								<p class = "thumbnail__img--overlay__text thumbnail-video-stat">Most Watched</p>
-						  	<p class = "thumbnail__img--overlay__text thumbnail__video-views-count" >112</p>
-								<div class = "thumbnail__img--overlay__text thumbnail-video__details">
-									<p class = "thumbnail-video__text thumbnail-video__title">This is a very very very long video title</p>
-									<p class = "thumbnail-video__text thumbnail-video__author">Video author</p>
+				<section id="my-channel-view" class="dashboard__section">
+					<h6 class="dashboard__section__title">My Channel</h6>
+					<div class="body__content my-channel-view__body">
+						<div class="thumbnail">
+						  <img class="thumbnail__img" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
+						  <div class="thumbnail__img--overlay">
+								<p class="thumbnail__img--overlay__text thumbnail-video-stat">Most Watched</p>
+						  	<p class="thumbnail__img--overlay__text thumbnail__video-views-count" >112</p>
+								<div class="thumbnail__img--overlay__text thumbnail-video__details">
+									<p class="thumbnail-video__text thumbnail-video__title">This is a very very very long video title</p>
+									<p class="thumbnail-video__text thumbnail-video__author">Video author</p>
 								</div>
 							</div>
 						</div>
-						<div class ="thumbnail">
-						  <img class = "thumbnail__img" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
-						  <div class = "thumbnail__img--overlay">
-								<p class = "thumbnail__img--overlay__text thumbnail-video-stat">Most Recent</p>
-						  	<p class = "thumbnail__img--overlay__text thumbnail__video-views-count">112</p>
-								<div class = "thumbnail__img--overlay__text thumbnail-video__details">
-									<p class = "thumbnail-video__text thumbnail-video__title">This is a very very very long video title</p>
-									<p class = "thumbnail-video__text thumbnail-video__author">Video author</p>
+						<div class="thumbnail">
+						  <img class="thumbnail__img" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
+						  <div class="thumbnail__img--overlay">
+								<p class="thumbnail__img--overlay__text thumbnail-video-stat">Most Recent</p>
+						  	<p class="thumbnail__img--overlay__text thumbnail__video-views-count">112</p>
+								<div class="thumbnail__img--overlay__text thumbnail-video__details">
+									<p class="thumbnail-video__text thumbnail-video__title">This is a very very very long video title</p>
+									<p class="thumbnail-video__text thumbnail-video__author">Video author</p>
 								</div>
 							</div>
 						</div>
