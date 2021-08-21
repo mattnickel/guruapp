@@ -1,4 +1,4 @@
-//based on 10px sizing same in Skeleton CSS
+//based on 10px sizing 
 
 :root {
 	/*| COLORS |*/
@@ -58,14 +58,6 @@ h6 {
 	padding-left: 8%;
 }
 
-.label {
-	color: var(--stats-color);
-	font-weight: 800;
-	letter-spacing: .05rem;
-	line-height: 1.5;
-}
-
-
 /* || DASHBOARD PROPERTIES */
 
 .dashboard {
@@ -94,8 +86,7 @@ h6 {
 
 
 .dashboard {
-	// border: .2rem solid var(--line-border);
-	border-radius: 3rem;
+  border-radius: 3rem;
 	font-size: 1.4rem;
 	min-height: 60rem;
 	max-width: 96rem;
@@ -118,6 +109,7 @@ h6 {
 .dashboard__section__title {
 	font-weight: 500;
 	font-size: 2.2rem;
+	margin-bottom: .5rem;
 }
 
 .dashboard p {
@@ -144,7 +136,8 @@ h6 {
 
 .main {
 	grid-area: main;
-	
+	min-width: 30rem;
+	overflow-x: auto;
 }
 
 .notifications {
@@ -159,7 +152,7 @@ h6 {
 	--sidemenu-bg-color: var(--main-lm-color);
 	--icon-color: #ffffff;
 	--icon-bg-hvr: #65fadf;
-	--icon-brdr-hvr: #cbf0ea;
+	--icon-brdr-hvr: #949494;
 	--icon-bg-actv: #4ca796;
 	--icon-brdr-clr: #000000;
 }
@@ -169,7 +162,7 @@ h6 {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	height: 100%;
+	min-height: 100%;
 	width: 4rem;
 	background-color: var(--sidemenu-bg-color);
 	border-radius: 3rem;
@@ -190,7 +183,6 @@ h6 {
 .sidemenu-nav__item:hover a {
 	background-color: var(--icon-bg-hvr);
 	border: 2px solid var(--icon-brdr-hvr);
-	border-style: solid;
 	text-decoration: none;
 }
 
@@ -216,7 +208,7 @@ h6 {
 
 /* || DASHBOARD MAIN AREA PROPERTIES AND MAIN BODY ELEMENTS */
 
-.main--border{
+.main--border {
 	border-right: medium solid var(--line-border);
 	border-width: .1rem;
 	margin-right: 3%;
@@ -224,11 +216,7 @@ h6 {
 }
 
 .dashboard-home {
-	// border-right: medium solid var(--line-border);
-	// border-width: .1rem;
 	min-height: 60rem;
-	// margin-right: 3%;
-  // padding-right: 1%;
 }
 
 .dashboard-home--grid {
@@ -259,13 +247,11 @@ h6 {
 }
 
 
-
 /* APP STATS */
 
 .app-stats__body {
 	gap: 1rem;
 }
-
 
 .app-stats__content {
 	display: flex;
@@ -289,8 +275,9 @@ h6 {
 	border-radius: 1.5rem;
 	border: 0;
 	box-shadow: none;
-	height: 7.5rem;
-	width: 7.5rem;
+	min-height: 7.5rem;
+	min-width: 7.5rem;
+	max-width: 7.5rem;
 	padding: 2rem;
 }
 
@@ -335,9 +322,6 @@ h6 {
 .top-videos__container {
 	min-width: 0;
 }
-.top-videos__body .thumbnail {
-	min-width: 20rem;
-}
 
 .top-videos__body {
 	display:flex;
@@ -350,7 +334,7 @@ h6 {
 .tn-scroll__container {
 	display: flex;
 	float: left;
-	gap: 1rem;
+	gap: 2rem;
 	padding: 0px;
 	width: 100%;
 	position: relative;
@@ -380,12 +364,14 @@ h6 {
 	overflow: hidden;
 	margin: 0;
 	padding: 1rem;
-	width: 20rem;
-	height: 11rem;
+	min-height: 11rem;
 	padding-top: 2rem;
 	padding-bottom: 1rem;
 }
 
+.home-thumbnail {
+	min-width: 20rem
+}
 
 // General Thumbnail Properties
 .thumbnail__img {
@@ -417,7 +403,6 @@ h6 {
 	position: absolute;
 	justify-content: center;
 	color: var(--tn-overlay-text);
-	
 }
 
 .thumbnail__video-views-count {
@@ -482,16 +467,8 @@ h6 {
 
 //My Channel Thumbnail
 .mc-thumbnail {
-	display: inline-block;
-	position: relative;
-	margin: 0;
-	background-color: var(--thumbnail-bg-color);
-	border-radius: 2rem;
 	padding: 1rem;
 	max-width: auto;
-	max-height: 11rem;
-	padding-top: 2rem;
-	padding-bottom: 1rem;
 }
 
 #up_video {
@@ -618,8 +595,8 @@ h6 {
 	border-radius: 2rem;
 	height: fit-content;
 	width: 7.5rem;
-	padding-left: 5%;
-	padding-right: 5%;
+	padding-left: 1rem;
+	padding-right: 1rem;
 	text-transform: none;
 	text-align: center;
 		&:hover {
@@ -645,7 +622,8 @@ h6 {
  /* || CIRCULAR ACTIVE USER BAR */
  // should be the same as circle size
 .circle__bar {
-	height: 9rem;
+	min-height: 9rem;
+	max-height: 9rem;
 }
 
 .circle__canvas {
@@ -689,19 +667,23 @@ h6 {
 /*|| Top Videos - Scrolling*/
 
 .left-arrow {
-	display: flex;
-	clear: none; 
 	float: left;
-	height: 100%;
-	width: 4rem;
-  overflow: hidden;
-  position: absolute; 
-  z-index: 2;
+}
+
+.right-arrow {
+	right: 0;
 }
 
 .left-arrow,
 .right-arrow {
 	background: var(--arrow-bg-clr);
+	display: flex;
+	clear: none; 
+	height: 100%;
+	width: 4rem;
+	overflow: hidden;
+  position: absolute;
+	z-index: 2; 
 }
 
 .left-arrow--style,
@@ -717,15 +699,12 @@ h6 {
 	cursor: pointer;
 }
 
-.right-arrow {
-	display: flex;
-	right: 0;
-	clear: none;
+.right-arrow::before,
+.left-arrow::after {
+	content: "";
 	height: 100%;
-	width: 4rem;
-	overflow: hidden;
-	position: absolute;
-	z-index: 2;
+	width: 3rem;
+	pointer-events: none;
 }
 
 .right-arrow::before {
@@ -738,19 +717,8 @@ h6 {
 	position: relative;
 }
 
-.right-arrow::before {
-	content: "";
-	height: 100%;
-	width: 3rem;
-	pointer-events: none;
-}
 
-.left-arrow::after {
-	content: "";
-	height: 100%;
-	width: 3rem;
-	pointer-events: none;
-}
+
 
 /*Coach Messaging View*/
 

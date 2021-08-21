@@ -19,7 +19,7 @@
           				<div class="circle__bar"></div>
           				<div class="box circle__text"><span class="circle__canvas"></span></div>
         				</div>	
-							</div>									
+							</div>
 						</div>
 						<div class="app-stats__card">
 								<div class="app-stats__content">
@@ -51,7 +51,7 @@
 						</div>			
 						<div id="tn-scroll__container" class="tn-scroll__container">
 							<% @top_3_watched_videos.each do |video| %> 
-								<div class="thumbnail">
+								<div class="thumbnail home-thumbnail">
 									<% if video.thumbnail.attached? %>
 						  				<%= image_tag(video.thumbnail, class: "thumbnail__img") %>  
 									<% else %>
@@ -79,7 +79,7 @@
 				<section id="my-channel-view" class="dashboard__section">
 					<h6 class="dashboard__section__title">My Channel</h6>
 					<div class="body__content my-channel-view__body">
-						<div class="thumbnail">
+						<div class="thumbnail home-thumbnail">
 						  <img class="thumbnail__img" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
 						  <div class="thumbnail__img--overlay">
 								<p class="thumbnail__img--overlay__text thumbnail-video-stat">Most Watched</p>
@@ -90,7 +90,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="thumbnail">
+						<div class="thumbnail home-thumbnail">
 						  <img class="thumbnail__img" src= <%=asset_path("the_man.jpg")%> alt="Insert Video Thumbnail here">
 						  <div class="thumbnail__img--overlay">
 								<p class="thumbnail__img--overlay__text thumbnail-video-stat">Most Recent</p>
