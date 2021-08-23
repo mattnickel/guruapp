@@ -12,15 +12,15 @@ module API
           requires :date, type: Date
         end
         post do
-
-          if Viewing.create!({video_id: params[:video_id], user_id: @current_user.id, last_second_viewed: params[:last_second_viewed], date_viewed: params[:date]})
+          save_activity(current_user)
+          if Viewing.create!({video_id: params[:video_id], user_id: current_user.id, last_second_viewed: params[:last_second_viewed], date_viewed: params[:date]})
               render json: {
                 messages: "Viewing Successfully Saved",
                 is_success: true,
                 status: :ok
               }
           end
-          save_activity(current_user)
+          
         end
       end 
 
