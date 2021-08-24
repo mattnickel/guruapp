@@ -32,41 +32,35 @@ module API
                 #Active Users for the day                        
                 data.active_user_count = UserActivity.select(:user_id)
                                         .where(["active_count > :active_count and created_at = :created_at",
-                                         { active_count: 0, created_at: today}]).uniq.count
+                                         {active_count: 0, created_at: today}]).uniq.count
                 
                 # number of Videos Watched (today)       
                 data.video_watched_count = Viewing.select('DISTINCT video_id')
                                           .where('viewings.created_at > ?', today).count
 
                 #Most Active Day (Last week)
-                #based on number of user activity
-                most_active_day = UserActivity.select('created_at')
-                                  .where('created_at >= ? AND created_at <= ?',start_of_last_week, end_of_last_week)
-                                  .group('created_at')
-                                  .order('SUM(active_count) desc limit 1')
-
-                #based on number on user activity
+                #same as weekly stat report
+                most_active_day = Stat.where("created_at >= :start_date AND created_at <= :end_date AND description = :description",
+                                      {start_date: start_of_last_week, end_date: end_of_last_week, description:"Number of active users"})
+                                      .limit(1).order("active_count desc") 
+                most_active_day.each do |row|
+                    data.most_active_day = row.event_stat
+                end
+                
                 data.most_active_day = Dashboard.get_weekday_name(most_active_day[0].created_at.wday)
 
-                #same as what is on stat report
-                # most_active_day = WeeklyStat.where(["weekly_stats.description = :description",{ description: 'Most active day of the week'}]).last
-                # data.most_active_day = most_active_day.event_stat
-                # most_active_day.distinct.pluck(:event_stat)
-                # most_active_day.each do |row|
-                #     data.most_active_day = row.event_stat
-                # end
-                
-                
+                              
                 #Total Users
                 data.total_user_count = total_users = User.count
 
                 #Top Videos
-                #For all-time
+                #previous 7 days (not last week)
                 top_3_views = Viewing.joins("INNER JOIN videos ON videos.id = viewings.video_id")
-                                            .select('videos.id AS id, videos.title, videos.author, COUNT(viewings.user_id) AS viewer_count')
-                                            .where("viewings.created_at >= :start_date AND viewings.created_at <= :end_date",{start_date: today-7.days, end_date: today})
-                                            .group('videos.id, videos.title, videos.author')
-                                            .order('COUNT(viewings.user_id) desc limit 3')
+                                     .select('videos.id AS id, videos.title, videos.author, COUNT(viewings.user_id) AS viewer_count')
+                                     .where("viewings.created_at >= :start_date AND viewings.created_at <= :end_date",
+                                     {start_date: today-7.days, end_date: today})
+                                     .group('videos.id, videos.title, videos.author')
+                                     .order('COUNT(viewings.user_id) desc limit 3')
                 
                 data.top_3_videos = [];
                 top_3_views.each do | viewed_video |
