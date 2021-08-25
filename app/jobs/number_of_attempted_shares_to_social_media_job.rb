@@ -4,7 +4,8 @@ class NumberOfAttemptedSharesToSocialMediaJob < ApplicationJob
   def perform(*args)
     # Do something later
     
-    social_attempt = SocialAttempt.where('created_at >= ?', 1.days.ago).count
+    social_attempt = SocialAttempt.where("created_at >= :created_at and created_at < :end_date",
+		{created_at: Date.today-1, end_date: Date.today }).count
 	  stats = Stat.new
 	  stats.event_stat = social_attempt
 	  stats.description = 'Number of attempted shares'

@@ -9,8 +9,8 @@ class WeeklyReportJob < ApplicationJob
     start_of_last_week =  today.last_week-1
     #saturay end of week last week
     end_of_last_week = today.last_week+5 
-    
-    
+   
+
     #Total Users
     total_users_count_weekly = User.count
     weekly_stats = WeeklyStat.new
