@@ -20,6 +20,38 @@ module API
                 }
             end
 
+            get "my_most_recent_video" do
+                current_user = User.find_by(authentication_token: headers['Token'])
+                video = Video.where("user_id = ?", current_user.id)
+                             .order("created_at DESC")
+                             .first();
+
+                return video
+            end
+
+            get "my_most_watched_video" do
+                current_user = User.find_by(authentication_token: headers['Token'])
+
+                watched_video = Viewing.joins("INNER JOIN videos ON videos.id = viewings.video_id")
+                                                .select('videos.id AS id, videos.title, videos.author, COUNT(viewings.user_id) AS viewer_count')
+                                                .where("videos.user_id = ?", current_user.id)
+                                                .group('videos.id, videos.title, videos.author')
+                                                .order('COUNT(viewings.user_id) desc')
+                                                .first()
+
+                video = Video.find(watched_video.id);
+
+                my_most_watched_video = ViewedVideo.new                          
+
+                my_most_watched_video.id = watched_video.id
+                my_most_watched_video.title = watched_video.title
+                my_most_watched_video.author = watched_video.author
+                my_most_watched_video.viewer_count = watched_video.viewer_count
+                my_most_watched_video.thumbnail = video.image
+
+                return my_most_watched_video
+            end
+
             def self.get_stat
                 data = Stats.new
                 today = Date.today
