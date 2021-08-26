@@ -6,13 +6,16 @@ class WeeklyReportJob < ApplicationJob
     #calculates weekly stats from Sunday to Saturday of the week
     today = Date.today
     #sunday start of last week 
-    start_of_last_week =  today.last_week-1
-    #saturay end of week last week
-    end_of_last_week = today.last_week+5 
-   
+    start_of_last_week =  today.last_week+6.days
+    #saturday end of week last week
+    end_of_last_week = today.last_week+12.days 
+    #When report is ran on Sunday
+    next_start_day = today.last_week+7.days
+    next_end_day = today.last_week+13.days 
 
     #Total Users
-    total_users_count_weekly = User.count
+    total_users_count_weekly = User.where("created_at <= :created_at",
+                                   {created_at: end_of_last_week}).count
     weekly_stats = WeeklyStat.new
 	  weekly_stats.event_stat = total_users_count_weekly
 	  weekly_stats.description = "Total Number of Users"
@@ -83,13 +86,16 @@ class WeeklyReportJob < ApplicationJob
 
 
     #Most Active Day  of the Week
+    #count starts on next day
     most_active = Stat.where("created_at >= :start_date AND created_at <= :end_date AND description = :description",
-                      {start_date: start_of_last_week, end_date: end_of_last_week, description:"Number of active users"})
-                      .limit(1).order("active_count desc") 
+                      {start_date: next_start_day, end_date: next_end_day, description:"Number of active users"})
+                      .limit(1).order("CAST(event_stat AS int) desc , created_at desc")
     weekly_stats = WeeklyStat.new
     weekly_stats.description = "Most active day of the week"
     most_active.each do |row|
-      weekly_stats.event_stat = row.day
+      record_date = Date.parse(row.day).wday
+      actual_date_int = record_date-1
+      weekly_stats.event_stat = Date::DAYNAMES[actual_date_int]
     end
     weekly_stats.created_at = today
     weekly_stats.save
@@ -107,7 +113,7 @@ class WeeklyReportJob < ApplicationJob
 
     #Social Interactions
     total_social_interactions_weekly = Stat.where("created_at >= :start_date AND created_at <= :end_date AND description = :description",
-                                           {start_date: start_of_last_week, end_date: end_of_last_week, description:"Total Number of Interactions"})
+                                           {start_date: next_start_day, end_date: next_end_day, description:"Total Number of Interactions"})
                                            .sum('CAST(event_stat AS int)')
                                       
     weekly_stats = WeeklyStat.new
