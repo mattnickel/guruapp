@@ -20,7 +20,7 @@ module API
                 status: :ok
               }
           end
-          save_activity(@current_user)
+          save_activity(current_user)
         end
       end 
 

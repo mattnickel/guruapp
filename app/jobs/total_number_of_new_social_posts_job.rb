@@ -3,7 +3,8 @@ class TotalNumberOfNewSocialPostsJob < ApplicationJob
 
   def perform(*args)
     # Do something later
-	new_social_posts = SocialPost.where('created_at >= ?', 1.days.ago).count
+	new_social_posts = SocialPost.where("created_at >= :created_at and created_at < :end_date",
+														  	{created_at: Date.today-1, end_date: Date.today }).count
 	stats = Stat.new
 	stats.event_stat = new_social_posts
 	stats.description = 'Number of new social posts'
@@ -23,5 +24,5 @@ class TotalNumberOfNewSocialPostsJob < ApplicationJob
 
 
 
-end
+ end
 end
