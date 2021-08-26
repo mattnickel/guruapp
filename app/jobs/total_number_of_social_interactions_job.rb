@@ -3,8 +3,10 @@ class TotalNumberOfSocialInteractionsJob < ApplicationJob
 
   def perform(*args)
     # Do something later
-    new_comments_count = Comment.where('created_at >= ?', 1.days.ago).count
-    new_bumps_count = PostBump.where('created_at >= ?', 1.days.ago).count
+    new_comments_count = Comment.where("created_at >= :created_at and created_at < :end_date",
+                                {created_at: Date.today-1, end_date: Date.today }).count
+    new_bumps_count = PostBump.where("created_at >= :created_at and created_at < :end_date",
+                              {created_at: Date.today-1, end_date: Date.today }).count
     total_interactions = new_comments_count + new_bumps_count
     
     stats = Stat.new

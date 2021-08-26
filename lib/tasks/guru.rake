@@ -50,8 +50,8 @@ namespace :guru do
   desc 'Runs: Weekly Report'
   #Runs weekly stats
   task weekly_report: [:environment] do
-    #Will run every Saturday
-    if Date.today.wday == 6 
+    #Will run every Sunday
+    if Date.today.wday == 7
       WeeklyReportJob.perform_now
     end 
   end
