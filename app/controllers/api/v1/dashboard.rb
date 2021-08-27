@@ -55,10 +55,14 @@ module API
             def self.get_stat
                 data = Stats.new
                 today = Date.today
-                #saturay end of week last week
-                end_of_last_week = today.last_week+5 
-                #sunday start of last week 
-                start_of_last_week =  today.last_week-1
+
+                #For Most Active Day Calculation
+                #Monday start of week last week
+                start_of_last_week = today.last_week
+                #sunday end of last week 
+                end_of_last_week =  today.last_week+6.days
+                
+                
 
 
                 #Active Users for the day                        
@@ -73,13 +77,19 @@ module API
                 #Most Active Day (Last week)
                 #same as weekly stat report
                 most_active_day = Stat.where("created_at >= :start_date AND created_at <= :end_date AND description = :description",
-                                      {start_date: start_of_last_week, end_date: end_of_last_week, description:"Number of active users"})
-                                      .limit(1).order("active_count desc") 
+                {start_date: start_of_last_week, end_date: end_of_last_week, description:"Number of active users"})
+                .limit(1).order("CAST(event_stat AS int) desc , created_at desc") 
                 most_active_day.each do |row|
-                    data.most_active_day = row.event_stat
+                    record_date = Date.parse(row.day).wday
+                    actual_date_int = record_date-1
+                    data.most_active_day = Date::DAYNAMES[actual_date_int]
+                    
                 end
-                
-                data.most_active_day = Dashboard.get_weekday_name(most_active_day[0].created_at.wday)
+
+
+              
+               
+                # data.most_active_day = Dashboard.get_weekday_name(most_active_day[0].created_at.wday)
 
                               
                 #Total Users
