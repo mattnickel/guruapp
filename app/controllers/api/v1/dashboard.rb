@@ -52,52 +52,52 @@ module API
                 return my_most_watched_video
             end
 
-            # def self.vid_stat
-            #     video_data = VidStats.new
-            #     # @current_user = User.find_by(authentication_token: headers['Token'])
-            #     #Most Watched Video
-            #     watched_video = Viewing.joins("INNER JOIN videos ON videos.id = viewings.video_id")
-            #                                     .select('videos.id AS id, videos.title, videos.author, COUNT(viewings.user_id) AS viewer_count')
-            #                                     .where("videos.user_id = ?", video_data.current_user.id)
-            #                                     .group('videos.id, videos.title, videos.author')
-            #                                     .order('COUNT(viewings.user_id) desc')
-            #                                     .first()
-            #     video_data.most_watched_video = [];
-            #     watched_vid = Video.find(watched_video.id);
+            def self.vid_stat
+                video_data = VidStats.new
+                current_user = User.find_by(authentication_token: headers['Token'])
+                #Most Watched Video
+                watched_video = Viewing.joins("INNER JOIN videos ON videos.id = viewings.video_id")
+                                                .select('videos.id AS id, videos.title, videos.author, COUNT(viewings.user_id) AS viewer_count')
+                                                .where("videos.user_id = ?", video_data.current_user.id)
+                                                .group('videos.id, videos.title, videos.author')
+                                                .order('COUNT(viewings.user_id) desc')
+                                                .first()
+                video_data.most_watched_video = [];
+                watched_vid = Video.find(watched_video.id);
 
-            #     my_most_watched_video = ViewedVideo.new
+                my_most_watched_video = ViewedVideo.new
 
-            #     my_most_watched_video.id = watched_video.id
-            #     my_most_watched_video.title = watched_video.title
-            #     my_most_watched_video.author = watched_video.author
-            #     my_most_watched_video.viewer_count = watched_video.viewer_count
-            #     my_most_watched_video.thumbnail = watched_vid.image 
-            #     video_data.most_watched_video.push(my_most_watched_video)
+                my_most_watched_video.id = watched_video.id
+                my_most_watched_video.title = watched_video.title
+                my_most_watched_video.author = watched_video.author
+                my_most_watched_video.viewer_count = watched_video.viewer_count
+                my_most_watched_video.thumbnail = watched_vid.image 
+                video_data.most_watched_video.push(my_most_watched_video)
 
-            #     #Most Recent
+                #Most Recent
 
-            #     recent_video = Viewing.joins("INNER JOIN videos ON videos.id = viewings.video_id")
-            #     .select('videos.id AS id, videos.title, videos.author, COUNT(viewings.user_id) AS viewer_count')
-            #     .where("videos.user_id = ?", video_data.current_user.id)
-            #     .group('videos.id, videos.title, videos.author')
-            #     .order('videos.created_at desc')
-            #     .first()
+                recent_video = Viewing.joins("INNER JOIN videos ON videos.id = viewings.video_id")
+                .select('videos.id AS id, videos.title, videos.author, COUNT(viewings.user_id) AS viewer_count')
+                .where("videos.user_id = ?", video_data.current_user.id)
+                .group('videos.id, videos.title, videos.author')
+                .order('videos.created_at desc')
+                .first()
 
-            #     video_data.most_recent_video = [];
-            #     recent_vid = Video.find(recent_video.id);
+                video_data.most_recent_video = [];
+                recent_vid = Video.find(recent_video.id);
              
-            #     my_most_recent_video = ViewedVideo.new                          
+                my_most_recent_video = ViewedVideo.new                          
              
-            #     my_most_recent_video.id = recent_video.id
-            #     my_most_recent_video.title = recent_video.title
-            #     my_most_recent_video.author = recent_video.author
-            #     my_most_recent_video.viewer_count = recent_video.viewer_count
-            #     my_most_recent_video.thumbnail = recent_vid.image 
-            #     video_data.most_recent_video.push(my_most_recent_video)
+                my_most_recent_video.id = recent_video.id
+                my_most_recent_video.title = recent_video.title
+                my_most_recent_video.author = recent_video.author
+                my_most_recent_video.viewer_count = recent_video.viewer_count
+                my_most_recent_video.thumbnail = recent_vid.image 
+                video_data.most_recent_video.push(my_most_recent_video)
 
-            #     return video_data
+                return video_data
 
-            # end
+            end
 
             
 
@@ -272,21 +272,21 @@ class ViewedVideo
     end
 end
 
-# class VidStats
-#     def most_recent_video
-#         @most_recent_video
-#     end
+class VidStats
+    def most_recent_video
+        @most_recent_video
+    end
 
-#     def most_recent_video= most_recent_video
-#         @most_recent_video = most_recent_video
-#     end
+    def most_recent_video= most_recent_video
+        @most_recent_video = most_recent_video
+    end
 
-#     def most_watched_video
-#         @most_watched_video
-#     end
+    def most_watched_video
+        @most_watched_video
+    end
 
-#     def most_watched_video= most_watched_video
-#         @most_watched_video = most_watched_video
-#     end
+    def most_watched_video= most_watched_video
+        @most_watched_video = most_watched_video
+    end
 
-# end
+end
