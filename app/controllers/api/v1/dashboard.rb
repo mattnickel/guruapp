@@ -22,84 +22,59 @@ module API
 
             get "my_most_recent_video" do
                 current_user = User.find_by(authentication_token: headers['Token'])
-                video = Video.where("user_id = ?", current_user.id)
+                recent_video = Dashboard.get_my_most_recent_video(current_user.id)
+
+                render json: {
+                    recent_video: recent_video,
+                    is_success: true,
+                    status: :ok
+                }
+            end
+
+            get "my_most_watched_video" do
+                current_user = User.find_by(authentication_token: headers['Token'])
+
+                most_watched_video = Dashboard.get_my_most_watched_video(current_user.id)
+
+                render json: {
+                    most_watched_video: most_watched_video,
+                    is_success: true,
+                    status: :ok
+                }
+            end
+
+            def self.get_my_most_recent_video(userid)
+                video = Video.where("user_id = ?", userid)
                              .order("created_at DESC")
                              .first();
 
                 return video
             end
 
-            get "my_most_watched_video" do
-                current_user = User.find_by(authentication_token: headers['Token'])
-
+            def self.get_my_most_watched_video(userid)
                 watched_video = Viewing.joins("INNER JOIN videos ON videos.id = viewings.video_id")
-                                                .select('videos.id AS id, videos.title, videos.author, COUNT(viewings.user_id) AS viewer_count')
-                                                .where("videos.user_id = ?", current_user.id)
-                                                .group('videos.id, videos.title, videos.author')
-                                                .order('COUNT(viewings.user_id) desc')
-                                                .first()
+                                .select('videos.id AS id, videos.title, videos.author, COUNT(viewings.user_id) AS viewer_count')
+                                .where("videos.user_id = ?", userid)
+                                .group('videos.id, videos.title, videos.author')
+                                .order('COUNT(viewings.user_id) desc')
+                                .first()
 
-                video = Video.find(watched_video.id);
+                if(watched_video)
+                    video = Video.find(watched_video.id);
 
-                my_most_watched_video = ViewedVideo.new                          
+                    my_most_watched_video = ViewedVideo.new                          
 
-                my_most_watched_video.id = watched_video.id
-                my_most_watched_video.title = watched_video.title
-                my_most_watched_video.author = watched_video.author
-                my_most_watched_video.viewer_count = watched_video.viewer_count
-                my_most_watched_video.thumbnail = video.image
+                    my_most_watched_video.id = watched_video.id
+                    my_most_watched_video.title = watched_video.title
+                    my_most_watched_video.author = watched_video.author
+                    my_most_watched_video.viewer_count = watched_video.viewer_count
+                    my_most_watched_video.thumbnail = video.image
 
-                return my_most_watched_video
+                    return my_most_watched_video
+                else
+                    return nil
+                end
             end
-
-            def self.vid_stat
-                video_data = VidStats.new
-                current_user = User.find_by(authentication_token: headers['Token'])
-                #Most Watched Video
-                watched_video = Viewing.joins("INNER JOIN videos ON videos.id = viewings.video_id")
-                                                .select('videos.id AS id, videos.title, videos.author, COUNT(viewings.user_id) AS viewer_count')
-                                                .where("videos.user_id = ?", video_data.current_user.id)
-                                                .group('videos.id, videos.title, videos.author')
-                                                .order('COUNT(viewings.user_id) desc')
-                                                .first()
-                video_data.most_watched_video = [];
-                watched_vid = Video.find(watched_video.id);
-
-                my_most_watched_video = ViewedVideo.new
-
-                my_most_watched_video.id = watched_video.id
-                my_most_watched_video.title = watched_video.title
-                my_most_watched_video.author = watched_video.author
-                my_most_watched_video.viewer_count = watched_video.viewer_count
-                my_most_watched_video.thumbnail = watched_vid.image 
-                video_data.most_watched_video.push(my_most_watched_video)
-
-                #Most Recent
-
-                recent_video = Viewing.joins("INNER JOIN videos ON videos.id = viewings.video_id")
-                .select('videos.id AS id, videos.title, videos.author, COUNT(viewings.user_id) AS viewer_count')
-                .where("videos.user_id = ?", video_data.current_user.id)
-                .group('videos.id, videos.title, videos.author')
-                .order('videos.created_at desc')
-                .first()
-
-                video_data.most_recent_video = [];
-                recent_vid = Video.find(recent_video.id);
-             
-                my_most_recent_video = ViewedVideo.new                          
-             
-                my_most_recent_video.id = recent_video.id
-                my_most_recent_video.title = recent_video.title
-                my_most_recent_video.author = recent_video.author
-                my_most_recent_video.viewer_count = recent_video.viewer_count
-                my_most_recent_video.thumbnail = recent_vid.image 
-                video_data.most_recent_video.push(my_most_recent_video)
-
-                return video_data
-
-            end
-
-            
 
             def self.get_stat
                 data = Stats.new
