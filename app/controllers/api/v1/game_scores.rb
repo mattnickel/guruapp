@@ -52,7 +52,7 @@ module API
         put do
           current_user = User.find_by(authentication_token: headers['Token'])
           game_score = GameScore.find_by(id: params[:game_id])
-          
+
           if game_score.update({score: params[:score], updated_at: DateTime.current})
             save_activity(current_user)
             high = GameScores.get_max_score(params[:game_type]);
@@ -74,13 +74,13 @@ module API
           if(today)
             sql = "game_type = :game_type AND CAST(game_scores.created_at as date) = :today";
           else
-            #sql = "game_type = :game_type AND CAST(game_scores.updated_at as date) != :today";
+
             sql = "game_type = :game_type";
           end
 
           GameScore.joins(:user)
             .where([sql, {game_type: game_type, today: Date.today}])
-            .select("users.username", "score")
+            .select("users.username", "score", "id")
             .order(score: :desc)
             .first()
         end
