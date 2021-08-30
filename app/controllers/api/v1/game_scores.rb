@@ -32,7 +32,6 @@ module API
           }
         end
 
-
         desc "Read"
         params do
           requires :game_type
@@ -49,7 +48,6 @@ module API
           }
         end
         
-
         desc "Update"
         put do
           current_user = User.find_by(authentication_token: headers['Token'])
