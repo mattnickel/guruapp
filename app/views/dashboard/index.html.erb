@@ -9,7 +9,7 @@
 					<div class="body__content app-stats__body">
 						<div class="app-stats__card">
 							<div class="app-stats__content">
-								<p class="app-stats__text stats-text"><%=@total_system_user%></p>						  
+								<p class="app-stats__text stats-text"><%= @total_system_user %></p>
 								<p class="app-stats__label users-label">Users</p>
 							</div>
 						</div>
@@ -18,23 +18,23 @@
 								<div class="circle">
           				<div class="circle__bar"></div>
           				<div class="box circle__text"><span class="circle__canvas"></span></div>
-        				</div>	
+        				</div>
 							</div>
 						</div>
 						<div class="app-stats__card">
 								<div class="app-stats__content">
-									<img class="app-stats__img"src = <%=asset_path("sun_icon.png")%> >
+									<img class="app-stats__img"src = <%= asset_path("sun_icon.png") %> >
 									<div class="app-stats__day-text">
-										<p class="app-stats__text day-text"><%=@most_active_day_week%></p>
+										<p class="app-stats__text day-text"><%= @most_active_day_week %></p>
 										<p class="app-stats__label most-active-label">Most Active Day</p>
 									</div>
 								</div>
 						</div>
 						<div class="app-stats__card">
 							<div class="app-stats__content">
-						  	<p class="app-stats__text stats-text"><%=@video_watched_count%></p>
+						  	<p class="app-stats__text stats-text"><%= @video_watched_count %></p>
 								<p class="app-stats__label watch-label">Watched Videos</p>
-							</div>						
+							</div>
 						</div>
 					</div>
 				</section>
@@ -48,7 +48,7 @@
 									<span class="material-icons">arrow_back_ios</span>
 								</div>
 							</div>
-						</div>			
+						</div>
 						<div id="tn-scroll__container" class="tn-scroll__container">
 							<% @top_3_watched_videos.each do |video| %> 
 								<div class="thumbnail home-thumbnail">
@@ -64,8 +64,8 @@
 											<p class="thumbnail-video__text thumbnail-video__author"><%= video.author %></p>
 										</div>
 									</div>
-								</div>						
-							<%end%>			
+								</div>
+							<% end %>
 						</div>
 						<div id="right-arrow" class="right-arrow">
 							<div id="slide" class="right-arrow--style" >
@@ -78,37 +78,47 @@
 				</section>
 				<section id="my-channel-view" class="dashboard__section">
 					<h6 class="dashboard__section__title">My Channel</h6>
-					<div class="body__content my-channel-view__body">					 
-						<div class="thumbnail home-thumbnail">
-							<% if @most_watched_video.thumbnail.attached? %>
-						  		<%= image_tag(@most_watched_video.thumbnail, class: "thumbnail__img") %>  
-							<% else %>
-								 <span>no available image</span>
-							<% end %>
-							<div class="thumbnail__img--overlay">
-								<p class="thumbnail__img--overlay__text thumbnail-video-stat">Most Watched</p>
-								<p class="thumbnail__img--overlay__text thumbnail__video-views-count"><%= @most_watched_video.viewer_count %></p>
-								<div class="thumbnail__img--overlay__text thumbnail-video__details">
-									<p class="thumbnail-video__text thumbnail-video__title"><%= @most_watched_video.title %></p>
-									<p class="thumbnail-video__text thumbnail-video__author"><%= @most_watched_video.author %></p>
+					<div class="body__content my-channel-view__body">
+						<% if @most_watched_video.nil? %>
+							<div class="thumbnail home-thumbnail"></div>
+							<%# <span class="none_msg">No Videos Available</span> %>
+						<% else %>
+							<div class="thumbnail home-thumbnail">
+								<% if @most_watched_video.thumbnail.attached? %>
+									<%= image_tag(@most_watched_video.thumbnail, class: "thumbnail__img") %>  
+								<% else %>
+									<span class="none_msg">no available image</span>
+								<% end %>
+									<div class="thumbnail__img--overlay">
+										<p class="thumbnail__img--overlay__text thumbnail-video-stat">Most Watched</p>
+										<p class="thumbnail__img--overlay__text thumbnail__video-views-count"><%= @most_watched_video.viewer_count %></p>
+										<div class="thumbnail__img--overlay__text thumbnail-video__details">
+											<p class="thumbnail-video__text thumbnail-video__title"><%= @most_watched_video.title %></p>
+											<p class="thumbnail-video__text thumbnail-video__author"><%= @most_watched_video.author %></p>
+										</div>
+									</div>
+							</div>
+						<% end %>
+						<% if @most_recent_video.nil? %>
+							<div class="thumbnail home-thumbnail"></div>
+							<%# <span class="none_msg">No Videos Available</span> %>
+						<% else %>
+							<div class="thumbnail home-thumbnail">
+								<% if @most_recent_video.thumbnail.attached? %>
+									<%= image_tag(@most_recent_video.thumbnail, class: "thumbnail__img") %>  
+								<% else %>
+									<span>no available image</span>
+								<% end %>
+								<div class="thumbnail__img--overlay">
+									<p class="thumbnail__img--overlay__text thumbnail-video-stat">Most Recent</p>
+									<p class="thumbnail__img--overlay__text thumbnail__video-views-count"><%= @most_recent_video.viewer_count %></p>
+									<div class="thumbnail__img--overlay__text thumbnail-video__details">
+										<p class="thumbnail-video__text thumbnail-video__title"><%= @most_recent_video.title %></p>
+										<p class="thumbnail-video__text thumbnail-video__author"><%= @most_recent_video.author %></p>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="thumbnail home-thumbnail">
-							<% if @most_recent_video.thumbnail.attached? %>
-						  		<%= image_tag(@most_recent_video.thumbnail, class: "thumbnail__img") %>  
-							<% else %>
-								 <span>no available image</span>
-							<% end %>
-							<div class="thumbnail__img--overlay">
-								<p class="thumbnail__img--overlay__text thumbnail-video-stat">Most Recent</p>
-								<p class="thumbnail__img--overlay__text thumbnail__video-views-count"><%= @most_recent_video.viewer_count %></p>
-								<div class="thumbnail__img--overlay__text thumbnail-video__details">
-									<p class="thumbnail-video__text thumbnail-video__title"><%= @most_recent_video.title %></p>
-									<p class="thumbnail-video__text thumbnail-video__author"><%= @most_recent_video.author %></p>
-								</div>
-							</div>
-						</div>
+						<% end %>
 					</div>
 				</section>
 			</div>
@@ -123,7 +133,7 @@
 <%# circular active user %>
 <script type="text/javascript">
 
-	var active_user_percent = parseInt("<%=@active_user_count%>") / parseInt("<%=@total_system_user%>")
+	var active_user_percent = parseInt("<%= @active_user_count %>") / parseInt("<%= @total_system_user %>")
 	var circle_size = 90
   let options = {
     startAngle: -1.55,
