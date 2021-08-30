@@ -44,25 +44,39 @@ module API
             end
 
             def self.get_my_most_recent_video(userid)
-                video = Video.where("user_id = ?", userid)
-                             .order("created_at DESC")
-                             .first();
-
-                return video
+                recent_video = Viewing.joins("INNER JOIN videos ON videos.id = viewings.video_id")
+                .select('videos.id AS id, videos.title, videos.author, COUNT(DISTINCT viewings.user_id) AS viewer_count')
+                .where("videos.user_id = ?", userid)
+                .group('videos.id, videos.title, videos.author')
+                .order('videos.created_at desc')
+                .first()
+                
+                if(recent_video)
+                    video = Video.find(recent_video.id);
+                    my_most_recent_video = ViewedVideo.new                          
+                    my_most_recent_video.id = recent_video.id
+                    my_most_recent_video.title = recent_video.title
+                    my_most_recent_video.author = recent_video.author
+                    my_most_recent_video.viewer_count = recent_video.viewer_count
+                    my_most_recent_video.thumbnail = video.image
+                  return my_most_recent_video
+                else
+                   return nil
+                end
             end
 
             def self.get_my_most_watched_video(userid)
                 watched_video = Viewing.joins("INNER JOIN videos ON videos.id = viewings.video_id")
-                                .select('videos.id AS id, videos.title, videos.author, COUNT(viewings.user_id) AS viewer_count')
+                                .select('videos.id AS id, videos.title, videos.author, COUNT(DISTINCT viewings.user_id) AS viewer_count')
                                 .where("videos.user_id = ?", userid)
                                 .group('videos.id, videos.title, videos.author')
-                                .order('COUNT(viewings.user_id) desc')
-                                .first()
+                                .order('COUNT(DISTINCT viewings.user_id) desc').first()
+                                
 
                 if(watched_video)
                     video = Video.find(watched_video.id);
 
-                    my_most_watched_video = ViewedVideo.new                          
+                    my_most_watched_video = ViewedVideo.new
 
                     my_most_watched_video.id = watched_video.id
                     my_most_watched_video.title = watched_video.title
@@ -245,23 +259,4 @@ class ViewedVideo
     def thumbnail= thumbnail
         @thumbnail = thumbnail
     end
-end
-
-class VidStats
-    def most_recent_video
-        @most_recent_video
-    end
-
-    def most_recent_video= most_recent_video
-        @most_recent_video = most_recent_video
-    end
-
-    def most_watched_video
-        @most_watched_video
-    end
-
-    def most_watched_video= most_watched_video
-        @most_watched_video = most_watched_video
-    end
-
 end
