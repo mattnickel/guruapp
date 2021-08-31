@@ -55,7 +55,7 @@
 									<% if video.thumbnail.attached? %>
 						  				<%= image_tag(video.thumbnail, class: "thumbnail__img") %>  
 									<% else %>
-										 <span>no available image</span>
+										 <span class="none_msg">no available image</span>
 									<% end %>
 						  		<div class="thumbnail__img--overlay">
 										<p class="thumbnail__img--overlay__text thumbnail__video-views-count"><%= video.viewer_count %></p>
@@ -107,7 +107,7 @@
 								<% if @most_recent_video.thumbnail.attached? %>
 									<%= image_tag(@most_recent_video.thumbnail, class: "thumbnail__img") %>  
 								<% else %>
-									<span>no available image</span>
+									<span class="none_msg">no available image</span>
 								<% end %>
 								<div class="thumbnail__img--overlay">
 									<p class="thumbnail__img--overlay__text thumbnail-video-stat">Most Recent</p>
