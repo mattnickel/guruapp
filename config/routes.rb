@@ -96,6 +96,10 @@ Rails.application.routes.draw do
         get "dashboard/statistic_summary", to: "dashboard/statistic_summary#get"
       end
 
+      scope :my_channel_view do
+        get "my_channel_view/my_published_videos", to: "my_channel_view/my_published_videos#get"
+      end
+
     end
   end
 
