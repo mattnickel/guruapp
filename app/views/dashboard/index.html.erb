@@ -23,7 +23,7 @@
 						</div>
 						<div class="app-stats__card">
 								<div class="app-stats__content">
-									<img class="app-stats__img"src = <%= asset_path("sun_icon.png") %> >
+									<img class="app-stats__img" src = <%= asset_path("sun_icon.png") %> alt="Sun Icon" >
 									<div class="app-stats__day-text">
 										<p class="app-stats__text day-text"><%= @most_active_day_week %></p>
 										<p class="app-stats__label most-active-label">Most Active Day</p>
@@ -53,7 +53,7 @@
 							<% @top_3_watched_videos.each do |video| %> 
 								<div class="thumbnail home-thumbnail">
 									<% if video.thumbnail.attached? %>
-						  				<%= image_tag(video.thumbnail, class: "thumbnail__img") %>  
+						  				<%= image_tag(video.thumbnail, class: "thumbnail__img", alt: "Top Videos Thumbnail") %>  
 									<% else %>
 										 <span class="none_msg">no available image</span>
 									<% end %>
@@ -85,7 +85,7 @@
 						<% else %>
 							<div class="thumbnail home-thumbnail">
 								<% if @most_watched_video.thumbnail.attached? %>
-									<%= image_tag(@most_watched_video.thumbnail, class: "thumbnail__img") %>  
+									<%= image_tag(@most_watched_video.thumbnail, class: "thumbnail__img", alt: "Most Watched Video") %>  
 								<% else %>
 									<span class="none_msg">no available image</span>
 								<% end %>
@@ -105,7 +105,7 @@
 						<% else %>
 							<div class="thumbnail home-thumbnail">
 								<% if @most_recent_video.thumbnail.attached? %>
-									<%= image_tag(@most_recent_video.thumbnail, class: "thumbnail__img") %>  
+									<%= image_tag(@most_recent_video.thumbnail, class: "thumbnail__img", alt: "Most Recent Video") %>  
 								<% else %>
 									<span class="none_msg">no available image</span>
 								<% end %>
@@ -124,7 +124,7 @@
 			</div>
 		</div>
 
-		<%= render "shared_partials/notifications" %>
+		<%# <%= render "shared_partials/notifications" %>
 			
 	</div>	
 </div>
