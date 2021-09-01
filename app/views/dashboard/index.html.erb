@@ -42,7 +42,7 @@
 				<section id="top-videos" class="dashboard__section top-videos__container">
 					<h6 class="dashboard__section__title">Top Videos</h6>
 					<div class="body__content top-videos__body">
-						<div class="left-arrow">
+						<div id="left-arrow" class="left-arrow">
 							<div id="slideBack" class="left-arrow--style" alt = "Previous">
 								<div class="left-arrow__button"> 
 									<span class="material-icons">arrow_back_ios</span>
@@ -191,33 +191,6 @@ function sideScroll(element,direction,speed,distance,step){
     }, speed);
 }
 
-//hide navigation
-$(document).ready(function () {
-    $(function hideNavigation() {
-        var scrollLeftPrev = 0;
-        $('#tn-scroll__container').scroll(function () {
-            var $elem=$('#tn-scroll__container');
-            var newScrollLeft = $elem.scrollLeft(),
-                width=$elem.width(),
-                scrollWidth=$elem.get(0).scrollWidth;
-            var offset=8;
-            if (scrollWidth- newScrollLeft-width==offset) {
-                alert('right end');
-            }
-            if (newScrollLeft === 0) {
-                alert('left end');
-            }
-          
-            scrollLeftPrev = newScrollLeft;
-
-        });
-    });
-
-
-});
-
-
-
 </script>
 
 
@@ -228,3 +201,26 @@ $(document).ready(function(){
    $("#dashboard-link").addClass("active");
 });
 </script>
+
+<%# <script>
+$(document).ready(function () {
+    $(function hideNavigation() {
+        var scrollLeftPrev = 0;
+        $('#tn-scroll__container').scroll(function () {
+            var $elem=$('#tn-scroll__container');
+            var newScrollLeft = $elem.scrollLeft(),
+                width=$elem.width(),
+                scrollWidth=$elem.get(0).scrollWidth;
+            if (newScrollLeft === 0) {
+                // alert('left end');
+								$(document).ready(function(){
+   						  $("#left-arrow").addClass("scroll-hide");
+});
+            }
+          
+            scrollLeftPrev = newScrollLeft;
+
+        });
+    });
+});
+</script> %>
