@@ -190,6 +190,34 @@ function sideScroll(element,direction,speed,distance,step){
         }
     }, speed);
 }
+
+//hide navigation
+$(document).ready(function () {
+    $(function hideNavigation() {
+        var scrollLeftPrev = 0;
+        $('#tn-scroll__container').scroll(function () {
+            var $elem=$('#tn-scroll__container');
+            var newScrollLeft = $elem.scrollLeft(),
+                width=$elem.width(),
+                scrollWidth=$elem.get(0).scrollWidth;
+            var offset=8;
+            if (scrollWidth- newScrollLeft-width==offset) {
+                alert('right end');
+            }
+            if (newScrollLeft === 0) {
+                alert('left end');
+            }
+          
+            scrollLeftPrev = newScrollLeft;
+
+        });
+    });
+
+
+});
+
+
+
 </script>
 
 
