@@ -87,24 +87,7 @@ module API
             .first()
         end
 
-
-        # def get_max_score(game_type, today = false)
-        #   if(today)
-        #     GameScore.joins(:user)
-        #     .where(["game_type = :game_type AND CAST(game_scores.updated_at as date) = :today", {game_type: game_type, today: Date.today}])
-        #     .select("users.username", "score")
-        #     .order(score: :desc)
-        #     .first()
-        #   else
-        #     GameScore.joins(:user)
-        #     .where(["game_type = :game_type", {game_type: game_type}])
-        #     .select("users.username", "score")
-        #     .order(score: :desc)
-        #     .first()
-        #   end
-        # end
-
-        
+       
       end 
 
     end
