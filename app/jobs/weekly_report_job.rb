@@ -86,10 +86,22 @@ class WeeklyReportJob < ApplicationJob
 
 
     #Most Active Day  of the Week
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    most_active = Stat.where("created_at >= :start_date AND created_at <= :end_date AND description = :description",
+                      {start_date: start_of_last_week, end_date: end_of_last_week, description:"Number of active users"})
+                      .limit(1).order("active_count desc") 
+=======
+>>>>>>> Task1Fix_20210825
     #count starts on next day
     most_active = Stat.where("created_at >= :start_date AND created_at <= :end_date AND description = :description",
                       {start_date: next_start_day, end_date: next_end_day, description:"Number of active users"})
                       .limit(1).order("CAST(event_stat AS int) desc , created_at desc")
+<<<<<<< HEAD
+=======
+>>>>>>> 6274593bba324ed5c183a8aad2dffde50689b170
+>>>>>>> Task1Fix_20210825
     weekly_stats = WeeklyStat.new
     weekly_stats.description = "Most active day of the week"
     most_active.each do |row|
@@ -113,7 +125,15 @@ class WeeklyReportJob < ApplicationJob
 
     #Social Interactions
     total_social_interactions_weekly = Stat.where("created_at >= :start_date AND created_at <= :end_date AND description = :description",
+<<<<<<< HEAD
                                            {start_date: next_start_day, end_date: next_end_day, description:"Total Number of Interactions"})
+=======
+<<<<<<< HEAD
+                                           {start_date: start_of_last_week, end_date: end_of_last_week, description:"Total Number of Interactions"})
+=======
+                                           {start_date: next_start_day, end_date: next_end_day, description:"Total Number of Interactions"})
+>>>>>>> 6274593bba324ed5c183a8aad2dffde50689b170
+>>>>>>> Task1Fix_20210825
                                            .sum('CAST(event_stat AS int)')
                                       
     weekly_stats = WeeklyStat.new
