@@ -39,7 +39,7 @@ module API
                 my_video.thumbnail = video.image
                 published_videos.video_list.push(my_video)
                 
-                end
+            end
                 
                 return published_videos
 

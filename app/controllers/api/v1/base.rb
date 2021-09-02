@@ -18,7 +18,7 @@ module API
       mount API::V1::SocialAttempts
       mount API::V1::GameScores
       mount API::V1::Dashboard
-      #mount API::V1::MyChannelView
+      mount API::V1::MyChannelView
 
       helpers do
         def authenticate!
