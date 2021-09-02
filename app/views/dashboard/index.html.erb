@@ -42,36 +42,26 @@
 				<section id="top-videos" class="dashboard__section top-videos__container">
 					<h6 class="dashboard__section__title">Top Videos</h6>
 					<div class="body__content top-videos__body">
-						<div id="left-arrow" class="left-arrow">
-							<div id="slideBack" class="left-arrow--style" alt = "Previous">
-								<div class="left-arrow__button"> 
-									<span class="material-icons">arrow_back_ios</span>
-								</div>
-							</div>
-						</div>
 						<div id="tn-scroll__container" class="tn-scroll__container">
-							<% @top_3_watched_videos.each do |video| %> 
-								<div class="thumbnail home-thumbnail" title="<%= video.title %>">
-									<% if video.thumbnail.attached? %>
-						  				<%= image_tag(video.thumbnail, class: "thumbnail__img", alt: "Top Videos Thumbnail") %>  
-									<% else %>
-										 <span class="none_msg">no available image</span>
-									<% end %>
-						  		<div class="thumbnail__img--overlay">
-										<p class="thumbnail__img--overlay__text thumbnail__video-views-count"><%= video.viewer_count %></p>
-										<div class="thumbnail-video__details">
-											<p class="thumbnail-video__text thumbnail-video__title video__title-lrg"><%= video.title %></p>
-											<p class="thumbnail-video__text thumbnail-video__author"><%= video.author %></p>
+							<button class="btn-scroll" onclick="scrollHorizontally(1)"  id="btn-left-arrow"><i class="material-icons">arrow_back_ios</i></button>
+							<button class="btn-scroll" onclick="scrollHorizontally(-1)" id="btn-right-arrow"><i class="material-icons">arrow_forward_ios</i></button>
+							<div class="thumbnail-container">
+								<% @top_3_watched_videos.each do |video| %> 
+									<div class="thumbnail home-thumbnail" title="<%= video.title %>">
+										<% if video.thumbnail.attached? %>
+												<%= image_tag(video.thumbnail, class: "thumbnail__img", alt: "Top Videos Thumbnail") %>  
+										<% else %>
+											<span class="none_msg">no available image</span>
+										<% end %>
+										<div class="thumbnail__img--overlay">
+											<p class="thumbnail__img--overlay__text thumbnail__video-views-count"><%= video.viewer_count %></p>
+											<div class="thumbnail-video__details">
+												<p class="thumbnail-video__text thumbnail-video__title video__title-lrg"><%= video.title %></p>
+												<p class="thumbnail-video__text thumbnail-video__author"><%= video.author %></p>
+											</div>
 										</div>
 									</div>
-								</div>
-							<% end %>
-						</div>
-						<div id="right-arrow" class="right-arrow">
-							<div id="slide" class="right-arrow--style" >
-								<div class="right-arrow__button" alt = "Next"> 
-								<span class="material-icons">arrow_forward_ios</span> 
-								</div>
+									<% end %>
 							</div>
 						</div>
 					</div>
@@ -162,36 +152,63 @@
 </script>
 
 
-<%# button scroll top-videos__body %>
+
+<%# button scroll top-videos__body, check overflow %>
 <script>
-var button = document.getElementById('slide');
-button.onclick = function () {
-    var container = document.getElementById("tn-scroll__container");
-    sideScroll(container,'right',25,100,10);
-};
 
-var back = document.getElementById('slideBack');
-back.onclick = function () {
-    var container = document.getElementById("tn-scroll__container");
-    sideScroll(container,'left',25,100,10);
-};
+    let currentScrollPosition = 0;
+    let scrollAmount = 300;
+		let setWidth = 575
 
-function sideScroll(element,direction,speed,distance,step){
-    scrollAmount = 0;
-    var slideTimer = setInterval(function(){
-        if(direction == 'left'){
-            element.scrollLeft -= step;
-        } else {
-            element.scrollLeft += step;
-        }
-        scrollAmount += step;
-        if(scrollAmount >= distance){
-            window.clearInterval(slideTimer);
-        }
-    }, speed);
-}
+    const sCont = document.querySelector(".thumbnail-container");
+    const hScroll = document.querySelector(".tn-scroll__container");
+    const btnScrollLeft = document.querySelector("#btn-left-arrow");
+    const btnScrollRight = document.querySelector("#btn-right-arrow");
+		window.onload = isOverflown(hScroll)
 
-</script>
+    btnScrollLeft.style.opacity = "0";
+
+    let maxScroll = -sCont.offsetWidth + hScroll.offsetWidth;
+
+		let contWidth = getComputedStyle(sCont).width
+
+
+		function isOverflown(element) {
+ 			 return element.scrollWidth > element.clientWidth;
+		}
+
+		
+
+		if(isOverflown(hScroll) === true){
+			function scrollHorizontally(val){
+      currentScrollPosition += (val * scrollAmount);
+
+				if(currentScrollPosition > 0){
+        currentScrollPosition = 0;
+        btnScrollLeft.style.opacity = "0";
+      } else{
+        btnScrollLeft.style.opacity = "1";
+      }
+
+
+      if(currentScrollPosition < maxScroll){
+        currentScrollPosition = maxScroll;
+        btnScrollRight.style.opacity = "0"; 
+      } else{
+        btnScrollRight.style.opacity = "1"; 
+      }
+
+      sCont.style.left = currentScrollPosition + "px";
+
+    }
+		} else {
+			btnScrollRight.style.opacity = "0"
+			btnScrollLeft.style.opacity = "0";
+		}
+		
+    
+
+  </script>
 
 
 <%# navlink active %>
@@ -202,25 +219,5 @@ $(document).ready(function(){
 });
 </script>
 
-<%# <script>
-$(document).ready(function () {
-    $(function hideNavigation() {
-        var scrollLeftPrev = 0;
-        $('#tn-scroll__container').scroll(function () {
-            var $elem=$('#tn-scroll__container');
-            var newScrollLeft = $elem.scrollLeft(),
-                width=$elem.width(),
-                scrollWidth=$elem.get(0).scrollWidth;
-            if (newScrollLeft === 0) {
-                // alert('left end');
-								$(document).ready(function(){
-   						  $("#left-arrow").addClass("scroll-hide");
-});
-            }
-          
-            scrollLeftPrev = newScrollLeft;
 
-        });
-    });
-});
-</script> %>
+</script>

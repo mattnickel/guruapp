@@ -1027,68 +1027,43 @@ input.button{
 
 .tn-scroll__container {
 	display: flex;
-	float: left;
+	flex-direction: row;
 	gap: 2rem;
 	padding: 0px;
-	width: 100%;
+	min-width: 575px;
+	height: 100%;
+	min-height: 140px;
+	max-height: 140px;
 	position: relative;
-	overflow-x: hidden;
-	overflow-y: hidden;
+	overflow: hidden;
+	white-space: nowrap;
+	justify-content: space-between;
+	align-items: center;
 	z-index: 1;
 }
 
-.left-arrow {
-	float: left;
-}
-
-.scroll-hide{
-	display: none;
-}
-
-.right-arrow {
-	right: 0;
-}
-
-.left-arrow,
-.right-arrow {
-	background: var(--arrow-bg-clr);
-	// display: flex;
-	clear: none; 
+.tn-scroll__container .btn-scroll {
+  background-color: var(--arrow-bg-clr);
+	padding: 0 1rem;
+  color: rgb(255, 255, 255);
 	height: 100%;
-	width: 4rem;
-	overflow: hidden;
+	min-height: 16rem;
+	border-radius: 0;
+  border: 0;
+  z-index: 2;
+  cursor: pointer;
+  transition: .5s;
+	line-height: 2.4rem;
+}
+
+.thumbnail-container {
+  display: flex;
+	gap: 2rem;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
   position: absolute;
-	z-index: 2; 
+  left: 0;
+  transition: 0.5s all ease-out;
+	
 }
-
-.left-arrow--style,
-.right-arrow--style {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	color: var(--arrow-color);
-	font-size: 5rem;
-	font-weight: 400;
-	line-height: 0;
-	height: 100%;
-	cursor: pointer;
-}
-
-.right-arrow::before,
-.left-arrow::after {
-	content: "";
-	height: 100%;
-	width: 3rem;
-	pointer-events: none;
-}
-
-.right-arrow::before {
-	background: linear-gradient(to left, rgba(33, 33, 33, 0) 20%,  rgba(83, 83, 83, 0.349) 80%);
-	position: relative;
-}
-
-.left-arrow::after {
-	background: linear-gradient(to right,  rgba(33, 33, 33, 0) 20%,  rgba(83, 83, 83, 0.349) 80%);
-	position: relative;
-}
-
