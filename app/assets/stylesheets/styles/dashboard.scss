@@ -943,9 +943,12 @@ input.button{
 	position: absolute;
 	background-color: #00000000;
 	width: 90%;
-	height: 6rem;
+	height: 5rem;
 	bottom: 0;
 	text-transform: capitalize;
+	color: #ffffff;
+	vertical-align: top;
+
 }
 
 .thumbnail-video__text {
@@ -953,7 +956,19 @@ input.button{
 }
 
 .thumbnail-video__title {
-	font-size: 1.75rem;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+  overflow: hidden;
+}
+
+.video__title-lrg {
+	font-size: 1.75rem
+}
+
+
+.thumbnail__text-sml {
+	font-weight: 700;
+	font-size: 1.25rem;
 }
 
 .thumbnail-video__author {

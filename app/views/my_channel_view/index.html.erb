@@ -18,7 +18,7 @@
 							
 							<div class="body__content pub-videos-body mc-grid-style">
 								<% @my_published_videos.each do |video| %>
-									<div class="thumbnail mc-thumbnail">
+									<div class="thumbnail mc-thumbnail" title="<%= video.title %>">
 										<% if video.thumbnail.attached? %>
 													<%= image_tag(video.thumbnail, class: "thumbnail__img") %>  
 											<% else %>
@@ -26,8 +26,8 @@
 											<% end %>
 										<div class="thumbnail__img--overlay">
 										<p class="thumbnail__img--overlay__text thumbnail__video-views-count"><%= video.viewer_count %></p>
-										<div class="thumbnail__img--overlay__text thumbnail-video__details">
-											<p class="thumbnail-video__text thumbnail-video__title"><%= video.title %></p>
+										<div class="thumbnail-video__details">
+											<p class="thumbnail-video__text thumbnail-video__title thumbnail__text-sml" ><%= video.title %></p>
 											<p class="thumbnail-video__text thumbnail-video__author"><%= video.author %></p>
 										</div>
 									</div>
