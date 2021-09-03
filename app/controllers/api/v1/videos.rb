@@ -28,7 +28,24 @@ module API
           Video.where(id: permitted_params[:id]).first!
         end
         
-        
+        desc "Post new Video"
+        params do
+          requires :title, type: String
+          requires :description, type: String
+          requires :author, type: String
+          # requires :seconds, type: Integer
+          requires :image
+          requires :video
+        end
+
+        post do
+          current_user = User.find_by(authentication_token: headers['Token'])
+          save_activity(current_user)
+          video = ActionDispatch::Http::UploadedFile.new(params[:video])
+          image = ActionDispatch::Http::UploadedFile.new(params[:image])
+
+          new_video = Video.create!({video: video, title: params[:title], description: params[:description], author: current_user, image: image})
+        end
       end
     end
   end

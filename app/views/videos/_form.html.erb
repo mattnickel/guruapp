@@ -1,5 +1,5 @@
-<%= form_with model: video, local: true do |form| %>
-    <%# <% if video.errors.any?   Validation here   <%end%>
+<%= form_with(model: @video, local: true) do |form| %>
+    <%# insert validation here %>
       <div class="row upload-video-view">
         <div class="six columns video-view">
           <div class="video-view-container video-view--bg">
@@ -16,7 +16,7 @@
               <%= form.label :description, class:"label upload-video-text-style"%>
               <%= form.text_area :description, class: "manage-channel-box description-box" %>
               <div class="upload-container">
-              <%= form.label :file_name, class:"label upload-video-text-style"%>
+              <%= form.label :video, "File Name" , class:"label upload-video-text-style"%>
                 <div id="video-upload-border">
                   <span id="video-upload-button" class="material-icons-outlined upload-button upload-button-style">file_upload</span>
                   <%= form.file_field :video, accept:"video/mp4", id:"hidden-upload"%>
