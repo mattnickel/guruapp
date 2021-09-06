@@ -32,19 +32,19 @@ module API
         params do
           requires :title, type: String
           requires :description, type: String
-          # requires :author, type: String
           optional :seconds, type: Integer
           optional :image
           optional :video
         end
         post do
           current_user = User.find_by(authentication_token: headers['Token'])
+          author = current_user.username
           save_activity(current_user)
           # video = ActionDispatch::Http::UploadedFile.new(params[:video])
           # image = ActionDispatch::Http::UploadedFile.new(params[:image])
 
 
-          if video = Video.create!(user_id: current_user.id, title: params[:title], description: params[:description], author: current_user.username, created_at: DateTime.current)
+          if video = Video.create!(user_id: current_user.id, title: params[:title], description: params[:description], author: author, created_at: DateTime.current)
           render json: {
               is_success: true,
               user: current_user.username,
@@ -80,7 +80,9 @@ module API
         end
 
           desc 'Delete Video'
-
+          params do
+            requires :id
+          end
           delete do
             current_user = User.find_by(authentication_token: headers['Token'])
             video = Video.where(id: params[:id], user_id: current_user.id)
