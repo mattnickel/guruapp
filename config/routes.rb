@@ -70,6 +70,7 @@ Rails.application.routes.draw do
         post "support", to: "support_messages#post"
         get "videos/category", to: "videos/category#get"
         post "videos", to: "videos#post"
+        delete "videos", to: "videos#destroy"
         get "categories", to: "category#get"
         post "bad_posts", to: "bad_posts#create"
         post "blocked_users", to: "blocked_users#create"

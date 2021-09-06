@@ -32,19 +32,20 @@ module API
         params do
           requires :title, type: String
           requires :description, type: String
-          optional :seconds, type: Integer
+          requires :video
           optional :image
-          optional :video
+          optional :seconds, type: Integer
+          optional :social_image
         end
         post do
           current_user = User.find_by(authentication_token: headers['Token'])
           author = current_user.username
           save_activity(current_user)
-          # video = ActionDispatch::Http::UploadedFile.new(params[:video])
-          # image = ActionDispatch::Http::UploadedFile.new(params[:image])
+          video = ActionDispatch::Http::UploadedFile.new(params[:video])
+          image = ActionDispatch::Http::UploadedFile.new(params[:image])
 
 
-          if video = Video.create!(user_id: current_user.id, title: params[:title], description: params[:description], author: author, created_at: DateTime.current)
+          if video = Video.create!(user_id: current_user.id, video: video, image: image,  title: params[:title], description: params[:description], author: author, created_at: DateTime.current)
           render json: {
               is_success: true,
               user: current_user.username,
