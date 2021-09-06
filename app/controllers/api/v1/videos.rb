@@ -54,7 +54,34 @@ module API
           end
         end
 
-      end
+
+        desc "Edit Video Details"
+        params do
+          
+          optional :image
+          optional :social_image
+          optional :title
+          optional :description
+        end
+        
+        put do 
+          current_user = User.find_by(authentication_token: headers['Token'])
+          video = Video.where(id: params[:id], user_id: current_user.id)
+
+          if video.update(title: params[:title], description: params[:description], updated_at: DateTime.current)
+            save_activity(current_user)
+            render json: {
+                is_success: true,
+                status: :ok,
+                message: "Video Details Updated",
+                video: video
+              }
+            end
+          end
+
+
+
+        end
     end
   end
 end
