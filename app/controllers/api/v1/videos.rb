@@ -76,8 +76,25 @@ module API
                 message: "Video Details Updated",
                 video: video
               }
+          end
+        end
+
+          desc 'Delete Video'
+
+          delete do
+            current_user = User.find_by(authentication_token: headers['Token'])
+            video = Video.where(id: params[:id], user_id: current_user.id)
+
+            if video.find(params[:id]).destroy
+              save_activity(current_user)
+              render json: {
+                is_success: true,
+                status: :ok,
+                message: "Video Succefully Deleted"
+              }
             end
           end
+
 
 
 
