@@ -1,5 +1,5 @@
-<%= form_with(model: @video, local: true) do |form| %>
-    <%# insert validation here %>
+<%= form_with(model: @video, local: true, url: api_v1_videos_path, method: :post ) do |form| %>
+<%# insert validation here %>
       <div class="row upload-video-view">
         <div class="six columns video-view">
           <div class="video-view-container video-view--bg">
@@ -27,7 +27,7 @@
 
             <div class="row video-images">
               <div id="video-image-container">
-              <%= form.label :video_image, class:'label upload-video-text-style'%>
+              <%= form.label :image, "Video Image", class:'label upload-video-text-style'%>
                 <div id="video-image-border" class = "image-holder">
                   <%# <% if @video.social_image.attached?%>
                   <%#  <%=image_tag @video.social_image, class: "image-display"%>
@@ -35,7 +35,7 @@
                   <%#  <span>no available image</span> 
                   <%# <%end%>
                   <span id ="vi-upload-button" class="material-icons-outlined upload-button upload-button-image-style">file_upload</span>
-                  <%=form.file_field :video_image, accept:"image/jpg, image/png", id:'vi-hidden-upload'%>
+                  <%=form.file_field :image, accept:"image/jpg, image/png", id:'vi-hidden-upload'%>
                   <%# <input type="text" id="vi-upload-name" disabled="true" />   %>
                 </div>
               </div>

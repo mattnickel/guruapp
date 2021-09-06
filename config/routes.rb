@@ -69,7 +69,7 @@ Rails.application.routes.draw do
         put "post_bumps", to: "post_bumps#update"
         post "support", to: "support_messages#post"
         get "videos/category", to: "videos/category#get"
-        post "videos", to: "videos#create"
+        post "videos", to: "videos#post"
         get "categories", to: "category#get"
         post "bad_posts", to: "bad_posts#create"
         post "blocked_users", to: "blocked_users#create"
@@ -99,9 +99,6 @@ Rails.application.routes.draw do
         get "my_channel_view/my_published_videos", to: "my_channel_view/my_published_videos#get"
       end
 
-      scope :videos do
-        post "videos/new", to: "videos#create"
-      end
 
     end
   end
