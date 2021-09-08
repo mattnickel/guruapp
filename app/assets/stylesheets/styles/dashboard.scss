@@ -563,9 +563,12 @@ h6 {
 // 	;
 // }
 
-// .video-view{
-// 	grid-area: video_view;
-// }
+.video-view{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+}
 
 // .new-form{
 // 	grid-area: video_form;
@@ -588,10 +591,19 @@ h6 {
 .button-container {
 	
 }
+.video-view-container {
+	width: 360px;
+	border-radius: 2rem;
+}
 
-.video-view--size {
-	width: 320px;
-	height: 240px;
+.video-player {
+	border-radius: 10px;
+  overflow: hidden;
+  z-index: 1;
+	min-height: 216px;
+  height: 100%;
+  width: 384px;
+	
 }
 
 #upload-container {
