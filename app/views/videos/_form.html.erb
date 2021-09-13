@@ -1,5 +1,7 @@
-<%= form_with(model: video, remote: true, url: api_v1_videos_path, method: :post ) do |form|%>
-<%# <%= form_with(model: video, url: videos_path, method: :create) do |form| %> 
+<%# <%= form_with(model: @video, url: api_v1_videos_path, authenticity_token: false) do |form| %>
+<%# <%= form_for(@videos, url: api_v1_videos_path, authenticity_token: current_user.authentication_token) do |form| %> 
+<%# <%= form_with(model: video, remote: true, url: api_v1_videos_path, method: :post ) do |form|%> %>
+<%= form_with(model: @video, url: videos_path, method: :create) do |form| %>
 
 <%# insert validation here %>
       <div class="row upload-video-view">
@@ -26,27 +28,31 @@
                 </div>                
               </div>
             </div>
-
-            <div class="row video-images">
+            <%= form.text_field :authentication_token, class:"form-control", value: current_user.authentication_token, type: :hidden %>
+            <%# <%= form.text_field :author, class:"form-control", value: current_user.username, type: :hidden %> 
+            <div class="video-images">
               <div id="video-image-container">
-              <%= form.label :image, "Video Image", class:'label upload-video-text-style'%>
-                <div id="video-image-border" class = "image-holder">
+              <%= form.label :image, "Video Image",  class:'label upload-video-text-style'%>
+                <div id="video-image-border" class = "image-holder" onchange="showPreview1(event)">
+                  <span id ="vi-upload-button" class="material-icons-outlined upload-button upload-button-image-style img-btn">file_upload</span>
+                  <img id="image-preview1">
                   <%# <% if @video.social_image.attached?%>
                   <%#  <%=image_tag @video.social_image, class: "image-display"%>
                   <%#<% else %> 
                   <%#  <span>no available image</span> 
                   <%# <%end%>
-                  <span id ="vi-upload-button" class="material-icons-outlined upload-button upload-button-image-style">file_upload</span>
-                  <%=form.file_field :image, accept:"image/jpg, image/png", id:'vi-hidden-upload'%>
+                  
+                  <%=form.file_field :image, accept:"image/jpg, image/png, image/jpeg", id:'vi-hidden-upload'%>
                   <%# <input type="text" id="vi-upload-name" disabled="true" />   %>
                 </div>
               </div>
-
+ 
               <div id="social-image-container">
               <%= form.label :social_image, class:'label upload-video-text-style'%>
-                <div id="social-image-border" class = "image-holder">
-                  <span id ="si-upload-button" class="material-icons-outlined upload-button upload-button-image-style">file_upload</span>
-                  <%=form.file_field :social_image, accept:"image/jpg, image/png", id:'si-hidden-upload'%>
+                <div id="social-image-border" class = "image-holder" onchange="showPreview2(event)">
+                  <span id ="si-upload-button" class="material-icons-outlined upload-button upload-button-image-style img-btn">file_upload</span>
+                  <img id="image-preview2">
+                  <%=form.file_field :social_image, accept:"image/jpg, image/png, image/jpeg", id:'si-hidden-upload'%>
                   <%# <input type="text" id="si-upload-name" disabled="true" /> %>
                 </div>
               </div>
@@ -58,11 +64,11 @@
       </div>
       <div class="row">
         <div class="actions button-area">
-        <%= link_to "Cancel", dashboard_path, class:"button btn-transp btn-style btn-text" %>
+        <%= link_to "Cancel", mychannelview_path, class:"button btn-transp btn-style btn-text" %>
         <%= form.submit "Save", class:"button btn-style btn-text " %>              
         </div>
       </div>
-      
+       <%# <%= current_user.authentication_token %> 
     </div>	
   <% end %>
 
@@ -137,5 +143,26 @@ function readVideo(event) {
 }
 </script>
 
+
+<%# preview image%>
+<script>
+function showPreview1(event){
+  if(event.target.files.length > 0){
+    var src = URL.createObjectURL(event.target.files[0]);
+    var preview1 = document.getElementById("image-preview1");
+    preview1.src = src;
+    preview1.style.display = "block";
+  }
+}
+
+function showPreview2(event){
+  if(event.target.files.length > 0){
+    var src = URL.createObjectURL(event.target.files[0]);
+    var preview2 = document.getElementById("image-preview2");
+    preview2.src = src;
+    preview2.style.display = "block";
+  }
+}
+</script>
 
 

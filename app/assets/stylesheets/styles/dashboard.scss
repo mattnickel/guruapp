@@ -113,6 +113,7 @@ h6 {
 	max-width: 96rem;
 	padding: 3rem;
 	overflow: auto;
+
 }
 
 .dashboard__bg-img {
@@ -585,7 +586,13 @@ h6 {
 	justify-content: space-around;
 	line-height: 1.5;
 	align-content: center;
-	padding-top: 1rem;
+	box-sizing: border-box;
+	position: relative;
+	top: 2rem;
+}
+
+.dashboard input,.dashboard textarea, .dashboard select,.dashboard fieldset {
+	margin: 0;
 }
 
 .button-container {
@@ -640,7 +647,7 @@ h6 {
 
 .video-images {
 	display: flex;
-	gap: 2rem;
+	justify-content: space-around;
 }
 
 #upload-name,
@@ -702,6 +709,8 @@ a.manage-channel-link {
 .description-box {
 	min-height: 10rem;
 	max-height: max-content;
+	box-sizing: border-box;
+	font-family: "Tahoma", "Arial", "Arabic Transparent";
 }
 
 .video-form-container {
@@ -754,12 +763,22 @@ input.button{
 }
 
 .image-holder {
-	width: 200px;
-	height: 100px;
+	width: 18rem;
+	height: 12rem;
 	background-color: grey;
 	border-radius: 1em;
 }
 
+.image-holder img {
+	width:100%;
+  display:none;
+	height: inherit;
+	border-radius: inherit;
+}
+
+.img-btn{
+	position: absolute;
+}
 /* My Channel Thumbnail */
 
 .mc-thumbnail {
