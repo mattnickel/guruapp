@@ -1,6 +1,6 @@
 <%# <%= form_with(model: @video, url: api_v1_videos_path, authenticity_token: false) do |form| %>
 <%# <%= form_for(@videos, url: api_v1_videos_path, authenticity_token: current_user.authentication_token) do |form| %> 
-<%# <%= form_with(model: video, remote: true, url: api_v1_videos_path, method: :post ) do |form|%> %>
+<%# <%= form_with(model: video, url: api_v1_videos_path, method: :post ) do |form|  %> 
 <%= form_with(model: @video, url: videos_path, method: :create) do |form| %>
 
 <%# insert validation here %>
@@ -8,7 +8,8 @@
         <div class="six columns video-view">
           <div class="video-view-container video-view--size">
             <video class= 'video-player'controls id="video-tag">
-              <source id="video-source" src="splashVideo">
+              <source id="video-source" >
+              <%# src="splashVideo %>
             </video> 
           </div>
         </div>
@@ -68,7 +69,9 @@
         <%= form.submit "Save", class:"button btn-style btn-text " %>              
         </div>
       </div>
-       <%# <%= current_user.authentication_token %> 
+       <%= current_user.authentication_token %> 
+       <%= request.session_options[:id] %>
+       <%=user_signed_in? %>
     </div>	
   <% end %>
 
@@ -121,6 +124,7 @@ document.querySelector("#si-hidden-upload").addEventListener("change", (event) =
 
 <%# preview video %>
 <script>
+
 const videoSrc = document.querySelector("#video-source");
 const videoTag = document.querySelector("#video-tag");
 const inputTag = document.querySelector(".input-tag");
