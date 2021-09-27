@@ -2,7 +2,7 @@
   module V1
     class PostBumps < Grape::API
       include API::V1::Defaults
-      # include API::V1::Authenticate
+      include API::V1::Authenticate
       
       resource :post_bumps do
         desc "create bump record"

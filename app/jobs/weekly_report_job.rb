@@ -86,16 +86,16 @@ class WeeklyReportJob < ApplicationJob
 
 
     #Most Active Day  of the Week
-    #count starts on next day
     most_active = Stat.where("created_at >= :start_date AND created_at <= :end_date AND description = :description",
-                      {start_date: next_start_day, end_date: next_end_day, description:"Number of active users"})
-                      .limit(1).order("CAST(event_stat AS int) desc , created_at desc")
+    {start_date: next_start_day, end_date: next_end_day, description:"Number of active users"})
+    .limit(1).order("CAST(event_stat AS int) desc , created_at desc")
+
     weekly_stats = WeeklyStat.new
     weekly_stats.description = "Most active day of the week"
     most_active.each do |row|
-      record_date = Date.parse(row.day).wday
-      actual_date_int = record_date-1
-      weekly_stats.event_stat = Date::DAYNAMES[actual_date_int]
+    record_date = Date.parse(row.day).wday
+    actual_date_int = record_date-1
+    weekly_stats.event_stat = Date::DAYNAMES[actual_date_int]
     end
     weekly_stats.created_at = today
     weekly_stats.save

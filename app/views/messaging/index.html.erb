@@ -1,0 +1,41 @@
+<div class="container">
+	<div class="dashboard dashboard--grid dashboard__bg-img">
+		<%= render "shared_partials/sidemenu" %>
+			
+		<div class="main main--border">
+			<div class="cmv"> 
+				<div class="cmv__body cmv__body--scroll cmv__grid--style ">
+          <% @users.each do |user| %>
+				  	<div class="cmv__thumbnail">
+							<%if user.avatar.attached? %> 
+									<%= image_tag user.avatar, class: "cmv__thumbnail__img" %>
+      				<% else %>        				 
+									<span class="none_msg">no image available</span>
+							<% end %>	 
+							<div class="cmv__thumbnail--overlay">
+						  	<div class="cmv__thumbnail__text cmv__user ">
+						  		<span class="material-icons md-light md-36 msg_icons">chat_bubble</span>
+							  	<div class="cmv__user__text">
+							  		<p class="cmv__user__name"><%=user.username%></p>
+							  		<p class="cmv__user__description"><%= user.description%></p>
+							  	</div>	
+						  	</div>
+						  </div>
+					  </div>
+          <%end%>
+				</div>
+			</div>
+		</div>
+
+		<%= render "shared_partials/notifications" %>
+
+			
+	</div>	
+</div>
+
+<script>
+$(document).ready(function(){
+   $(".active").removeClass("active");
+   $("#messaging-link").addClass("active");
+});
+</script>

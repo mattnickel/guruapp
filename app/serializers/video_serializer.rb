@@ -2,7 +2,7 @@ class VideoSerializer < ActiveModel::Serializer
 	 
 	 include Rails.application.routes.url_helpers 
 
-   attributes :id, :title, :author, :description, :vimeo_id, :seconds, :url, :image, :social_image, :file
+   attributes :id, :title, :author, :description, :vimeo_id, :seconds, :url, :image, :social_image, :file, :image_file
 
    
    def image
@@ -17,4 +17,9 @@ class VideoSerializer < ActiveModel::Serializer
    		url = url_for(object.video).to_str if object.video.attached?
    		return url if object.video.attached?
    end
+   def image_file
+      url = url_for(object.image).to_str if object.image.attached?
+      return url if object.image.attached?
+   end
+   
 end
