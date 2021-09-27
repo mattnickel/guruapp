@@ -1,7 +1,7 @@
 <%# <%= form_with(model: @video, url: api_v1_videos_path, authenticity_token: false) do |form| %>
 <%# <%= form_for(@videos, url: api_v1_videos_path, authenticity_token: current_user.authentication_token) do |form| %> 
 <%# <%= form_with(model: video, url: api_v1_videos_path, method: :post ) do |form|  %> 
-<%= form_with(model: @video, url: videos_path, method: :create) do |form| %>
+<%= form_with(model: video, local: true, url: videos_path, method: :post) do |form| %>
 
 <%# insert validation here %>
       <div class="row upload-video-view">
@@ -29,7 +29,7 @@
                 </div>                
               </div>
             </div>
-            <%= form.text_field :authentication_token, class:"form-control", value: current_user.authentication_token, type: :hidden %>
+            <%# <%= form.text_field :authentication_token, class:"form-control", value: current_user.authentication_token, type: :hidden %> %>
             <%# <%= form.text_field :author, class:"form-control", value: current_user.username, type: :hidden %> 
             <div class="video-images">
               <div id="video-image-container">
@@ -167,6 +167,11 @@ function showPreview2(event){
     preview2.style.display = "block";
   }
 }
+
+
+$(function() {
+     $('input[name="authenticity_token"]').attr("value", $('meta[name="csrf-token"]').attr("content"));
+})
 </script>
 
 

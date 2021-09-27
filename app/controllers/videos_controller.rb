@@ -37,7 +37,7 @@ class VideosController < ApplicationController
     #getting actiondispatch issue with below code
 	  #  video = Video.new(video_params)
     #hard-code params
-    @video = Video.new(title: params[:title], description: params[:description], image: params[:image])
+    @video = Video.new(video_params)
 
     respond_to do |format|
       if @video.save
@@ -66,8 +66,11 @@ class VideosController < ApplicationController
   end
  
   private
+   
+
       def video_params
-        params.require(:video).permit(:title, :description, :author, :seconds, :image, :video)
+        params.require(:video).permit(:description, :title, :video)
+        # params.require(:video).permit(:title, :description, :author, :seconds, :image, :video)
         
       
 
