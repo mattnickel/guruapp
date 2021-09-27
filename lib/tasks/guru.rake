@@ -66,21 +66,4 @@ namespace :guru do
   #   #     MostActiveDayOfTheWeekJob.perform_now
   # end
 
-  #Weekly
-  # desc 'Runs: Three most watched videos of the week'
-  # task three_most_watched_videos: [:environment] do
-  #   ThreeMostWatchedVideosJob.perform_now  
-  #   # Will run every Saturday
-  #   #  if Date.today.wday == 6 
-  #   #    ThreeMostWatchedVideosJob.perform_now
-  # end
-
-  #Weekly
-  # desc 'Runs: Number Of Videos Watched Job'
-  # task number_of_videos_watched: [:environment] do
-  #   NumberOfVideosWatchedJob.perform_now
-  #   # Will run every Saturday
-  #   #  if Date.today.wday == 6 
-  #   #    NumberOfVideosWatchedJob.perform_now
-  # end
 end

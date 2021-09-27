@@ -40,7 +40,13 @@ Rails.application.routes.draw do
   resources :comments
   resources :training_modules
   
+
+                                                                                                                                 
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
+  get 'my_channel_view', to: 'my_channel_view#index', as: 'mychannelview'
+  get 'messaging', to: 'messaging#index', as: 'coachmessagingview' 
+  get 'videos/edit', to:'videos#edit'
+  get 'videos/new', to:'videos#new'
   get 'welcome/index'
   get 'welcome/download', to: 'welcome#download', as: 'download'
   get 'privacy', to: 'welcome#privacy', as: 'privacy'
@@ -86,6 +92,13 @@ Rails.application.routes.draw do
         put "game_scores", to: "game_scores#update"
       end
 
+      scope :dashboard do
+        get "dashboard/statistic_summary", to: "dashboard/statistic_summary#get"
+      end
+
+      scope :my_channel_view do
+        get "my_channel_view/my_published_videos", to: "my_channel_view/my_published_videos#get"
+      end
 
     end
   end

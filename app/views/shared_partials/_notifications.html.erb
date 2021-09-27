@@ -1,0 +1,42 @@
+<div class="notifications">
+			<div class="notifications__body">
+			<%# <%= react_component("Message", { greeting: "Hello from react-rails."}, class: "dash_note") %>
+			<%# <div class="dash_note"> You have 3 messages.</div> %>
+				<div class="notifications__card">
+					<div class="notifications__card__content">
+						<p class="notifications__card__text"> You have 5 new messages that need a response.</p>
+						<footer class="notifications__card__footer">
+							<%= link_to "Sleep", "#", class:"notif_link" %>
+							<%= link_to "Respond", "#", class:"notif_link2" %>
+						</footer>
+					</div>
+				</div>
+				<div class="notifications__card">
+					<div class="notifications__card__content">
+						<p class="notifications__card__text"> You have 3 new potential students.</p>
+						<footer class="notifications__card__footer">
+							<%= link_to "Review", "#", class:"notif_link" %>
+							<%= link_to "Accept", "#", class:"notif_button" %>
+						</footer>
+					</div>
+				</div>
+				<div class="notifications__card">
+					<div class="notifications__card__content">
+						<p class="notifications__card__text"> You have 2 new comments.</p>
+						<footer class="notifications__card__footer">
+							<%= link_to "Close", "#", class:"notif_link" %>
+							<%= link_to "View", "#", class:"notif_button" %>
+						</footer>
+					</div>
+				</div>
+				<div class="notifications__card">
+					<div class="notifications__card__content">
+						<p class="notifications__card__text"> You have 3 new potential students.</p>
+						<footer class="notifications__card__footer">
+							<%= link_to "Ignore", "#", class:"notif_link" %>
+							<%= link_to "Continue", "#", class:" notif_button" %>
+						</footer>
+					</div>
+				</div>
+			</div>
+		</div>
