@@ -31,11 +31,5 @@
   ],
   "main": "index.js",
   "repository": "https://github.com/mattnickel/guruapp",
-  "license": "MIT",
-  "babel": {
-    "presets": ["./node_modules/@rails/webpacker/package/babel/preset.js"]
-  },
-  "browserslist": [
-    "defaults"
-  ]
+  "license": "MIT"
 }
