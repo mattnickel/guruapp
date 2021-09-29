@@ -7,7 +7,7 @@ development:
   pool: 5
   username: developer
   password: "123456"
-  host: localhost
+  host: "172.18.0.2"
   
 test:
   adapter: postgresql
