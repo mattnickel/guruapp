@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_05_093330) do
+ActiveRecord::Schema.define(version: 2021_09_14_092301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -240,6 +240,9 @@ ActiveRecord::Schema.define(version: 2021_07_05_093330) do
     t.integer "vimeo_id"
     t.integer "seconds"
     t.integer "user_id"
+    t.string "content_type"
+    t.string "excerpt"
+    t.string "content"
   end
 
   create_table "viewings", force: :cascade do |t|

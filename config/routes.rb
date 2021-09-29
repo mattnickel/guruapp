@@ -39,14 +39,12 @@ Rails.application.routes.draw do
   resources :pages
   resources :comments
   resources :training_modules
-  
-
+  resources :audio
+  resources :article
                                                                                                                                  
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
   get 'my_channel_view', to: 'my_channel_view#index', as: 'mychannelview'
   get 'messaging', to: 'messaging#index', as: 'coachmessagingview' 
-  get 'videos/edit', to:'videos#edit'
-  get 'videos/new', to:'videos#new'
   get 'welcome/index'
   get 'welcome/download', to: 'welcome#download', as: 'download'
   get 'privacy', to: 'welcome#privacy', as: 'privacy'
@@ -71,6 +69,8 @@ Rails.application.routes.draw do
         put "post_bumps", to: "post_bumps#update"
         post "support", to: "support_messages#post"
         get "videos/category", to: "videos/category#get"
+        post "videos", to: "videos#post"
+        delete "videos", to: "videos#destroy"
         get "categories", to: "category#get"
         post "bad_posts", to: "bad_posts#create"
         post "blocked_users", to: "blocked_users#create"
@@ -99,6 +99,7 @@ Rails.application.routes.draw do
       scope :my_channel_view do
         get "my_channel_view/my_published_videos", to: "my_channel_view/my_published_videos#get"
       end
+
 
     end
   end
