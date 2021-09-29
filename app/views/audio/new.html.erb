@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="dashboard edit--grid dashboard__bg-img">
+    <div class="row ">
+      <div class="twelve columns edit-view-header">
+        <%= link_to dashboard_path, class: "manage-channel-link" do %> 
+        <div class="edit-view-header">
+          <span class="material-icons">arrow_back_ios</span> 
+          <p>Manage Audio</p> 
+        </div>
+        <%end%>      
+      </div>
+    </div>
+    <%= render 'form', audio: @audio %>
+  </div>
+</div>
