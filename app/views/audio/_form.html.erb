@@ -1,0 +1,110 @@
+<%= form_with model: audio, url: "/audio", local: true, multipart: true do |form| %>
+    <%# <% if video.errors.any?   Validation here   <%end%>
+      <div class="row upload-video-view">
+        <div class="six columns video-view">
+          <div class="video-view-container video-view--bg">
+            <audio class = "video-view--size" autoplay muted>
+              <%# <source id="video-source" type="video/mp4"> %>
+            </audio> 
+          </div>
+        </div>
+        <div class="six columns video-form">
+          <div class="video-form-container control">
+            <div class="video-details">
+              <%= form.label :title, class:"label upload-video-text-style"%>
+              <%= form.text_field :title, class: "manage-channel-box" %>
+              <%= form.label :description, class:"label upload-video-text-style"%>
+              <%= form.text_area :description, class: "manage-channel-box description-box" %>
+              <div class="upload-container">
+              <%= form.label :file_name, class:"label upload-video-text-style"%>
+                <div id="video-upload-border">
+                  <span id="video-upload-button" class="material-icons-outlined upload-button upload-button-style">file_upload</span>
+                  <%= form.file_field :video, accept:"audio/mp3", id:"hidden-upload"%>
+                  <input type="text" id="upload-name" disabled="true" />                
+                </div>                
+              </div>
+            </div>
+
+            <div class="row video-images">
+              <div id="video-image-container">
+              <%= form.label :image, class:'label upload-video-text-style'%>
+                <div id="video-image-border" class = "image-holder">
+                  <span id ="vi-upload-button" class="material-icons-outlined upload-button upload-button-image-style">file_upload</span>
+                  <%=form.file_field :image, accept:"image/jpg, image/png", id:'vi-hidden-upload'%>
+                </div>
+              </div>
+
+              <div id="social-image-container">
+              <%= form.label :social_image, class:'label upload-video-text-style'%>
+                <div id="social-image-border" class = "image-holder">
+                 
+                  <span id ="si-upload-button" class="material-icons-outlined upload-button upload-button-image-style">file_upload</span>
+                  <%=form.file_field :social_image, accept:"image/jpg, image/png", id:'si-hidden-upload'%>
+                </div>
+              </div>
+              
+              
+            </div>  
+          </div>
+        </div>
+          
+      </div>
+      <div class="row">
+        <div class="button-area">
+        <%= link_to "Cancel", dashboard_path, class:"button btn-transp btn-style btn-text" %>
+        <%= form.submit "Save", class:"button btn-style btn-text " %>              
+        </div>
+      </div>
+      
+    </div>	
+  <% end %>
+
+<script>
+//adds event listener to the file uploader button
+document.querySelector("#video-upload-button").addEventListener("click", () => {
+  //clicks on the file input
+  document.querySelector("#hidden-upload").click();
+});
+
+//adds event listener on the hidden file input to listen for any changes
+document.querySelector("#hidden-upload").addEventListener("change", (event) => {
+  //gets the file name
+  document.querySelector("#upload-name").value = event.target.files[0].name;
+});
+
+</script>
+
+<%# //video-image %>
+
+<script>
+//adds event listener to the file uploader button
+document.querySelector("#vi-upload-button").addEventListener("click", () => {
+  //clicks on the file input
+  document.querySelector("#vi-hidden-upload").click();
+});
+
+//adds event listener on the hidden file input to listen for any changes
+document.querySelector("#vi-hidden-upload").addEventListener("change", (event) => {
+  //gets the file name
+  document.querySelector("#vi-upload-name").value = event.target.files[0].name;
+});
+
+</script>
+
+<script>
+//adds event listener to the file uploader button
+document.querySelector("#si-upload-button").addEventListener("click", () => {
+  //clicks on the file input
+  document.querySelector("#si-hidden-upload").click();
+});
+
+//adds event listener on the hidden file input to listen for any changes
+document.querySelector("#si-hidden-upload").addEventListener("change", (event) => {
+  //gets the file name
+  document.querySelector("#si-upload-name").value = event.target.files[0].name;
+});
+
+</script>
+
+
+

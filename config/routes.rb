@@ -39,8 +39,8 @@ Rails.application.routes.draw do
   resources :pages
   resources :comments
   resources :training_modules
-  
-
+  resources :audio
+  resources :article
                                                                                                                                  
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
   get 'my_channel_view', to: 'my_channel_view#index', as: 'mychannelview'

@@ -34,7 +34,9 @@ module Guruapp
     config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
     config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
 
-
+    config.assets.configure do |env|
+      env.export_concurrent = false
+    end
   end
 end
 
