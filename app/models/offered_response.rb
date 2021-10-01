@@ -1,0 +1,2 @@
+class OfferedResponse < ApplicationRecord
+end

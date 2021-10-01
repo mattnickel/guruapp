@@ -3,6 +3,8 @@ class CreateOfferedResponses < ActiveRecord::Migration[6.0]
     create_table :offered_responses do |t|
       t.text :text
       t.integer :numeric_value
+
+      t.timestamps
     end
   end
 end

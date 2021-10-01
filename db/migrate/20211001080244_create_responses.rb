@@ -6,6 +6,8 @@ class CreateResponses < ActiveRecord::Migration[6.0]
       t.integer :question_id
       t.integer :offered_response_id
       t.text :text
+
+      t.timestamps
     end
   end
 end
