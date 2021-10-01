@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   resources :pages
   resources :comments
   resources :training_modules
-  
+  resources :assessments
 
                                                                                                                                  
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
@@ -50,7 +50,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
   get 'welcome/download', to: 'welcome#download', as: 'download'
   get 'privacy', to: 'welcome#privacy', as: 'privacy'
-
+  
   root to: 'welcome#index', as: 'home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
