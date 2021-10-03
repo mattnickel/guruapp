@@ -1,1 +1,11 @@
-<h1>form</h1>
+<%= form_with model: @assessment do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <div class="field">
+    <%= form.label :type %>
+    <%# <%= form.select :type, [:graded, :nongraded], include_blank: true%>
+    <%= select_tag(:type, options_for_select([['Graded', 'Graded'], ['NonGraded', 'NonGraded']]), :include_blank => "Please select") %>
+  </div>
+  <%= form.submit %>
+  <%= button_to 'CANCEL', assessments_path %>
+<% end %>
