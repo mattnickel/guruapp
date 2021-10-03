@@ -1,3 +1,5 @@
 class Assessment < ApplicationRecord
-    has_many :assessment_questions
+
+# enum assessment_type: [:graded, :nongraded]
+has_many :assessment_questions
 end
