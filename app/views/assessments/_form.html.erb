@@ -3,10 +3,7 @@
   <%= form.text_field :name %>
   <div class="field">
     <%= form.label :assessment_type %>
-    <%# <%= form.select :type, [:graded, :nongraded], include_blank: true%>
-  <%# <%= select_tag(:assessment_type, options_for_select([['Graded', 'Graded'], ['NonGraded', 'NonGraded']]), :include_blank => "Please select")%>
-  <%= form.select(:assessment_type, [['Graded', 'Graded'], ['NonGraded', 'NonGraded']], :include_blank => "Please select")%>
-    <%# <%= form.text_field :assessment_type %>
+    <%= form.select(:assessment_type, [['Graded', 'Graded'], ['NonGraded', 'NonGraded']], :include_blank => "Please select")%>
   </div>
   <%= form.submit %>
   <%= button_to 'CANCEL', assessments_path %>

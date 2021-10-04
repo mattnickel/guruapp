@@ -1,5 +1,5 @@
 class AssessmentsController < ApplicationController
-
+  before_action :authenticate_user!
     def index
         assessments = Assessment.all
         respond_to do |format|
@@ -26,7 +26,7 @@ class AssessmentsController < ApplicationController
               format.html { render :new, status: :unprocessable_entity }
               format.json { render json: @assessment.errors, status: :unprocessable_entity }
             end
-          end
+        end
     end
 
 
