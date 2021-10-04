@@ -19,7 +19,7 @@ module API
 
                 post do 
                     current_user = User.find_by(authentication_token: headers['Token'])
-                    if @assessment = Assessment.create!({name: params[:name], assessment_type: params[:assessment_type], created_at: DateTime.current})
+                    if assessment = Assessment.create!({name: params[:name], assessment_type: params[:assessment_type], created_at: DateTime.current})
                         render json: {
                         assessment_id: assessment.id,
                         name: assessment.name,
