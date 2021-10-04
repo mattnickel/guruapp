@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   resources :comments
   resources :training_modules
   resources :assessments
+  resources :questions
 
                                                                                                                                  
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
