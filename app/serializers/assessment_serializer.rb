@@ -1,3 +1,3 @@
 class AssessmentSerializer < ActiveModel::Serializer
-    attributes :name, :assessment_type
- end
+    attributes :id, :name, :assessment_type
+end
