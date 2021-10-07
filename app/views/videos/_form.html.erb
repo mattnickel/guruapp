@@ -1,5 +1,3 @@
-<%# <%= form_with(model: @video, url: api_v1_videos_path, authenticity_token: false) do |form| %>
-<%# <%= form_for(@videos, url: api_v1_videos_path, authenticity_token: current_user.authentication_token) do |form| %> 
 <%# <%= form_with(model: video, url: api_v1_videos_path, method: :post ) do |form|  %> 
 <%= form_with(model: video, local: true) do |form| %>
   <% if video.errors.any? %>
@@ -35,36 +33,28 @@
                 <div id="video-upload-border">
                   <span id="video-upload-button" class="material-icons-outlined upload-button upload-button-style">file_upload</span>
                   <%= form.file_field :video, accept:"video/mp4", class:'input-tag', id:"hidden-upload"%>
-                  <input type="text" id="upload-name" disabled="true" />                
+                  <input type="text" id="upload-name" disabled="true"/>                
                 </div>                
               </div>
             </div>
             <%= form.text_field :authentication_token, class:"form-control", value: current_user.authentication_token, type: :hidden %>
-            <%# <%= form.text_field :author, class:"form-control", value: current_user.username, type: :hidden %> 
+            <%= form.text_field :author, class:"form-control", value: current_user.username, type: :hidden %> 
             <div class="video-images">
               <div id="video-image-container">
               <%= form.label :image, "Video Image",  class:'label upload-video-text-style'%>
                 <div id="video-image-border" class = "image-holder" onchange="showPreview1(event)">
                   <span id ="vi-upload-button" class="material-icons-outlined upload-button upload-button-image-style img-btn">file_upload</span>
-                  <img id="image-preview1">
-                  <%# <% if @video.social_image.attached?%>
-                  <%#  <%=image_tag @video.social_image, class: "image-display"%>
-                  <%#<% else %> 
-                  <%#  <span>no available image</span> 
-                  <%# <%end%>
-                  
+                  <img id="image-preview1">                  
                   <%=form.file_field :image, accept:"image/jpg, image/png, image/jpeg", id:'vi-hidden-upload'%>
-                  <%# <input type="text" id="vi-upload-name" disabled="true" />   %>
                 </div>
               </div>
- 
               <div id="social-image-container">
               <%= form.label :social_image, class:'label upload-video-text-style'%>
                 <div id="social-image-border" class = "image-holder" onchange="showPreview2(event)">
                   <span id ="si-upload-button" class="material-icons-outlined upload-button upload-button-image-style img-btn">file_upload</span>
                   <img id="image-preview2">
                   <%=form.file_field :social_image, accept:"image/jpg, image/png, image/jpeg", id:'si-hidden-upload'%>
-                  <%# <input type="text" id="si-upload-name" disabled="true" /> %>
+                 
                 </div>
               </div>
 
