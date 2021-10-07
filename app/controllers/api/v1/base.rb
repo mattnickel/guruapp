@@ -18,8 +18,14 @@ module API
       mount API::V1::SocialAttempts
       mount API::V1::GameScores
       mount API::V1::Dashboard
+<<<<<<< HEAD
       mount API::V1::MyChannelView
 
+=======
+      #mount API::V1::MyChannelView
+      mount API::V1::Assessments
+      mount API::V1::Questions
+>>>>>>> project7_assessment
       helpers do
         def authenticate!
           error!('Unauthorized. Invalid or expired token.', 401) unless current_user

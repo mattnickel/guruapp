@@ -39,8 +39,14 @@ Rails.application.routes.draw do
   resources :pages
   resources :comments
   resources :training_modules
+<<<<<<< HEAD
   resources :audio
   resources :article
+=======
+  resources :assessments
+  resources :questions
+
+>>>>>>> project7_assessment
                                                                                                                                  
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
   get 'my_channel_view', to: 'my_channel_view#index', as: 'mychannelview'
@@ -48,6 +54,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
   get 'welcome/download', to: 'welcome#download', as: 'download'
   get 'privacy', to: 'welcome#privacy', as: 'privacy'
+  post '/assessments/new' => 'assessments#create'
 
   root to: 'welcome#index', as: 'home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
