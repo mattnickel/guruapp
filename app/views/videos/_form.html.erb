@@ -38,7 +38,7 @@
               </div>
             </div>
             <%= form.text_field :authentication_token, class:"form-control", value: current_user.authentication_token, type: :hidden %>
-            <%= form.text_field :author, class:"form-control", value: current_user.username, type: :hidden %> 
+            <%= form.hidden_field :author, class:"form-control", value: current_user.username%> 
             <div class="video-images">
               <div id="video-image-container">
               <%= form.label :image, "Video Image",  class:'label upload-video-text-style'%>
