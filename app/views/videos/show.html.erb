@@ -11,23 +11,49 @@
         <%end%>      
       </div>
     </div>
+    <div class="row">
+      <%# right panel %>
+      <div class="six columns video-view">
+        <div class="video-view-container video-view--size">
+          <%= video_tag(url_for(@video.video),style: 'width:100%; height:100%', controls:'')%>
+        </div>
+      </div>
+      <%# left panel %>
+      <div class="six columns video-form">
+        <div class="video-form-container control">
+            <div class="video-details">
+              <p class ="default-text">
+                <strong>Title:</strong>
+                <%= @video.title %>
+              </p>
+
+              <p class ="default-text">
+               <strong>Description:</strong>
+                <%= @video.description %>
+              </p>
+            </div>
+            <div class="video-images">
+              <div id="video-image-container">
+                  <div id="video-image-border" class = "image-holder">
+                  <%= image_tag(@video.image) %>
+                </div>
+              </div>
+              <div id="social-image-container">
+              <div id="video-image-border" class = "image-holder">
+                  <%= image_tag(@video.social_image) %>
+                </div>
+              </div>
+
+            </div>  
+        </div>
+      </div>
+    </div>
+    
+    
+    
     <%# show  %>
-    <p>
-      <strong>Title:</strong>
-      <%= @video.title %>
-    </p>
+    
 
-    <p>
-      <strong>Description:</strong>
-      <%= @video.description %>
-    </p>
-
-  <div style ="width:400px; height:400px">
-  <%= image_tag(@video.image, style: 'width:100%; height:100%') %>
-  </div>
-  <div style ="width:400px; height:400px">
-  <%= video_tag(url_for(@video.video),style: 'width:100%; height:100%', controls:'')%>
-  </div>
   <div class="row">
     <div class="actions button-area">
       <%= link_to "Edit", edit_video_path(@video), class:"button btn-transp btn-style btn-text" %>

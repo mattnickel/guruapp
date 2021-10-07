@@ -66,7 +66,7 @@ class VideosController < ApplicationController
   end
 
   def correct_user
-    @video = current_user.videps.find_by(id: params[:id])
+    @video = current_user.videos.find_by(id: params[:id])
     redirect_to videos_path, notice: "Not authorized" if @video.nil?
   end
  
