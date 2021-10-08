@@ -76,6 +76,12 @@ class VideosController < ApplicationController
     end
 
     def video_params
+<<<<<<< HEAD
       params.require(:video).permit(:title, :description, :author, :seconds, :image, :video)
     end
 end
+=======
+      params.require(:video).permit(:title, :description, :author, :seconds, :image, :video, :social_image)
+    end
+end
+>>>>>>> upload_update

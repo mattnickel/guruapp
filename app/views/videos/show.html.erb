@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <div class="container">
   <div class="dashboard edit--grid dashboard__bg-img">
     <div class="row ">
@@ -11,57 +10,66 @@
         <%end%>      
       </div>
     </div>
-    <div class="row">
-      <%# right panel %>
-      <div class="six columns video-view">
-        <div class="video-view-container video-view--size">
-          <%= video_tag(url_for(@video.video),style: 'width:100%; height:100%', controls:'')%>
+   
+<%# ----------- %>
+    <div class="row upload-video-view">
+        <div class="six columns video-view">
+          <div class="video-view-container video-view--size">
+            <%# <video class= 'video-player'controls id="video-tag"> %>
+              <%# <source id="video-source" > %>
+              <%# < src=@video.title %> %>
+            <%# </video>  %>
+            <%= video_tag(url_for(@video.video), controls:'', class: 'video-player')%>
+          </div>
         </div>
-      </div>
-      <%# left panel %>
-      <div class="six columns video-form">
-        <div class="video-form-container control">
-            <div class="video-details">
-              <p class ="default-text">
-                <strong>Title:</strong>
-                <%= @video.title %>
-              </p>
 
-              <p class ="default-text">
-               <strong>Description:</strong>
-                <%= @video.description %>
-              </p>
+        <div class="six columns video-form">
+          <div class="video-form-container control">
+            <div class="video-details">
+                <p class ="default-text">
+                    <strong>Title:</strong>
+                    <%= @video.title %>
+                </p>
+
+                <p class ="default-text">
+                <strong>Description:</strong>
+                    <%= @video.description %>
+                </p>
             </div>
+        
             <div class="video-images">
-              <div id="video-image-container">
-                  <div id="video-image-border" class = "image-holder">
-                  <%= image_tag(@video.image) %>
+                <div id="video-image-container">
+                    <div id="video-image-border" class = "image-holder">
+                        <% if @video.image.attached? %>
+                            <%= image_tag(@video.image, class: "thumbnail__img") %>  
+                        <% else %>
+                            <span class="none_msg">no available image</span>
+                        <% end %>
+                    </div>
                 </div>
-              </div>
-              <div id="social-image-container">
-              <div id="video-image-border" class = "image-holder">
-                  <%= image_tag(@video.social_image) %>
-                </div>
+                <div id="social-image-container">
+                    <div id="video-image-border" class = "image-holder">
+                        <% if @video.social_image.attached? %>
+                            <%= image_tag(@video.social_image, class: "thumbnail__img") %>  
+                        <% else %>
+                            <span class="none_msg">no available image</span>
+                        <% end %>
+                    </div>
               </div>
 
             </div>  
+          </div>
+        </div>
+          
+      </div>
+      <div class="row">
+        <div class="actions button-area">
+            <%= link_to "Edit", edit_video_path(@video), class:"button btn-transp btn-style btn-text" %>
+            <%= link_to 'Back', video_path, class:"button btn-style btn-text " %>             
         </div>
       </div>
-    </div>
-    
-    
-    
-    <%# show  %>
-    
+    </div>	
 
-  <div class="row">
-    <div class="actions button-area">
-      <%= link_to "Edit", edit_video_path(@video), class:"button btn-transp btn-style btn-text" %>
-      <%= link_to 'Back', video_path, class:"button btn-style btn-text " %>              
-    </div>
-  </div>
-
-    
-    <%#end  %>
-  </div>
+<%# ----- %>
+      </div>
 </div>

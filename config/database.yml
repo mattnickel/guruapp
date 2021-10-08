@@ -5,7 +5,7 @@ development:
   reconnect: false
   database: guruapp_dev1
   pool: 5
-  username: developer
+  username: postgres
   password: "123456"
   host: localhost
   
@@ -15,6 +15,6 @@ test:
   reconnect: false
   database: guruapp_test
   pool: 5
-  username: developer
+  username: postgres
   password: "123456"
   host: localhost
