@@ -16,6 +16,12 @@ module Guruapp
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
+    # Added for Ruby Update
+    Rails.application.config.assets.configure do |env|
+      env.export_concurrent = false
+    end
+    
+
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
@@ -28,7 +34,9 @@ module Guruapp
     config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
     config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
 
-
+    config.assets.configure do |env|
+      env.export_concurrent = false
+    end
   end
 end
 

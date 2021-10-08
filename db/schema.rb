@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_10_03_122523) do
+=======
+ActiveRecord::Schema.define(version: 2021_09_14_092301) do
+>>>>>>> 50d3d26ad556f90f1fd7b3d6bb4fb8a951735cdf
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -230,11 +234,9 @@ ActiveRecord::Schema.define(version: 2021_10_03_122523) do
     t.index ["user_id"], name: "index_support_messages_on_user_id"
   end
 
-  create_table "training_modules", force: :cascade do |t|
-    t.string "title"
+  create_table "training_modules", id: :serial, force: :cascade do |t|
+    t.text "title"
     t.text "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_training_modules_on_user_id"
   end
@@ -279,6 +281,9 @@ ActiveRecord::Schema.define(version: 2021_10_03_122523) do
     t.integer "vimeo_id"
     t.integer "seconds"
     t.integer "user_id"
+    t.string "content_type"
+    t.string "excerpt"
+    t.string "content"
   end
 
   create_table "viewings", force: :cascade do |t|

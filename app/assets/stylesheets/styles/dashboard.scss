@@ -691,11 +691,12 @@ input.manage-channel-box,
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 75%;
+	height: 60vh;
 }
 
 .upload-video-text-style, 
 .btn-text,
+.default-text,
 input.btn-text,
 a.manage-channel-link {
 	color: rgba(255, 255, 255, 0.87);
