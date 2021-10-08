@@ -234,11 +234,9 @@ ActiveRecord::Schema.define(version: 2021_10_03_122523) do
     t.index ["user_id"], name: "index_support_messages_on_user_id"
   end
 
-  create_table "training_modules", force: :cascade do |t|
-    t.string "title"
+  create_table "training_modules", id: :serial, force: :cascade do |t|
+    t.text "title"
     t.text "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_training_modules_on_user_id"
   end

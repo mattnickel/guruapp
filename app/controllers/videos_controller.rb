@@ -8,17 +8,12 @@ class VideosController < ApplicationController
   end
 
   def show
-    # @videos = Video.find(params[:id])
   end
 
-  def new
-  	# @videos = Video.new
-    #@video = Video.new
     @video = current_user.videos.build
   end
 
   def edit
-  	# @videos = Video.find(params[:id])
   end
 
 
@@ -76,6 +71,10 @@ class VideosController < ApplicationController
     end
 
     def video_params
-      params.require(:video).permit(:title, :description, :author, :seconds, :image, :video)
+      params.require(:video).permit(:title, :description, :author, :seconds, :image, :video, :social_image)
     end
 end
+<<<<<<< HEAD
+
+=======
+>>>>>>> 85629f1a7d78212ec41f3f17295439085f577c46
