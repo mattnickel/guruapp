@@ -31,13 +31,12 @@ class VideosController < ApplicationController
 
   def create
     
-   
     # @current_user ||= User.find_by(authentication_token: headers['Token'])
     # @authentication_token = current_user.authentication_token
     #getting actiondispatch issue with below code
 	  #  video = Video.new(video_params)
     #hard-code params
-    @video = Video.new(video_params)
+    # @video = Video.new(video_params)
 
     respond_to do |format|
       if @video.save
@@ -69,8 +68,8 @@ class VideosController < ApplicationController
    
 
       def video_params
-        params.require(:video).permit(:description, :title, :video)
-        # params.require(:video).permit(:title, :description, :author, :seconds, :image, :video)
+        # params.require(:video)
+        params.require(:video).permit(:title, :description, :author, :seconds, :image, :video)
         
       
 
