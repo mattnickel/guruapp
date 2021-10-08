@@ -74,7 +74,3 @@ class VideosController < ApplicationController
       params.require(:video).permit(:title, :description, :author, :seconds, :image, :video, :social_image)
     end
 end
-<<<<<<< HEAD
-
-=======
->>>>>>> 85629f1a7d78212ec41f3f17295439085f577c46
