@@ -9,7 +9,8 @@ class VideosController < ApplicationController
 
   def show
   end
-
+  
+  def new
     @video = current_user.videos.build
   end
 
