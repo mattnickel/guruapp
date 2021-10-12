@@ -58,7 +58,6 @@ h6 {
 	flex-direction: row;
 	justify-content: left;
 	gap: 2rem;
-	min-height: 0;
 }
 
 .card {
@@ -537,6 +536,7 @@ h6 {
 }
 
 .pub-videos-body {
+	min-height: 11rem;
 	
 }
 
