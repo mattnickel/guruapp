@@ -9,7 +9,7 @@
 						<section id="up_video">
 							<div class="up-video-body mc-grid-style">
 								<div class="upload-area"> 
-								  <%=link_to 'New Upload', new_video_path %>
+								  <a href="/videos/new" class="material-icons md-34 md-light upload-icon" title="Upload Video">upload</a>
 								</div>
 							</div>
 						</section>
@@ -26,6 +26,7 @@
 											<% end %>
 										<div class="thumbnail__img--overlay">
 										<p class="thumbnail__img--overlay__text thumbnail__video-views-count"><%= video.viewer_count %></p>
+										<%= link_to 'Edit', edit_video_path(video) %>
 										<div class="thumbnail-video__details">
 											<p class="thumbnail-video__text thumbnail-video__title thumbnail__text-sml" ><%= video.title %></p>
 											<p class="thumbnail-video__text thumbnail-video__author"><%= video.author %></p>
