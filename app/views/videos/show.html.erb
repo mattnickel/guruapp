@@ -19,6 +19,7 @@
               <%# <source id="video-source" > %>
               <%# < src=@video.title %> %>
             <%# </video>  %>
+            
             <%= video_tag(url_for(@video.video), controls:'', class: 'video-player')%>
           </div>
         </div>

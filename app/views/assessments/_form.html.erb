@@ -1,0 +1,39 @@
+<%# <%= form_with model: @assessment do |form| %>
+  <%# <%= form.label :name %>
+  <%# <%= form.text_field :name %>
+  <%# <div class="field"> %>
+    <%# <%= form.label :assessment_type %>
+    <%# <%= form.select(:assessment_type, [['Graded', 'Graded'], ['NonGraded', 'NonGraded']], :include_blank => "Please select")%>
+  <%# </div> %>
+  <%# <%= form.submit %> 
+  <%# <%= button_to 'CANCEL', assessments_path %> 
+<%# <% end %> 
+
+<%= form_with(model: assessment, local: true) do |form| %>
+  <% if assessment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(assessment.errors.count, "error") %> prohibited this assessment from being saved:</h2>
+
+      <ul>
+        <% assessment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :assessment_type %>
+    <%= form.select(:assessment_type, [['Graded', 'Graded'], ['NonGraded', 'NonGraded']], :include_blank => "Please select")%>
+    <%# <%= form.text_field :assessment_type %> 
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

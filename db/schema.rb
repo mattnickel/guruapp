@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_14_092301) do
+ActiveRecord::Schema.define(version: 2021_10_03_122523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,21 @@ ActiveRecord::Schema.define(version: 2021_09_14_092301) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["access_token"], name: "index_api_keys_on_access_token", unique: true
     t.index ["user_id"], name: "index_api_keys_on_user_id"
+  end
+
+  create_table "assessment_questions", force: :cascade do |t|
+    t.integer "assessment_id"
+    t.integer "question_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "assessments", force: :cascade do |t|
+    t.string "name"
+    t.string "assessment_type"
+    t.integer "assessment_question_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "bad_posts", force: :cascade do |t|
@@ -125,6 +140,13 @@ ActiveRecord::Schema.define(version: 2021_09_14_092301) do
     t.index ["videos_id"], name: "index_module_videos_on_videos_id"
   end
 
+  create_table "offered_responses", force: :cascade do |t|
+    t.text "text"
+    t.integer "numeric_value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "pages", force: :cascade do |t|
     t.string "page_name"
     t.string "hero_title"
@@ -157,6 +179,23 @@ ActiveRecord::Schema.define(version: 2021_09_14_092301) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.text "text"
+    t.integer "offered_response_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "responses", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "assessment_id"
+    t.integer "question_id"
+    t.integer "offered_response_id"
+    t.text "text"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "social_attempts", force: :cascade do |t|

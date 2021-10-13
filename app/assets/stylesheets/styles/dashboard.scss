@@ -58,7 +58,6 @@ h6 {
 	flex-direction: row;
 	justify-content: left;
 	gap: 2rem;
-	min-height: 0;
 }
 
 .card {
@@ -532,11 +531,13 @@ h6 {
 	grid-area: un_pub_videos;
 }
 
+
 .up-video-body {
 	height: 300px;
 }
 
 .pub-videos-body {
+	min-height: 11rem;
 	
 }
 
@@ -549,9 +550,23 @@ h6 {
 }
 
 .upload-area {
+	
 	background-color: grey;
 	height: 300px;
 	width: 400px;
+	border-radius: 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.upload-icon{
+	color: rgb(255, 255, 255);
+	text-decoration: none;
+	padding: 1rem;
+	border: white .2rem solid;
+	border-radius: 50%;
+	margin:auto;
 }
 
 
@@ -931,6 +946,7 @@ input.button{
 .thumbnail__img--overlay {
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	position: absolute;
 	border-radius: 2rem;
 	border-width: .2rem;
@@ -941,6 +957,7 @@ input.button{
 	opacity: 1;
 }
 
+
 .thumbnail__img--overlay__text {
 	display: flex;
 	position: absolute;
@@ -948,6 +965,14 @@ input.button{
 	color: var(--tn-overlay-text);
 }
 
+.thumbnail__img--overlay span {
+	display:none;
+}
+
+.thumbnail__img--overlay:hover span {
+	display:block;
+	text-transform: none;
+}
 .thumbnail__video-views-count {
 	align-items: center;
 	background-color: var(--views-bg-count);
