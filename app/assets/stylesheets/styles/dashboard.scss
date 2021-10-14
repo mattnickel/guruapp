@@ -222,7 +222,6 @@ h6 {
 
 .material-icons-outlined.md-34,
 .material-icons.md-34 {
-	color: var(--icon-color);
 	font-size: 3.3rem;
 }
 
@@ -232,6 +231,7 @@ h6 {
 	border-radius: 50%;
 	padding: .5rem;
 	margin-top: 1rem;
+	text-decoration: none;
 }
 
 /* || MAIN AREA PROPERTIES AND ELEMENTS */
@@ -538,7 +538,6 @@ h6 {
 
 .pub-videos-body {
 	min-height: 11rem;
-	
 }
 
 .un-pub-videos-body {
@@ -550,7 +549,6 @@ h6 {
 }
 
 .upload-area {
-	
 	background-color: grey;
 	height: 300px;
 	width: 400px;
@@ -560,35 +558,29 @@ h6 {
 	justify-content: center;
 }
 
-.upload-icon{
+.upload-icon a {
 	color: rgb(255, 255, 255);
 	text-decoration: none;
 	padding: 1rem;
 	border: white .2rem solid;
 	border-radius: 50%;
 	margin:auto;
+	
+}
+
+.upload-icon:hover a{
+	border:rgba(0, 243, 185, .3) .4rem solid ;
+	text-decoration: none;
+	transform: scale(1.2)
 }
 
 
-/*Edit View*/
-// .edit--grid{
-// 	display: grid;
-// 	grid-template-columns: repeat(2, 1fr);
-//   grid-template-areas: 
-// 	"video_view video_form"
-// 	;
-// }
 
 .video-view{
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
 }
-
-// .new-form{
-// 	grid-area: video_form;
-// }
 
 .video-view--bg {
 	/*overlay*/
@@ -610,9 +602,6 @@ h6 {
 	margin: 0;
 }
 
-.button-container {
-	
-}
 .video-view-container {
 	width: 360px;
 	border-radius: 2rem;
@@ -620,7 +609,7 @@ h6 {
 
 .video-player {
 	border-radius: 10px;
-  overflow: hidden;
+overflow: hidden;
   z-index: 1;
 	min-height: 216px;
   height: 100%;
@@ -634,8 +623,6 @@ h6 {
 }
 
 .upload-button-image-style {
-	// border-top-left-radius: 20px;
-	// border-bottom-left-radius: 20px;
 	float: right;
 }
 
@@ -804,7 +791,6 @@ input.button{
 
 /* || NOTIFICATIONS ELEMENTS */
 
-
 .notifications {
 	/* Colors */
 	/* Typography */
@@ -965,13 +951,26 @@ input.button{
 	color: var(--tn-overlay-text);
 }
 
-.thumbnail__img--overlay span {
-	display:none;
+.overlay__icon{
+height: inherit;
+width: inherit;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
-.thumbnail__img--overlay:hover span {
-	display:block;
-	text-transform: none;
+
+.edit_icon a {
+	visibility:hidden;
+	padding: 1rem;
+}
+
+.edit_icon:hover a {
+	visibility:visible;
+	background-color: rgba(5, 44, 35, 0.3);
+	border:rgba(81, 129, 118, 0.3) .3rem solid;
+	border-radius: 50%;
+	text-decoration: none;
 }
 .thumbnail__video-views-count {
 	align-items: center;
@@ -1122,5 +1121,4 @@ input.button{
   position: absolute;
   left: 0;
   transition: 0.5s all ease-out;
-	
 }
