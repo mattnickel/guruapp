@@ -8,6 +8,8 @@ class VideosController < ApplicationController
     @username = current_user.username
     published_videos =  API::V1::MyChannelView.get_my_published_videos(current_user.id)
     @my_published_videos = published_videos.video_list
+    unpublished_videos =  API::V1::MyChannelView.get_my_unpublished_videos(current_user.id)
+    @my_unpublished_videos = unpublished_videos.video_list
 
   end
 
@@ -76,6 +78,6 @@ class VideosController < ApplicationController
     end
 
     def video_params
-      params.require(:video).permit(:title, :description, :author, :seconds, :image, :video, :social_image)
+      params.require(:video).permit(:title, :description, :author, :seconds, :image, :video, :social_image, :is_published)
     end
 end
