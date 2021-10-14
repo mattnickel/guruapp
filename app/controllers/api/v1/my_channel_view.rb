@@ -20,23 +20,28 @@ module API
 
           def self.get_my_published_videos(userid)
             published_videos = VideoList.new
-            my_published_videos = Viewing.joins("INNER JOIN videos ON videos.id = viewings.video_id")
-            .select('videos.id AS id, videos.title, videos.author, COUNT(DISTINCT viewings.user_id) AS viewer_count')
+            my_published_videos = Video.left_outer_joins(:viewings).select('videos.id AS id, videos.title, videos.author, COUNT(DISTINCT viewings.user_id) AS viewer_count')
             .where("videos.user_id = ?", userid)
             .group('videos.id, videos.title, videos.author')
             .order('videos.created_at desc')
+
+            # my_published_videos = Viewing.joins("INNER JOIN videos ON videos.id = viewings.video_id")
+            # .select('videos.id AS id, videos.title, videos.author, COUNT(DISTINCT viewings.user_id) AS viewer_count')
+            # .where("videos.user_id = ?", userid)
+            # .group('videos.id, videos.title, videos.author')
+            # .order('videos.created_at desc')
 
             published_videos.video_list = [];
             my_published_videos.each do |video_entry|
                 video = Video.find(video_entry.id) 
             
                 my_video = PublishedVideo.new
-                
-                my_video.id = video_entry.id
-                my_video.title = video_entry.title
-                my_video.author = video_entry.author
+                my_video.id = video.id
+                my_video.title = video.title
+                my_video.author = video.author
                 my_video.viewer_count = video_entry.viewer_count
                 my_video.thumbnail = video.image
+                my_video.record = video
                 published_videos.video_list.push(my_video)
                 
             end
@@ -96,5 +101,13 @@ class PublishedVideo
   
   def thumbnail= thumbnail
       @thumbnail = thumbnail
+  end
+
+  def record
+    @record
+  end
+
+  def record= record
+     @record = record
   end
 end
