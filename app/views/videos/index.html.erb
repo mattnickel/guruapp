@@ -1,29 +1,63 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+	<div class="dashboard dashboard--grid dashboard__bg-img">
+		<%= render "shared_partials/sidemenu" %>
+			
+		<div class="main main--border">
+			<div data-page = "2" class="page my-channel-page">
+				<div class="my-channel-body"> 
+					<h6 class="dashboard__header">My Channel</h6>
+					<section id="up_video">
+						<div class="up-video-body mc-grid-style">
+							<div class="upload-area">
+								<div class="overlay__icon upload-icon"> 
+									<a href="/videos/new" class="material-icons md-34 md-light" title="Upload Video">upload</a>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section id="pub_videos" class="dashboard__section">
+						<h6 class="dashboard__section__title">Published Videos</h6>
+						<div class="body__content pub-videos-body mc-grid-style">
+							<% @my_published_videos.each do |video| %>
+								<div class="thumbnail mc-thumbnail" title="<%= video.title %>">
+									<% if video.thumbnail.attached? %>
+										<%= image_tag(video.thumbnail, class: "thumbnail__img") %>  
+									<% else %>
+										<span class="none_msg">no available image</span>
+									<% end %>
+									<div class="thumbnail__img--overlay">
+											<p class="thumbnail__img--overlay__text thumbnail__video-views-count"><%= video.viewer_count %></p>
+										<div class="overlay__icon edit_icon">
+											<%= link_to edit_video_path(video.record) do %>
+												<%= content_tag :span, "edit", :class => "material-icons md-34 md-light" %>
+											<% end %>
+										</div>	
+										<div class="thumbnail-video__details">
+											<p class="thumbnail-video__text thumbnail-video__title thumbnail__text-sml" ><%= video.title %></p>
+											<p class="thumbnail-video__text thumbnail-video__author"><%= video.author %></p>
+										</div>
+									</div>
+								</div>
+							<% end %>
+						</div>
+					</section>
+					<section id="un_pub_videos" class="dashboard__section" >
+						<h6 class="dashboard__section__title">Unpublished Videos</h6>
+						<div class="body__content un-pub-videos-body mc-grid-style">
+							
+						</div>
+					</section>	
+				</div>					
+			</div>
+		</div>
+		<%# <%= render "shared_partials/notifications" %>
+	</div>	
+</div>
 
-<h1>Videos</h1>
+<script>
+$(document).ready(function(){
+   $(".active").removeClass("active");
+   $("#mychannel-link").addClass("active");
+});
+</script>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @videos.each do |video| %>
-      <tr>
-        <td><%= video.title %></td>
-        <td><%= video.description %></td>
-        <td><%= link_to 'Show', video %></td>
-        <td><%= link_to 'Edit', edit_video_path(video) %></td>
-        <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New video', new_video_path %>

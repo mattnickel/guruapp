@@ -5,20 +5,20 @@ class VideosController < ApplicationController
   
   def index
   	@videos = Video.all
+    @username = current_user.username
+    published_videos =  API::V1::MyChannelView.get_my_published_videos(current_user.id)
+    @my_published_videos = published_videos.video_list
+
   end
 
   def show
-    # @videos = Video.find(params[:id])
   end
-
+  
   def new
-  	# @videos = Video.new
-    #@video = Video.new
     @video = current_user.videos.build
   end
 
   def edit
-  	# @videos = Video.find(params[:id])
   end
 
 
@@ -60,7 +60,7 @@ class VideosController < ApplicationController
   def destroy
     @video.destroy
     respond_to do |format|
-      format.html { redirect_to video_url, notice: "video was successfully destroyed." }
+      format.html { redirect_to videos_url, notice: "video was successfully destroyed." }
       format.json { head :no_content }
     end
   end

@@ -19,6 +19,7 @@
               <%# <source id="video-source" > %>
               <%# < src=@video.title %> %>
             <%# </video>  %>
+            
             <%= video_tag(url_for(@video.video), controls:'', class: 'video-player')%>
           </div>
         </div>
@@ -65,30 +66,11 @@
       <div class="row">
         <div class="actions button-area">
             <%= link_to "Edit", edit_video_path(@video), class:"button btn-transp btn-style btn-text" %>
-            <%= link_to 'Back', video_path, class:"button btn-style btn-text " %>             
+            <%= link_to 'Back', videos_path, class:"button btn-style btn-text " %>             
         </div>
       </div>
     </div>	
 
 <%# ----- %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       </div>
 </div>
