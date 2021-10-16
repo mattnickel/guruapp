@@ -1,3 +1,4 @@
 class OfferedResponse < ApplicationRecord
-    belongs_to :question
+    has_and_belongs_to_many :question
+    # belongs_to :response
 end

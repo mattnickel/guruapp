@@ -1,6 +1,7 @@
 class AssessmentsController < ApplicationController
   before_action :set_assessment, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only:[:edit, :update, :destroy]
   # GET /assessments or /assessments.json
   def index
     @assessments = Assessment.all
@@ -10,7 +11,8 @@ class AssessmentsController < ApplicationController
   end
 
   def new
-    @assessment = Assessment.new
+    # @assessment = Assessment.new
+    @assessment = current_user.assessments.build
   end
 
 
@@ -18,8 +20,8 @@ class AssessmentsController < ApplicationController
   end
 
   def create
-    @assessment = Assessment.new(assessment_params)
-
+    
+    @assessment = current_user.assessments.build(assessment_params)
     respond_to do |format|
       if @assessment.save
         format.html { redirect_to @assessment, notice: "Assessment was successfully created." }
