@@ -3,8 +3,8 @@
       <div class="row upload-video-view">
         <div class="six columns video-view">
           <div class="video-view-container video-view--bg">
-            <audio class = "video-view--size" autoplay muted>
-              <%# <source id="video-source" type="video/mp4"> %>
+            <audio class = "video-view--size" autoplay muted  id="video-tag">
+              <source id="video-source" >
             </audio> 
           </div>
         </div>
@@ -19,7 +19,7 @@
               <%= form.label :file_name, class:"label upload-video-text-style"%>
                 <div id="video-upload-border">
                   <span id="video-upload-button" class="material-icons upload-button upload-button-style">file_upload</span>
-                  <%= form.file_field :video, accept:"audio/mp3", id:"hidden-upload"%>
+                  <%= form.file_field :video, accept:"audio/mp3", class:'input-tag', id:"hidden-upload"%>
                   <input type="text" id="upload-name" disabled="true" />                
                 </div>                
               </div>
@@ -106,5 +106,50 @@ document.querySelector("#si-hidden-upload").addEventListener("change", (event) =
 
 </script>
 
+<%# preview video %>
+<script>
 
+const videoSrc = document.querySelector("#video-source");
+const videoTag = document.querySelector("#video-tag");
+const inputTag = document.querySelector(".input-tag");
+
+inputTag.addEventListener('change',  readVideo)
+
+function readVideo(event) {
+  console.log(event.target.files)
+  if (event.target.files && event.target.files[0]) {
+    var reader = new FileReader();
+    
+    reader.onload = function(e) {
+      console.log('loaded')
+      videoSrc.src = e.target.result
+      videoTag.load()
+    }.bind(this)
+
+    reader.readAsDataURL(event.target.files[0]);
+  }
+}
+</script>
+
+
+<%# preview image%>
+<script>
+function showPreview1(event){
+  if(event.target.files.length > 0){
+    var src = URL.createObjectURL(event.target.files[0]);
+    var preview1 = document.getElementById("image-preview1");
+    preview1.src = src;
+    preview1.style.display = "block";
+  }
+}
+
+function showPreview2(event){
+  if(event.target.files.length > 0){
+    var src = URL.createObjectURL(event.target.files[0]);
+    var preview2 = document.getElementById("image-preview2");
+    preview2.src = src;
+    preview2.style.display = "block";
+  }
+}
+</script>
 

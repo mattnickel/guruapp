@@ -31,18 +31,16 @@ class ArticleController < ApplicationController
       def create
         @article = current_user.videos.build(article_params)
         @article.content_type = 'article'
-    
-        return @article
 
-        # respond_to do |format|
-        #   if @article.save
-        #     format.html { redirect_to @article, notice: "Article was successfully created." }
-        #     format.json { render :show, status: :created, location: @article }
-        #   else
-        #     format.html { render :new, status: :unprocessable_entity }
-        #     format.json { render json: @article.errors, status: :unprocessable_entity }
-        #   end
-        # end
+        respond_to do |format|
+          if @article.save
+            format.html { redirect_to @article, notice: "Article was successfully created." }
+            format.json { render :show, status: :created, location: @article }
+          else
+            format.html { render :new, status: :unprocessable_entity }
+            format.json { render json: @article.errors, status: :unprocessable_entity }
+          end
+        end
       end
   
       def destroy
@@ -56,6 +54,6 @@ class ArticleController < ApplicationController
     end
 
     def article_params
-      params.permit(:title, :description, :author, :excerpt, :content, :video)
+      params.permit(:title, :description, :author, :excerpt, :content)
     end
   end
