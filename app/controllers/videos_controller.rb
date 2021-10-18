@@ -1,24 +1,26 @@
 class VideosController < ApplicationController
   before_action :set_video, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!
   before_action :correct_user, only:[:edit, :update, :destroy]
   
   def index
   	@videos = Video.all
+    @username = current_user.username
+    published_videos =  API::V1::MyChannelView.get_my_published_videos(current_user.id)
+    @my_published_videos = published_videos.video_list
+    unpublished_videos =  API::V1::MyChannelView.get_my_unpublished_videos(current_user.id)
+    @my_unpublished_videos = unpublished_videos.video_list
+
   end
 
   def show
-    # @videos = Video.find(params[:id])
   end
-
+  
   def new
-  	# @videos = Video.new
-    #@video = Video.new
     @video = current_user.videos.build
   end
 
   def edit
-  	# @videos = Video.find(params[:id])
   end
 
 
@@ -60,7 +62,7 @@ class VideosController < ApplicationController
   def destroy
     @video.destroy
     respond_to do |format|
-      format.html { redirect_to video_url, notice: "video was successfully destroyed." }
+      format.html { redirect_to videos_url, notice: "video was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -76,6 +78,6 @@ class VideosController < ApplicationController
     end
 
     def video_params
-      params.require(:video).permit(:title, :description, :author, :seconds, :image, :video, :social_image)
+      params.require(:video).permit(:title, :description, :author, :seconds, :image, :video, :social_image, :is_published)
     end
 end

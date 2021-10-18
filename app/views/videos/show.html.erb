@@ -13,33 +13,46 @@
    
 <%# ----------- %>
     <div class="row upload-video-view">
-        <div class="six columns video-view">
+        <div class="seven columns video-view">
           <div class="video-view-container video-view--size">
-            <%# <video class= 'video-player'controls id="video-tag"> %>
-              <%# <source id="video-source" > %>
-              <%# < src=@video.title %> %>
-            <%# </video>  %>
-            <%= video_tag(url_for(@video.video), controls:'', class: 'video-player')%>
+            <% if @video.video.attached? %>
+              <%= video_tag(url_for(@video.video), controls:'', class: 'video-player')%>
+            <% else %>
+              <span> Video not Available </span> 
+            <% end %>
           </div>
         </div>
 
-        <div class="six columns video-form">
+        <div class="five columns">
           <div class="video-form-container control">
             <div class="video-details">
+              <div class="video--show_title">
                 <p class ="default-text">
-                    <strong>Title:</strong>
-                    <%= @video.title %>
+                  <strong>Title</strong>
                 </p>
+                <div class="show__title-box">
+                <%= @video.title %>
+                </div>
+                
+                
+              </div>
+              <div class="video--show_description">
+                <p class ="default-text">
+                  <strong>Description</strong>
+                </p>
+                <div class="show__description-box">
+                <%= @video.description %>
+                </div>
+                
+              </div>
 
-                <p class ="default-text">
-                <strong>Description:</strong>
-                    <%= @video.description %>
-                </p>
             </div>
         
             <div class="video-images">
                 <div id="video-image-container">
+                <h5 class ="default-text">Video Image</h5>
                     <div id="video-image-border" class = "image-holder">
+                    
                         <% if @video.image.attached? %>
                             <%= image_tag(@video.image, class: "thumbnail__img") %>  
                         <% else %>
@@ -48,6 +61,7 @@
                     </div>
                 </div>
                 <div id="social-image-container">
+                <h5 class ="default-text">Social Image</h5>
                     <div id="video-image-border" class = "image-holder">
                         <% if @video.social_image.attached? %>
                             <%= image_tag(@video.social_image, class: "thumbnail__img") %>  
@@ -65,30 +79,11 @@
       <div class="row">
         <div class="actions button-area">
             <%= link_to "Edit", edit_video_path(@video), class:"button btn-transp btn-style btn-text" %>
-            <%= link_to 'Back', video_path, class:"button btn-style btn-text " %>             
+            <%= link_to 'Back', videos_path, class:"button btn-style btn-text " %>             
         </div>
       </div>
     </div>	
 
 <%# ----- %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       </div>
 </div>

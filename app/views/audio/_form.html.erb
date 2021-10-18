@@ -18,7 +18,7 @@
               <div class="upload-container">
               <%= form.label :file_name, class:"label upload-video-text-style"%>
                 <div id="video-upload-border">
-                  <span id="video-upload-button" class="material-icons-outlined upload-button upload-button-style">file_upload</span>
+                  <span id="video-upload-button" class="material-icons upload-button upload-button-style">file_upload</span>
                   <%= form.file_field :video, accept:"audio/mp3", id:"hidden-upload"%>
                   <input type="text" id="upload-name" disabled="true" />                
                 </div>                
@@ -29,7 +29,7 @@
               <div id="video-image-container">
               <%= form.label :image, class:'label upload-video-text-style'%>
                 <div id="video-image-border" class = "image-holder">
-                  <span id ="vi-upload-button" class="material-icons-outlined upload-button upload-button-image-style">file_upload</span>
+                  <span id ="vi-upload-button" class="material-icons upload-button upload-button-image-style">file_upload</span>
                   <%=form.file_field :image, accept:"image/jpg, image/png", id:'vi-hidden-upload'%>
                 </div>
               </div>
@@ -38,7 +38,7 @@
               <%= form.label :social_image, class:'label upload-video-text-style'%>
                 <div id="social-image-border" class = "image-holder">
                  
-                  <span id ="si-upload-button" class="material-icons-outlined upload-button upload-button-image-style">file_upload</span>
+                  <span id ="si-upload-button" class="material-icons upload-button upload-button-image-style">file_upload</span>
                   <%=form.file_field :social_image, accept:"image/jpg, image/png", id:'si-hidden-upload'%>
                 </div>
               </div>
