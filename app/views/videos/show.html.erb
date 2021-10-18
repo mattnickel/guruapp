@@ -54,7 +54,7 @@
                     <div id="video-image-border" class = "image-holder">
                     
                         <% if @video.image.attached? %>
-                            <%= image_tag(@video.image, class: "thumbnail__img") %>  
+                            <%= image_tag(url_for(@video.image), class: "thumbnail__img") %>  
                         <% else %>
                             <span class="none_msg">no available image</span>
                         <% end %>
@@ -64,7 +64,7 @@
                 <h5 class ="default-text">Social Image</h5>
                     <div id="video-image-border" class = "image-holder">
                         <% if @video.social_image.attached? %>
-                            <%= image_tag(@video.social_image, class: "thumbnail__img") %>  
+                            <%= image_tag(url_for(@video.social_image), class: "thumbnail__img") %>  
                         <% else %>
                             <span class="none_msg">no available image</span>
                         <% end %>
