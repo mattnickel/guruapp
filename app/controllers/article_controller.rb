@@ -1,6 +1,7 @@
 class ArticleController < ApplicationController
-    skip_before_action :verify_authenticity_token, :only => :create
-    before_action :find_video, :only => [:show, :edit, :update, :destroy]
+  before_action :set_video, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only:[:edit, :update, :destroy]
     
       def index
          @articles = Video.all
@@ -28,13 +29,19 @@ class ArticleController < ApplicationController
       end
   
       def create
-        @article = Video.new(article_params)
-        # @article.content_type = 'article'
-        @article.save
-        # if @article.save
-        #   render 'index'
-        # else
-        #   render 'new'
+        @article = current_user.videos.build(article_params)
+        @article.content_type = 'article'
+    
+        return @article
+
+        # respond_to do |format|
+        #   if @article.save
+        #     format.html { redirect_to @article, notice: "Article was successfully created." }
+        #     format.json { render :show, status: :created, location: @article }
+        #   else
+        #     format.html { render :new, status: :unprocessable_entity }
+        #     format.json { render json: @article.errors, status: :unprocessable_entity }
+        #   end
         # end
       end
   
@@ -44,7 +51,11 @@ class ArticleController < ApplicationController
       end
   
   private
+    def set_video
+      @video = Video.find(params[:id])
+    end
+
     def article_params
-      params.permit(:title, :description, :author, :excerpt, :content)
+      params.permit(:title, :description, :author, :excerpt, :content, :video)
     end
   end

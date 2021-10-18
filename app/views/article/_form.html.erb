@@ -1,4 +1,5 @@
-<%= form_with model: article, url: "/article", local: true, multipart: true do |form| %>
+<script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+<%= form_with model: article, url: "/article", local: true, multipart: true, id: "article_form" do |form| %>
     <%# <% if video.errors.any?   Validation here   <%end%>
       <div class="row upload-video-view">
         <div class="twelve columns video-form">
@@ -14,7 +15,8 @@
               <%= form.text_area :description, class: "manage-channel-box description-box" %>
               
               <%= form.label :content, class:"label upload-video-text-style"%>
-              <%= form.text_area :content, class: "manage-channel-box description-box" %>
+              <div id="editor"></div>
+              <%= form.text_field :content, class: "manage-channel-box description-box", id: "content", type: :hidden %>
 
             </div>
           </div>
@@ -24,58 +26,31 @@
       <div class="row">
         <div class="button-area">
         <%= link_to "Cancel", dashboard_path, class:"button btn-transp btn-style btn-text" %>
-        <%= form.submit "Save", class:"button btn-style btn-text " %>              
+        <%= form.submit "Save", class:"button btn-style btn-text ", id: "submit_article" %>              
         </div>
       </div>
       
     </div>	
   <% end %>
-
 <script>
-//adds event listener to the file uploader button
-document.querySelector("#video-upload-button").addEventListener("click", () => {
-  //clicks on the file input
-  document.querySelector("#hidden-upload").click();
-});
+  var content_editor;
 
-//adds event listener on the hidden file input to listen for any changes
-document.querySelector("#hidden-upload").addEventListener("change", (event) => {
-  //gets the file name
-  document.querySelector("#upload-name").value = event.target.files[0].name;
-});
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .then(new_editor => {
+          content_editor = new_editor;
+        })
+        .catch( error => {
+            console.error( error );
+        } );
 
-</script>
+    $('#submit_article').on('click', function(e) {
+      e.preventDefault();
 
-<%# //video-image %>
+      $('#content').attr("value", content_editor.getData());
 
-<script>
-//adds event listener to the file uploader button
-document.querySelector("#vi-upload-button").addEventListener("click", () => {
-  //clicks on the file input
-  document.querySelector("#vi-hidden-upload").click();
-});
-
-//adds event listener on the hidden file input to listen for any changes
-document.querySelector("#vi-hidden-upload").addEventListener("change", (event) => {
-  //gets the file name
-  document.querySelector("#vi-upload-name").value = event.target.files[0].name;
-});
-
-</script>
-
-<script>
-//adds event listener to the file uploader button
-document.querySelector("#si-upload-button").addEventListener("click", () => {
-  //clicks on the file input
-  document.querySelector("#si-hidden-upload").click();
-});
-
-//adds event listener on the hidden file input to listen for any changes
-document.querySelector("#si-hidden-upload").addEventListener("change", (event) => {
-  //gets the file name
-  document.querySelector("#si-upload-name").value = event.target.files[0].name;
-});
-
+      $('#article_form').submit();
+    })
 </script>
 
 
