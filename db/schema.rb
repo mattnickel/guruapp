@@ -204,11 +204,9 @@ ActiveRecord::Schema.define(version: 2021_10_15_142308) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "assessment_id"
     t.bigint "question_id"
-    t.bigint "assessment_question_id"
     t.bigint "offered_response_id"
     t.bigint "user_id"
     t.index ["assessment_id"], name: "index_responses_on_assessment_id"
-    t.index ["assessment_question_id"], name: "index_responses_on_assessment_question_id"
     t.index ["offered_response_id"], name: "index_responses_on_offered_response_id"
     t.index ["question_id"], name: "index_responses_on_question_id"
     t.index ["user_id"], name: "index_responses_on_user_id"

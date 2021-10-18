@@ -1,6 +1,6 @@
 class AudioController < ApplicationController
-  before_action :set_video, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_audio, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
   before_action :correct_user, only:[:edit, :update, :destroy]
   
   def index
@@ -12,11 +12,10 @@ class AudioController < ApplicationController
   end
 
   def show
-    @audio = Video.find(params[:id])
   end
 
   def new
-      @audio = Video.new
+      @audio = current_user.videos.build
   end
 
   def edit
@@ -49,13 +48,13 @@ class AudioController < ApplicationController
   end
 
   def correct_user
-    @video = current_user.videos.find_by(id: params[:id])
-    redirect_to videos_path, notice: "Not authorized" if @video.nil?
+    @audio = current_user.videos.find_by(id: params[:id])
+    redirect_to audios_path, notice: "Not authorized" if @audio.nil?
   end
 
 private
-  def set_video
-    @video = Video.find(params[:id])
+  def set_audio
+    @audio = Video.find(params[:id])
   end
 
   def audio_params
