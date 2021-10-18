@@ -48,8 +48,8 @@ class AudioController < ApplicationController
   end
 
   def correct_user
-    @video = current_user.videos.find_by(id: params[:id])
-    redirect_to audios_path, notice: "Not authorized" if @video.nil?
+    @audio = current_user.videos.find_by(id: params[:id])
+    redirect_to audio_path, notice: "Not authorized" if @article.nil?
   end
 
 private

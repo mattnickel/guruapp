@@ -28,7 +28,7 @@
               <div class="upload-container">
               <%= form.label :video, "File Name" , class:"label upload-video-text-style"%>
                 <div id="video-upload-border">
-                  <span id="video-upload-button" class="material-icons upload-button upload-button-style">file_upload</span>
+                  <span id="video-upload-button" class="material-icons upload-button vid-btn upload-button-style">file_upload</span>
                   <%= form.file_field :video, accept:"video/mp4", class:'input-tag', id:"hidden-upload"%>
                   <input type="text" id="upload-name" disabled="true"/>                
                 </div>                
@@ -42,7 +42,7 @@
               <div id="video-image-container">
               <%= form.label :image, "Video Image",  class:'label upload-video-text-style'%>
                 <div id="video-image-border" class = "image-holder" onchange="showPreview1(event)">
-                  <span id ="vi-upload-button" class="material-icons upload-button upload-button-image-style img-btn">file_upload</span>
+                  <span id ="vi-upload-button" class="material-icons upload-button img-btn">file_upload</span>
                   <img id="image-preview1">                  
                   <%=form.file_field :image, accept:"image/jpg, image/png, image/jpeg", id:'vi-hidden-upload'%>
                 </div>
@@ -50,7 +50,7 @@
               <div id="social-image-container">
               <%= form.label :social_image, class:'label upload-video-text-style'%>
                 <div id="social-image-border" class = "image-holder" onchange="showPreview2(event)">
-                  <span id ="si-upload-button" class="material-icons upload-button upload-button-image-style img-btn">file_upload</span>
+                  <span id ="si-upload-button" class="material-icons upload-button img-btn">file_upload</span>
                   <img id="image-preview2">
                   <%=form.file_field :social_image, accept:"image/jpg, image/png, image/jpeg", id:'si-hidden-upload'%>
                  

@@ -669,6 +669,9 @@ input.button{
 	align-items: center;
 	height: 55vh;
 }
+.vid-btn{
+	padding: 0 .3rem;
+}
 
 .upload-video-text-style, 
 .btn-text,
@@ -683,15 +686,10 @@ a.manage-channel-link {
 	vertical-align: middle;
 }
 
-.upload-button-image-style {
-	float: right;
-}
-
 .upload-button {
+	position: absolute;
 	display: flex;
-	padding: 0 1rem;
 	border: none;
-	color: black;
 	cursor: pointer;
 	align-items: center;
 }
@@ -754,7 +752,8 @@ border: none;
 	padding-left: 25px;
 }
 
-.video-view-container {
+.video-view-container, 
+.video-view-container audio{
 	width: 360px;
 	border-radius: 2rem;
 }

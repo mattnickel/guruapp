@@ -1,5 +1,5 @@
 class ArticleController < ApplicationController
-  before_action :set_video, only: %i[ show edit update destroy ]
+  before_action :set_article, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only:[:edit, :update, :destroy]
     
@@ -12,11 +12,10 @@ class ArticleController < ApplicationController
       end
     
       def show
-        @article = Video.find(params[:id])
       end
   
       def new
-         @article = Video.new
+         @article = current_user.videos.build
       end
   
       def edit
@@ -47,13 +46,18 @@ class ArticleController < ApplicationController
         @article = Video.find(params[:id])
         @article.destroy
       end
+
+      def correct_user
+        @article = current_user.videos.find_by(id: params[:id])
+        redirect_to article_path, notice: "Not authorized" if @article.nil?
+      end
   
   private
-    def set_video
-      @video = Video.find(params[:id])
+    def set_article
+      @article = Video.find(params[:id])
     end
 
     def article_params
-      params.permit(:title, :description, :author, :excerpt, :content)
+      params.require(:video).permit(:title, :description, :author, :excerpt, :content)
     end
   end
