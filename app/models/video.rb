@@ -1,5 +1,9 @@
 class Video < ApplicationRecord
-
+	validates :image, :video, :title, :description,  presence: true
+	validates :title, length: {maximum: 100,
+    too_long: "%{count} characters is the maximum allowed" }
+	validates :description, length: {maximum: 1000,
+    too_long: "%{count} characters is the maximum allowed" }
 
 	has_one_attached :image
 	has_one_attached :social_image
