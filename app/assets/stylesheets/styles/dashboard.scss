@@ -566,7 +566,7 @@ h6 {
 	line-height: 1.5;
 	align-content: center;
 	position: relative;
-	top: 2rem;
+	top: 4rem;
 }
 
 
@@ -622,12 +622,13 @@ input.button{
 	width: 15rem;
     height: 10rem;
     background-color: grey;
+	border: .2rem solid grey;
     border-radius: 1em;
 }
 
 .image-holder img {
 	width:100%;
-  display:none;
+    // display:none;
 	height: inherit;
 	border-radius: inherit;
 }
@@ -663,7 +664,7 @@ input.button{
 	transform: scale(1.2)
 }
 
-.upload-video-view {
+.upload-content-view {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -745,17 +746,20 @@ border: none;
 
 /* Video Display */
 
-.video-view{
+.content-view{
 	display: flex;
 	align-items: center;
 	// justify-content: center;
 	padding-left: 25px;
 }
 
-.video-view-container, 
-.video-view-container audio{
+.content-view-container, 
+.content-view-container{
 	width: 360px;
 	border-radius: 2rem;
+}
+.audio-player{
+	width:400px;
 }
 
 .video-player {
@@ -764,10 +768,10 @@ border: none;
     z-index: 1;
     min-height: 216px;
     height: 100%;
-    width: 463px;
+    width: 462px;
 }
 
-.video-view--bg {
+.content-view--bg {
 	/*overlay*/
 	background-color: gray;
 	border-radius: 2rem;
@@ -983,10 +987,15 @@ border: none;
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	max-height: auto;
+	height:100%;
 	max-width: 100%;
-	object-fit: contain;
+	// object-fit: contain;
 	transform: translate(-50%, -50%);
+}
+
+.thumbnail__img--sml {
+	display: block;
+	max-width: 100%;
 }
 
 .thumbnail__img--overlay {
@@ -1032,7 +1041,7 @@ border: none;
 	text-decoration: none;
 }
 
-.thumbnail__video-views-count {
+.thumbnail__content-views-count {
 	align-items: center;
 	background-color: var(--views-bg-count);
 	border-radius: 50%;
@@ -1057,11 +1066,13 @@ border: none;
 	display: flex;
 	flex-direction: column;
 	position: absolute;
-	background-color: #00000000;
-	width: 90%;
+	background-color: #0000000d;
+	width: 100%;
 	height: 5rem;
 	bottom: 0;
 	text-transform: capitalize;
+	text-indent: 1rem;
+	justify-content: center;
 	color: #ffffff;
 	vertical-align: top;
 }

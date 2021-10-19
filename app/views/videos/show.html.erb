@@ -12,9 +12,9 @@
     </div>
    
 <%# ----------- %>
-    <div class="row upload-video-view">
-        <div class="seven columns video-view">
-          <div class="video-view-container video-view--size">
+    <div class="row upload-content-view">
+        <div class="seven columns content-view">
+          <div class="content-view-container content-view--size">
             <% if @video.video.attached? %>
               <%= video_tag(url_for(@video.video), controls:'', class: 'video-player')%>
             <% else %>
@@ -47,14 +47,13 @@
               </div>
 
             </div>
-        
+  
             <div class="video-images">
                 <div id="video-image-container">
                 <h5 class ="default-text">Video Image</h5>
                     <div id="video-image-border" class = "image-holder">
-                    
                         <% if @video.image.attached? %>
-                            <%= image_tag(url_for(@video.image), class: "thumbnail__img") %>  
+                            <%= image_tag(@video.image , class: "thumbnail__img--sml") %>  
                         <% else %>
                             <span class="none_msg">no available image</span>
                         <% end %>
@@ -62,9 +61,11 @@
                 </div>
                 <div id="social-image-container">
                 <h5 class ="default-text">Social Image</h5>
+                
                     <div id="video-image-border" class = "image-holder">
+                     
                         <% if @video.social_image.attached? %>
-                            <%= image_tag(url_for(@video.social_image), class: "thumbnail__img") %>  
+                          <%= image_tag(@video.social_image, class: "thumbnail__img--sml") %>   
                         <% else %>
                             <span class="none_msg">no available image</span>
                         <% end %>

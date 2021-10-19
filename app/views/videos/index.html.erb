@@ -26,7 +26,7 @@
 										<span class="none_msg">no available image</span>
 									<% end %>
 									<div class="thumbnail__img--overlay">
-											<p class="thumbnail__img--overlay__text thumbnail__video-views-count"><%= video.viewer_count %></p>
+											<p class="thumbnail__img--overlay__text thumbnail__content-views-count"><%= video.viewer_count %></p>
 										<div class="overlay__icon edit_icon">
 											<%= link_to edit_video_path(video.record) do %>
 												<%= content_tag :span, "edit", :class => "material-icons md-34 md-light" %>
@@ -52,7 +52,7 @@
 										<span class="none_msg">no available image</span>
 									<% end %>
 									<div class="thumbnail__img--overlay">
-											<p class="thumbnail__img--overlay__text thumbnail__video-views-count"><%= video.viewer_count %></p>
+											<p class="thumbnail__img--overlay__text thumbnail__content-views-count"><%= video.viewer_count %></p>
 										<div class="overlay__icon edit_icon">
 											<%= link_to edit_video_path(video.record) do %>
 												<%= content_tag :span, "edit", :class => "material-icons md-34 md-light" %>

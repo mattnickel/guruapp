@@ -37,7 +37,7 @@
             <%= form.text_field :authentication_token, class:"form-control", value: current_user.authentication_token, type: :hidden %>
             <%= form.hidden_field :author, class:"form-control", value: current_user.username%> 
             <%= hidden_field_tag 'is_published', true %>
-            <%# <%= form.hidden_field :is_published, class:"form-control", value:true%>
+            <%= form.hidden_field :is_published, class:"form-control", value:true%>
             <div class="video-images">
               <div id="video-image-container">
               <%= form.label :image, "Video Image",  class:'label upload-video-text-style'%>

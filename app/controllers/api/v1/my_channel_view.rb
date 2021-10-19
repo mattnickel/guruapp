@@ -69,7 +69,7 @@ module API
                     my_unpublished_videos.each do |video_entry|
                         video = Video.find(video_entry.id) 
             
-                        my_video = PublishedVideo.new
+                        my_video = UnpublishedVideo.new
                         my_video.id = video.id
                         my_video.title = video.title
                         my_video.author = video.author

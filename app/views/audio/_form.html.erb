@@ -1,9 +1,9 @@
 <%= form_with model: audio, url: "/audio", local: true, multipart: true do |form| %>
     <%# <% if video.errors.any?   Validation here   <%end%>
-      <div class="row upload-video-view">
-        <div class="six columns video-view">
-          <div class="video-view-container video-view--bg">
-            <audio class = "video-view--size audio-size" controls autoplay muted  id="video-tag">
+      <div class="row upload-content-view">
+        <div class="six columns content-view">
+          <div class="content-view-container">
+            <audio class = "content-view--size audio-player" controls autoplay muted  id="audio-tag">
               <source id="video-source" >
             </audio> 
           </div>
@@ -111,7 +111,7 @@ document.querySelector("#si-hidden-upload").addEventListener("change", (event) =
 <script>
 
 const videoSrc = document.querySelector("#video-source");
-const videoTag = document.querySelector("#video-tag");
+const videoTag = document.querySelector("#audio-tag");
 const inputTag = document.querySelector(".input-tag");
 
 inputTag.addEventListener('change',  readVideo)

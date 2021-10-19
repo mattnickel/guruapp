@@ -54,7 +54,7 @@
 											<span class="none_msg">no available image</span>
 										<% end %>
 										<div class="thumbnail__img--overlay">
-											<p class="thumbnail__img--overlay__text thumbnail__video-views-count"><%= video.viewer_count %></p>
+											<p class="thumbnail__img--overlay__text thumbnail__content-views-count"><%= video.viewer_count %></p>
 											<div class="thumbnail-video__details">
 												<p class="thumbnail-video__text thumbnail-video__title video__title-lrg"><%= video.title %></p>
 												<p class="thumbnail-video__text thumbnail-video__author"><%= video.author %></p>
@@ -81,7 +81,7 @@
 								<% end %>
 									<div class="thumbnail__img--overlay">
 										<p class="thumbnail__img--overlay__text thumbnail-video-stat">Most Watched</p>
-										<p class="thumbnail__img--overlay__text thumbnail__video-views-count"><%= @most_watched_video.viewer_count %></p>
+										<p class="thumbnail__img--overlay__text thumbnail__content-views-count"><%= @most_watched_video.viewer_count %></p>
 										<div class="thumbnail-video__details">
 											<p class="thumbnail-video__text thumbnail-video__title video__title-lrg"><%= @most_watched_video.title %></p>
 											<p class="thumbnail-video__text thumbnail-video__author"><%= @most_watched_video.author %></p>
@@ -101,7 +101,7 @@
 								<% end %>
 								<div class="thumbnail__img--overlay">
 									<p class="thumbnail__img--overlay__text thumbnail-video-stat">Most Recent</p>
-									<p class="thumbnail__img--overlay__text thumbnail__video-views-count"><%= @most_recent_video.viewer_count %></p>
+									<p class="thumbnail__img--overlay__text thumbnail__content-views-count"><%= @most_recent_video.viewer_count %></p>
 									<div class="thumbnail-video__details">
 										<p class="thumbnail-video__text thumbnail-video__title video__title-lrg"><%= @most_recent_video.title %></p>
 										<p class="thumbnail-video__text thumbnail-video__author"><%= @most_recent_video.author %></p>
@@ -166,7 +166,7 @@
     const btnScrollRight = document.querySelector("#btn-right-arrow");
 		window.onload = isOverflown(hScroll)
 
-    btnScrollLeft.style.opacity = "0";
+    btnScrollLeft.style.visibility = "hidden";
 
     let maxScroll = -sCont.offsetWidth + hScroll.offsetWidth;
 
@@ -185,9 +185,9 @@
 
 				if(currentScrollPosition > 0){
         currentScrollPosition = 0;
-        btnScrollLeft.style.opacity = "0";
+        btnScrollLeft.style.visibility = "hidden";
       } else{
-        btnScrollLeft.style.opacity = "1";
+        btnScrollLeft.style.visibility = "visible";
       }
 
 
@@ -202,8 +202,8 @@
 
     }
 		} else {
-			btnScrollRight.style.opacity = "0"
-			btnScrollLeft.style.opacity = "0";
+			btnScrollRight.style.visibility = "hidden";
+			btnScrollLeft.style.visibility = "visible";
 		}
 		
     
