@@ -193,9 +193,9 @@
 
       if(currentScrollPosition < maxScroll){
         currentScrollPosition = maxScroll;
-        btnScrollRight.style.opacity = "0"; 
+        btnScrollRight.style.visibility = "hidden"; 
       } else{
-        btnScrollRight.style.opacity = "1"; 
+        btnScrollRight.style.visibility = "visible"; 
       }
 
       sCont.style.left = currentScrollPosition + "px";
@@ -203,7 +203,7 @@
     }
 		} else {
 			btnScrollRight.style.visibility = "hidden";
-			btnScrollLeft.style.visibility = "visible";
+			btnScrollLeft.style.visibility = "hidden";
 		}
 		
     

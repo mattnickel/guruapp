@@ -114,7 +114,7 @@ h6 {
 }
 
 .dashboard {
-  border-radius: 3rem;
+  	border-radius: 3rem;
 	font-size: 1.4rem;
 	min-height: 60rem;
 	max-width: 96rem;
@@ -523,6 +523,8 @@ h6 {
 	overflow-y: scroll;
 }
 
+// Unpublished and Published Videos
+
 #up_video {
 	grid-area: up_video;
 }
@@ -548,10 +550,6 @@ h6 {
 	min-height: 11rem;
 }
 
-// .un-pub-img{
-
-// }
-
 /* || Video Views */
 
 #upload-container {
@@ -568,7 +566,6 @@ h6 {
 	position: relative;
 	top: 4rem;
 }
-
 
 input.manage-channel-box,
 .manage-channel-box {
@@ -670,6 +667,7 @@ input.button{
 	align-items: center;
 	height: 55vh;
 }
+
 .vid-btn{
 	padding: 0 .5rem;
 }
@@ -725,12 +723,12 @@ a.manage-channel-link {
 #upload-name,
 #vi-upload-name,
 #si-upload-name {
-padding-left: 10%;
-margin: 0;
-width: 100%;
-border-radius: 20px;
-outline: none;
-border: none;
+	padding-left: 10%;
+	margin: 0;
+	width: 100%;
+	border-radius: 20px;
+	outline: none;
+	border: none;
 }
 
 #upload-name:focus, .upload-button:focus {
@@ -843,7 +841,6 @@ border: none;
 	display: flex;
 	align-items: center;
 }
-
 
 
 /* My Channel Thumbnail */
@@ -1178,15 +1175,16 @@ border: none;
   	cursor: pointer;
   	transition: .5s;
 	line-height: 2.4rem;
+	margin-bottom: 0;
 }
 
 .thumbnail-container {
-  display: flex;
+  	display: flex;
 	gap: 2rem;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  position: absolute;
-  left: 0;
-  transition: 0.5s all ease-out;
+  	flex-direction: row;
+  	justify-content: flex-start;
+  	align-items: center;
+ 	position: absolute;
+  	left: 0;
+  	transition: 0.5s all ease-out;
 }
