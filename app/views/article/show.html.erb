@@ -50,7 +50,9 @@
                   <strong>Content</strong>
                 </p>
                 <div class="show__content-box">
-                <%= @article.content %>
+                <div style="background-color: #ffff; border-radius: 5px; padding: 5px;">
+                <%= raw(@article.content) %>
+                </div>
                 </div>
                 
               </div>
