@@ -41,6 +41,9 @@ Rails.application.routes.draw do
   resources :training_modules
   resources :audio
   resources :article
+  resources :assessments
+  resources :questions
+
                                                                                                                                  
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
   get 'my_channel_view', to: 'my_channel_view#index', as: 'mychannelview'
@@ -48,6 +51,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
   get 'welcome/download', to: 'welcome#download', as: 'download'
   get 'privacy', to: 'welcome#privacy', as: 'privacy'
+  post '/assessments/new' => 'assessments#create'
 
   root to: 'welcome#index', as: 'home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -96,9 +100,9 @@ Rails.application.routes.draw do
         get "dashboard/statistic_summary", to: "dashboard/statistic_summary#get"
       end
 
-      scope :my_channel_view do
-        get "my_channel_view/my_published_videos", to: "my_channel_view/my_published_videos#get"
-      end
+      # scope :my_channel_view do
+      #   get "my_channel_view/my_published_videos", to: "my_channel_view/my_published_videos#get"
+      # end
 
 
     end

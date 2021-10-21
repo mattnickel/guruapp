@@ -1,6 +1,6 @@
 class VideoSerializer < ActiveModel::Serializer
 	 
-	 include Rails.application.routes.url_helpers 
+	include Rails.application.routes.url_helpers 
 
    attributes :id, :title, :author, :description, :vimeo_id, :seconds, :url, :image, :social_image, :file, :image_file
 

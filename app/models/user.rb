@@ -25,7 +25,8 @@ class User < ApplicationRecord
     has_many :comments
     has_many :memberships
     has_many :groups, through: :memberships
-
+    has_many :assessments
+    has_many :responses
    
     # validates_attachment :avatar, presence: true
     # do_not_validate_attachment_file_type :avatar

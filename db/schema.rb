@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_14_092301) do
+ActiveRecord::Schema.define(version: 2021_10_15_142308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,26 @@ ActiveRecord::Schema.define(version: 2021_09_14_092301) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["access_token"], name: "index_api_keys_on_access_token", unique: true
     t.index ["user_id"], name: "index_api_keys_on_user_id"
+  end
+
+  create_table "assessment_questions", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "assessment_id"
+    t.bigint "question_id"
+    t.index ["assessment_id"], name: "index_assessment_questions_on_assessment_id"
+    t.index ["question_id"], name: "index_assessment_questions_on_question_id"
+  end
+
+  create_table "assessments", force: :cascade do |t|
+    t.string "name"
+    t.string "assessment_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.bigint "assessment_question_id"
+    t.index ["assessment_question_id"], name: "index_assessments_on_assessment_question_id"
+    t.index ["user_id"], name: "index_assessments_on_user_id"
   end
 
   create_table "bad_posts", force: :cascade do |t|
@@ -125,6 +145,15 @@ ActiveRecord::Schema.define(version: 2021_09_14_092301) do
     t.index ["videos_id"], name: "index_module_videos_on_videos_id"
   end
 
+  create_table "offered_responses", force: :cascade do |t|
+    t.text "text"
+    t.integer "numeric_value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "question_id"
+    t.index ["question_id"], name: "index_offered_responses_on_question_id"
+  end
+
   create_table "pages", force: :cascade do |t|
     t.string "page_name"
     t.string "hero_title"
@@ -159,6 +188,30 @@ ActiveRecord::Schema.define(version: 2021_09_14_092301) do
     t.integer "user_id"
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.text "text"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "offered_response_id"
+    t.bigint "assessment_question_id"
+    t.index ["assessment_question_id"], name: "index_questions_on_assessment_question_id"
+    t.index ["offered_response_id"], name: "index_questions_on_offered_response_id"
+  end
+
+  create_table "responses", force: :cascade do |t|
+    t.text "text"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "assessment_id"
+    t.bigint "question_id"
+    t.bigint "offered_response_id"
+    t.bigint "user_id"
+    t.index ["assessment_id"], name: "index_responses_on_assessment_id"
+    t.index ["offered_response_id"], name: "index_responses_on_offered_response_id"
+    t.index ["question_id"], name: "index_responses_on_question_id"
+    t.index ["user_id"], name: "index_responses_on_user_id"
+  end
+
   create_table "social_attempts", force: :cascade do |t|
     t.integer "user_id"
     t.string "description"
@@ -191,9 +244,11 @@ ActiveRecord::Schema.define(version: 2021_09_14_092301) do
     t.index ["user_id"], name: "index_support_messages_on_user_id"
   end
 
-  create_table "training_modules", id: :serial, force: :cascade do |t|
-    t.text "title"
+  create_table "training_modules", force: :cascade do |t|
+    t.string "title"
     t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_training_modules_on_user_id"
   end
@@ -241,6 +296,7 @@ ActiveRecord::Schema.define(version: 2021_09_14_092301) do
     t.string "content_type"
     t.string "excerpt"
     t.string "content"
+    t.boolean "is_published"
   end
 
   create_table "viewings", force: :cascade do |t|
