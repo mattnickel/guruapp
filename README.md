@@ -113,3 +113,139 @@
     - rake webpacker:install
     - Go to browser: localhost:3000
     - Default Login: email: "test@test.com"   password: "123456"
+
+## DOCKER SETUP FOR WINDOWS ENVIRONMENT
+
+1. Install [Docker Desktop for Windows](https://docs.docker.com/desktop/windows/install/)
+   * Meet the necessary requirements prior to its installation
+   * Refer to the installation documention.
+    a)Enable the WSL 2 feature on Windows. 
+    * Download and install the Linux kernel update package and Linux Subsystem(Ubuntu 20.04 LTS).
+      https://docs.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package
+    b) [Enable Hyper-V](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)
+2. Install Windows Terminal 
+   a) Select the Ubuntu profile
+3. Install git (if not yet installed)
+   ```
+   $ sudo apt-get install git
+   ```
+### Project Setup
+1. Clone from Github to your code projects directory
+  ```
+  $ git clone https://github.com/mattnickel/guruapp
+  ```
+2. On the same level as the project directory create docker-compose.yml file with the following content: 
+  ```
+  version: "3.7"
+
+  services:
+    postgres:
+      image: postgres
+      ports:
+        - 5432:5432
+      environment:
+        POSTGRES_PASSWORD: 123456
+    ruby:
+      image: ruby:2.7.4
+      ports:
+        - 3000:3000
+      working_dir: /usr/src/app
+      volumes:
+        - ./lmd:/usr/src/app
+    links: 
+        - postgres
+    tty: true
+    ```
+    Note: replace "lmd" with the project directory name
+    ruby 2.7.4p191 
+3. On your Windows terminal run
+    ```
+    $ docker-compose up -d
+    ```
+  The necessary images will be generated in you docker
+
+4. Goto the docker ruby CLI 
+  a) install rails
+    ```
+    #gem install rails:6.0.3.4
+    ```
+  b) Install bundle dependencies
+    ```
+    #bundle install
+    ```
+  ```
+  c) Run the following commands:
+    ```
+    curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+    
+    export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm. Now you can use nvm
+    ```
+  d) Install node
+   ```
+    #nvm install node
+   ```
+  e) Install npm
+   ``` 
+    #nvm install npm
+   ```
+  f) Install yarn
+   ```
+    #npm install -g yarn
+   ```
+
+5. On the Windows terminal check your postgres container ip address using
+  ```
+  $ docker container inspect dirName_postgres_1
+  ```
+  and set the ip address in your database.yml file located in config folder
+
+6. For Heroku Server install Heroku CLI
+  $ curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+
+### Postgres Setup 
+1. On the docker postgres CLI run the following
+  ```
+  #psql -U postgres
+  #CREATE ROLE developer WITH LOGIN PASSWORD '123456';
+  #ALTER ROLE developer CREATEDB;
+  #CREATE DATABASE guruapp_dev1;
+  #CREATE DATABASE guruapp_test;
+  
+  to exit from postgres prompt 
+  #\q
+  ```
+
+### Add local config
+1. Add secrets/video_images.json (ask for this file)
+2. Add master.key (ask for this file)
+3. Add sendgrid key as a local variable (ask for this key)
+      https://sendgrid.com/docs/ui/account-and-settings/api-keys/
+
+### Rails Migration and Running the Rails App
+1. Comment out logic in api/v1/training_modules
+2. On the Docker ruby CLI run
+  ```
+  #rails db:migrate
+  #rails db:seed
+  ```
+3. Uncomment/restore training modules logic
+4. Run rails app with 
+  ```
+  #rails server -b=0.0.0.0
+  ```
+  Note: in some setups when closing the ruby cli 
+  
+  export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm. Now you can use nvm
+  
+  needs to be entered again before entering the command to run the rails app
+### Heroku 
+  1. For Heroku Server install Heroku CLI
+  ```
+  curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+  
+  or
+
+  sudo snap install --classic heroku
+  ``

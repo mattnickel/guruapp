@@ -1,75 +1,72 @@
 <%# <%= form_with(model: video, url: api_v1_videos_path, method: :post ) do |form|  %> 
 <%= form_with(model: video, local: true) do |form| %>
-  <% if video.errors.any? %>
-          <div id="error_explanation">
-          <h6><%= pluralize(video.errors.count, "error") %> prohibited this video from being saved:</h6>
-          <ul>
-         <% video.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
+	<% if video.errors.any? %>
+		<div id="error_explanation">
+      <h6><%= pluralize(video.errors.count, "error") %> prohibited this video from being saved:</h6>
+      <ul>
+        <% video.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
        </ul>
-      </div>
-   <% end %>
-        <div class="row upload-video-view">
-        <div class="seven columns video-view">
-          <div class="video-view-container video-view--size">
-            <video class= 'video-player' controls id="video-tag">
-              <source id="video-source">
-            </video> 
-          </div>
-        </div>
-        <div class="five columns video-form">
-          <div class="video-form-container control">
-            <div class="video-details">
-              <%= form.label :title, class:"label upload-video-text-style"%>
-              <%= form.text_field :title, class: "manage-channel-box" %>
-              <%= form.label :description, class:"label upload-video-text-style"%>
-              <%= form.text_area :description, class: "manage-channel-box description-box" %>
-              <div class="upload-container">
-              <%= form.label :video, "File Name" , class:"label upload-video-text-style"%>
-                <div id="video-upload-border">
-                  <span id="video-upload-button" class="material-icons upload-button vid-btn upload-button-style">file_upload</span>
-                  <%= form.file_field :video, accept:"video/mp4", class:'input-tag', id:"hidden-upload"%>
-                  <input type="text" id="upload-name" disabled="true"/>                
-                </div>                
-              </div>
-            </div>
-            <%= form.text_field :authentication_token, class:"form-control", value: current_user.authentication_token, type: :hidden %>
-            <%= form.hidden_field :author, class:"form-control", value: current_user.username%> 
-            <%= hidden_field_tag 'is_published', true %>
-            <%= form.hidden_field :is_published, class:"form-control", value:true%>
-            <div class="video-images">
-              <div id="video-image-container">
-              <%= form.label :image, "Video Image",  class:'label upload-video-text-style'%>
-                <div id="video-image-border" class = "image-holder" onchange="showPreview1(event)">
-                  <span id ="vi-upload-button" class="material-icons upload-button img-btn">file_upload</span>
-                  <img id="image-preview1">                  
-                  <%=form.file_field :image, accept:"image/jpg, image/png, image/jpeg", id:'vi-hidden-upload'%>
-                </div>
-              </div>
-              <div id="social-image-container">
-              <%= form.label :social_image, class:'label upload-video-text-style'%>
-                <div id="social-image-border" class = "image-holder" onchange="showPreview2(event)">
-                  <span id ="si-upload-button" class="material-icons upload-button img-btn">file_upload</span>
-                  <img id="image-preview2">
-                  <%=form.file_field :social_image, accept:"image/jpg, image/png, image/jpeg", id:'si-hidden-upload'%>
-                 
-                </div>
-              </div>
-
-            </div>  
-          </div>
-        </div>
-          
-      </div>
-      <div class="row">
-        <div class="actions button-area">
-        <%= link_to "Cancel", mychannelview_path, class:"button btn-transp btn-style btn-text" %>
-        <%= form.submit "Save", class:"button btn-style btn-text " %>              
-        </div>
-      </div>
-    </div>	
+    </div>
   <% end %>
+  <div class="row video-upload-form">
+  	<div class="seven columns content-view">
+    	<div class="content-view__video">
+     	 	<video class= "video-player" controls id="video-tag">
+        	<source id="video-source">
+      	</video> 
+     	</div>
+  	</div>
+    <div class="five columns">
+     	<div class="video-form-container control">
+       	<div class="video-details">
+         	<%= form.label :title, class:"label upload-video-text-style"%>
+         	<%= form.text_field :title, class: "manage-channel-box" %>
+         	<%= form.label :description, class:"label upload-video-text-style"%>
+         	<%= form.text_area :description, class: "manage-channel-box description-box" %>
+          <div class="upload-container">
+         		<%= form.label :video, "File Name" , class:"label upload-video-text-style"%>
+           	<div id="video-upload-border">
+            	<span id="video-upload-button" class="material-icons upload-button vid-btn upload-button-style">file_upload</span>
+            	<%= form.file_field :video, accept:"video/mp4", class:'input-tag', id:"hidden-upload"%>
+            	<input type="text" id="upload-name" disabled="true"/>                
+            </div>                
+         	</div>
+       	</div>
+       	<%= form.text_field :authentication_token, class:"form-control", value: current_user.authentication_token, type: :hidden %>
+        <%= form.hidden_field :author, class:"form-control", value: current_user.username%> 
+       	<%= hidden_field_tag 'is_published', true %>
+      	<%= form.hidden_field :is_published, class:"form-control", value:true%>
+       	<div class="video-images">
+         	<div id="video-image-container">
+         		<%= form.label :image, "Video Image",  class:'label upload-video-text-style'%>
+          	<div id="video-image-border" class = "image-holder" onchange="showPreview1(event)">
+            	<span id ="vi-upload-button" class="material-icons upload-button img-btn">file_upload</span>
+            	<img id="image-preview1">                  
+            	<%=form.file_field :image, accept:"image/jpg, image/png, image/jpeg", id:'vi-hidden-upload'%>
+            </div>
+          </div>
+          <div id="social-image-container">
+         		<%= form.label :social_image, class:'label upload-video-text-style'%>
+            <div id="social-image-border" class = "image-holder" onchange="showPreview2(event)">
+              <span id ="si-upload-button" class="material-icons upload-button img-btn">file_upload</span>
+              <img id="image-preview2">
+            	<%=form.file_field :social_image, accept:"image/jpg, image/png, image/jpeg", id:'si-hidden-upload'%>
+           	</div>
+         	</div>
+       	</div>  
+     	</div>
+   	</div>
+  </div>
+  <div class="row">
+    <div class="actions button-area">
+      <%= link_to "Cancel", mychannelview_path, class:"button btn-transp btn-style btn-text" %>
+      <%= form.submit "Save", class:"button btn-style btn-text " %>              
+    </div>
+  </div>
+</div>	
+<% end %>
 
 <script>
 //adds event listener to the file uploader button
