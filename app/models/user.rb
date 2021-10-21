@@ -17,6 +17,7 @@ class User < ApplicationRecord
   	validates_uniqueness_of :email
   	has_many :training_modules
     has_many :videos
+    has_many :articles
     has_many :social_posts
   	has_one_attached :avatar
     has_many :post_bumps

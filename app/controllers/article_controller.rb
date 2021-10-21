@@ -1,10 +1,10 @@
 class ArticleController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!
   before_action :correct_user, only:[:edit, :update, :destroy]
-    
+
       def index
-         @articles = Video.all
+         @articles = Article.all
          respond_to do | format |
           format.html # index.html.erb
           format.json { render json: @articles }
@@ -15,21 +15,20 @@ class ArticleController < ApplicationController
       end
   
       def new
-         @article = current_user.videos.build
+         @article = current_user.articles.build
       end
   
       def edit
-          @article = Video.find(params[:id])
+          @article = Article.find(params[:id])
       end
     
       def update
-          @article = Video.find(params[:id])
+          @article = Article.find(params[:id])
           render 'edit'
       end
   
       def create
-        @article = current_user.videos.build(article_params)
-        @article.content_type = 'article'
+        @article = current_user.articles.build(article_params)
 
         respond_to do |format|
           if @article.save
@@ -43,21 +42,21 @@ class ArticleController < ApplicationController
       end
   
       def destroy
-        @article = Video.find(params[:id])
+        @article = Article.find(params[:id])
         @article.destroy
       end
 
       def correct_user
-        @article = current_user.videos.find_by(id: params[:id])
+        @article = current_user.articles.find_by(id: params[:id])
         redirect_to article_path, notice: "Not authorized" if @article.nil?
       end
   
   private
     def set_article
-      @article = Video.find(params[:id])
+      @article = Article.find(params[:id])
     end
 
     def article_params
-      params.require(:video).permit(:title, :description, :author, :excerpt, :content)
+      params.permit(:title, :description, :excerpt, :content)
     end
   end
