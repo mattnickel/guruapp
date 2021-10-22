@@ -1,14 +1,14 @@
 <%= form_with model: audio, url: "/audio", local: true, multipart: true do |form| %>
       <div class="row content-upload">
         <section class="seven columns content-view">
-          <div class="content-view-container">
-            <audio class = "audio-player" controls autoplay muted  id="audio-tag">
+          <div class="content-view__video">
+            <audio class = "audio-player" controls muted  id="audio-tag">
               <source id="media-source" >
             </audio> 
           </div>
         </section >
         <section  class="five columns content-media">
-          <div class="content-upload__form control">
+          <div class="content-upload__form">
             <div class="content-upload__details">
               <%= form.label :title, class:"content-upload__text"%>
               <%= form.text_field :title, class: "manage-channel-box" %>
@@ -23,22 +23,26 @@
             </div>
 
             <div class="content-images__container">
-              <%= form.label :image, class:'content-upload__text'%>
-              <div id="video-image-border" class = "image-holder" onchange="showPreview1(event)">
-                <span id ="vi-upload-button" class="material-icons upload-button img-btn">file_upload</span>
-                <img id="image-preview1">  
-                <%=form.file_field :image, accept:"image/jpg, image/png", id:'vi-hidden-upload'%>
+              
+              <div id="video__image">
+                <%= form.label :image, class:'content-upload__text'%>
+                <div id="video-image-border" class = "image-holder" onchange="showPreview1(event)">
+                  <span id ="vi-upload-button" class="material-icons upload-button img-btn">file_upload</span>
+                  <img id="image-preview1">  
+                  <%=form.file_field :image, accept:"image/jpg, image/png", id:'vi-hidden-upload'%>
+                </div>
               </div>
-              <%= form.label :social_image, class:'content-upload__text'%>
-              <div id="social-image-border" class = "image-holder" onchange="showPreview2(event)">
-                <span id ="si-upload-button" class="material-icons upload-button img-btn">file_upload</span>
-                <img id="image-preview2">
-                <%=form.file_field :social_image, accept:"image/jpg, image/png", id:'si-hidden-upload'%>
+              <div id="social__image">
+                <%= form.label :social_image, class:'content-upload__text'%>
+                <div id="social-image-border" class = "image-holder" onchange="showPreview2(event)">
+                  <span id ="si-upload-button" class="material-icons upload-button img-btn">file_upload</span>
+                  <img id="image-preview2">
+                  <%=form.file_field :social_image, accept:"image/jpg, image/png", id:'si-hidden-upload'%>
+                </div>
               </div>
             </div>  
           </div>
         </section>
-          
       </div>
       <div class="row">
         <div class="button-area">
