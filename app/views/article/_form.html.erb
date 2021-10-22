@@ -2,19 +2,19 @@
 <%= form_with model: article, url: "/article", local: true, multipart: true, id: "article_form" do |form| %>
     <%# <% if video.errors.any?   Validation here   <%end%>
       <div class="row upload-content-view">
-        <div class="twelve columns video-form">
-          <div class="video-form-container control">
-            <div class="video-details">
-              <%= form.label :title, class:"label upload-video-text-style"%>
+        <div class="twelve columns content-media">
+          <div class="content-upload__form control">
+            <div class="content-upload__details">
+              <%= form.label :title, class:"content-upload__text"%>
               <%= form.text_field :title, class: "manage-channel-box" %>
               
-              <%= form.label :excerpt, class:"label upload-video-text-style"%>
+              <%= form.label :excerpt, class:"content-upload__text"%>
               <%= form.text_field :excerpt, class: "manage-channel-box" %>
 
-              <%= form.label :description, class:"label upload-video-text-style"%>
+              <%= form.label :description, class:"content-upload__text"%>
               <%= form.text_area :description, class: "manage-channel-box description-box" %>
               
-              <%= form.label :content, class:"label upload-video-text-style"%>
+              <%= form.label :content, class:"content-upload__text"%>
               <div id="editor"></div>
               <%= form.text_field :content, class: "manage-channel-box description-box", id: "content", type: :hidden %>
 

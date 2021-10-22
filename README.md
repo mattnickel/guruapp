@@ -18,7 +18,7 @@
   ```
   $ ruby -v
   ```
-  - Installed version should be: ruby 2.7.2p137
+  - Installed version should be: ruby 2.7.4p191
 
 2. Install Ruby if needed.
   ```
@@ -36,7 +36,7 @@
   ```
   $ rails -v
   ```
-  - Installed version should be: 6.0.3.4
+  - Installed version should be: 6.0.3.7
   
 2. Install Rails if needed
   ```
@@ -168,9 +168,8 @@
         - postgres
     tty: true
   ```
-  Note: replace "lmd" with the project directory name
-  ruby 2.7.4p191 
-
+  Note: replace "lmd" with the project directory name and Generated ruby image should be ruby 2.7.4p191
+  
 4. On your Windows terminal run
   ```
   $ docker-compose up -d
@@ -180,7 +179,7 @@
 5. Goto the docker ruby CLI 
   a) install rails
   ```
-  #gem install rails:6.0.3.4
+  #gem install rails:6.0.3.7
   ```
   b) Install bundle dependencies
   ```
@@ -190,7 +189,7 @@
   ```
   #curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
   #export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm. Now you can use nvm
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
   ```
   d) Install node
    ```
@@ -240,7 +239,7 @@
   Note: in some setups when closing the ruby cli 
   ```
   export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm. Now you can use nvm
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
   ```
   needs to be entered again before entering the command to run the rails app
 ### Heroku 

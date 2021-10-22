@@ -10,8 +10,8 @@
         <%end%>      
       </div>
     </div>
-    <div class="row video-show-form">
-      <div class="seven columns content-view">
+    <div class="row content-show">
+      <section class="seven columns content-view">
         <div class="content-view__video">
           <% if @video.video.attached? %>
             <%= video_tag(url_for(@video.video), controls:'', class: 'video-player')%>
@@ -19,39 +19,35 @@
             <span> Video not Available </span> 
           <% end %>
         </div>
-      </div>
-      <div class="five columns">
-        <div class="video-form-container control">
-          <div class="video-details">
+      </section>
+      <section class="five columns show-form">
+        <div class="content-upload__form control">
+          <div class="content-upload__details">
             <div class="video--show_title">
-              <p class ="default-text">
-                <strong>Title</strong>
-              </p>
+              <p class ="default-text">Title</p>
               <div class="show__title-box">
-              <%= @video.title %>
+                <%= @video.title %>
               </div>                
             </div>
             <div class="video--show_description">
-              <p class ="default-text">
-                <strong>Description</strong>
-              </p>
+              <p class ="default-text">Description</p>
               <div class="show__description-box">
               <%= @video.description %>
               </div>
             </div>
           </div>
-          <div class="video-images">
-            <div id="video-image-container">
+          <div class="content-images__container">
+            <div id="video__image">
               <p class ="default-text">Video Image</p>
               <div id="video-image-border" class = "image-holder">
                 <% if @video.image.attached? %>
-                  <%= image_tag(@video.image , class: "thumbnail__img--sml") %>  
+                  <%= image_tag(@video.image, class: "thumbnail__img--sml") %>  
                 <% else %>
                   <span class="none-msg">no available image</span>
                 <% end %>
               </div>
             </div>
-            <div id="social-image-container">
+            <div id="social__image">
               <p class ="default-text">Social Image</p>
               <div id="video-image-border" class = "image-holder">
                 <% if @video.social_image.attached? %>
@@ -63,13 +59,13 @@
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
-    <div class="row">
+    <section class="row">
       <div class="actions button-area">
         <%= link_to "Edit", edit_video_path(@video), class:"button btn-transp btn-style btn-text" %>
         <%= link_to 'Back', videos_path, class:"button btn-style btn-text " %>             
       </div>
-    </div>
+    </section>
   </div>
 </div>
