@@ -1,5 +1,5 @@
 <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
-<%= form_with model: article, url: "/article", local: true, multipart: true, id: "article_form" do |form| %>
+<%= form_with(model: article, url: article_path, local: true, multipart: true, id: "article_form") do |form| %>
   <%# <% if video.errors.any?   Validation here   <%end%>
   <div class="row content-upload upload-content-view">
     <div class="twelve columns content-media">
