@@ -1,37 +1,34 @@
 <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
 <%= form_with model: article, url: "/article", local: true, multipart: true, id: "article_form" do |form| %>
-    <%# <% if video.errors.any?   Validation here   <%end%>
-      <div class="row upload-content-view">
-        <div class="twelve columns content-media">
-          <div class="content-upload__form control">
-            <div class="content-upload__details">
-              <%= form.label :title, class:"content-upload__text"%>
-              <%= form.text_field :title, class: "manage-channel-box" %>
-              
-              <%= form.label :excerpt, class:"content-upload__text"%>
-              <%= form.text_field :excerpt, class: "manage-channel-box" %>
-
-              <%= form.label :description, class:"content-upload__text"%>
-              <%= form.text_area :description, class: "manage-channel-box description-box" %>
-              
-              <%= form.label :content, class:"content-upload__text"%>
-              <div id="editor"></div>
-              <%= form.text_field :content, class: "manage-channel-box description-box", id: "content", type: :hidden %>
-
-            </div>
-          </div>
-        </div>
-          
-      </div>
-      <div class="row">
-        <div class="button-area">
-        <%= link_to "Cancel", dashboard_path, class:"button btn-transp btn-style btn-text" %>
-        <%= form.submit "Save", class:"button btn-style btn-text ", id: "submit_article" %>              
-        </div>
-      </div>
       
-    </div>	
-  <% end %>
+  <div class="row content-upload upload-content-view">
+    <div class="twelve columns content-media">
+      <div class="content-upload__form">
+        <div class="content-upload__details">
+          <%= form.label :title, class:"content-upload__text"%>
+          <%= form.text_field :title, class: "manage-channel-box" %>
+           
+          <%= form.label :excerpt, class:"content-upload__text"%>
+          <%= form.text_field :excerpt, class: "manage-channel-box" %> <%= form.label :description, class:"content-upload__text"%>
+          <%= form.text_area :description, class: "manage-channel-box description-box" %>
+              
+          <p class ="default-text">Content</p>
+          <div id="editor"></div>
+           <%# <%= form.label :content, class:"content-upload__text"%> 
+           <%# <%= form.text_field :content, class: "manage-channel-box description-box", id: "content", type: :hidden %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+     <div class="button-area">
+     <%= link_to "Cancel", dashboard_path, class:"button btn-transp btn-style btn-text" %>
+     <%= form.submit "Save", class:"button btn-style btn-text ", id: "submit_article" %>              
+     </div>
+   </div>
+      	
+<% end %>
 <script>
   var content_editor;
 
