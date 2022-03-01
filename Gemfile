@@ -43,7 +43,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'simple_command'
 gem 'rails_admin', '~> 2.0'
 # Use Active Storage variant
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
 gem "mini_magick"
 gem "google-cloud-storage", "~> 1.8", require: false
 # Reduces boot times through caching; required in config/boot.rb
