@@ -1,54 +1,48 @@
 <%= form_with model: audio, url: "/audio", local: true, multipart: true do |form| %>
-    <%# <% if video.errors.any?   Validation here   <%end%>
-      <div class="row upload-video-view">
-        <div class="six columns video-view">
-          <div class="video-view-container video-view--bg">
-            <audio class = "video-view--size audio-size" controls autoplay muted  id="video-tag">
-              <source id="video-source" >
+      <div class="row content-upload">
+        <section class="seven columns content-view">
+          <div class="content-view__video">
+            <audio class = "audio-player" controls muted  id="audio-tag">
+              <source id="media-source" >
             </audio> 
           </div>
-        </div>
-        <div class="six columns video-form">
-          <div class="video-form-container control">
-            <div class="video-details">
-              <%= form.label :title, class:"label upload-video-text-style"%>
+        </section >
+        <section  class="five columns content-media">
+          <div class="content-upload__form">
+            <div class="content-upload__details">
+              <%= form.label :title, class:"content-upload__text"%>
               <%= form.text_field :title, class: "manage-channel-box" %>
-              <%= form.label :description, class:"label upload-video-text-style"%>
+              <%= form.label :description, class:"content-upload__text"%>
               <%= form.text_area :description, class: "manage-channel-box description-box" %>
-              <div class="upload-container">
-              <%= form.label :file_name, class:"label upload-video-text-style"%>
-                <div id="video-upload-border">
-                  <span id="video-upload-button" class="material-icons upload-button vid-btn upload-button-style">file_upload</span>
-                  <%= form.file_field :video, accept:"audio/mp3", class:'input-tag', id:"hidden-upload"%>
-                  <input type="text" id="upload-name" disabled="true" />                
-                </div>                
-              </div>
+              <%= form.label :file_name, "File Name", class:"content-upload__text"%>
+              <div id="media-upload-border">
+                <span id="media-upload-button" class="material-icons upload-button vid-btn upload-button-style">file_upload</span>
+                 <%= form.file_field :video, accept:"audio/mp3", class:'input-tag', id:"hidden-upload"%>
+                <input type="text" id="upload-name" disabled="true" />                
+              </div>                
             </div>
 
-            <div class="video-images">
-              <div id="video-image-container">
-              <%= form.label :image, class:'label upload-video-text-style'%>
+            <div class="content-images__container">
+              
+              <div id="video__image">
+                <%= form.label :image, class:'content-upload__text'%>
                 <div id="video-image-border" class = "image-holder" onchange="showPreview1(event)">
                   <span id ="vi-upload-button" class="material-icons upload-button img-btn">file_upload</span>
                   <img id="image-preview1">  
                   <%=form.file_field :image, accept:"image/jpg, image/png", id:'vi-hidden-upload'%>
                 </div>
               </div>
-
-              <div id="social-image-container">
-              <%= form.label :social_image, class:'label upload-video-text-style'%>
+              <div id="social__image">
+                <%= form.label :social_image, class:'content-upload__text'%>
                 <div id="social-image-border" class = "image-holder" onchange="showPreview2(event)">
                   <span id ="si-upload-button" class="material-icons upload-button img-btn">file_upload</span>
-                   <img id="image-preview2">
+                  <img id="image-preview2">
                   <%=form.file_field :social_image, accept:"image/jpg, image/png", id:'si-hidden-upload'%>
                 </div>
               </div>
-              
-              
             </div>  
           </div>
-        </div>
-          
+        </section>
       </div>
       <div class="row">
         <div class="button-area">
@@ -62,7 +56,7 @@
 
 <script>
 //adds event listener to the file uploader button
-document.querySelector("#video-upload-button").addEventListener("click", () => {
+document.querySelector("#media-upload-button").addEventListener("click", () => {
   //clicks on the file input
   document.querySelector("#hidden-upload").click();
 });
@@ -110,8 +104,8 @@ document.querySelector("#si-hidden-upload").addEventListener("change", (event) =
 <%# preview video %>
 <script>
 
-const videoSrc = document.querySelector("#video-source");
-const videoTag = document.querySelector("#video-tag");
+const videoSrc = document.querySelector("#media-source");
+const videoTag = document.querySelector("#audio-tag");
 const inputTag = document.querySelector(".input-tag");
 
 inputTag.addEventListener('change',  readVideo)

@@ -1,0 +1,54 @@
+<script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+<div class="container">
+  <div class="dashboard edit--grid dashboard__bg-img">
+    
+    <div class="row ">
+      <div class="twelve columns edit-view-header">
+        <%= link_to dashboard_path, class: "manage-channel-link" do %> 
+        <div class="edit-view-header">
+          <span class="material-icons">arrow_back_ios</span> 
+          <p>Manage Channel</p> 
+        </div>
+        <%end%>      
+      </div>
+    </div>
+    <div class="row upload-article-view">
+      <div class="article-form-container control">
+        <div class="twelve columns article-view">
+          <div class="article-details">
+            <div class="article--show_title">
+              <p class ="default-text">Title</p>
+              <div class="show__title-box">
+                <%= @article.title %>
+              </div>
+            </div>
+            <div class="article--show_excerpt">
+              <p class ="default-text">Excerpt</p>
+              <div class="show__excerpt-box">
+                <%= @article.excerpt %>
+              </div> 
+            </div>
+            <div class="article--show_description">
+              <p class ="default-text">Description</p>
+              <div class="show__description-box">
+                <%= @article.description %>
+              </div>
+            </div>
+            <div class="article--show_content">
+              <p class ="default-text">Content</p>
+              <div class="show__content-box">              
+                <%= raw(@article.content) %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="actions button-area">
+        <%= link_to "Edit", edit_article_path(@article), class:"button btn-transp btn-style btn-text" %>
+        <%= link_to 'Back', article_path, class:"button btn-style btn-text " %>             
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,130 +1,130 @@
 <div class="container">
-	<div class="dashboard dashboard--grid dashboard__bg-img">
-		<%= render "shared_partials/sidemenu" %>
-			
-		<div class="main main--border">
-			<div class="dashboard-home dashboard-home--grid">
-				<section id="app-stats" class="dashboard__section">
-					<h6 class="dashboard__section__title"> App Stats </h6>
-					<div class="body__content app-stats__body">
-						<div class="app-stats__card">
-							<div class="app-stats__content">
-								<p class="app-stats__text stats-text"><%= @total_system_user %></p>
-								<p class="app-stats__label users-label">Users</p>
-							</div>
-						</div>
-						<div class="app-stats__card">
-							<div class="app-stats__content">
-								<div class="circle">
-          				<div class="circle__bar"></div>
-          				<div class="box circle__text"><span class="circle__canvas"></span></div>
-        				</div>
-							</div>
-						</div>
-						<div class="app-stats__card">
-								<div class="app-stats__content">
-									<img class="app-stats__img" src = <%= asset_path("sun_icon.png") %> alt="Sun Icon" >
-									<div class="app-stats__day-text">
-										<p class="app-stats__text day-text"><%= @most_active_day_week %></p>
-										<p class="app-stats__label most-active-label">Most Active Day</p>
-									</div>
-								</div>
-						</div>
-						<div class="app-stats__card">
-							<div class="app-stats__content">
-						  	<p class="app-stats__text stats-text"><%= @video_watched_count %></p>
-								<p class="app-stats__label watch-label">Watched Videos</p>
-							</div>
-						</div>
-					</div>
-				</section>
+    <div class="dashboard dashboard--grid dashboard__bg-img">
+        <%= render "shared_partials/sidemenu" %>
+            
+        <div class="main main--border">
+            <div class="dashboard-home dashboard-home--grid">
+                <section id="app-stats" class="dashboard__section">
+                    <h6 class="dashboard__section__title"> App Stats </h6>
+                    <div class="body__content app-stats__body">
+                        <div class="app-stats__card">
+                            <div class="app-stats__content">
+                                <p class="app-stats__text stats-text"><%= @total_system_user %></p>
+                                <p class="app-stats__label users-label">Users</p>
+                            </div>
+                        </div>
+                        <div class="app-stats__card">
+                            <div class="app-stats__content">
+                                <div class="circle">
+                          <div class="circle__bar"></div>
+                          <div class="box circle__text"><span class="circle__canvas"></span></div>
+                        </div>
+                            </div>
+                        </div>
+                        <div class="app-stats__card">
+                                <div class="app-stats__content">
+                                    <img class="app-stats__img" src = <%= asset_path("sun_icon.png") %> alt="Sun Icon" >
+                                    <div class="app-stats__day-text">
+                                        <p class="app-stats__text day-text"><%= @most_active_day_week %></p>
+                                        <p class="app-stats__label most-active-label">Most Active Day</p>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="app-stats__card">
+                            <div class="app-stats__content">
+                              <p class="app-stats__text stats-text"><%= @video_watched_count %></p>
+                                <p class="app-stats__label watch-label">Watched Videos</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-				<section id="top-videos" class="dashboard__section top-videos__container">
-					<h6 class="dashboard__section__title">Top Videos</h6>
-					<div class="body__content top-videos__body">
-						<div id="tn-scroll__container" class="tn-scroll__container">
-							<button class="btn-scroll" onclick="scrollHorizontally(1)"  id="btn-left-arrow"><i class="material-icons">arrow_back_ios</i></button>
-							<button class="btn-scroll" onclick="scrollHorizontally(-1)" id="btn-right-arrow"><i class="material-icons">arrow_forward_ios</i></button>
-							<div class="thumbnail-container">
-								<% @top_3_watched_videos.each do |video| %> 
-									<div class="thumbnail home-thumbnail" title="<%= video.title %>">
-										<% if video.thumbnail.attached? %>
-												<%= image_tag(video.thumbnail, class: "thumbnail__img", alt: "Top Videos Thumbnail") %>  
-										<% else %>
-											<span class="none_msg">no available image</span>
-										<% end %>
-										<div class="thumbnail__img--overlay">
-											<p class="thumbnail__img--overlay__text thumbnail__video-views-count"><%= video.viewer_count %></p>
-											<div class="thumbnail-video__details">
-												<p class="thumbnail-video__text thumbnail-video__title video__title-lrg"><%= video.title %></p>
-												<p class="thumbnail-video__text thumbnail-video__author"><%= video.author %></p>
-											</div>
-										</div>
-									</div>
-									<% end %>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section id="my-channel-view" class="dashboard__section">
-					<h6 class="dashboard__section__title">My Channel</h6>
-					<div class="body__content my-channel-view__body">
-						<% if @most_watched_video.nil? %>
-							<div class="thumbnail home-thumbnail"></div>
-							<%# <span class="none_msg">No Videos Available</span> %>
-						<% else %>
-							<div class="thumbnail home-thumbnail" title="<%= @most_watched_video.title %>">
-								<% if @most_watched_video.thumbnail.attached? %>
-									<%= image_tag(@most_watched_video.thumbnail, class: "thumbnail__img", alt: "Most Watched Video") %>  
-								<% else %>
-									<span class="none_msg">no available image</span>
-								<% end %>
-									<div class="thumbnail__img--overlay">
-										<p class="thumbnail__img--overlay__text thumbnail-video-stat">Most Watched</p>
-										<p class="thumbnail__img--overlay__text thumbnail__video-views-count"><%= @most_watched_video.viewer_count %></p>
-										<div class="thumbnail-video__details">
-											<p class="thumbnail-video__text thumbnail-video__title video__title-lrg"><%= @most_watched_video.title %></p>
-											<p class="thumbnail-video__text thumbnail-video__author"><%= @most_watched_video.author %></p>
-										</div>
-									</div>
-							</div>
-						<% end %>
-						<% if @most_recent_video.nil? %>
-							<div class="thumbnail home-thumbnail"></div>
-							<%# <span class="none_msg">No Videos Available</span> %>
-						<% else %>
-							<div class="thumbnail home-thumbnail" title="<%= @most_recent_video.title %>">
-								<% if @most_recent_video.thumbnail.attached? %>
-									<%= image_tag(@most_recent_video.thumbnail, class: "thumbnail__img", alt: "Most Recent Video") %>  
-								<% else %>
-									<span class="none_msg">no available image</span>
-								<% end %>
-								<div class="thumbnail__img--overlay">
-									<p class="thumbnail__img--overlay__text thumbnail-video-stat">Most Recent</p>
-									<p class="thumbnail__img--overlay__text thumbnail__video-views-count"><%= @most_recent_video.viewer_count %></p>
-									<div class="thumbnail-video__details">
-										<p class="thumbnail-video__text thumbnail-video__title video__title-lrg"><%= @most_recent_video.title %></p>
-										<p class="thumbnail-video__text thumbnail-video__author"><%= @most_recent_video.author %></p>
-									</div>
-								</div>
-							</div>
-						<% end %>
-					</div>
-				</section>
-			</div>
-		</div>
+                <section id="top-videos" class="dashboard__section top-videos__container">
+                    <h6 class="dashboard__section__title">Top Videos</h6>
+                    <div class="body__content top-videos__body">
+                        <div id="tn-scroll__container" class="tn-scroll__container">
+                            <button class="btn-scroll" onclick="scrollHorizontally(1)"  id="btn-left-arrow"><i class="material-icons">arrow_back_ios</i></button>
+                            <button class="btn-scroll" onclick="scrollHorizontally(-1)" id="btn-right-arrow"><i class="material-icons">arrow_forward_ios</i></button>
+                            <div class="thumbnail-container">
+                                <% @top_3_watched_videos.each do |video| %> 
+                                    <div class="thumbnail home-thumbnail" title="<%= video.title %>">
+                                        <% if video.thumbnail.attached? %>
+                                                <%= image_tag(video.thumbnail, class: "thumbnail__img", alt: "Top Videos Thumbnail") %>  
+                                        <% else %>
+                                            <span class="none-msg">no available image</span>
+                                        <% end %>
+                                        <div class="thumbnail__img--overlay">
+                                            <p class="thumbnail__img--overlay__text thumbnail__content-views-count"><%= video.viewer_count %></p>
+                                            <div class="thumbnail-video__details">
+                                                <p class="thumbnail-video__text thumbnail-video__title video__title-lrg"><%= video.title %></p>
+                                                <p class="thumbnail-video__text thumbnail-video__author"><%= video.author %></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="my-channel-view" class="dashboard__section">
+                    <h6 class="dashboard__section__title">My Channel</h6>
+                    <div class="body__content my-channel-view__body">
+                        <% if @most_watched_video.nil? %>
+                            <div class="thumbnail home-thumbnail"></div>
+                            <%# <span class="none-msg">No Videos Available</span> %>
+                        <% else %>
+                            <div class="thumbnail home-thumbnail" title="<%= @most_watched_video.title %>">
+                                <% if @most_watched_video.thumbnail.attached? %>
+                                    <%= image_tag(@most_watched_video.thumbnail, class: "thumbnail__img", alt: "Most Watched Video") %>  
+                                <% else %>
+                                    <span class="none-msg">no available image</span>
+                                <% end %>
+                                    <div class="thumbnail__img--overlay">
+                                        <p class="thumbnail__img--overlay__text thumbnail-video-stat">Most Watched</p>
+                                        <p class="thumbnail__img--overlay__text thumbnail__content-views-count"><%= @most_watched_video.viewer_count %></p>
+                                        <div class="thumbnail-video__details">
+                                            <p class="thumbnail-video__text thumbnail-video__title video__title-lrg"><%= @most_watched_video.title %></p>
+                                            <p class="thumbnail-video__text thumbnail-video__author"><%= @most_watched_video.author %></p>
+                                        </div>
+                                    </div>
+                            </div>
+                        <% end %>
+                        <% if @most_recent_video.nil? %>
+                            <div class="thumbnail home-thumbnail"></div>
+                            <%# <span class="none-msg">No Videos Available</span> %>
+                        <% else %>
+                            <div class="thumbnail home-thumbnail" title="<%= @most_recent_video.title %>">
+                                <% if @most_recent_video.thumbnail.attached? %>
+                                    <%= image_tag(@most_recent_video.thumbnail, class: "thumbnail__img", alt: "Most Recent Video") %>  
+                                <% else %>
+                                    <span class="none-msg">no available image</span>
+                                <% end %>
+                                <div class="thumbnail__img--overlay">
+                                    <p class="thumbnail__img--overlay__text thumbnail-video-stat">Most Recent</p>
+                                    <p class="thumbnail__img--overlay__text thumbnail__content-views-count"><%= @most_recent_video.viewer_count %></p>
+                                    <div class="thumbnail-video__details">
+                                        <p class="thumbnail-video__text thumbnail-video__title video__title-lrg"><%= @most_recent_video.title %></p>
+                                        <p class="thumbnail-video__text thumbnail-video__author"><%= @most_recent_video.author %></p>
+                                    </div>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                </section>
+            </div>
+        </div>
 
-		<%# <%= render "shared_partials/notifications" %>
-			
-	</div>	
+        <%# <%= render "shared_partials/notifications" %>
+            
+    </div>	
 </div>
 
 
 <%# circular active user %>
 <script type="text/javascript">
 
-	var active_user_percent = parseInt("<%= @active_user_count %>") / parseInt("<%= @total_system_user %>")
-	var circle_size = 90
+  var active_user_percent = parseInt("<%= @active_user_count %>") / parseInt("<%= @total_system_user %>")
+  var circle_size = 90
   let options = {
     startAngle: -1.55,
     size: circle_size,
@@ -132,7 +132,7 @@
     fill: {gradient: ['#00e6c7', '#00f3b9']}					
   }
 
-	$(".circle .circle__bar").circleProgress(options).on('circle-animation-progress',
+    $(".circle .circle__bar").circleProgress(options).on('circle-animation-progress',
   function(event, progress, stepValue){
     $(this).parent().find("span").text(String((stepValue*100).toFixed(0)) + "%" + "\nActive");
   });     
@@ -141,7 +141,7 @@
 <%# horizontal mouse scroll on top videos %>
 <script>
 
-	$( '.tn-scroll__container' ).on( 'mousewheel', function ( e ) {
+    $( '.tn-scroll__container' ).on( 'mousewheel', function ( e ) {
     var event = e.originalEvent,
         d = event.wheelDelta || -event.detail;
     
@@ -158,54 +158,54 @@
 
     let currentScrollPosition = 0;
     let scrollAmount = 300;
-		let setWidth = 575
+        let setWidth = 575
 
     const sCont = document.querySelector(".thumbnail-container");
     const hScroll = document.querySelector(".tn-scroll__container");
     const btnScrollLeft = document.querySelector("#btn-left-arrow");
     const btnScrollRight = document.querySelector("#btn-right-arrow");
-		window.onload = isOverflown(hScroll)
+        window.onload = isOverflown(hScroll)
 
-    btnScrollLeft.style.opacity = "0";
+    btnScrollLeft.style.visibility = "hidden";
 
     let maxScroll = -sCont.offsetWidth + hScroll.offsetWidth;
 
-		let contWidth = getComputedStyle(sCont).width
+        let contWidth = getComputedStyle(sCont).width
 
 
-		function isOverflown(element) {
- 			 return element.scrollWidth > element.clientWidth;
-		}
+        function isOverflown(element) {
+              return element.scrollWidth > element.clientWidth;
+        }
 
-		
+        
 
-		if(isOverflown(hScroll) === true){
-			function scrollHorizontally(val){
+        if(isOverflown(hScroll) === true){
+            function scrollHorizontally(val){
       currentScrollPosition += (val * scrollAmount);
 
-				if(currentScrollPosition > 0){
+                if(currentScrollPosition > 0){
         currentScrollPosition = 0;
-        btnScrollLeft.style.opacity = "0";
+        btnScrollLeft.style.visibility = "hidden";
       } else{
-        btnScrollLeft.style.opacity = "1";
+        btnScrollLeft.style.visibility = "visible";
       }
 
 
       if(currentScrollPosition < maxScroll){
         currentScrollPosition = maxScroll;
-        btnScrollRight.style.opacity = "0"; 
+        btnScrollRight.style.visibility = "hidden"; 
       } else{
-        btnScrollRight.style.opacity = "1"; 
+        btnScrollRight.style.visibility = "visible"; 
       }
 
       sCont.style.left = currentScrollPosition + "px";
 
     }
-		} else {
-			btnScrollRight.style.opacity = "0"
-			btnScrollLeft.style.opacity = "0";
-		}
-		
+        } else {
+            btnScrollRight.style.visibility = "hidden";
+            btnScrollLeft.style.visibility = "hidden";
+        }
+        
     
 
   </script>
@@ -217,7 +217,4 @@ $(document).ready(function(){
    $(".active").removeClass("active");
    $("#dashboard-link").addClass("active");
 });
-</script>
-
-
 </script>
